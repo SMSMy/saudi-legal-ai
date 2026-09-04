@@ -84,14 +84,16 @@ python3 -m pytest tests/test_eval_validator.py -q
 
 فحص أسبوعي آلي (**بيانات وصفية فقط** — بلا نسخ نصوص قانونية) يرصد إشارات الاشتباه بتعديل تشريعي عبر 20 مصدرًا: هيئة الخبراء، الجريدة الرسمية (أم القرى)، منصة استطلاع (إنذار مبكر)، والبوابات القطاعية.
 
-A weekly automated check (**metadata-only** — no legal text copying) watching for suspected amendment signals across 20 sources: Bureau of Experts, Official Gazette, Istitlaa (early warning), and sector portals.
+A weekly automated check (**metadata-only** — no legal text copying) watching for suspected amendment signals across 20 sources: Bureau of Experts, Official Gazette, Istitlaa (early warning), and sector portals. Each URL has its own fingerprint; only `exact`-confidence changes (law page / gazette / named document) raise `SUSPECT` — portal-homepage moves are `PORTAL_CHANGED`, informational only.
 
 ```bash
 python3 scripts/check_regulation_updates.py --offline
 python3 scripts/check_regulation_updates.py --check --report regulation-watch-report.md
 ```
 
-عند الاشتباه تُفتح Issue تلقائية للتحقق البشري — **لا تعديل تلقائي لأي ملف** قبل تأكيد محامٍ مرخّص. راجع [docs/regulation-watch.md](docs/regulation-watch.md) للتفاصيل الكاملة.
+عند الاشتباه تُفتح Issue تلقائية للتحقق البشري — **لا تعديل تلقائي لأي ملف** قبل تأكيد محامٍ مرخّص. خط الأساس يعيش على فرع [`regulation-watch-state`](https://github.com/SMSMy/saudi-legal-ai/tree/regulation-watch-state) لأن `main` محمي.
+
+> **حدود موثقة من التشغيل الحي:** نطاق `laws.boe.gov.sa` لا يرد من عدّائي GitHub (انقطاع مثبت) — التغطية الفعلية من السحابة: بوابة العدل والبوابات القطاعية وملفات PDF وأم القرى. راجع [docs/regulation-watch.md](docs/regulation-watch.md) للتفاصيل الكاملة.
 
 ---
 
