@@ -8,6 +8,10 @@ This evaluation benchmark ensures that AI models return accurate, legally sound 
 ## Structure
 - `schema.json`: The JSON schema defining an evaluation case.
 - `source-registry.json`: Official mapping of all sources referenced in the cases.
+  Since schema v2.0 it also carries machine-readable watch metadata
+  (`citation`, `source_file`, `monitor.signals`) for the weekly
+  regulation-watch — see [docs/regulation-watch.md](../docs/regulation-watch.md).
+  The original five entries' `name/decree/date/url` values are frozen for validator compatibility.
 - `cases/`: Contains the test cases split by legal domains (e.g., Labor Law, PDPL).
 - `validate_cases.py`: Script to validate that all JSON cases adhere strictly to `schema.json`.
 - `results/`: Directory (git-ignored) for storing evaluation outputs locally.
