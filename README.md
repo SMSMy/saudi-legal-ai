@@ -80,6 +80,21 @@ python3 -m pytest tests/test_eval_validator.py -q
 
 ---
 
+## مراقبة تحديثات الأنظمة / Regulation Watch
+
+فحص أسبوعي آلي (**بيانات وصفية فقط** — بلا نسخ نصوص قانونية) يرصد إشارات الاشتباه بتعديل تشريعي عبر 20 مصدرًا: هيئة الخبراء، الجريدة الرسمية (أم القرى)، منصة استطلاع (إنذار مبكر)، والبوابات القطاعية.
+
+A weekly automated check (**metadata-only** — no legal text copying) watching for suspected amendment signals across 20 sources: Bureau of Experts, Official Gazette, Istitlaa (early warning), and sector portals.
+
+```bash
+python3 scripts/check_regulation_updates.py --offline
+python3 scripts/check_regulation_updates.py --check --report regulation-watch-report.md
+```
+
+عند الاشتباه تُفتح Issue تلقائية للتحقق البشري — **لا تعديل تلقائي لأي ملف** قبل تأكيد محامٍ مرخّص. راجع [docs/regulation-watch.md](docs/regulation-watch.md) للتفاصيل الكاملة.
+
+---
+
 ## فهرس الملفات
 
 | المجلد | المحتوى | العدد |
@@ -89,9 +104,9 @@ python3 -m pytest tests/test_eval_validator.py -q
 | `datasets/` | مجموعات بيانات قانونية منظمة وملفات مخاطر | 11 |
 | `examples/` | أمثلة تطبيقية موثقة عبر المجالات القانونية | 14 |
 | `prompts/` | قوالب مطالبات جاهزة للاستخدام | 3 |
-| `docs/` | موقع Pages + وثائق تقنية | 8 |
-| `scripts/` | سكريبتات التحقق والبناء | 8 |
-| `tests/` | اختبارات آلية لسكريبتات التحقق | 8 |
+| `docs/` | موقع Pages + وثائق تقنية | 9 |
+| `scripts/` | سكريبتات التحقق والبناء والمراقبة | 9 |
+| `tests/` | اختبارات آلية لسكريبتات التحقق | 9 |
 | `evals/` | نظام تقييم جودة أدوات الذكاء الاصطناعي القانوني — 5 حالات تقييم أولية (`draft`) | — |
 | `mcp-server/` | Docker-based MCP server with 3 legal analysis tools | 6 |
 
