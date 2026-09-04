@@ -1,9 +1,11 @@
 # tests/test_regulation_watch.py
 """
-Tests for scripts/check_regulation_updates.py
+Tests for scripts/check_regulation_updates.py (v2).
 Saudi Legal AI Framework — regulation-watch (metadata-only) checker.
 
 All network probing is mocked via injected probe_fn — no real HTTP.
+v2: per-URL fingerprints, exact/portal confidence, static flags are
+report-only (never a status, never blocking the baseline).
 """
 import json
 import sys
@@ -16,15 +18,19 @@ import check_regulation_updates as rw
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
 
+LAW_URL = "https://example.gov.sa/law/99"
+SECTOR_URL = "https://example.gov.sa/sector-feed"
+
+
 def _entry(**over):
     base = {
         "name": "نظام تجريبي",
         "decree": "م/99",
         "date": "1440هـ",
-        "url": "https://example.gov.sa/law/99",
+        "url": LAW_URL,
+        "url_confidence": "exact",
         "citation": "Test Law (Royal Decree M/99 1440H)",
         "source_file": "sources/test-law.md",
-        "url_confidence": "exact",
         "review_priority": "medium",
         "monitor": {"enabled": True, "signals": ["boe_law_page"]},
     }
@@ -47,6 +53,19 @@ def _no_sleep(s):
     return None
 
 
+def _prior_for(probe_dicts):
+    """Build a v2 prior entry from {url: probe} with matching fingerprints."""
+    urls = {}
+    for url, p in probe_dicts.items():
+        urls[url] = {
+            "fingerprint": rw.fingerprint_of(
+                p["status"], p["final_url"], p["etag"],
+                p["last_modified"], p["content_length"]),
+            "signal": {k: p[k] for k in rw.SIGNAL_KEYS},
+        }
+    return {"urls": urls}
+
+
 # ── Fingerprint ──────────────────────────────────────────────────────────────
 
 def test_fingerprint_changes_when_headers_change():
@@ -66,6 +85,30 @@ def test_fingerprint_ignores_body_by_design():
     assert "body" not in inspect.signature(rw.fingerprint_of).parameters
 
 
+# ── Watch targets ────────────────────────────────────────────────────────────
+
+def test_watch_targets_include_gazette_plus_istitlaa_when_present():
+    e = _entry(gazette_url="https://uqn.gov.sa/details?p=1",
+               istitlaa_url="https://istitlaa.example/doc.pdf",
+               sector_feed=SECTOR_URL)
+    targets = rw.watch_targets(e)
+    by_kind = {t["kind"]: t for t in targets}
+    assert by_kind["law_page"]["confidence"] == "exact"
+    assert by_kind["gazette"]["confidence"] == "exact"
+    assert by_kind["istitlaa"]["confidence"] == "exact"
+    assert by_kind["sector"]["confidence"] == "portal"
+
+
+def test_watch_targets_skip_absent_fields_honestly():
+    targets = rw.watch_targets(_entry())
+    assert [t["url"] for t in targets] == [LAW_URL]
+
+
+def test_watch_targets_dedupe_repeated_urls():
+    targets = rw.watch_targets(_entry(sector_feed=LAW_URL))
+    assert len(targets) == 1
+
+
 # ── Entry states ─────────────────────────────────────────────────────────────
 
 def test_first_seen_entry_is_new_not_suspect():
@@ -74,39 +117,93 @@ def test_first_seen_entry_is_new_not_suspect():
     assert res["status"] == rw.STATUS_NEW
 
 
-def test_identical_signal_is_ok():
-    probe = _probe_ok("https://example.gov.sa/law/99")
-    fp = rw.fingerprint_of(200, probe["final_url"], probe["etag"],
-                           probe["last_modified"], probe["content_length"])
-    prior = {"fingerprint": fp, "signal": {
-        "status": 200, "final_url": probe["final_url"], "etag": probe["etag"],
-        "last_modified": probe["last_modified"], "content_length": probe["content_length"]}}
+def test_identical_signals_are_ok():
+    probe = _probe_ok(LAW_URL)
+    prior = _prior_for({LAW_URL: probe})
     res = rw.check_entry("t", _entry(), prior,
                          probe_fn=lambda u: dict(probe, url=u), sleep_fn=_no_sleep)
     assert res["status"] == rw.STATUS_OK
 
 
-def test_changed_etag_is_suspect():
-    prior = {"fingerprint": "deadbeef" * 4,
-             "signal": {"status": 200, "final_url": "https://example.gov.sa/law/99",
-                        "etag": '"old"', "last_modified": "D1", "content_length": "10"}}
+def test_changed_exact_etag_is_suspect():
+    prior = _prior_for({LAW_URL: _probe_ok(LAW_URL, etag='"old"')})
     res = rw.check_entry("t", _entry(), prior,
                          probe_fn=_probe_ok, sleep_fn=_no_sleep)
     assert res["status"] == rw.STATUS_SUSPECT
     assert "ETag" in res["detail"]
+    assert LAW_URL in res["detail"]
+
+
+def test_second_url_change_detected_not_just_first_probe():
+    # Regression: v1 fingerprinted only the first successful probe.
+    law_probe = _probe_ok(LAW_URL)
+    sector_probe = _probe_ok(SECTOR_URL)
+    prior = _prior_for({LAW_URL: law_probe, SECTOR_URL: sector_probe})
+
+    def probe(u):
+        if u == SECTOR_URL:
+            return _probe_ok(u, etag='"changed"')
+        return _probe_ok(u)
+
+    entry = _entry(sector_feed=SECTOR_URL)  # sector confidence = portal
+    res = rw.check_entry("t", entry, prior, probe_fn=probe, sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_PORTAL_CHANGED
+    assert SECTOR_URL in res["detail"]
+
+
+def test_portal_only_change_is_not_actionable():
+    law_probe = _probe_ok(LAW_URL)
+    sector_probe = _probe_ok(SECTOR_URL)
+    prior = _prior_for({LAW_URL: law_probe, SECTOR_URL: sector_probe})
+
+    def probe(u):
+        if u == SECTOR_URL:
+            return _probe_ok(u, etag='"changed"')
+        return _probe_ok(u)
+
+    entry = _entry(sector_feed=SECTOR_URL)
+    res = rw.check_entry("t", entry, prior, probe_fn=probe, sleep_fn=_no_sleep)
+    s = rw.summarize([res])
+    assert res["status"] == rw.STATUS_PORTAL_CHANGED
+    assert s["actionable"] == []
+
+
+def test_exact_change_wins_over_portal_noise():
+    prior = _prior_for({LAW_URL: _probe_ok(LAW_URL, etag='"old"'),
+                        SECTOR_URL: _probe_ok(SECTOR_URL, etag='"old2"')})
+
+    def probe(u):
+        return _probe_ok(u, etag='"new"')
+
+    entry = _entry(sector_feed=SECTOR_URL)
+    res = rw.check_entry("t", entry, prior, probe_fn=probe, sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_SUSPECT
+    assert "Portal-noise" in res["detail"]
 
 
 def test_unreachable_does_not_claim_law_change():
-    res = rw.check_entry("t", _entry(), {"fingerprint": "x" * 32},
+    res = rw.check_entry("t", _entry(), {"urls": {LAW_URL: {"fingerprint": "x" * 32}}},
                          probe_fn=_probe_fail, sleep_fn=_no_sleep)
     assert res["status"] == rw.STATUS_UNREACHABLE
     assert "SUSPECT" not in res["status"]
 
 
-def test_static_amendment_note_escalates_to_human_review():
+def test_static_flag_does_not_change_status_or_block_baseline():
+    # Regression: v1 escalated flags to NEEDS_HUMAN_REVIEW and froze the baseline.
     res = rw.check_entry("t", _entry(known_amendment_note="تعديل م/21 لعام 1447هـ"),
                          None, probe_fn=_probe_ok, sleep_fn=_no_sleep)
-    assert res["status"] == rw.STATUS_NEEDS_REVIEW
+    assert res["status"] == rw.STATUS_NEW
+    assert res["flags"] == ["تعديل م/21 لعام 1447هـ"]
+
+    probe = _probe_ok(LAW_URL)
+    prior = _prior_for({LAW_URL: probe})
+    res = rw.check_entry("t", _entry(known_discrepancy_note="فرق تاريخ"),
+                         prior, probe_fn=lambda u: dict(probe, url=u),
+                         sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_OK
+    s = rw.summarize([res])
+    assert s["actionable"] == []
+    assert s["flagged"] == ["t"]
 
 
 def test_rate_limit_halts_further_probes():
@@ -120,7 +217,7 @@ def test_rate_limit_halts_further_probes():
             return p
         return _probe_ok(u)
 
-    res = rw.check_entry("t", _entry(sector_feed="https://example.gov.sa/feed"),
+    res = rw.check_entry("t", _entry(sector_feed=SECTOR_URL),
                          None, probe_fn=probe, sleep_fn=_no_sleep)
     assert any(p.get("skipped") for p in res["probes"])
     assert len(calls) == 1
@@ -128,12 +225,14 @@ def test_rate_limit_halts_further_probes():
 
 # ── Offline + registry ───────────────────────────────────────────────────────
 
-def test_offline_reports_static_flags_only():
+def test_offline_lists_targets_and_flags_without_status_change():
     registry = {"a": _entry(known_amendment_note="x"), "b": _entry()}
     results = rw.run_checks(registry, {"entries": {}}, offline=True)
     by_id = {r["source_id"]: r for r in results}
-    assert by_id["a"]["status"] == rw.STATUS_NEEDS_REVIEW
+    assert by_id["a"]["status"] == rw.STATUS_SKIPPED
+    assert by_id["a"]["flags"] == ["x"]
     assert by_id["b"]["status"] == rw.STATUS_SKIPPED
+    assert by_id["a"]["targets"][0]["url"] == LAW_URL
 
 
 def test_disabled_entries_are_skipped():
@@ -151,25 +250,39 @@ def test_real_registry_loads_and_has_expected_keys():
     assert registry["labor_law"]["url"] == \
         "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2569bd58-299f-4318-ab93-a9a700f26cf9/1"
     assert registry["labor_law"]["date"] == "1426/08/23هـ"
+    # v2.1: real gazette URL wired where documented.
+    assert registry["whistleblower_law"]["gazette_url"] == \
+        "https://uqn.gov.sa/details?p=24614"
 
 
-def test_real_registry_offline_run_has_five_reviews():
+def test_real_registry_offline_run_reports_five_flags_without_actionable():
     repo = Path(__file__).parent.parent
     registry = rw.load_registry(repo / "evals" / "source-registry.json")
     results = rw.run_checks(registry, {"entries": {}}, offline=True)
     assert len(results) == 20
-    assert sum(1 for r in results if r["status"] == rw.STATUS_NEEDS_REVIEW) == 5
+    s = rw.summarize(results)
+    assert s["actionable"] == []
+    assert len(s["flagged"]) == 5
+
+
+def test_whistleblower_watches_three_urls():
+    repo = Path(__file__).parent.parent
+    registry = rw.load_registry(repo / "evals" / "source-registry.json")
+    targets = rw.watch_targets(registry["whistleblower_law"])
+    kinds = sorted(t["kind"] for t in targets)
+    assert kinds == ["gazette", "law_page", "sector"]
 
 
 # ── State + summary ──────────────────────────────────────────────────────────
 
-def test_state_update_records_baseline_then_detects_change():
-    state = {"version": 1, "entries": {}}
+def test_state_update_records_per_url_baseline_then_detects_change():
+    state = {"version": 2, "entries": {}}
     res_new = rw.check_entry("t", _entry(), None,
                              probe_fn=_probe_ok, sleep_fn=_no_sleep)
     assert res_new["status"] == rw.STATUS_NEW
     state = rw.apply_state_updates(state, [res_new])
-    assert state["entries"]["t"]["fingerprint"] == res_new["fingerprint"]
+    stored = state["entries"]["t"]["urls"][LAW_URL]
+    assert stored["fingerprint"] == res_new["probes"][0]["fingerprint"]
 
     res_ok = rw.check_entry("t", _entry(), state["entries"]["t"],
                             probe_fn=_probe_ok, sleep_fn=_no_sleep)
@@ -179,55 +292,66 @@ def test_state_update_records_baseline_then_detects_change():
                              probe_fn=lambda u: _probe_ok(u, etag='"changed"'),
                              sleep_fn=_no_sleep)
     assert res_sus["status"] == rw.STATUS_SUSPECT
+    state = rw.apply_state_updates(state, [res_sus])
+    assert state["entries"]["t"]["last_change"]
 
 
-def test_summarize_actionable():
-    results = [{"source_id": "a", "status": rw.STATUS_OK},
-               {"source_id": "b", "status": rw.STATUS_SUSPECT},
-               {"source_id": "c", "status": rw.STATUS_NEEDS_REVIEW}]
+def test_old_v1_state_is_discarded_as_baseline():
+    v1 = {"version": 1, "entries": {"t": {"fingerprint": "abc", "signal": {}}}}
+    import tempfile
+    with tempfile.TemporaryDirectory() as d:
+        p = Path(d) / "state.json"
+        p.write_text(json.dumps(v1), encoding="utf-8")
+        loaded = rw.load_state(p)
+    assert loaded == {"version": 2, "updated_at": None, "entries": {}}
+
+
+def test_summarize_actionable_only_suspect():
+    results = [{"source_id": "a", "status": rw.STATUS_OK, "flags": ["x"]},
+               {"source_id": "b", "status": rw.STATUS_SUSPECT, "flags": []},
+               {"source_id": "c", "status": rw.STATUS_PORTAL_CHANGED, "flags": []}]
     s = rw.summarize(results)
     assert s["total"] == 3
-    assert sorted(s["actionable"]) == ["b", "c"]
+    assert s["actionable"] == ["b"]
+    assert s["flagged"] == ["a"]
 
 
-def test_report_contains_disclaimer_and_bilingual_header():
-    results = [{"source_id": "a", "citation": "C", "status": rw.STATUS_OK, "detail": "d"}]
+def test_report_contains_flags_section_disclaimer_and_bilingual_header():
+    results = [{"source_id": "a", "citation": "C", "status": rw.STATUS_OK,
+                "detail": "d", "flags": ["تعديل مشتبه"]},
+               {"source_id": "b", "citation": "C", "status": rw.STATUS_OK,
+                "detail": "d", "flags": []}]
     md = rw.render_markdown(results, rw.summarize(results))
     assert "Regulation Watch" in md
     assert "تقرير مراقبة الأنظمة" in md
-    assert "does not constitute legal advice" in md or "not legal advice" in md
+    assert "not legal advice" in md
     assert "لا يُعدّ استشارة قانونية" in md
+    assert "Internal Flags" in md
+    assert "report-only" in md
 
 
 # ── CLI: --update-state-if-clean ─────────────────────────────────────────────
 
-def _write_registry(tmp_path: Path) -> Path:
-    reg = {"x": {"name": "X", "decree": "م/1", "date": "1400هـ",
-                 "url": "https://example.gov.sa/x",
-                 "citation": "X (M/1)", "source_file": "",
-                 "review_priority": "low",
-                 "monitor": {"enabled": True, "signals": []}}}
+def _write_registry(tmp_path: Path, flagged: bool = False) -> Path:
+    ent = {"name": "X", "decree": "م/1", "date": "1400هـ",
+           "url": "https://example.gov.sa/x",
+           "citation": "X (M/1)", "source_file": "",
+           "review_priority": "low",
+           "monitor": {"enabled": True, "signals": []}}
+    if flagged:
+        ent["known_amendment_note"] = "تعديل مشتبه"
     p = tmp_path / "registry.json"
-    p.write_text(json.dumps(reg), encoding="utf-8")
+    p.write_text(json.dumps({"x": ent}), encoding="utf-8")
     return p
 
 
-def test_cli_update_state_if_clean_freezes_on_actionable(tmp_path):
-    reg = _write_registry(tmp_path)
+def test_cli_flags_do_not_block_baseline_or_exit_code(tmp_path):
+    # Regression for the weekly-freeze bug: static flags must not yield
+    # exit 1 and must not prevent --update-state-if-clean.
+    reg = _write_registry(tmp_path, flagged=True)
     state = tmp_path / "state.json"
     code = rw.main(["--offline", "--registry", str(reg), "--state", str(state),
                     "--update-state-if-clean", "--json"])
-    assert code == 0  # no static flags → clean → state written
-    saved = json.loads(state.read_text(encoding="utf-8"))["entries"]
-    assert "x" in saved and "fingerprint" not in saved  # offline: check-in only
-
-    reg2_data = {"x": {"name": "X", "decree": "م/1", "date": "1400هـ",
-                       "url": "https://example.gov.sa/x",
-                       "citation": "X (M/1)", "source_file": "",
-                       "review_priority": "low",
-                       "known_amendment_note": "تعديل مشتبه",
-                       "monitor": {"enabled": True, "signals": []}}}
-    reg.write_text(json.dumps(reg2_data), encoding="utf-8")
-    code = rw.main(["--offline", "--registry", str(reg), "--state", str(state),
-                    "--update-state-if-clean", "--json"])
-    assert code == 1  # actionable → frozen, no crash
+    assert code == 0
+    saved = json.loads(state.read_text(encoding="utf-8"))
+    assert saved["entries"]["x"]["last_seen"]

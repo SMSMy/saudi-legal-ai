@@ -1,22 +1,29 @@
 #!/usr/bin/env python3
 """
-check_regulation_updates.py
+check_regulation_updates.py — v2
 Saudi Legal AI Framework — regulation-watch checker (metadata-only).
 
 يكشف إشارات الاشتباه بتحديث تشريعي دون نسخ أي نص قانوني:
 HTTP status / final URL / ETag / Last-Modified / Content-Length فقط.
 NO body is ever stored, copied, or interpreted as legal text.
 
-Signals are metadata-only: HTTP status / final URL / ETag /
-Last-Modified / Content-Length. No response body is stored,
-copied, or interpreted as legal text.
+v2 fixes (review-driven):
+- Every monitored URL gets its OWN fingerprint (gazette + istitlaa +
+  sector, not just the first successful probe). Fields that are absent
+  in the registry are skipped honestly — never invented.
+- Confidence weighting: only an `exact` (law-page / gazette / named
+  document) signal change raises SUSPECT. A `portal` (homepage) change
+  raises PORTAL_CHANGED — informational, never an Issue by itself.
+- Static internal flags (known amendments, date discrepancies) are
+  REPORT-ONLY: they appear in the report but never change a status,
+  never block the baseline, and never open an Issue.
 
 Policy basis:
 - docs/official-api-sources.md — unlicensed scraping is prohibited.
 - Only Bureau of Experts (boe.gov.sa) + Official Gazette (uqn.gov.sa)
   carry authoritative text; this script NEVER decides what the law says.
-- Any SUSPECT / NEEDS_HUMAN_REVIEW result is a task for a licensed
-  Saudi attorney — never an automatic content update.
+- Any SUSPECT result is a task for a licensed Saudi attorney —
+  never an automatic content update.
 
 Usage:
     python scripts/check_regulation_updates.py --offline
@@ -24,8 +31,8 @@ Usage:
     python scripts/check_regulation_updates.py --check --update-state
     python scripts/check_regulation_updates.py --check --json --state evals/.regulation-watch-state.json
 
-Exit codes: 0 = all OK (or baseline), 1 = suspect/needs-review found,
-            2 = infrastructure errors (network blocked etc.).
+Exit codes: 0 = no SUSPECT (baseline / OK / portal-noise only),
+            1 = SUSPECT found, 2 = infrastructure errors.
 """
 
 import argparse
@@ -42,18 +49,32 @@ DEFAULT_REGISTRY = REPO_ROOT / "evals" / "source-registry.json"
 DEFAULT_STATE = REPO_ROOT / "evals" / ".regulation-watch-state.json"
 
 USER_AGENT = (
-    "SaudiLegalAIFramework-RegulationWatch/1.0 "
-    "(+https://github.com/Samix2026/saudi-legal-ai-framework)"
+    "SaudiLegalAI-RegulationWatch/2.0 "
+    "(+https://github.com/SMSMy/saudi-legal-ai)"
 )
 REQUEST_TIMEOUT = 15
 RATE_LIMIT_SECONDS = 1.5
 
 STATUS_OK = "OK"
 STATUS_SUSPECT = "SUSPECT"
+STATUS_PORTAL_CHANGED = "PORTAL_CHANGED"
 STATUS_NEW = "NEW"
 STATUS_UNREACHABLE = "UNREACHABLE"
 STATUS_SKIPPED = "SKIPPED"
-STATUS_NEEDS_REVIEW = "NEEDS_HUMAN_REVIEW"
+
+CONF_EXACT = "exact"
+CONF_PORTAL = "portal"
+
+# (registry field, signal kind, default confidence)
+# Absent/empty fields are skipped — URLs are never invented.
+WATCH_FIELDS = (
+    ("url", "law_page", None),  # confidence comes from entry.url_confidence
+    ("gazette_url", "gazette", CONF_EXACT),
+    ("istitlaa_url", "istitlaa", CONF_EXACT),
+    ("sector_feed", "sector", CONF_PORTAL),
+)
+
+SIGNAL_KEYS = ("status", "final_url", "etag", "last_modified", "content_length")
 
 
 # ── Registry / state ─────────────────────────────────────────────────────────
@@ -66,12 +87,16 @@ def load_registry(registry_path: Path) -> dict:
 
 def load_state(state_path: Path) -> dict:
     if not state_path.exists():
-        return {"version": 1, "updated_at": None, "entries": {}}
+        return {"version": 2, "updated_at": None, "entries": {}}
     try:
         state = json.loads(state_path.read_text(encoding="utf-8"))
     except (json.JSONDecodeError, OSError):
-        return {"version": 1, "updated_at": None, "entries": {}}
-    state.setdefault("version", 1)
+        return {"version": 2, "updated_at": None, "entries": {}}
+    # v1 → v2 migration: old single-fingerprint entries cannot be mapped
+    # to per-URL signals, so they are treated as fresh baselines.
+    if state.get("version", 1) < 2:
+        return {"version": 2, "updated_at": None, "entries": {}}
+    state.setdefault("version", 2)
     state.setdefault("entries", {})
     return state
 
@@ -108,15 +133,19 @@ def probe_url(url: str, session=None, timeout: int = REQUEST_TIMEOUT) -> dict:
 
     headers = {"User-Agent": USER_AGENT}
     try:
-        resp = session.head(url, headers=headers, timeout=timeout, allow_redirects=True) \
-            if session is not None else __import__("requests").head(
-                url, headers=headers, timeout=timeout, allow_redirects=True)
+        if session is not None:
+            resp = session.head(url, headers=headers, timeout=timeout, allow_redirects=True)
+        else:
+            import requests as rq
+            resp = rq.head(url, headers=headers, timeout=timeout, allow_redirects=True)
         if resp.status_code in (405, 501):
-            resp = session.get(url, headers=headers, timeout=timeout,
-                               allow_redirects=True, stream=True) \
-                if session is not None else __import__("requests").get(
-                    url, headers=headers, timeout=timeout,
-                    allow_redirects=True, stream=True)
+            if session is not None:
+                resp = session.get(url, headers=headers, timeout=timeout,
+                                   allow_redirects=True, stream=True)
+            else:
+                import requests as rq
+                resp = rq.get(url, headers=headers, timeout=timeout,
+                              allow_redirects=True, stream=True)
             resp.close()  # headers captured; body never read
         return {
             "ok": True,
@@ -134,18 +163,28 @@ def probe_url(url: str, session=None, timeout: int = REQUEST_TIMEOUT) -> dict:
 
 # ── Entry check ──────────────────────────────────────────────────────────────
 
-def _monitor_urls(entry: dict) -> list:
-    """Primary url + sector_feed, de-duplicated. Never invented — registry only."""
-    urls = []
-    for key in ("url", "sector_feed"):
-        u = (entry.get(key) or "").strip()
-        if u and u not in urls:
-            urls.append(u)
-    return urls
+def watch_targets(entry: dict) -> list:
+    """
+    Ordered [{url, kind, confidence}] for every URL field present in the
+    registry entry. Absent fields are skipped — URLs are never invented.
+    """
+    targets = []
+    seen = set()
+    for field, kind, default_conf in WATCH_FIELDS:
+        u = (entry.get(field) or "").strip()
+        if not u or u in seen:
+            continue
+        seen.add(u)
+        if field == "url":
+            conf = entry.get("url_confidence", CONF_PORTAL)
+        else:
+            conf = default_conf
+        targets.append({"url": u, "kind": kind, "confidence": conf})
+    return targets
 
 
 def static_review_notes(entry: dict) -> list:
-    """Known internal flags that always require human review (no network)."""
+    """Known internal flags — report-only, never affect status or baseline."""
     notes = []
     for key in ("known_amendment_note", "known_discrepancy_note"):
         if entry.get(key):
@@ -153,11 +192,24 @@ def static_review_notes(entry: dict) -> list:
     return notes
 
 
-def check_entry(source_id: str, entry: dict, prior: dict | None,
+def _signal_of(probe: dict) -> dict:
+    return {k: probe.get(k, "") for k in SIGNAL_KEYS}
+
+
+def _describe_change(old: dict, new: dict) -> str:
+    labels = {"status": "HTTP status", "final_url": "final URL", "etag": "ETag",
+              "last_modified": "Last-Modified", "content_length": "Content-Length"}
+    changes = [f"{labels[k]}: {old.get(k, '')!r} → {new.get(k, '')!r}"
+               for k in SIGNAL_KEYS if str(old.get(k, "")) != str(new.get(k, ""))]
+    return "; ".join(changes) if changes else "signal bytes differ"
+
+
+def check_entry(source_id: str, entry: dict, prior_entry: dict | None,
                 probe_fn=probe_url, sleep_fn=time.sleep,
                 rate_state: dict | None = None) -> dict:
     """
-    Check one registry entry. probe_fn(url) -> probe dict (injectable for tests).
+    Check one registry entry against its per-URL baseline.
+    probe_fn(url) -> probe dict (injectable for tests).
     rate_state: shared {"halt": bool, "last_hit": {host: ts}} for politeness.
     """
     if rate_state is None:
@@ -169,23 +221,31 @@ def check_entry(source_id: str, entry: dict, prior: dict | None,
         "citation": entry.get("citation", ""),
         "source_file": entry.get("source_file", ""),
         "review_priority": entry.get("review_priority", "medium"),
-        "static_notes": static_review_notes(entry),
+        "flags": static_review_notes(entry),  # report-only
+        "targets": watch_targets(entry),
         "probes": [],
         "status": STATUS_OK,
         "detail": "",
     }
 
-    for url in _monitor_urls(entry):
+    prior_urls = (prior_entry or {}).get("urls", {}) if prior_entry else {}
+    is_new_entry = not prior_entry
+
+    for target in result["targets"]:
+        url = target["url"]
         if rate_state["halt"]:
-            result["probes"].append({"url": url, "skipped": True,
-                                    "reason": "halted after HTTP 429"})
+            result["probes"].append({"url": url, "kind": target["kind"],
+                                     "skipped": True,
+                                     "reason": "halted after HTTP 429"})
             continue
         host = urlparse(url).netloc
         last = rate_state["last_hit"].get(host, 0.0)
         wait = RATE_LIMIT_SECONDS - (time.monotonic() - last)
         if wait > 0:
             sleep_fn(wait)
-        probe = probe_fn(url)
+        probe = dict(probe_fn(url))
+        probe["kind"] = target["kind"]
+        probe["confidence"] = target["confidence"]
         rate_state["last_hit"][host] = time.monotonic()
         result["probes"].append(probe)
         if probe.get("rate_limited"):
@@ -202,45 +262,50 @@ def check_entry(source_id: str, entry: dict, prior: dict | None,
                 f'{p.get("url")}: {p.get("error")}' for p in result["probes"])
         return result
 
-    first = ok_probes[0]
-    fp = fingerprint_of(first.get("status"), first.get("final_url", ""),
-                        first.get("etag", ""), first.get("last_modified", ""),
-                        first.get("content_length", ""))
-    result["fingerprint"] = fp
+    # Per-URL fingerprint comparison.
+    for probe in ok_probes:
+        probe["fingerprint"] = fingerprint_of(
+            probe.get("status"), probe.get("final_url", ""), probe.get("etag", ""),
+            probe.get("last_modified", ""), probe.get("content_length", ""))
+        probe["signal"] = _signal_of(probe)
 
-    if prior is None or not prior.get("fingerprint"):
-        result["status"] = STATUS_NEW
-        result["detail"] = (f"Baseline recorded for {first.get('url')} "
-                            f"(HTTP {first.get('status')}).")
-    elif prior["fingerprint"] != fp:
+    exact_changes, portal_changes, fresh = [], [], []
+    for probe in ok_probes:
+        prev = prior_urls.get(probe["url"])
+        if prev is None or not prev.get("fingerprint"):
+            fresh.append(probe)
+        elif prev["fingerprint"] != probe["fingerprint"]:
+            item = (f'[{probe["kind"]}] {probe["url"]} — '
+                    f'{_describe_change(prev.get("signal", {}), probe["signal"])}')
+            if probe.get("confidence") == CONF_EXACT:
+                exact_changes.append(item)
+            else:
+                portal_changes.append(item)
+
+    if exact_changes:
         result["status"] = STATUS_SUSPECT
-        changes = []
-        for key, label in (("status", "HTTP status"), ("final_url", "final URL"),
-                           ("etag", "ETag"), ("last_modified", "Last-Modified"),
-                           ("content_length", "Content-Length")):
-            old = (prior.get("signal") or {}).get(key, "")
-            new = first.get(key, "")
-            if str(old) != str(new):
-                changes.append(f"{label}: {old!r} → {new!r}")
-        result["detail"] = ("Metadata signal changed at "
-                            f"{first.get('url')} — " + "; ".join(changes))
-        result["prior_signal"] = prior.get("signal")
-        result["current_signal"] = {k: first.get(k) for k in
-                                    ("status", "final_url", "etag",
-                                     "last_modified", "content_length")}
+        result["detail"] = "Exact-signal change: " + " / ".join(exact_changes)
+        if portal_changes:
+            result["detail"] += " | Portal-noise (informational): " + " / ".join(portal_changes)
+    elif portal_changes:
+        result["status"] = STATUS_PORTAL_CHANGED
+        result["detail"] = ("Portal-homepage signal moved (weak signal — homepage "
+                            "content churns for non-legal reasons): " +
+                            " / ".join(portal_changes))
+    elif is_new_entry:
+        result["status"] = STATUS_NEW
+        reached = ", ".join(f'{p["url"]} (HTTP {p.get("status")})' for p in ok_probes)
+        result["detail"] = f"Baseline recorded for: {reached}."
     else:
-        result["status"] = STATUS_OK
-        result["detail"] = (f"No metadata change at {first.get('url')} "
-                            f"(HTTP {first.get('status')}).")
+        parts = [f'{p["url"]} (HTTP {p.get("status")})' for p in ok_probes]
+        result["detail"] = "No metadata change at: " + ", ".join(parts) + "."
+        if fresh:
+            result["detail"] += (" Newly tracked URL(s) baselined: " +
+                                 ", ".join(p["url"] for p in fresh) + ".")
 
-    if result["static_notes"]:
-        # Static internal flags escalate OK/NEW to human review, never downgrade SUSPECT.
-        if result["status"] in (STATUS_OK, STATUS_NEW):
-            result["status"] = STATUS_NEEDS_REVIEW
-            result["detail"] += " | Internal flag requires attorney review: " + \
-                " / ".join(result["static_notes"])
-        else:
-            result["detail"] += " | Internal flag: " + " / ".join(result["static_notes"])
+    if result["flags"]:
+        result["detail"] += (f" [internal flags: {len(result['flags'])} — "
+                             "see Internal Flags section; report-only]")
     return result
 
 
@@ -256,22 +321,18 @@ def run_checks(registry: dict, state: dict, probe_fn=probe_url,
         if isinstance(entry, dict) and entry.get("monitor", {}).get("enabled", True) is False:
             continue
         if offline:
-            res = {
+            results.append({
                 "source_id": source_id,
                 "name": entry.get("name", source_id),
                 "citation": entry.get("citation", ""),
                 "source_file": entry.get("source_file", ""),
                 "review_priority": entry.get("review_priority", "medium"),
-                "static_notes": static_review_notes(entry),
+                "flags": static_review_notes(entry),
+                "targets": watch_targets(entry),
                 "probes": [],
                 "status": STATUS_SKIPPED,
                 "detail": "Offline mode — network probing skipped.",
-            }
-            if res["static_notes"]:
-                res["status"] = STATUS_NEEDS_REVIEW
-                res["detail"] = "Internal flag requires attorney review: " + \
-                    " / ".join(res["static_notes"])
-            results.append(res)
+            })
             continue
         prior = (state.get("entries") or {}).get(source_id)
         results.append(check_entry(source_id, entry, prior, probe_fn=probe_fn,
@@ -283,9 +344,12 @@ def summarize(results: list) -> dict:
     counts = {}
     for r in results:
         counts[r["status"]] = counts.get(r["status"], 0) + 1
-    actionable = [r for r in results if r["status"] in (STATUS_SUSPECT, STATUS_NEEDS_REVIEW)]
+    # Only exact-signal changes are actionable. Portal noise and static
+    # flags never open an Issue and never freeze the baseline.
+    actionable = [r for r in results if r["status"] == STATUS_SUSPECT]
+    flagged = [r["source_id"] for r in results if r.get("flags")]
     return {"counts": counts, "actionable": [r["source_id"] for r in actionable],
-            "total": len(results)}
+            "flagged": flagged, "total": len(results)}
 
 
 # ── Reporting ────────────────────────────────────────────────────────────────
@@ -301,10 +365,12 @@ def render_markdown(results: list, summary: dict) -> str:
         "",
         f"- Total monitored: {summary['total']}",
     ]
-    for st in (STATUS_SUSPECT, STATUS_NEEDS_REVIEW, STATUS_UNREACHABLE,
+    for st in (STATUS_SUSPECT, STATUS_PORTAL_CHANGED, STATUS_UNREACHABLE,
                STATUS_NEW, STATUS_OK, STATUS_SKIPPED):
         if summary["counts"].get(st):
             lines.append(f"- {st}: {summary['counts'][st]}")
+    if summary.get("flagged"):
+        lines.append(f"- entries with internal flags (report-only): {len(summary['flagged'])}")
     lines += ["", "## Findings / النتائج", ""]
     lines += ["| Source | Citation | Status | Detail |",
               "|--------|----------|--------|--------|"]
@@ -314,19 +380,35 @@ def render_markdown(results: list, summary: dict) -> str:
             detail = detail[:297] + "…"
         lines.append(f"| {r['source_id']} | {r.get('citation', '')} | "
                      f"**{r['status']}** | {detail} |")
+
+    flagged_results = [r for r in results if r.get("flags")]
+    if flagged_results:
+        lines += ["", "## Internal Flags / أعلام داخلية (report-only)", "",
+                  "_These are known review items tracked separately. They do NOT "
+                  "affect statuses, do NOT block the baseline, and do NOT open "
+                  "Issues by themselves._",
+                  "",
+                  "يُتابَع كل علَم عبر Issue تحقق بشرية مستقلة — لا علاقة له بالفحص الأسبوعي.",
+                  ""]
+        for r in flagged_results:
+            lines.append(f"- **{r['source_id']}** (`{r.get('source_file', '')}`)")
+            for note in r["flags"]:
+                lines.append(f"  - {note}")
+
     lines += [
         "",
         "## Required human steps / خطوات بشرية مطلوبة",
         "",
-        "1. Open each SUSPECT / NEEDS_HUMAN_REVIEW official URL above "
-        "(boe.gov.sa → laws.boe.gov.sa → uqn.gov.sa → sector feed).",
+        "1. For each SUSPECT: open its exact-confidence URL(s) "
+        "(laws.boe.gov.sa → uqn.gov.sa gazette link → named document).",
         "2. Compare decree number + article text against the repo's "
         "`source_file` and `sources/regulation-index.md`.",
-        "3. If confirmed: update `sources/…md` + `regulation-index.md` first, "
-        "then datasets; set affected rows to `deprecated`/`superseded` per "
-        "`docs/legal-verification-lifecycle.md`; open a PR with official links.",
+        "3. If confirmed: update `sources/regulation-index.md` FIRST, "
+        "then `sources/…md`, then datasets (`deprecated`/`superseded` per "
+        "`docs/legal-verification-lifecycle.md`); open a PR with official links.",
         "4. Re-run with `--update-state` ONLY after the human verification "
         "decision is recorded.",
+        "5. PORTAL_CHANGED needs no action unless a pattern repeats across weeks.",
         "",
         "> تحذير: هذا تقرير إشارات أولي ولا يُعدّ استشارة قانونية. يجب مراجعة "
         "مختص قانوني مرخّص في المملكة العربية السعودية قبل اتخاذ أي إجراء.",
@@ -337,7 +419,7 @@ def render_markdown(results: list, summary: dict) -> str:
 
 
 def apply_state_updates(state: dict, results: list) -> dict:
-    """Fold current fingerprints into state (call only after human review)."""
+    """Fold current per-URL fingerprints into state (call only after human review)."""
     now = _utcnow_iso()
     entries = state.setdefault("entries", {})
     for r in results:
@@ -346,15 +428,22 @@ def apply_state_updates(state: dict, results: list) -> dict:
         if not ent.get("first_seen"):
             ent["first_seen"] = now
         ent["last_seen"] = now
-        if r.get("fingerprint"):
-            if ent.get("fingerprint") and ent["fingerprint"] != r["fingerprint"]:
-                ent["last_change"] = now
-            ent["fingerprint"] = r["fingerprint"]
-            first_probe = next((p for p in r.get("probes", []) if p.get("ok")), None)
-            if first_probe:
-                ent["signal"] = {k: first_probe.get(k) for k in
-                                 ("status", "final_url", "etag",
-                                  "last_modified", "content_length")}
+        stored_urls = dict(ent.get("urls", {}))
+        for probe in r.get("probes", []):
+            if not probe.get("ok") or not probe.get("fingerprint"):
+                continue
+            old = stored_urls.get(probe["url"], {})
+            if old.get("fingerprint") and old["fingerprint"] != probe["fingerprint"]:
+                if probe.get("confidence") == CONF_EXACT:
+                    ent["last_change"] = now
+            stored_urls[probe["url"]] = {
+                "fingerprint": probe["fingerprint"],
+                "kind": probe.get("kind", ""),
+                "confidence": probe.get("confidence", ""),
+                "signal": probe.get("signal", {}),
+                "last_seen": now,
+            }
+        ent["urls"] = stored_urls
         if r["status"] == STATUS_UNREACHABLE:
             ent["consecutive_unreachable"] = int(ent.get("consecutive_unreachable", 0)) + 1
         else:
@@ -375,11 +464,11 @@ def main(argv=None) -> int:
     parser.add_argument("--check", action="store_true",
                         help="Probe official URLs (default when no flags given).")
     parser.add_argument("--offline", action="store_true",
-                        help="Skip network; report static internal flags only.")
+                        help="Skip network; list watch targets and internal flags only.")
     parser.add_argument("--update-state", action="store_true",
                         help="Persist fingerprints to state file (after human review).")
     parser.add_argument("--update-state-if-clean", action="store_true",
-                        help="Persist fingerprints ONLY when no actionable findings "
+                        help="Persist fingerprints ONLY when no SUSPECT findings "
                              "(for scheduled CI: keeps the baseline fresh while "
                              "freezing it whenever a signal awaits human review).")
     parser.add_argument("--json", action="store_true",
@@ -412,7 +501,7 @@ def main(argv=None) -> int:
         save_state(state_path, state)
         print(f"State updated at {state_path}")
     elif args.update_state_if_clean and summary["actionable"]:
-        print("State NOT updated: actionable findings await human review "
+        print("State NOT updated: SUSPECT findings await human review "
               "(baseline frozen so the signal persists).")
 
     if summary["actionable"]:

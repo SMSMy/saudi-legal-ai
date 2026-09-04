@@ -1,9 +1,11 @@
 {
   "_registry_meta": {
-    "schema_version": "2.0",
+    "schema_version": "2.1",
     "policy": "المراقبة إشارات وصفية فقط (HTTP status / Last-Modified / ETag / بصمة محتوى وصفية) — يُحظر نسخ النص القانوني أو scraping غير مرخّص. النص المعتمد دائمًا boe.gov.sa والجريدة الرسمية uqn.gov.sa. أي اشتباه بتغيير يتحول لمهمة تحقق بشرية (محامٍ مرخّص) قبل أي تعديل — راجع docs/regulation-watch.md",
     "policy_en": "Watch signals are metadata-only (HTTP status / Last-Modified / ETag / descriptive content hash) — copying legal text or unlicensed scraping is prohibited. Authoritative text is always boe.gov.sa + Official Gazette uqn.gov.sa. Any suspected change becomes a human-verification task (licensed attorney) before any edit — see docs/regulation-watch.md",
     "existing_entries_preserved": "الحقول name/decree/date/url للمدخلات الخمسة الأصلية محفوظة حرفيًا لتوافق evals/validate_cases.py — الحقول الجديدة اختيارية ولا تكسر التحقق",
+    "watch_schema_v21": "كل مدخل قد يحمل gazette_url (رابط أم القرى المباشر) و istitlaa_url (وثيقة/مشروع استطلاع) — الحقل الغائب يُتخطى بصراحة ولا يُخترع له رابط. البصمة لكل URL على حدة؛ SUSPECT فقط عند تغيّر إشارة بثقة exact، وتغيّر البوابات (portal) يُسجَّل PORTAL_CHANGED للمعلومية فقط. الأعلام known_* تقرير فقط ولا تؤثر على الحالة أو الأساس.",
+    "known_gaps": "روابط أم القرى المباشرة غير متوفرة لمعظم الأنظمة (عدا whistleblower_law) — تُضاف فور توثيقها من uqn.gov.sa. المدخلات بثقة portal إشارتها ضعيفة بالاتجاهين وموثقة كذلك.",
     "sources_of_truth": [
       "https://laws.boe.gov.sa",
       "https://www.boe.gov.sa",
@@ -190,6 +192,7 @@
     "decree": "م/148",
     "date": "1445/08/08هـ",
     "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1",
+    "gazette_url": "https://uqn.gov.sa/details?p=24614",
     "citation": "Whistleblower Protection Law (Royal Decree M/148 1445H)",
     "source_file": "sources/whistleblower-protection.md",
     "url_confidence": "exact",

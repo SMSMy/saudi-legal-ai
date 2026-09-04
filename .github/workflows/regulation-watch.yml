@@ -47,6 +47,31 @@ jobs:
           set -e
           cat watch-output.txt
 
+      - name: Ensure watch labels exist
+        # gh issue create fails when labels are missing (fresh repos).
+        if: steps.watch.outputs.exit_code == '1'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create "legal-source" \
+            --description "Saudi regulation source reference" \
+            --color "0E8A16" --force
+          gh label create "content-update" \
+            --description "Regulation content update" \
+            --color "FBCA04" --force
+
+      - name: Check for an already-open watch issue (dedupe)
+        if: steps.watch.outputs.exit_code == '1'
+        id: existing
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          NUM=$(gh issue list --state open \
+            --search "[Regulation Watch] suspected update signals in:title" \
+            --json number --jq '.[0].number // empty')
+          echo "number=${NUM}" >> "$GITHUB_OUTPUT"
+          if [ -z "${NUM}" ]; then echo "No open watch issue."; else echo "Open watch issue: #${NUM}"; fi
+
       - name: Upload report artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -73,8 +98,8 @@ jobs:
             echo "Baseline unchanged — nothing to commit."
           fi
 
-      - name: File human-verification issue (on suspicion)
-        if: steps.watch.outputs.exit_code == '1'
+      - name: File human-verification issue (on suspicion, no duplicate)
+        if: steps.watch.outputs.exit_code == '1' && steps.existing.outputs.number == ''
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -85,14 +110,16 @@ jobs:
             --label "legal-source,content-update" \
             --body "## تنبيه آلي / Automated signal (NOT legal advice)
 
-          رصد الفحص الأسبوعي إشارات وصفية يُشتبه أن تكون تحديثًا تشريعيًا.
+          رصد الفحص الأسبوعي إشارات وصفية دقيقة (صفحة نظام / جريدة رسمية)
+          يُشتبه أن تكون تحديثًا تشريعيًا.
           **يُمنع تعديل أي ملف قبل تحقق محامٍ مرخّص.**
 
-          The weekly check observed metadata signals of suspected regulatory change.
+          The weekly check observed exact-confidence metadata signals of
+          suspected regulatory change.
           **No file may be edited until a licensed attorney verifies.**
 
           ### Required human steps
-          1. Open each SUSPECT / NEEDS_HUMAN_REVIEW official URL below (boe.gov.sa → laws.boe.gov.sa → uqn.gov.sa → sector feed).
+          1. Open each SUSPECT exact-confidence URL below (laws.boe.gov.sa → uqn.gov.sa gazette link → named document).
           2. Compare decree number + article text with \`sources/regulation-index.md\` and the listed \`source_file\`.
           3. If confirmed: update \`sources/regulation-index.md\` FIRST, then \`sources/…md\`, then datasets (\`deprecated\`/\`superseded\` per \`docs/legal-verification-lifecycle.md\`); open a PR with official links.
           4. After the decision is recorded, refresh the baseline: \`python3 scripts/check_regulation_updates.py --check --update-state\`.
@@ -103,3 +130,11 @@ jobs:
           ---
 
           ${BODY}"
+
+      - name: Comment on the open watch issue (instead of a duplicate)
+        if: steps.watch.outputs.exit_code == '1' && steps.existing.outputs.number != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue comment "${{ steps.existing.outputs.number }}" \
+            --body-file regulation-watch-report.md
