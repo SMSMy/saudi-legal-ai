@@ -373,6 +373,22 @@ def test_old_v1_state_is_discarded_as_baseline():
     assert loaded == {"version": 2, "updated_at": None, "entries": {}}
 
 
+def test_signals_snapshot_ignores_bookkeeping():
+    # Weekly CI must tell "URL signals moved" apart from "a week passed":
+    # last_seen / consecutive_unreachable churn alone must not count.
+    base = {"entries": {"t": {
+        "first_seen": "2026-09-04T00:00:00Z", "last_seen": "2026-09-04T00:00:00Z",
+        "consecutive_unreachable": 0,
+        "urls": {LAW_URL: {"fingerprint": "ab" * 16, "kind": "law_page"}}}}}
+    aged = {"entries": {"t": {
+        "first_seen": "2026-09-04T00:00:00Z", "last_seen": "2026-09-11T00:00:00Z",
+        "consecutive_unreachable": 3,
+        "urls": {LAW_URL: {"fingerprint": "ab" * 16, "kind": "law_page"}}}}}
+    assert rw.signals_snapshot(base) == rw.signals_snapshot(aged)
+    moved = {"entries": {"t": {"urls": {LAW_URL: {"fingerprint": "cd" * 16}}}}}
+    assert rw.signals_snapshot(base) != rw.signals_snapshot(moved)
+
+
 def test_summarize_actionable_only_suspect():
     results = [{"source_id": "a", "status": rw.STATUS_OK, "flags": ["x"]},
                {"source_id": "b", "status": rw.STATUS_SUSPECT, "flags": []},

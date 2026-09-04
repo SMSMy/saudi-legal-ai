@@ -340,6 +340,20 @@ def run_checks(registry: dict, state: dict, probe_fn=probe_url,
     return results
 
 
+def signals_snapshot(state: dict) -> dict:
+    """
+    Stable projection of a state file: {source_id: {url: fingerprint}}.
+    Bookkeeping fields (last_seen, updated_at, consecutive_unreachable,
+    first_seen, last_change) are deliberately excluded so the weekly CI
+    can tell "URL signals moved" apart from "a week passed".
+    """
+    return {
+        sid: {u: (v or {}).get("fingerprint")
+              for u, v in ((e or {}).get("urls") or {}).items()}
+        for sid, e in (state.get("entries") or {}).items()
+    }
+
+
 def summarize(results: list) -> dict:
     counts = {}
     for r in results:

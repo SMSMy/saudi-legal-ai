@@ -96,24 +96,44 @@ jobs:
             watch-output.txt
           retention-days: 90
 
-      - name: Persist baseline to state branch (only when clean)
-        # --update-state-if-clean freezes the baseline whenever a SUSPECT
-        # signal awaits human review, so a commit here means "no suspicion".
-        # main is protected (GH013 rejects bot pushes) → persist on the
-        # unprotected `regulation-watch-state` branch; next run restores it.
+      - name: Persist baseline to state branch (only on signal change)
+        # main is protected (GH013 rejects bot pushes) → baseline lives on the
+        # unprotected `regulation-watch-state` branch. Two guards:
+        # 1. Fast-forward discipline: fetch the branch and commit ON TOP of its
+        #    tip (never `checkout -B` from main, which diverges history and
+        #    breaks the next push with non-fast-forward).
+        # 2. Signal gate: commit only when URL fingerprints actually moved.
+        #    Bookkeeping churn (last_seen / consecutive_unreachable) alone is
+        #    not a reason to push — avoids weekly noise commits.
         if: steps.watch.outputs.exit_code == '0'
         run: |
-          if git status --porcelain | grep -q "evals/.regulation-watch-state.json"; then
-            git config user.name "regulation-watch[bot]"
-            git config user.email "regulation-watch[bot]@users.noreply.github.com"
-            git checkout -B regulation-watch-state
-            git add evals/.regulation-watch-state.json
-            git commit -m "chore: refresh regulation-watch baseline [skip ci]" \
-              -m "Weekly metadata-only fingerprint refresh. No legal content changed."
-            git push origin regulation-watch-state
+          cp evals/.regulation-watch-state.json /tmp/new-state.json
+          git fetch origin regulation-watch-state 2>/dev/null || echo "No state branch yet."
+          if git cat-file -e origin/regulation-watch-state:evals/.regulation-watch-state.json 2>/dev/null; then
+            git show origin/regulation-watch-state:evals/.regulation-watch-state.json > /tmp/prev-state.json
+            DIFF=$(python3 -c "
+          import sys; sys.path.insert(0, 'scripts')
+          from check_regulation_updates import signals_snapshot, load_state
+          prev = signals_snapshot(load_state(__import__('pathlib').Path('/tmp/prev-state.json')))
+          cur = signals_snapshot(load_state(__import__('pathlib').Path('/tmp/new-state.json')))
+          print('changed' if prev != cur else 'same')")
           else
-            echo "Baseline unchanged — nothing to persist."
+            DIFF="changed"
+            echo "No prior baseline — persisting first snapshot."
           fi
+          if [ "${DIFF}" = "same" ]; then
+            echo "URL signals unchanged since last baseline — nothing to persist."
+            exit 0
+          fi
+          git config user.name "regulation-watch[bot]"
+          git config user.email "regulation-watch[bot]@users.noreply.github.com"
+          rm evals/.regulation-watch-state.json
+          git checkout regulation-watch-state
+          cp /tmp/new-state.json evals/.regulation-watch-state.json
+          git add evals/.regulation-watch-state.json
+          git commit -m "chore: refresh regulation-watch baseline [skip ci]" \
+            -m "Weekly metadata-only fingerprint refresh. No legal content changed."
+          git push origin regulation-watch-state
 
       - name: File human-verification issue (on suspicion, no duplicate)
         if: steps.watch.outputs.exit_code == '1' && steps.existing.outputs.number == ''
