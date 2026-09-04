@@ -273,6 +273,61 @@ def test_whistleblower_watches_three_urls():
     assert kinds == ["gazette", "law_page", "sector"]
 
 
+# ── Verified official links (review: monitor the law page, not the portal) ──
+
+VERIFIED_LAW_PAGES = {
+    "commercial_courts_law": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/38334008-3b70-4c6c-b3af-aba3016a8061/1",
+    "pdpl_law": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
+    "competition_law": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/e3605c0d-ef87-4cff-b5da-aa3f0102bbb4/1",
+    "e_transactions_law": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6f509360-2c39-4358-ae2a-a9a700f2ed16/1",
+    "commercial_agency_law": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b19a8aa6-7b50-43f0-ab8c-a9a700f1a446/1",
+}
+
+VERIFIED_GAZETTE_URLS = {
+    "whistleblower_law": "https://uqn.gov.sa/details?p=24614",
+    "pdpl_exec_regs": "https://uqn.gov.sa/details?p=23595",
+}
+
+# Law entries honestly remaining on portal homepages (no verified law page
+# found; the bankruptcy implementing-regulation page is NOT used as a
+# substitute for the law itself). Update this set when links are verified.
+HONEST_PORTAL_PRIMARIES = {"bankruptcy_law", "ip_copyright_law", "legal_profession_law"}
+
+
+def test_verified_law_pages_are_exact():
+    repo = Path(__file__).parent.parent
+    registry = rw.load_registry(repo / "evals" / "source-registry.json")
+    for source_id, url in VERIFIED_LAW_PAGES.items():
+        entry = registry[source_id]
+        assert entry["url"] == url, source_id
+        assert entry["url_confidence"] == "exact", source_id
+
+
+def test_verified_gazette_urls_are_watched():
+    repo = Path(__file__).parent.parent
+    registry = rw.load_registry(repo / "evals" / "source-registry.json")
+    for source_id, url in VERIFIED_GAZETTE_URLS.items():
+        entry = registry[source_id]
+        assert entry.get("gazette_url") == url, source_id
+        kinds = [t["kind"] for t in rw.watch_targets(entry)]
+        assert "gazette" in kinds, source_id
+
+
+def test_portal_gap_is_exactly_the_documented_set():
+    repo = Path(__file__).parent.parent
+    registry = rw.load_registry(repo / "evals" / "source-registry.json")
+    law_kinds = {"law_page"}
+    portal_primaries = {
+        sid for sid, e in registry.items()
+        if e.get("url_confidence") == "portal"
+        and any(t["kind"] in law_kinds for t in rw.watch_targets(e))
+        and not any(t["kind"] in ("gazette", "istitlaa") for t in rw.watch_targets(e))
+    }
+    # Sector/rulebook entries (reac/saff/fifa) track named documents, not
+    # Royal-Decree law pages — they are exact by nature, not part of the gap.
+    assert portal_primaries == HONEST_PORTAL_PRIMARIES
+
+
 # ── State + summary ──────────────────────────────────────────────────────────
 
 def test_state_update_records_per_url_baseline_then_detects_change():

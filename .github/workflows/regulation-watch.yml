@@ -61,14 +61,16 @@ jobs:
             --color "FBCA04" --force
 
       - name: Check for an already-open watch issue (dedupe)
+        # NOTE: GitHub's --search treats square brackets as label
+        # syntax, so we list open issues and filter titles with jq instead.
         if: steps.watch.outputs.exit_code == '1'
         id: existing
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          NUM=$(gh issue list --state open \
-            --search "[Regulation Watch] suspected update signals in:title" \
-            --json number --jq '.[0].number // empty')
+          NUM=$(gh issue list --state open --limit 50 \
+            --json number,title \
+            --jq '[.[] | select(.title | startswith("[Regulation Watch] suspected update signals"))][0].number // empty')
           echo "number=${NUM}" >> "$GITHUB_OUTPUT"
           if [ -z "${NUM}" ]; then echo "No open watch issue."; else echo "Open watch issue: #${NUM}"; fi
 
