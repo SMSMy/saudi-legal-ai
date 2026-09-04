@@ -55,6 +55,7 @@
 | [`evals/source-registry.json`](../evals/source-registry.json) | السجل الآلي المقروء (schema v2.1): 20 مدخلًا، كل مدخل: `url` + `gazette_url` (إن وُجد) + `istitlaa_url` (إن وُجد) + `sector_feed` + `citation` المطابقة لـ `regulation-index.md` |
 | [`scripts/check_regulation_updates.py`](../scripts/check_regulation_updates.py) | الفاحص (v2): طلبات HEAD (ترويسات فقط)، **بصمة مستقلة لكل URL**، ترجيح الثقة (`exact` → SUSPECT، `portal` → PORTAL_CHANGED للمعلومية)، حدّ معدل 1.5s، توقف عند 429 |
 | [`evals/.regulation-watch-state.json`](../evals/.regulation-watch-state.json) | خط الأساس لكل URL: يُنشأ تلقائيًا، ويُجمَّد فقط عند وجود SUSPECT معلق (الأعلام الداخلية لا تجمّده) |
+| [فرع `regulation-watch-state`](https://github.com/SMSMy/saudi-legal-ai/tree/regulation-watch-state) | مكان حفظ الأساس الفعلي — فرع مستقل غير محمي، لأن `main` محمي ضد دفع البوت (GH013). كل تشغيل يسترجع الأساس منه ثم يدفع التحديث إليه عند النظافة فقط |
 | [`.github/workflows/regulation-watch.yml`](../.github/workflows/regulation-watch.yml) | التشغيل الأسبوعي (الأحد 06:00 UTC = 09:00 KSA) + تشغيل يدوي: ضمان الـlabels + منع تكرار الـIssues (تعليق على المفتوحة بدل التكرار) + تقرير artifact + تحديث خط الأساس عند النظافة فقط |
 | [`.github/ISSUE_TEMPLATE/legal-source-reference.yml`](../.github/ISSUE_TEMPLATE/legal-source-reference.yml) | نموذج التحقق البشري لكل تغيير مؤكد |
 
@@ -104,7 +105,8 @@ python3 scripts/check_regulation_updates.py --check --json
 ## 6.1. قائمة التشغيل الأول / First-Run Checklist
 
 1. **فعّل Actions** في المستودع (Settings → Actions → Allow all actions). الـcron يعمل تلقائيًا في المستودعات العامة النشطة، لكن أول تشغيل يجب أن يكون يدويًا.
-2. **شغّل يدويًا مرة:** Actions → Regulation Watch → Run workflow. تحقق من: التقرير (artifact) + `evals/.regulation-watch-state.json` + Issue (إن وُجد SUSPECT).
+2. **شغّل يدويًا مرة:** Actions → Regulation Watch → Run workflow. تحقق من: التقرير (artifact) + فرع `regulation-watch-state` (الأساس) + Issue (إن وُجد SUSPECT). لا تتوقع ملف الأساس على `main` — الفرع المستقل هو مكانه بسبب حماية `main` (GH013).
+3. **توقع BOE غير قابل للوصول من CI** (ConnectTimeout مثبت 2026-09-04) — الـUNREACHABLE على نطاق `laws.boe.gov.sa` ضجيج شبكة معروف، لا إشارة.
 3. **الـlabels تُنشأ تلقائيًا** (`legal-source` + `content-update`) قبل إنشاء أي Issue — لا حاجة لإنشائها يدويًا.
 4. **بلا تكرار:** إن وُجدت Issue مفتوحة بنفس العنوان، يُعلَّق عليها بالتقرير الجديد بدل فتح مكررة. أغلقها يدويًا بعد توثيق قرار التحقق ثم حدّث الأساس (`--update-state`).
 
@@ -134,6 +136,8 @@ boe.gov.sa ←→ sources/regulation-index.md ←→ sources/…md
 ## 8. القيود المعروفة / Known Limitations
 
 1. **الحمايات التقنية للمواقع الحكومية** (WAF / شهادات SSL في بعض البيئات) قد تُظهر `UNREACHABLE` — وهذا **ليس** دليل تغيير. السكربت لا يفرّق بين الحجب والتعديل عمدًا، بل يترك القرار للبشر.
+2. **نتيجة حية موثقة (2026-09-04): `laws.boe.gov.sa` لا يرد أصلًا من عدّائي GitHub** — كل صفحات LawDetails الـ14 سقطت بـ ConnectTimeout (ليست مشكلة شهادات بل انقطاع تواصل، غالبًا ترشيح جغرافي/سيرفرات). عمليًا: طبقة BOE الدقيقة **صامتة من CI** حتى إشعار آخر، والتغطية الفعلية تأتي من بوابة العدل (`laws.moj.gov.sa` تستجيب 200) والبوابات القطاعية وملفات PDF. التشغيل المحلي من داخل المملكة قد يصل لـ BOE مباشرة — قارن تقريرك المحلي بتقرير CI.
+3. **BOE تدوّر معرّفات الصفحات أحيانًا**: صفحة نظام الشركات انتقلت من `10d19e91` إلى `a8376aea` (اكتُشف 2026-09-04 عبر الفهرسة — والمراقب نفسه لم يستطع رصده لسبب النقطة 2). أي تدوير مشابه لاحقًا يتطلب تحديث السجل + ملف الـeval المقابل معًا (`validate_cases.py` يفرض التطابق).
 2. **البوابات الثقيلة بجافاسكربت** (بعض صفحات boe) لا تعيد `ETag/Last-Modified` — عندها يعتمد الكشف على `status/final-URL/length` مع `sector_feed` الاحتياطي المسجل لكل مدخل.
 3. **منصة استطلاع** تُراقَب كروابط مرجعية للمراجعة البشرية (مشاريع مطروحة)، لا ككشط آلي — التزامًا بسياسة `docs/official-api-sources.md` (يُحظر الكشط غير المرخّص).
 4. **SAFF/FIFA** لوائح موسمية/دولية — الإشارة هنا تنبيه بنشر ملفات جديدة قبل كل موسم، لا حكمًا قانونيًا.

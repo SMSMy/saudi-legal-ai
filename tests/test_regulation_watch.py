@@ -303,6 +303,18 @@ def test_verified_law_pages_are_exact():
         assert entry["url_confidence"] == "exact", source_id
 
 
+def test_companies_law_tracks_current_boe_guid():
+    # BOE rotated the Companies Law page GUID (old 10d19e91 superseded).
+    # Registry and eval case must agree — validate_cases.py enforces it.
+    repo = Path(__file__).parent.parent
+    registry = rw.load_registry(repo / "evals" / "source-registry.json")
+    url = registry["companies_law"]["url"]
+    assert url == "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/a8376aea-1bc3-49d4-9027-aed900b555af/1"
+    assert "10d19e91" not in url
+    cases = json.loads((repo / "evals" / "cases" / "contracts-companies.json").read_text(encoding="utf-8"))
+    assert cases[0]["source_url"] == url
+
+
 def test_verified_gazette_urls_are_watched():
     repo = Path(__file__).parent.parent
     registry = rw.load_registry(repo / "evals" / "source-registry.json")
