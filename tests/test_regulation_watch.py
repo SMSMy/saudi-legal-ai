@@ -293,6 +293,13 @@ VERIFIED_GAZETTE_URLS = {
 # substitute for the law itself). Update this set when links are verified.
 HONEST_PORTAL_PRIMARIES = {"bankruptcy_law", "ip_copyright_law", "legal_profession_law"}
 
+# Rulebooks tracked on a documents index rather than one named document.
+# fifa_rstp's index builds itself in JavaScript (no-store, HEAD 405, weekly ETag
+# churn), so it is a portal signal — demoted from `exact` by decision (follows
+# #11 / PR #10). Kept in a separate set so it is never mixed into the gap above:
+# the two are different problems. sources/fifa-rstp.md is untouched.
+RULEBOOK_PORTAL_PRIMARIES = {"fifa_rstp"}
+
 
 def test_verified_law_pages_are_exact():
     repo = Path(__file__).parent.parent
@@ -335,9 +342,10 @@ def test_portal_gap_is_exactly_the_documented_set():
         and any(t["kind"] in law_kinds for t in rw.watch_targets(e))
         and not any(t["kind"] in ("gazette", "istitlaa") for t in rw.watch_targets(e))
     }
-    # Sector/rulebook entries (reac/saff/fifa) track named documents, not
+    # Sector/rulebook entries (reac/saff) track named documents, not
     # Royal-Decree law pages — they are exact by nature, not part of the gap.
-    assert portal_primaries == HONEST_PORTAL_PRIMARIES
+    # fifa_rstp was moved out of that group: its index is a churning portal.
+    assert portal_primaries == HONEST_PORTAL_PRIMARIES | RULEBOOK_PORTAL_PRIMARIES
 
 
 # ── State + summary ──────────────────────────────────────────────────────────
