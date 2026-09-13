@@ -58,12 +58,23 @@ RATE_LIMIT_SECONDS = 1.5
 STATUS_OK = "OK"
 STATUS_SUSPECT = "SUSPECT"
 STATUS_PORTAL_CHANGED = "PORTAL_CHANGED"
+STATUS_URL_RETIRED = "URL_RETIRED"
 STATUS_NEW = "NEW"
 STATUS_UNREACHABLE = "UNREACHABLE"
 STATUS_SKIPPED = "SKIPPED"
 
 CONF_EXACT = "exact"
 CONF_PORTAL = "portal"
+
+# ── Retired-URL detection ────────────────────────────────────────────────────
+# `ok: True` currently means "an HTTP reply came back", NOT "the resource
+# still exists": probe_url follows redirects, so a documented law/document
+# URL that now redirects to an error or login page is still counted as a
+# live page and its fingerprint is compared (and stored) as content.
+# A retired URL is an INTERRUPTED WATCH, not a content-change signal.
+RETIRED_PATH_FRAGMENTS = ("pagenotfound", "/error", "/account/login")
+RETIRED_HTTP_STATUSES = (404, 410)
+DOCUMENT_EXTENSIONS = (".pdf", ".doc", ".docx")
 
 # (registry field, signal kind, default confidence)
 # Absent/empty fields are skipped — URLs are never invented.
@@ -155,6 +166,7 @@ def probe_url(url: str, session=None, timeout: int = REQUEST_TIMEOUT) -> dict:
             "etag": resp.headers.get("ETag", ""),
             "last_modified": resp.headers.get("Last-Modified", ""),
             "content_length": resp.headers.get("Content-Length", ""),
+            "content_type": resp.headers.get("Content-Type", ""),
             "rate_limited": resp.status_code == 429,
         }
     except Exception as exc:  # network blocked, DNS, TLS, timeout…
@@ -194,6 +206,43 @@ def static_review_notes(entry: dict) -> list:
 
 def _signal_of(probe: dict) -> dict:
     return {k: probe.get(k, "") for k in SIGNAL_KEYS}
+
+
+def retired_reason(probe: dict) -> str:
+    """
+    Return a short reason when a probe answered HTTP but the monitored
+    resource is gone, else "".
+
+    Classified on the PROBE, before any fingerprint comparison, so a dead
+    link can never be reported as a content change:
+      1. final path is an error / not-found / login page;
+      2. HTTP 404 / 410;
+      3. the original URL is a document (.pdf/.doc/.docx) and the final
+         Content-Type is HTML — a document URL that now serves a page.
+
+    A host change alone is deliberately NOT a reason: zatca.gov.sa
+    redirects to /ar/Pages/PageNotFound.aspx on the same host.
+    """
+    if not probe.get("ok"):
+        return ""
+    status = probe.get("status")
+    if status in RETIRED_HTTP_STATUSES:
+        return f"HTTP {status}"
+
+    try:
+        final_path = (urlparse(probe.get("final_url") or "").path or "").lower()
+    except ValueError:
+        final_path = ""
+    for frag in RETIRED_PATH_FRAGMENTS:
+        if frag in final_path:
+            return f"final path is an error/login page ({final_path})"
+
+    original_path = (urlparse(probe.get("url") or "").path or "").lower()
+    content_type = (probe.get("content_type") or "").lower()
+    if original_path.endswith(DOCUMENT_EXTENSIONS) and "text/html" in content_type:
+        return ("document URL now serves HTML (Content-Type: "
+                f"{content_type or 'absent'})")
+    return ""
 
 
 def _describe_change(old: dict, new: dict) -> str:
@@ -269,8 +318,20 @@ def check_entry(source_id: str, entry: dict, prior_entry: dict | None,
             probe.get("last_modified", ""), probe.get("content_length", ""))
         probe["signal"] = _signal_of(probe)
 
+    # Retirement is classified BEFORE any comparison: a dead link is an
+    # interrupted watch, never a content-change signal.
+    retired = []
+    for probe in ok_probes:
+        reason = retired_reason(probe)
+        probe["retired"] = bool(reason)
+        if reason:
+            probe["retired_reason"] = reason
+            retired.append(f'[{probe["kind"]}] {probe["url"]} — {reason}')
+
     exact_changes, portal_changes, fresh = [], [], []
     for probe in ok_probes:
+        if probe.get("retired"):
+            continue  # never counted as a content change
         prev = prior_urls.get(probe["url"])
         if prev is None or not prev.get("fingerprint"):
             fresh.append(probe)
@@ -282,7 +343,21 @@ def check_entry(source_id: str, entry: dict, prior_entry: dict | None,
             else:
                 portal_changes.append(item)
 
-    if exact_changes:
+    exact_retired = [p for p in ok_probes
+                     if p.get("retired") and p.get("confidence") == CONF_EXACT]
+
+    if exact_retired:
+        # An exact-confidence resource is gone. This is NOT an actionable
+        # content signal (it must not freeze the baseline or open a
+        # suspected-update Issue) — but it must stay loud in the report,
+        # otherwise the watch goes blind while believing it still watches.
+        result["status"] = STATUS_URL_RETIRED
+        result["detail"] = ("Retired exact URL(s) — watch interrupted, "
+                            "NOT a content change: " + " / ".join(retired))
+        if exact_changes or portal_changes:
+            result["detail"] += (" | Other signals (informational): " +
+                                 " / ".join(exact_changes + portal_changes))
+    elif exact_changes:
         result["status"] = STATUS_SUSPECT
         result["detail"] = "Exact-signal change: " + " / ".join(exact_changes)
         if portal_changes:
@@ -340,6 +415,20 @@ def run_checks(registry: dict, state: dict, probe_fn=probe_url,
     return results
 
 
+def signals_snapshot(state: dict) -> dict:
+    """
+    Stable projection of a state file: {source_id: {url: fingerprint}}.
+    Bookkeeping fields (last_seen, updated_at, consecutive_unreachable,
+    first_seen, last_change) are deliberately excluded so the weekly CI
+    can tell "URL signals moved" apart from "a week passed".
+    """
+    return {
+        sid: {u: (v or {}).get("fingerprint")
+              for u, v in ((e or {}).get("urls") or {}).items()}
+        for sid, e in (state.get("entries") or {}).items()
+    }
+
+
 def summarize(results: list) -> dict:
     counts = {}
     for r in results:
@@ -365,8 +454,8 @@ def render_markdown(results: list, summary: dict) -> str:
         "",
         f"- Total monitored: {summary['total']}",
     ]
-    for st in (STATUS_SUSPECT, STATUS_PORTAL_CHANGED, STATUS_UNREACHABLE,
-               STATUS_NEW, STATUS_OK, STATUS_SKIPPED):
+    for st in (STATUS_SUSPECT, STATUS_URL_RETIRED, STATUS_PORTAL_CHANGED,
+               STATUS_UNREACHABLE, STATUS_NEW, STATUS_OK, STATUS_SKIPPED):
         if summary["counts"].get(st):
             lines.append(f"- {st}: {summary['counts'][st]}")
     if summary.get("flagged"):
@@ -395,6 +484,25 @@ def render_markdown(results: list, summary: dict) -> str:
             for note in r["flags"]:
                 lines.append(f"  - {note}")
 
+    retired_results = [r for r in results if r["status"] == STATUS_URL_RETIRED]
+    if retired_results:
+        lines += ["", "## Retired Links / روابط متقاعدة — المراقبة منقطعة", "",
+                  "_The monitored URL no longer serves the resource (error page, "
+                  "login page, or HTML served for a document URL). This is an "
+                  "INTERRUPTED WATCH, not a regulatory signal: it does not open an "
+                  "Issue and does not freeze the baseline. The source is not being "
+                  "watched until a replacement URL is documented by a human._",
+                  "",
+                  "الرابط المراقَب لم يعد يخدم المورد — **انقطاع تتبّع لا إشارة تعديل**. "
+                  "يبقى المصدر بلا مراقبة فعلية حتى يُوثَّق رابط بديل بشريًا.",
+                  ""]
+        for r in retired_results:
+            lines.append(f"- **{r['source_id']}** (`{r.get('source_file', '')}`)")
+            for probe in r.get("probes", []):
+                if probe.get("retired"):
+                    lines.append(f"  - `{probe.get('url', '')}` — "
+                                 f"{probe.get('retired_reason', '')}")
+
     lines += [
         "",
         "## Required human steps / خطوات بشرية مطلوبة",
@@ -409,6 +517,9 @@ def render_markdown(results: list, summary: dict) -> str:
         "4. Re-run with `--update-state` ONLY after the human verification "
         "decision is recorded.",
         "5. PORTAL_CHANGED needs no action unless a pattern repeats across weeks.",
+        "6. For each URL_RETIRED: the source is NOT being watched. A human must "
+        "document a replacement URL (official portal → uqn.gov.sa → named "
+        "document) before the source can be considered monitored again.",
         "",
         "> تحذير: هذا تقرير إشارات أولي ولا يُعدّ استشارة قانونية. يجب مراجعة "
         "مختص قانوني مرخّص في المملكة العربية السعودية قبل اتخاذ أي إجراء.",
@@ -431,6 +542,15 @@ def apply_state_updates(state: dict, results: list) -> dict:
         stored_urls = dict(ent.get("urls", {}))
         for probe in r.get("probes", []):
             if not probe.get("ok") or not probe.get("fingerprint"):
+                # A failed probe must not leave a stale fingerprint behind:
+                # otherwise the old content baseline is later compared with
+                # an error page and reported as a content change.
+                stored_urls.pop(probe.get("url"), None)
+                continue
+            if probe.get("retired"):
+                # A retired page (404 / login / HTML served for a document
+                # URL) is NOT a content baseline for the monitored resource.
+                stored_urls.pop(probe.get("url"), None)
                 continue
             old = stored_urls.get(probe["url"], {})
             if old.get("fingerprint") and old["fingerprint"] != probe["fingerprint"]:
