@@ -413,6 +413,130 @@ def test_report_contains_flags_section_disclaimer_and_bilingual_header():
     assert "report-only" in md
 
 
+# ── URL_RETIRED (retired / dead monitored links) ─────────────────────────────
+#
+# `ok: True` means "an HTTP reply came back", not "the resource exists":
+# probe_url follows redirects, so a documented URL that now redirects to an
+# error or login page used to be compared (and stored) as content and could
+# raise SUSPECT. A retired URL is an INTERRUPTED WATCH, never a content signal.
+
+PDF_URL = "https://example.gov.sa/docs/regulation.pdf"
+PAGE_404 = "https://example.gov.sa/ar/Pages/PageNotFound.aspx"
+LOGIN_URL = "https://example.gov.sa/Account/Login"
+
+
+def _probe_html(url, status=200, final=PAGE_404):
+    return _probe_ok(url, status=status, final=final, etag="", lm="",
+                     length="244976") | {"content_type": "text/html; charset=utf-8"}
+
+
+def test_document_url_redirected_to_error_page_is_retired_not_suspect():
+    # The ZATCA case: /….pdf 302 → /ar/Pages/PageNotFound.aspx, HTML body.
+    prior = _prior_for({PDF_URL: _probe_ok(PDF_URL, etag='"pdf"', length="90000")})
+    res = rw.check_entry("zatca", _entry(url=PDF_URL), prior,
+                         probe_fn=lambda u: _probe_html(u), sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_URL_RETIRED
+    assert "definitely-not-a-pdf" not in res["detail"]
+    assert res["probes"][0]["retired"] is True
+    assert res["probes"][0]["retired_reason"]
+
+
+def test_direct_404_is_retired():
+    res = rw.check_entry("x", _entry(url=LAW_URL), None,
+                         probe_fn=lambda u: _probe_ok(u, status=404, etag="", lm=""),
+                         sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_URL_RETIRED
+    assert "404" in res["probes"][0]["retired_reason"]
+
+
+def test_login_redirect_is_retired():
+    res = rw.check_entry("x", _entry(url=LAW_URL), None,
+                         probe_fn=lambda u: _probe_ok(u, final=LOGIN_URL),
+                         sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_URL_RETIRED
+    assert "login" in res["probes"][0]["retired_reason"].lower()
+
+
+def test_live_law_page_etag_change_is_still_suspect():
+    prior = _prior_for({LAW_URL: _probe_ok(LAW_URL)})
+    res = rw.check_entry("x", _entry(), prior,
+                         probe_fn=lambda u: _probe_ok(u, etag='"moved"'),
+                         sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_SUSPECT
+
+
+def test_timeout_stays_unreachable_not_retired():
+    res = rw.check_entry("x", _entry(), None,
+                         probe_fn=lambda u: _probe_fail(u), sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_UNREACHABLE
+
+
+def test_retired_url_is_not_actionable_but_stays_visible():
+    # It must not open a suspected-update Issue nor freeze the baseline,
+    # but it must stay loud in the report (otherwise the watch goes blind).
+    res = rw.check_entry("zatca", _entry(url=PDF_URL), None,
+                         probe_fn=lambda u: _probe_html(u), sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_URL_RETIRED
+    summary = rw.summarize([res])
+    assert summary["actionable"] == []
+    md = rw.render_markdown([res], summary)
+    assert "URL_RETIRED" in md
+    assert "Retired Links" in md
+    assert "pagenotfound" in md.lower()
+
+
+def test_retired_exact_url_with_live_portal_noise():
+    # ZATCA-shaped entry: exact document (retired) + portal sector feed (moved).
+    entry = _entry(url=PDF_URL, sector_feed=SECTOR_URL)
+    prior = _prior_for({
+        PDF_URL: _probe_ok(PDF_URL, etag='"pdf"', length="90000"),
+        SECTOR_URL: _probe_ok(SECTOR_URL, etag='"old"'),
+    })
+    res = rw.check_entry(
+        "zatca", entry, prior,
+        probe_fn=lambda u: (_probe_html(u) if u == PDF_URL
+                            else _probe_ok(u, etag='"new"')),
+        sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_URL_RETIRED
+    assert rw.summarize([res])["actionable"] == []
+
+
+def test_apply_state_updates_does_not_store_retired_or_failed_fingerprints():
+    # A stale baseline for a URL that has since retired must be dropped, so it
+    # can never be compared against an error page and read as a change later.
+    state = {"version": 2, "entries": {}}
+    fresh = rw.check_entry("x", _entry(), None,
+                           probe_fn=_probe_ok, sleep_fn=_no_sleep)
+    state = rw.apply_state_updates(state, [fresh])
+    assert LAW_URL in state["entries"]["x"]["urls"]
+
+    retired = rw.check_entry("x", _entry(), state["entries"]["x"],
+                             probe_fn=lambda u: _probe_html(u, final=PAGE_404),
+                             sleep_fn=_no_sleep)
+    assert retired["status"] == rw.STATUS_URL_RETIRED
+    state = rw.apply_state_updates(state, [retired])
+    assert LAW_URL not in state["entries"]["x"]["urls"]
+
+    failed = rw.check_entry("x", _entry(), None,
+                            probe_fn=lambda u: _probe_fail(u), sleep_fn=_no_sleep)
+    state = rw.apply_state_updates(state, [failed])
+    assert LAW_URL not in state["entries"]["x"]["urls"]
+    assert state["entries"]["x"]["consecutive_unreachable"] == 1
+
+
+def test_clean_entries_keep_their_baseline_when_a_sibling_is_retired():
+    state = {"version": 2, "entries": {}}
+    ok_res = rw.check_entry("good", _entry(), None,
+                            probe_fn=_probe_ok, sleep_fn=_no_sleep)
+    state = rw.apply_state_updates(state, [ok_res])
+    retired_res = rw.check_entry("dead", _entry(url=PDF_URL), None,
+                                 probe_fn=lambda u: _probe_html(u),
+                                 sleep_fn=_no_sleep)
+    state = rw.apply_state_updates(state, [ok_res, retired_res])
+    assert LAW_URL in state["entries"]["good"]["urls"]
+    assert state["entries"]["dead"]["urls"] == {}
+
+
 # ── CLI: --update-state-if-clean ─────────────────────────────────────────────
 
 def _write_registry(tmp_path: Path, flagged: bool = False) -> Path:
