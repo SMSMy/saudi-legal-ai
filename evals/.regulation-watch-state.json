@@ -1,25 +1,25 @@
 {
   "version": 2,
-  "updated_at": "2026-11-01T12:54:14Z",
+  "updated_at": "2026-11-08T12:58:59Z",
   "entries": {
     "arbitration_law": {
       "first_seen": "2026-09-04T06:30:05Z",
-      "last_seen": "2026-11-01T12:54:14Z",
+      "last_seen": "2026-11-08T12:58:59Z",
       "urls": {},
-      "consecutive_unreachable": 4
+      "consecutive_unreachable": 5
     },
     "bankruptcy_law": {
       "first_seen": "2026-09-04T06:30:05Z",
-      "last_seen": "2026-11-01T12:54:14Z",
+      "last_seen": "2026-11-08T12:58:59Z",
       "urls": {},
-      "consecutive_unreachable": 4
+      "consecutive_unreachable": 5
     },
     "civil_transactions_law": {
       "first_seen": "2026-09-04T06:30:05Z",
-      "last_seen": "2026-11-01T12:54:14Z",
+      "last_seen": "2026-11-08T12:58:59Z",
       "urls": {
         "https://laws.moj.gov.sa/ar": {
-          "fingerprint": "fd3a68d417b7f6825cca426feccd0148",
+          "fingerprint": "dc43f0c04341b2683d799aa6d082a94f",
           "kind": "sector",
           "confidence": "portal",
           "signal": {
@@ -27,25 +27,25 @@
             "final_url": "https://laws.moj.gov.sa/ar/",
             "etag": "\"40673a777364dd1:0:dtagent10245220704125537xeGl\"",
             "last_modified": "Sun, 25 Oct 2026 11:24:56 GMT",
-            "content_length": "932"
+            "content_length": "927"
           },
-          "last_seen": "2026-11-01T12:54:14Z"
+          "last_seen": "2026-11-08T12:58:59Z"
         }
       },
       "consecutive_unreachable": 0
     },
     "commercial_agency_law": {
       "first_seen": "2026-09-04T06:30:05Z",
-      "last_seen": "2026-11-01T12:54:14Z",
+      "last_seen": "2026-11-08T12:58:59Z",
       "urls": {},
-      "consecutive_unreachable": 4
+      "consecutive_unreachable": 5
     },
     "commercial_courts_law": {
       "first_seen": "2026-09-04T06:30:05Z",
-      "last_seen": "2026-11-01T12:54:14Z",
+      "last_seen": "2026-11-08T12:58:59Z",
       "urls": {
         "https://laws.moj.gov.sa/ar": {
-          "fingerprint": "fd3a68d417b7f6825cca426feccd0148",
+          "fingerprint": "d083af3df0c860edf781f4c7973630ee",
           "kind": "sector",
           "confidence": "portal",
           "signal": {
@@ -53,37 +53,37 @@
             "final_url": "https://laws.moj.gov.sa/ar/",
             "etag": "\"40673a777364dd1:0:dtagent10245220704125537xeGl\"",
             "last_modified": "Sun, 25 Oct 2026 11:24:56 GMT",
-            "content_length": "932"
+            "content_length": "929"
           },
-          "last_seen": "2026-11-01T12:54:14Z"
+          "last_seen": "2026-11-08T12:58:59Z"
         }
       },
       "consecutive_unreachable": 0
     },
     "companies_law": {
       "first_seen": "2026-09-04T06:30:05Z",
-      "last_seen": "2026-11-01T12:54:14Z",
+      "last_seen": "2026-11-08T12:58:59Z",
       "urls": {},
-      "consecutive_unreachable": 4
+      "consecutive_unreachable": 5
     },
     "competition_law": {
       "first_seen": "2026-09-04T06:30:05Z",
-      "last_seen": "2026-11-01T12:54:14Z",
+      "last_seen": "2026-11-08T12:58:59Z",
       "urls": {},
-      "consecutive_unreachable": 4
+      "consecutive_unreachable": 5
     },
     "e_commerce_law": {
       "first_seen": "2026-09-04T06:30:05Z",
-      "last_seen": "2026-11-01T12:54:14Z",
+      "last_seen": "2026-11-08T12:58:59Z",
       "urls": {},
-      "consecutive_unreachable": 4
+      "consecutive_unreachable": 5
     },
     "e_transactions_law": {
       "first_seen": "2026-09-04T06:30:05Z",
-      "last_seen": "2026-11-01T12:54:14Z",
+      "last_seen": "2026-11-08T12:58:59Z",
       "urls": {
         "https://laws.moj.gov.sa/ar": {
-          "fingerprint": "fd3a68d417b7f6825cca426feccd0148",
+          "fingerprint": "9107726793e780209606bf75cbee4ebc",
           "kind": "sector",
           "confidence": "portal",
           "signal": {
@@ -91,19 +91,19 @@
             "final_url": "https://laws.moj.gov.sa/ar/",
             "etag": "\"40673a777364dd1:0:dtagent10245220704125537xeGl\"",
             "last_modified": "Sun, 25 Oct 2026 11:24:56 GMT",
-            "content_length": "932"
+            "content_length": "926"
           },
-          "last_seen": "2026-11-01T12:54:14Z"
+          "last_seen": "2026-11-08T12:58:59Z"
         }
       },
       "consecutive_unreachable": 0
     },
     "evidence_law": {
       "first_seen": "2026-09-04T06:30:05Z",
-      "last_seen": "2026-11-01T12:54:14Z",
+      "last_seen": "2026-11-08T12:58:59Z",
       "urls": {
         "https://laws.moj.gov.sa/ar": {
-          "fingerprint": "fd3a68d417b7f6825cca426feccd0148",
+          "fingerprint": "94d11b8ff804ee0e7bed325dc05ca0cb",
           "kind": "sector",
           "confidence": "portal",
           "signal": {
@@ -111,36 +111,36 @@
             "final_url": "https://laws.moj.gov.sa/ar/",
             "etag": "\"40673a777364dd1:0:dtagent10245220704125537xeGl\"",
             "last_modified": "Sun, 25 Oct 2026 11:24:56 GMT",
-            "content_length": "932"
+            "content_length": "928"
           },
-          "last_seen": "2026-11-01T12:54:14Z"
+          "last_seen": "2026-11-08T12:58:59Z"
         }
       },
       "consecutive_unreachable": 0
     },
     "fifa_rstp": {
       "first_seen": "2026-09-04T06:30:05Z",
-      "last_seen": "2026-11-01T12:54:14Z",
+      "last_seen": "2026-11-08T12:58:59Z",
       "urls": {
         "https://inside.fifa.com/legal/documents": {
-          "fingerprint": "b3e070de587480140cfe694acd010514",
+          "fingerprint": "239d97a644e9b935a3864efb9ca7ef64",
           "kind": "law_page",
           "confidence": "portal",
           "signal": {
             "status": 200,
             "final_url": "https://inside.fifa.com/legal/documents",
-            "etag": "\"ji5wapwvqt2idg\"",
+            "etag": "\"4h8tp7ypr02hmp\"",
             "last_modified": "",
-            "content_length": "23299"
+            "content_length": "23095"
           },
-          "last_seen": "2026-11-01T12:54:14Z"
+          "last_seen": "2026-11-08T12:58:59Z"
         }
       },
       "consecutive_unreachable": 0
     },
     "ip_copyright_law": {
       "first_seen": "2026-09-04T06:30:05Z",
-      "last_seen": "2026-11-01T12:54:14Z",
+      "last_seen": "2026-11-08T12:58:59Z",
       "urls": {
         "https://www.saip.gov.sa": {
           "fingerprint": "530fb7f51f92511a0ec92f299f6bd570",
@@ -153,14 +153,14 @@
             "last_modified": "",
             "content_length": ""
           },
-          "last_seen": "2026-11-01T12:54:14Z"
+          "last_seen": "2026-11-08T12:58:59Z"
         }
       },
       "consecutive_unreachable": 0
     },
     "labor_law": {
       "first_seen": "2026-09-04T06:30:05Z",
-      "last_seen": "2026-11-01T12:54:14Z",
+      "last_seen": "2026-11-08T12:58:59Z",
       "urls": {
         "https://www.hrsd.gov.sa": {
           "fingerprint": "54d79fc7b2b09a60da61580cb8730e5b",
@@ -173,34 +173,34 @@
             "last_modified": "",
             "content_length": ""
           },
-          "last_seen": "2026-11-01T12:54:14Z"
+          "last_seen": "2026-11-08T12:58:59Z"
         }
       },
       "consecutive_unreachable": 0
     },
     "legal_profession_law": {
       "first_seen": "2026-09-04T06:30:05Z",
-      "last_seen": "2026-11-01T12:54:14Z",
+      "last_seen": "2026-11-08T12:58:59Z",
       "urls": {
         "https://sba.gov.sa": {
-          "fingerprint": "26ab0c25148eecc64903adbe824fb299",
+          "fingerprint": "d3d662d2e81c075589e341138af532f9",
           "kind": "law_page",
           "confidence": "portal",
           "signal": {
             "status": 200,
             "final_url": "https://sba.gov.sa/",
-            "etag": "W/\"6ae066ac-12b0\"",
-            "last_modified": "Tue, 27 Oct 2026 08:54:04 GMT",
+            "etag": "W/\"6af03ceb-ff7\"",
+            "last_modified": "Sun, 08 Nov 2026 09:12:11 GMT",
             "content_length": ""
           },
-          "last_seen": "2026-11-01T12:54:14Z"
+          "last_seen": "2026-11-08T12:58:59Z"
         }
       },
       "consecutive_unreachable": 0
     },
     "pdpl_exec_regs": {
       "first_seen": "2026-09-04T06:30:05Z",
-      "last_seen": "2026-11-01T12:54:14Z",
+      "last_seen": "2026-11-08T12:58:59Z",
       "urls": {
         "https://uqn.gov.sa/details?p=23595": {
           "fingerprint": "6092ff19517cee7766ae024f198a9a34",
@@ -213,20 +213,20 @@
             "last_modified": "",
             "content_length": ""
           },
-          "last_seen": "2026-11-01T12:54:14Z"
+          "last_seen": "2026-11-08T12:58:59Z"
         }
       },
       "consecutive_unreachable": 0
     },
     "pdpl_law": {
       "first_seen": "2026-09-04T06:30:05Z",
-      "last_seen": "2026-11-01T12:54:14Z",
+      "last_seen": "2026-11-08T12:58:59Z",
       "urls": {},
-      "consecutive_unreachable": 4
+      "consecutive_unreachable": 5
     },
     "reac_regulations": {
       "first_seen": "2026-09-04T06:30:05Z",
-      "last_seen": "2026-11-01T12:54:14Z",
+      "last_seen": "2026-11-08T12:58:59Z",
       "urls": {
         "https://reac.rega.gov.sa/": {
           "fingerprint": "3454c8930535540a2fd339925abecf88",
@@ -239,14 +239,14 @@
             "last_modified": "",
             "content_length": ""
           },
-          "last_seen": "2026-11-01T12:54:14Z"
+          "last_seen": "2026-11-08T12:58:59Z"
         }
       },
       "consecutive_unreachable": 0
     },
     "saff_transfer_regs": {
       "first_seen": "2026-09-04T06:30:05Z",
-      "last_seen": "2026-11-01T12:54:14Z",
+      "last_seen": "2026-11-08T12:58:59Z",
       "urls": {
         "https://www.saff.com.sa/files.php": {
           "fingerprint": "198cda858dfd11f8dadf3b749f00d99d",
@@ -259,14 +259,14 @@
             "last_modified": "",
             "content_length": ""
           },
-          "last_seen": "2026-11-01T12:54:14Z"
+          "last_seen": "2026-11-08T12:58:59Z"
         }
       },
       "consecutive_unreachable": 0
     },
     "whistleblower_law": {
       "first_seen": "2026-09-04T06:30:05Z",
-      "last_seen": "2026-11-01T12:54:14Z",
+      "last_seen": "2026-11-08T12:58:59Z",
       "urls": {
         "https://uqn.gov.sa/details?p=24614": {
           "fingerprint": "52de4ae5af46e0f7411aa69ee56424cf",
@@ -279,27 +279,27 @@
             "last_modified": "",
             "content_length": ""
           },
-          "last_seen": "2026-11-01T12:54:14Z"
+          "last_seen": "2026-11-08T12:58:59Z"
         }
       },
       "consecutive_unreachable": 0
     },
     "zatca_e_invoicing_regs": {
       "first_seen": "2026-09-04T06:30:05Z",
-      "last_seen": "2026-11-01T12:54:14Z",
+      "last_seen": "2026-11-08T12:58:59Z",
       "urls": {
         "https://zatca.gov.sa": {
-          "fingerprint": "43154411a1f2cf87f2edea40641fccd4",
+          "fingerprint": "49327be9847f58862ca790ec34461954",
           "kind": "sector",
           "confidence": "portal",
           "signal": {
             "status": 200,
             "final_url": "https://zatca.gov.sa/ar/Pages/default.aspx",
             "etag": "",
-            "last_modified": "Sun, 01 Nov 2026 12:54:12 GMT",
+            "last_modified": "Sun, 08 Nov 2026 12:58:58 GMT",
             "content_length": ""
           },
-          "last_seen": "2026-11-01T12:54:14Z"
+          "last_seen": "2026-11-08T12:58:59Z"
         }
       },
       "consecutive_unreachable": 0
