@@ -34,7 +34,10 @@ def _load(stem: str) -> dict:
 
 
 def test_expected_corpus_files_exist():
-    for stem in ("labor-law", "civil-transactions-law", "pdpl", "pdpl-exec-regulations"):
+    for stem in (
+        "labor-law", "civil-transactions-law", "pdpl", "pdpl-exec-regulations",
+        "commercial-courts", "companies-law", "arbitration-law", "e-commerce-law",
+    ):
         assert (CORPUS / f"{stem}.json").exists(), stem
 
 
@@ -69,7 +72,10 @@ def test_every_article_sha256_matches_its_text():
     """The hash must certify the operative article text, not an amendment note."""
     import hashlib
 
-    for stem in ("labor-law", "civil-transactions-law", "pdpl", "pdpl-exec-regulations"):
+    for stem in (
+        "labor-law", "civil-transactions-law", "pdpl", "pdpl-exec-regulations",
+        "commercial-courts", "companies-law", "arbitration-law", "e-commerce-law",
+    ):
         corpus = _load(stem)
         mismatches = []
         for article in corpus["articles"]:
@@ -80,7 +86,10 @@ def test_every_article_sha256_matches_its_text():
 
 
 def test_every_corpus_article_is_non_empty_and_html_free():
-    for stem in ("labor-law", "civil-transactions-law", "pdpl", "pdpl-exec-regulations"):
+    for stem in (
+        "labor-law", "civil-transactions-law", "pdpl", "pdpl-exec-regulations",
+        "commercial-courts", "companies-law", "arbitration-law", "e-commerce-law",
+    ):
         corpus = _load(stem)
         for article in corpus["articles"]:
             assert article["text"].strip(), f"{stem} article {article['article']} is empty"
@@ -197,4 +206,75 @@ def test_summary_is_marked_hand_written_and_never_quoted_as_official():
     # The summary text may appear only as commentary/matched_sections; every
     # item in quotes must be verbatim.
     for quote in result.get("quotes", []):
+        assert quote["text_origin"] == TEXT_ORIGIN_OFFICIAL
+
+
+# -- B4: expanded verbatim corpora --------------------------------------------
+
+def test_new_corpora_counts_and_provenance():
+    """B4 pulls: exact article counts + honest document-level provenance
+    (no per-article deep links were available, so every quote must be
+    fetched_official, never article_level)."""
+    expected = {
+        "commercial-courts": 94,
+        "companies-law": 281,
+        "arbitration-law": 58,
+        "e-commerce-law": 26,
+    }
+    for stem, count in expected.items():
+        corpus = _load(stem)
+        assert corpus["article_count"] == count, stem
+        assert len(corpus["articles"]) == count, stem
+        assert corpus["document_url"].startswith("https://laws.boe.gov.sa/"), stem
+        assert corpus["fetched_by"] == "local", stem
+        assert corpus["fetched_at"], stem
+        for article in corpus["articles"]:
+            assert article.get("article_url") is None, (
+                f"{stem} art-{article.get('article')}: no deep link available — "
+                "must stay empty, never invented"
+            )
+
+
+def test_commercial_courts_article_24_five_years():
+    article = get_article("commercial-courts", "24")
+    assert article is not None
+    assert article["status"] == "in_force"
+    assert "خمس" in article["text"] and "سنوات" in article["text"]
+    assert "يقر" in article["text"] and "عذر" in article["text"]
+    assert article["text_origin"] == TEXT_ORIGIN_OFFICIAL
+
+
+def test_companies_article_156_llc_liability():
+    article = get_article("companies-law", "156")
+    assert article is not None
+    assert "مستقلة" in article["text"]
+    assert "حصته في رأس المال" in article["text"]
+    assert article["text_origin"] == TEXT_ORIGIN_OFFICIAL
+
+
+def test_arbitration_article_9_writing_requirement():
+    article = get_article("arbitration-law", "9")
+    assert article is not None
+    assert "كتابة" in article["text"] or "مكتوب" in article["text"]
+    assert article["text_origin"] == TEXT_ORIGIN_OFFICIAL
+
+
+def test_ecommerce_articles_13_14_rescission():
+    art13 = get_article("e-commerce-law", "13")
+    assert art13 is not None
+    assert "سبعة" in art13["text"] or "7" in art13["text"] or "أيام" in art13["text"]
+    art14 = get_article("e-commerce-law", "14")
+    assert art14 is not None
+    assert art13["text_origin"] == TEXT_ORIGIN_OFFICIAL
+    assert art14["text_origin"] == TEXT_ORIGIN_OFFICIAL
+
+
+def test_new_corpus_search_returns_verbatim_quotes():
+    """Corpus-first retrieval works for the new sources (no summary fallback
+    needed when the verbatim text answers)."""
+    result = search_legal_provision("مدة عدم سماع الدعوى التجارية", "commercial-courts")
+    assert result.get("retrieval_scope") == "verbatim_corpus"
+    assert any(q.get("article") == "24" for q in result.get("quotes", []))
+    for quote in result.get("quotes", []):
+        assert quote["provenance_level"] == "fetched_official"
         assert quote["text_origin"] == TEXT_ORIGIN_OFFICIAL

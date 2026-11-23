@@ -66,6 +66,42 @@ SOURCES = {
         "min_articles": 200,
         "max_articles": 270,
     },
+    "commercial-courts": {
+        "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/38334008-3b70-4c6c-b3af-aba3016a8061/1",
+        "kind": "boe",
+        "title_ar": "نظام المحاكم التجارية",
+        "instrument": "المرسوم الملكي م/93 بتاريخ 15/10/1441هـ",
+        "publisher": "هيئة الخبراء بمجلس الوزراء",
+        "min_articles": 85,
+        "max_articles": 105,
+    },
+    "companies-law": {
+        "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/a8376aea-1bc3-49d4-9027-aed900b555af/1",
+        "kind": "boe",
+        "title_ar": "نظام الشركات",
+        "instrument": "المرسوم الملكي م/132 بتاريخ 1/12/1443هـ",
+        "publisher": "هيئة الخبراء بمجلس الوزراء",
+        "min_articles": 270,
+        "max_articles": 292,
+    },
+    "arbitration-law": {
+        "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/5535039e-13da-43f6-8f53-a9a700f26485/1",
+        "kind": "boe",
+        "title_ar": "نظام التحكيم",
+        "instrument": "المرسوم الملكي م/34 لعام 1433هـ",
+        "publisher": "هيئة الخبراء بمجلس الوزراء",
+        "min_articles": 50,
+        "max_articles": 65,
+    },
+    "e-commerce-law": {
+        "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/360de590-0286-4fa5-a243-aa9100c31979/1",
+        "kind": "boe",
+        "title_ar": "نظام التجارة الإلكترونية",
+        "instrument": "المرسوم الملكي م/126 لعام 1440هـ",
+        "publisher": "هيئة الخبراء بمجلس الوزراء",
+        "min_articles": 20,
+        "max_articles": 32,
+    },
     "pdpl": {
         "url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
         "kind": "boe",
@@ -312,7 +348,12 @@ def parse_boe(html_bytes: bytes, source: dict, source_key: str) -> dict:
         if title is None:
             skipped_headings += 1
             continue
-        number = parse_arabic_article_number(title)
+        # The number always precedes the colon ("المادة الأولى: تعريفات");
+        # the subject after it must not veto parsing.  The full title is
+        # kept as article_label.
+        number = parse_arabic_article_number(title.split(":")[0])
+        if number is None:
+            number = parse_arabic_article_number(title)
         if number is None:
             # Parenthetical old-number notes are history, not current articles.
             if "حاليا" in clean_text(title):

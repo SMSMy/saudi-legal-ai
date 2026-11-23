@@ -35,7 +35,34 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "11e72326299f19213446ce5bd827d27b94b3f5a529b1b512e223c7fea02a8cff",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "1.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "paragraph",
+          "target": "تعريفات",
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": null,
+          "replacements": [],
+          "parse_status": "needs_review",
+          "parse_note": "multi-definition batch; per-item positions vary, withheld in v1"
+        }
+      ],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "needs_review",
+      "consolidation_note": "v1 composes article-scope validated ops only; withheld: تعديل الفقرة تعريفات"
     },
     {
       "id": "pdpl/art-2",
@@ -53,7 +80,13 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "4b31a56c6d244b7de19ccb5e9ceab47fa1d83fdaaa6f123504d91cdb589feb1f",
-      "text_status": "operative"
+      "text_status": "operative",
+      "amendments": [],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "not_required",
+      "consolidation_note": null
     },
     {
       "id": "pdpl/art-3",
@@ -71,7 +104,13 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "5cc9bbf2d7859a5cc7cf0c6737bd081c6c00f9e1d2743bd60b973784ac0371d7",
-      "text_status": "operative"
+      "text_status": "operative",
+      "amendments": [],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "not_required",
+      "consolidation_note": null
     },
     {
       "id": "pdpl/art-4",
@@ -94,7 +133,34 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "41089b5cbc367b88a07d62d3eda1bb4c197a640a7f7555f757f4e4a100ce9494",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "4.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "article",
+          "target": null,
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": "يكون لصاحب البيانات الشخصية -وفقاً للأحكام الواردة في النظام وما تحدده اللوائح- الحقوق الآتية : 1- الحق في العلم، ويشمل ذلك إحاطته علماً بالمسوغ النظامي لجمع بياناته الشخصية والغرض من جمعها. 2- الحق في وصوله إلى بياناته الشخصية المتوافرة لدى جهة التحكم، وفق الضوابط والإجراءات التي تحددها اللوائح، ودون إخلال بما ورد في المادة (التاسعة) من النظام. 3- الحق في طلب الحصول على بياناته الشخصية المتوافرة لدى جهة التحكم بصيغة مقروءة وواضحة، وفق الضوابط والإجراءات التي تحددها اللوائح. 4- الحق في طلب تصحيح بياناته الشخصية المتوافرة لدى جهة التحكم، أو إتمامها، أو تحديثها. 5- الحق في طلب إتلاف بياناته الشخصية المتوافرة لدى جهة التحكم مما انتهت الحاجة إليه منها، وذلك دون إخلال بما تقضي به المادة (الثامنة عشرة) من النظام.",
+          "replacements": [],
+          "parse_status": "validated",
+          "parse_note": null
+        }
+      ],
+      "consolidated_text": "يكون لصاحب البيانات الشخصية -وفقاً للأحكام الواردة في النظام وما تحدده اللوائح- الحقوق الآتية : 1- الحق في العلم، ويشمل ذلك إحاطته علماً بالمسوغ النظامي لجمع بياناته الشخصية والغرض من جمعها. 2- الحق في وصوله إلى بياناته الشخصية المتوافرة لدى جهة التحكم، وفق الضوابط والإجراءات التي تحددها اللوائح، ودون إخلال بما ورد في المادة (التاسعة) من النظام. 3- الحق في طلب الحصول على بياناته الشخصية المتوافرة لدى جهة التحكم بصيغة مقروءة وواضحة، وفق الضوابط والإجراءات التي تحددها اللوائح. 4- الحق في طلب تصحيح بياناته الشخصية المتوافرة لدى جهة التحكم، أو إتمامها، أو تحديثها. 5- الحق في طلب إتلاف بياناته الشخصية المتوافرة لدى جهة التحكم مما انتهت الحاجة إليه منها، وذلك دون إخلال بما تقضي به المادة (الثامنة عشرة) من النظام.",
+      "consolidation_method": "consolidated_from_instruments",
+      "consolidation_sha256": "1098602a63b8e2ef6bf00dee3abe7df19453e8514713625f51241ed0adb09d4b",
+      "consolidation_status": "needs_review",
+      "consolidation_note": "candidate composed from validated article-scope ops in effective order (4.0); NOT an official verbatim quote — pending licensed review"
     },
     {
       "id": "pdpl/art-5",
@@ -117,7 +183,39 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "5a1cc7dba0069e0b23e643a1ebd88e6073a3a709c9a65e209daf956607c804fd",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "5.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "paragraph",
+          "target": "1",
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": null,
+          "replacements": [
+            {
+              "old": "كتابية",
+              "new": "صريحة"
+            }
+          ],
+          "parse_status": "validated",
+          "parse_note": "lexical batch; v1 never auto-applies (article-scope only)"
+        }
+      ],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "needs_review",
+      "consolidation_note": "v1 composes article-scope validated ops only; withheld: تعديل الفقرة 1"
     },
     {
       "id": "pdpl/art-6",
@@ -140,7 +238,34 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "419ae6130373d01b68f09ff55a61569f02b643716767fcc8b418fe05b05ea653",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "6.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "paragraph",
+          "target": "4",
+          "op": "insert",
+          "insert_after": "append",
+          "quoted_text": "4- عندما تكون المعالجة ضرورية لتحقيق مصالح مشروعة لجهة التحكم، ما لم يخل ذلك بحقوق صاحب البيانات الشخصية أو يتعارض مع مصالحه ولم تكن تلك البيانات بيانات حساسة. وتبيّن اللوائح الأحكام والضوابط المتعلقة بذلك",
+          "replacements": [],
+          "parse_status": "needs_review",
+          "parse_note": "appended paragraph: position inferred, withheld in v1"
+        }
+      ],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "needs_review",
+      "consolidation_note": "v1 composes article-scope validated ops only; withheld: إضافة «4» بعد append"
     },
     {
       "id": "pdpl/art-7",
@@ -158,7 +283,13 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "24411cd7d19e0e39c96b355629ec0d9d4ff1da0c5c340d7ac1358dc565e6affb",
-      "text_status": "operative"
+      "text_status": "operative",
+      "amendments": [],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "not_required",
+      "consolidation_note": null
     },
     {
       "id": "pdpl/art-8",
@@ -181,7 +312,34 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "10b47826ec0c6745a08780c8864d2d49b243f1eb050583583a8da77c2ec1aa23",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "8.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "article",
+          "target": null,
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": "مع مراعاة ما ينص عليه النظام واللوائح في شأن الإفصاح عن البيانات الشخصية، على جهة التحكم عند اختيارها جهة المعالجة أن تلتزم باختيار الجهة التي توفر الضمانات اللازمة لتنفيذ أحكام النظام واللوائح، وعليها التحقق من التزام تلك الجهة بأحكام النظام واللوائح، ولا يخل ذلك بمسؤولياتها تجاه صاحب البيانات الشخصية أو الجهة المختصة بحسب الأحوال. وتحدد اللوائح الأحكام اللازمة لذلك، على أن تشتمل على الأحكام المتعلقة بأي تعاقدات لاحقة تقوم بها جهة المعالجة",
+          "replacements": [],
+          "parse_status": "validated",
+          "parse_note": null
+        }
+      ],
+      "consolidated_text": "مع مراعاة ما ينص عليه النظام واللوائح في شأن الإفصاح عن البيانات الشخصية، على جهة التحكم عند اختيارها جهة المعالجة أن تلتزم باختيار الجهة التي توفر الضمانات اللازمة لتنفيذ أحكام النظام واللوائح، وعليها التحقق من التزام تلك الجهة بأحكام النظام واللوائح، ولا يخل ذلك بمسؤولياتها تجاه صاحب البيانات الشخصية أو الجهة المختصة بحسب الأحوال. وتحدد اللوائح الأحكام اللازمة لذلك، على أن تشتمل على الأحكام المتعلقة بأي تعاقدات لاحقة تقوم بها جهة المعالجة",
+      "consolidation_method": "consolidated_from_instruments",
+      "consolidation_sha256": "db19f9e99e55d0253f1c489b2676b1cce0ebc6f9c724aded873d7a8f854efc8a",
+      "consolidation_status": "needs_review",
+      "consolidation_note": "candidate composed from validated article-scope ops in effective order (8.0); NOT an official verbatim quote — pending licensed review"
     },
     {
       "id": "pdpl/art-9",
@@ -204,7 +362,34 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "316c9f497793a11b36183241fc12e8dbe9b4b5920daece6a495555fb66022a39",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "9.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "paragraph",
+          "target": "1",
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": "1- يجوز لجهة التحكم تحديد مدد لممارسة حق الوصول إلى البيانات الشخصية المقرر في الفقرة (2) من المادة (الرابعة) من النظام؛ وفق ما تحدده اللوائح. ويجوز كذلك لجهة التحكم تقييد هذا الحق في الأحوال الآتية: أ- إذا كان ضرورياً لحماية صاحب البيانات الشخصية أو غيره من أي ضرر؛ وفق الأحكام التي تحددها اللوائح. ب- إذا كانت جهة التحكم جهة عامة، وكان التقييد مطلوباً لأغراض أمنية أو لتنفيذ نظام آخر أو لاستيفاء مُتطلبات قضائية",
+          "replacements": [],
+          "parse_status": "validated",
+          "parse_note": null
+        }
+      ],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "needs_review",
+      "consolidation_note": "v1 composes article-scope validated ops only; withheld: تعديل الفقرة 1"
     },
     {
       "id": "pdpl/art-10",
@@ -227,7 +412,34 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "c2be9e894aa995f0e64fabadb695035255e4795d05611ba0cb6a16ab585cd49d",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "10.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "article",
+          "target": null,
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": null,
+          "replacements": [],
+          "parse_status": "needs_review",
+          "parse_note": "whole-article directive without exactly one quote"
+        }
+      ],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "needs_review",
+      "consolidation_note": "v1 composes article-scope validated ops only; withheld: استبدال كامل للمادة"
     },
     {
       "id": "pdpl/art-11",
@@ -250,7 +462,34 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "58d40ade6f5b54dcd129ce458f175d39656d90f7a9240a28c309483ff038abc7",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "11.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "paragraph",
+          "target": "4",
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": "4- إذا اتضح أن البيانات الشخصية التي تجمع لم تعد ضرورية لتحقيق الغرض من حجمها، فعلى جهة التحكم التوقف عن جمعها، وإتلاف ما سبق أن جمعته منها دون تأخير",
+          "replacements": [],
+          "parse_status": "validated",
+          "parse_note": null
+        }
+      ],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "needs_review",
+      "consolidation_note": "v1 composes article-scope validated ops only; withheld: تعديل الفقرة 4"
     },
     {
       "id": "pdpl/art-12",
@@ -273,7 +512,34 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "c779c15158014acca1ed7769c06ab74ccc026147df7d86279ded06ab445194c6",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "12.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "article",
+          "target": null,
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": "على جهة التحكم أن تعتمد سياسة للخصوصية، وأن تجعلها متاحة لأصحاب البيانات الشخصية ليطلعوا عليها عند جمع بياناتهم. على أن تشتمل تلك السياسة على تحديد الغرض من جمعها، ومُحتوى البيانات الشخصية المطلوب جمعها، وطريقة جمعها، ووسيلة حفظها، وكيفية معالجتها، وكيفية إتلافها، وحقوق صاحبها فيما يتعلق بها، وكيفية ممارسة هذه الحقوق",
+          "replacements": [],
+          "parse_status": "validated",
+          "parse_note": null
+        }
+      ],
+      "consolidated_text": "على جهة التحكم أن تعتمد سياسة للخصوصية، وأن تجعلها متاحة لأصحاب البيانات الشخصية ليطلعوا عليها عند جمع بياناتهم. على أن تشتمل تلك السياسة على تحديد الغرض من جمعها، ومُحتوى البيانات الشخصية المطلوب جمعها، وطريقة جمعها، ووسيلة حفظها، وكيفية معالجتها، وكيفية إتلافها، وحقوق صاحبها فيما يتعلق بها، وكيفية ممارسة هذه الحقوق",
+      "consolidation_method": "consolidated_from_instruments",
+      "consolidation_sha256": "e5f42e3447b30e9b6bf3ccb77a3796dd2efbbcb3290caea47b1997adee8e8069",
+      "consolidation_status": "needs_review",
+      "consolidation_note": "candidate composed from validated article-scope ops in effective order (12.0); NOT an official verbatim quote — pending licensed review"
     },
     {
       "id": "pdpl/art-13",
@@ -296,7 +562,54 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "6134aafc0404eefba522c9f796dcb65ae7a18c45641c211585f45c360e89bde1",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "13.0.1",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 1,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "paragraph",
+          "target": "ديباجة",
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": "على جهة التحكم، في حالة جمع البيانات الشخصية من صاحبها مباشرةً، اتخاذ الوسائل الكافية لإحاطته علماً بالعناصر الآتية عند جمع بياناته:....",
+          "replacements": [],
+          "parse_status": "validated",
+          "parse_note": null
+        },
+        {
+          "op_id": "13.0.2",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 2,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "paragraph",
+          "target": "1",
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": "1- المسوغ النظامي لجمع بياناته الشخصية",
+          "replacements": [],
+          "parse_status": "validated",
+          "parse_note": null
+        }
+      ],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "needs_review",
+      "consolidation_note": "v1 composes article-scope validated ops only; withheld: تعديل الفقرة 1؛ تعديل الفقرة ديباجة"
     },
     {
       "id": "pdpl/art-14",
@@ -314,7 +627,13 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "6d8e812bf87fc4fab2c3ef566a7e8b4e419c66641a86bd869f032660aeba1851",
-      "text_status": "operative"
+      "text_status": "operative",
+      "amendments": [],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "not_required",
+      "consolidation_note": null
     },
     {
       "id": "pdpl/art-15",
@@ -337,7 +656,34 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "c30af7c117391503fb58184db03be3fc9e1abdc6105d67c390ddded5270975e2",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "15.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "article",
+          "target": null,
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": "لا يجوز لجهة التحكم الإفصاح عن البيانات الشخصية إلا في الأحوال الآتية: 1- إذا وافق صاحب البيانات الشخصية على الإفصاح وفقاً لأحكام النظام. 2- إذا كانت البيانات الشخصية قد جرى جمعها من مصدر متاح للعموم. 3- إذا كانت الجهة التي تطلب الإفصاح جهة عامة، وكان ذلك لأغراض المصلحة العامة أو لأغراض أمنية أو لتنفيذ نظام آخر أو لاستيفاء مُتطلبات قضائية. 4- إذا كان الإفصاح ضرورياً لحماية الصحة العامة أو السلامة العامة أو حماية حياة فرد أو أفراد معينين أو حماية صحتهم. 5- إذا كان الإفصاح سيقتصر على معالجتها لاحقاً بطريقة لا تؤدي إلى معرفة هوية صاحب البيانات الشخصية أو أي فرد آخر على وجه التحديد. 6- إذا كان الإفصاح ضرورياً لتحقيق مصالح مشروعة لجهة التحكم، ما لم يخل ذلك بحقوق صاحب البيانات الشخصية أو يتعارض مع مصالحه ولم تكن تلك البيانات بيانات حساسة. وتبيّن اللوائح الأحكام والضوابط والإجراءات المتعلقة بما ورد في الفقرات من (2) إلى (6) من هذه المادة",
+          "replacements": [],
+          "parse_status": "validated",
+          "parse_note": null
+        }
+      ],
+      "consolidated_text": "لا يجوز لجهة التحكم الإفصاح عن البيانات الشخصية إلا في الأحوال الآتية: 1- إذا وافق صاحب البيانات الشخصية على الإفصاح وفقاً لأحكام النظام. 2- إذا كانت البيانات الشخصية قد جرى جمعها من مصدر متاح للعموم. 3- إذا كانت الجهة التي تطلب الإفصاح جهة عامة، وكان ذلك لأغراض المصلحة العامة أو لأغراض أمنية أو لتنفيذ نظام آخر أو لاستيفاء مُتطلبات قضائية. 4- إذا كان الإفصاح ضرورياً لحماية الصحة العامة أو السلامة العامة أو حماية حياة فرد أو أفراد معينين أو حماية صحتهم. 5- إذا كان الإفصاح سيقتصر على معالجتها لاحقاً بطريقة لا تؤدي إلى معرفة هوية صاحب البيانات الشخصية أو أي فرد آخر على وجه التحديد. 6- إذا كان الإفصاح ضرورياً لتحقيق مصالح مشروعة لجهة التحكم، ما لم يخل ذلك بحقوق صاحب البيانات الشخصية أو يتعارض مع مصالحه ولم تكن تلك البيانات بيانات حساسة. وتبيّن اللوائح الأحكام والضوابط والإجراءات المتعلقة بما ورد في الفقرات من (2) إلى (6) من هذه المادة",
+      "consolidation_method": "consolidated_from_instruments",
+      "consolidation_sha256": "079d2ba546e95255b13f56b4a62851a1886b2c4cbabf03502b3cec3380a739e4",
+      "consolidation_status": "needs_review",
+      "consolidation_note": "candidate composed from validated article-scope ops in effective order (15.0); NOT an official verbatim quote — pending licensed review"
     },
     {
       "id": "pdpl/art-16",
@@ -360,7 +706,34 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "59991f10aaa19bb34632664055625e798e4de4dfb2b553c78c212bab1679d6b1",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "16.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "paragraph",
+          "target": "ديباجة",
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": "على جهة التحكم ألا تفصح عن البيانات الشخصية في الأحوال المنصوص عليها في الفقرات (1) و(2) و(5) و(6) من المادة الخامسة عشرة من النظام، متى اتصف الإفصاح بأيٍّ مما يأتي:....",
+          "replacements": [],
+          "parse_status": "validated",
+          "parse_note": null
+        }
+      ],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "needs_review",
+      "consolidation_note": "v1 composes article-scope validated ops only; withheld: تعديل الفقرة ديباجة"
     },
     {
       "id": "pdpl/art-17",
@@ -378,7 +751,13 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "a929858fca27d4ee43cc4f769e9cd45301dc6f1f5285152cd8d74115ad1f934c",
-      "text_status": "operative"
+      "text_status": "operative",
+      "amendments": [],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "not_required",
+      "consolidation_note": null
     },
     {
       "id": "pdpl/art-18",
@@ -401,7 +780,34 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "2bdde4321d220a155bf026c44c1d7b21790555f6e18837bd3682038d382348b7",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "18.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "paragraph",
+          "target": "1",
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": "1- على جهة التحكم إتلاف البيانات الشخصية بعد انتهاء الغرض من جمعها دون تأخير. ومع ذلك، يجوز لها الاحتفاظ بتلك البيانات بعد انتهاء الغرض من جمعها إذا تمت إزالة كل ما يؤدي إلى معرفة صاحبها على وجه التحديد وفق الضوابط التي تحددها اللوائح",
+          "replacements": [],
+          "parse_status": "validated",
+          "parse_note": null
+        }
+      ],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "needs_review",
+      "consolidation_note": "v1 composes article-scope validated ops only; withheld: تعديل الفقرة 1"
     },
     {
       "id": "pdpl/art-19",
@@ -419,7 +825,13 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "594984eb1ef99b7618fe0763b9d4939de6f0271e0b3fa34e641fd30a59232b91",
-      "text_status": "operative"
+      "text_status": "operative",
+      "amendments": [],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "not_required",
+      "consolidation_note": null
     },
     {
       "id": "pdpl/art-20",
@@ -442,7 +854,34 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "757d460b69e997025333616e88583708f8c814a3f79f12efced2bce267c4c768",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "20.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "article",
+          "target": null,
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": "1- تشعر جهة التحكم الجهة المختصة عند علمها بحدوث تسرب لبيانات شخصية أو تلفها أو وصول غير مشروع إليها؛ وفقاً لما تحدده اللوائح. 2- تشعر جهة التحكم صاحب البيانات الشخصية إذا كان من شأن حدوث تسرب لبيانات شخصية أو تلفها أو وصول غير مشروع إليها أن يرتب ضرراً على بياناته أو يتعارض مع حقوقه أو مصالحه؛ وفقاً لما تحدده اللوائح",
+          "replacements": [],
+          "parse_status": "validated",
+          "parse_note": null
+        }
+      ],
+      "consolidated_text": "1- تشعر جهة التحكم الجهة المختصة عند علمها بحدوث تسرب لبيانات شخصية أو تلفها أو وصول غير مشروع إليها؛ وفقاً لما تحدده اللوائح. 2- تشعر جهة التحكم صاحب البيانات الشخصية إذا كان من شأن حدوث تسرب لبيانات شخصية أو تلفها أو وصول غير مشروع إليها أن يرتب ضرراً على بياناته أو يتعارض مع حقوقه أو مصالحه؛ وفقاً لما تحدده اللوائح",
+      "consolidation_method": "consolidated_from_instruments",
+      "consolidation_sha256": "5caba743efab38e6e65ebd4ed4b1cff1f4e929cef6b5790882e3f90dd386728e",
+      "consolidation_status": "needs_review",
+      "consolidation_note": "candidate composed from validated article-scope ops in effective order (20.0); NOT an official verbatim quote — pending licensed review"
     },
     {
       "id": "pdpl/art-21",
@@ -460,7 +899,13 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "2509d7fcc3b5eeecf8b2acc3a3349068c84cc031f3032f49503261edf3515caa",
-      "text_status": "operative"
+      "text_status": "operative",
+      "amendments": [],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "not_required",
+      "consolidation_note": null
     },
     {
       "id": "pdpl/art-22",
@@ -478,7 +923,13 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "ceb4fd04ad6119cb96adf7647ea6d1d489556eef9fb1d275ab9f51f4a5319a32",
-      "text_status": "operative"
+      "text_status": "operative",
+      "amendments": [],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "not_required",
+      "consolidation_note": null
     },
     {
       "id": "pdpl/art-23",
@@ -496,7 +947,13 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "729f358a3449bd482b1cb3a1b09151c8ea346eea6090ad6900c7165b87a76130",
-      "text_status": "operative"
+      "text_status": "operative",
+      "amendments": [],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "not_required",
+      "consolidation_note": null
     },
     {
       "id": "pdpl/art-24",
@@ -519,7 +976,39 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "a5b91f458289d41f7c3a024557effcedb40e611163e571a58dc9022da2c70d54",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "24.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "paragraph",
+          "target": "1",
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": null,
+          "replacements": [
+            {
+              "old": "الكتابية",
+              "new": "الصريحة"
+            }
+          ],
+          "parse_status": "validated",
+          "parse_note": "lexical batch; v1 never auto-applies (article-scope only)"
+        }
+      ],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "needs_review",
+      "consolidation_note": "v1 composes article-scope validated ops only; withheld: تعديل الفقرة 1"
     },
     {
       "id": "pdpl/art-25",
@@ -537,7 +1026,13 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "46b167db5af425356472fc567f0002f6c93a1297157e4235b8cd3581edde00a6",
-      "text_status": "operative"
+      "text_status": "operative",
+      "amendments": [],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "not_required",
+      "consolidation_note": null
     },
     {
       "id": "pdpl/art-26",
@@ -555,7 +1050,13 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "596a4888a0676a0ceedec9e1abd453dd3d579e8c5dee6d8e1012554cb731984a",
-      "text_status": "operative"
+      "text_status": "operative",
+      "amendments": [],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "not_required",
+      "consolidation_note": null
     },
     {
       "id": "pdpl/art-27",
@@ -573,7 +1074,13 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "0a0c90b1b460180cc4fbf3a668fd2828dd983c0560bf3830fc858cf54026ccdf",
-      "text_status": "operative"
+      "text_status": "operative",
+      "amendments": [],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "not_required",
+      "consolidation_note": null
     },
     {
       "id": "pdpl/art-28",
@@ -591,7 +1098,13 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "fa3e0d3eda9ec161aab9e409433175d6ef1dee69097d678e43a36a9897cef67c",
-      "text_status": "operative"
+      "text_status": "operative",
+      "amendments": [],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "not_required",
+      "consolidation_note": null
     },
     {
       "id": "pdpl/art-29",
@@ -614,7 +1127,34 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "c223e9a8bc7aef7d91a8b65d81ccbfe27b66cd61c4e37846be4b549da73cc59d",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "29.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "article",
+          "target": null,
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": "1- مع مراعاة ما ورد في الفقرة (2) من هذه المادة، يجوز لجهة التحكم نقل البيانات الشخصية إلى خارج المملكة أو الإفصاح عنها لجهة خارج المملكة، وذلك لتحقيق أيٍّ من الأغراض الآتية: أ- إذا كان ذلك تنفيذاً لالتزام بموجب اتفاقية تكون المملكة طرفاً فيه. ب- إذا كان ذلك لخدمة مصالح المملكة. ج- إذا كان ذلك تنفيذاً لالتزام يكون صاحب البيانات الشخصية طرفاً فيه. د- إذا كان ذلك تنفيذاً لأغراض أخرى وفق ما تحدده اللوائح. 2- تكون الشروط الواجب توافرها عند نقل البيانات الشخصية أو الإفصاح عنها -وفق ما ورد في الفقرة (1) من هذه المادة- على النحو الآتي: أ- ألا يترتب على النقل أو الإفصاح مساس بالأمن الوطني أو بمصالح المملكة الحيوية. ب- أن يتوافر مستوى مناسب لحماية البيانات الشخصية في خارج المملكة؛ بما لا يقل عن مستوى الحماية المقرر في النظام واللوائح، وفقاً لنتائج تقويم تجريه الجهة المختصة في هذا الشأن بالتنسيق مع من تراه من الجهات المعنية. ج- أن يقتصر النقل أو الإفصاح على الحد الأدنى من البيانات الشخصية الذي تدعو الحاجة إليه. 3- لا يسري ما ورد في الفقرة (2) من هذه المادة على حالات الضرورة القصوى للمحافظة على حياة صاحب البيانات الشخصية أو مصالحه الحيوية أو الوقاية من عدوى مرضية أو فحصها أو معالجتها. 4- تحدد اللوائح الأحكام والمعايير والإجراءات المتعلقة بتطبيق ما ورد في هذه المادة، بما في ذلك تحديد حالات إعفاء جهات التحكم من الالتزام بأي من الشروط المشار إليها في الفقرتين الفرعيتين (ب) و(ج) من الفقرة (2) من هذه المادة، وكذلك ضوابط وإجراءات ذلك الإعفاء والعدول عنه",
+          "replacements": [],
+          "parse_status": "validated",
+          "parse_note": null
+        }
+      ],
+      "consolidated_text": "1- مع مراعاة ما ورد في الفقرة (2) من هذه المادة، يجوز لجهة التحكم نقل البيانات الشخصية إلى خارج المملكة أو الإفصاح عنها لجهة خارج المملكة، وذلك لتحقيق أيٍّ من الأغراض الآتية: أ- إذا كان ذلك تنفيذاً لالتزام بموجب اتفاقية تكون المملكة طرفاً فيه. ب- إذا كان ذلك لخدمة مصالح المملكة. ج- إذا كان ذلك تنفيذاً لالتزام يكون صاحب البيانات الشخصية طرفاً فيه. د- إذا كان ذلك تنفيذاً لأغراض أخرى وفق ما تحدده اللوائح. 2- تكون الشروط الواجب توافرها عند نقل البيانات الشخصية أو الإفصاح عنها -وفق ما ورد في الفقرة (1) من هذه المادة- على النحو الآتي: أ- ألا يترتب على النقل أو الإفصاح مساس بالأمن الوطني أو بمصالح المملكة الحيوية. ب- أن يتوافر مستوى مناسب لحماية البيانات الشخصية في خارج المملكة؛ بما لا يقل عن مستوى الحماية المقرر في النظام واللوائح، وفقاً لنتائج تقويم تجريه الجهة المختصة في هذا الشأن بالتنسيق مع من تراه من الجهات المعنية. ج- أن يقتصر النقل أو الإفصاح على الحد الأدنى من البيانات الشخصية الذي تدعو الحاجة إليه. 3- لا يسري ما ورد في الفقرة (2) من هذه المادة على حالات الضرورة القصوى للمحافظة على حياة صاحب البيانات الشخصية أو مصالحه الحيوية أو الوقاية من عدوى مرضية أو فحصها أو معالجتها. 4- تحدد اللوائح الأحكام والمعايير والإجراءات المتعلقة بتطبيق ما ورد في هذه المادة، بما في ذلك تحديد حالات إعفاء جهات التحكم من الالتزام بأي من الشروط المشار إليها في الفقرتين الفرعيتين (ب) و(ج) من الفقرة (2) من هذه المادة، وكذلك ضوابط وإجراءات ذلك الإعفاء والعدول عنه",
+      "consolidation_method": "consolidated_from_instruments",
+      "consolidation_sha256": "5f281dbc968b2d030dc749f7462abd79c33a2d4e1a053804d8b7948664947c5c",
+      "consolidation_status": "needs_review",
+      "consolidation_note": "candidate composed from validated article-scope ops in effective order (29.0); NOT an official verbatim quote — pending licensed review"
     },
     {
       "id": "pdpl/art-30",
@@ -637,7 +1177,34 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "390b3cbf54c2dc6124fd8a92c25c9decc95305c1c839ef5c33527c26dca51e07",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "30.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "article",
+          "target": null,
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": "1- مع عدم الإخلال بأحكام النظام، وما للبنك المركزي السعودي من صلاحيات وفقاً لما تقضي به النصوص النظامية ذات العلاقة، تكون الجهة المختصة الجهة المشرفة عل تطبيق أحكام النظام واللوائح. 2- تحدد اللوائح الأحوال التي يجب فيها على جهة التحكم تعيين أو تحديد شخص (أو أكثر) يتولى دور مسؤول حماية البيانات الشخصية، وتبيّن اللوائح كذلك مسؤولياته بما يتفق مع أحكام النظام واللوائح. 3- على جهة التحكم التعاون مع الجهة المختصة في سبيل مباشرتها مهماتها المتعلقة بالإشراف على تطبيق أحكام النظام واللوائح، وعليها كذلك اتخاذ مايلزم من إجراءات حيال المسائل المتعلقة بذلك التي تحيلها الجهة المختصة إليها. 4- للجهة المختصة في سبيل مباشرتها مهماتها المتعلقة بالإشراف على تطبيق أحكام النظام واللوائح، اتخاذ ما يأتي: أ- طلب الوثائق أو المعلومات اللازمة من جهة التحكم للتأكد من التزامها بأحكام النظام واللوائح. ب- الاستعانة بأي جهة أخرى لأغراض المساندة في مباشرتها مهماتها المتعلقة بالإشراف على تطبيق أحكام النظام واللوائح. ج- تحديد الأدوات والآليات المناسبة في شأن مراقبة ومتابعة التزام جهات التحكم بأحكام النظام واللوائح، بما في ذلك بناء سجل وطني لهذا الغرض عن جهات التحكم. د- تقديم الخدمات المتعلقة بحماية البيانات الشخصية من خلال السجل الوطني المشار إليه في الفقرة الفرعية (ج) من هذه الفقرة أو من خلال أي وسيلة أخرى؛ وفقاً لما تراه مناسباً. وللجهة المختصة استحصال مقابل مالي عن الخدمات التي تقدمها المتعلقة بحماية البيانات الشخصية. 5- يجوز للجهة المختصة -وفق ما تقدره- تفويض غيرها من الجهات في مباشرة بعض المهمات الموكولة إليها المتعلقة بالإشراف على تطبيق أحكام النظام واللوائح",
+          "replacements": [],
+          "parse_status": "validated",
+          "parse_note": null
+        }
+      ],
+      "consolidated_text": "1- مع عدم الإخلال بأحكام النظام، وما للبنك المركزي السعودي من صلاحيات وفقاً لما تقضي به النصوص النظامية ذات العلاقة، تكون الجهة المختصة الجهة المشرفة عل تطبيق أحكام النظام واللوائح. 2- تحدد اللوائح الأحوال التي يجب فيها على جهة التحكم تعيين أو تحديد شخص (أو أكثر) يتولى دور مسؤول حماية البيانات الشخصية، وتبيّن اللوائح كذلك مسؤولياته بما يتفق مع أحكام النظام واللوائح. 3- على جهة التحكم التعاون مع الجهة المختصة في سبيل مباشرتها مهماتها المتعلقة بالإشراف على تطبيق أحكام النظام واللوائح، وعليها كذلك اتخاذ مايلزم من إجراءات حيال المسائل المتعلقة بذلك التي تحيلها الجهة المختصة إليها. 4- للجهة المختصة في سبيل مباشرتها مهماتها المتعلقة بالإشراف على تطبيق أحكام النظام واللوائح، اتخاذ ما يأتي: أ- طلب الوثائق أو المعلومات اللازمة من جهة التحكم للتأكد من التزامها بأحكام النظام واللوائح. ب- الاستعانة بأي جهة أخرى لأغراض المساندة في مباشرتها مهماتها المتعلقة بالإشراف على تطبيق أحكام النظام واللوائح. ج- تحديد الأدوات والآليات المناسبة في شأن مراقبة ومتابعة التزام جهات التحكم بأحكام النظام واللوائح، بما في ذلك بناء سجل وطني لهذا الغرض عن جهات التحكم. د- تقديم الخدمات المتعلقة بحماية البيانات الشخصية من خلال السجل الوطني المشار إليه في الفقرة الفرعية (ج) من هذه الفقرة أو من خلال أي وسيلة أخرى؛ وفقاً لما تراه مناسباً. وللجهة المختصة استحصال مقابل مالي عن الخدمات التي تقدمها المتعلقة بحماية البيانات الشخصية. 5- يجوز للجهة المختصة -وفق ما تقدره- تفويض غيرها من الجهات في مباشرة بعض المهمات الموكولة إليها المتعلقة بالإشراف على تطبيق أحكام النظام واللوائح",
+      "consolidation_method": "consolidated_from_instruments",
+      "consolidation_sha256": "1100133c0c2e2bb003a5e1d3c0f77633f98df522dc92f3a0fd4ffc7d23218cb3",
+      "consolidation_status": "needs_review",
+      "consolidation_note": "candidate composed from validated article-scope ops in effective order (30.0); NOT an official verbatim quote — pending licensed review"
     },
     {
       "id": "pdpl/art-31",
@@ -655,7 +1222,13 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "999eaef908a921e8991bc3b14d2afd41fb9c87e839f6c87a16dfb1e9957a9bc3",
-      "text_status": "operative"
+      "text_status": "operative",
+      "amendments": [],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "not_required",
+      "consolidation_note": null
     },
     {
       "id": "pdpl/art-32",
@@ -678,7 +1251,34 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "be5a365b3b70206b84dae71747f3141e0d23690bded52853e9df033459d7969f",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "32.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "article",
+          "target": null,
+          "op": "cancel",
+          "insert_after": null,
+          "quoted_text": null,
+          "replacements": [],
+          "parse_status": "validated",
+          "parse_note": "article canceld by instrument; kept as amended row per BOE"
+        }
+      ],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "needs_review",
+      "consolidation_note": "v1 composes article-scope validated ops only; withheld: article/cancel"
     },
     {
       "id": "pdpl/art-33",
@@ -701,7 +1301,34 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "79c3ffc0bbde4d811307d54655d0f2b22339d5427adf9d54bb6f3ccc72bccf3f",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "33.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "article",
+          "target": null,
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": "1- تضع الجهة المختصة اشتراطات ممارسة الأنشطة التجارية أو المهنية أو غير الربحية المرتبطة بحماية البيانات الشخصية في المملكة، بالتنسيق مع الجهات المعنية، وبما لا يخل بما تضعه تلك الجهات من اشتراطات أخرى بحسب اختصاصاتها. 2- للجهة المختصة الترخيص لجهات تتولى إصدار شهادات اعتماد لجهة التحكم وجهة المعالجة. وتضع الجهة المختصة القواعد المنظمة لإصدار تلك الشهادات. 3- للجهة المختصة الترخيص لجهات تتولى أعمال التدقيق أو الفحص لأنشطة معالجة البيانات الشخصية بحسب طبيعة النشاط الذي تمارسه جهة التحكم؛ وفق الأحكام التي تحددها اللوائح. وتضع الجهة المختصة شروط ومتطلبات إصدار تلك التراخيص، والقواعد المنظّمة لها. 4- تتولى الجهة المختصة تحديد الأدوات والآليات المناسبة لمتابعة التزام الجهات التي في خارج المملكة بالتزاماتها المقررة بموجب أحكام النظام واللوائح عند معالجتها لبيانات شخصية متعلقة بالأفراد المقيمين في المملكة بأي وسيلة كانت، والإجراءات المتعلقة بإنفاذ أحكام النظام واللوائح خارج المملكة",
+          "replacements": [],
+          "parse_status": "validated",
+          "parse_note": null
+        }
+      ],
+      "consolidated_text": "1- تضع الجهة المختصة اشتراطات ممارسة الأنشطة التجارية أو المهنية أو غير الربحية المرتبطة بحماية البيانات الشخصية في المملكة، بالتنسيق مع الجهات المعنية، وبما لا يخل بما تضعه تلك الجهات من اشتراطات أخرى بحسب اختصاصاتها. 2- للجهة المختصة الترخيص لجهات تتولى إصدار شهادات اعتماد لجهة التحكم وجهة المعالجة. وتضع الجهة المختصة القواعد المنظمة لإصدار تلك الشهادات. 3- للجهة المختصة الترخيص لجهات تتولى أعمال التدقيق أو الفحص لأنشطة معالجة البيانات الشخصية بحسب طبيعة النشاط الذي تمارسه جهة التحكم؛ وفق الأحكام التي تحددها اللوائح. وتضع الجهة المختصة شروط ومتطلبات إصدار تلك التراخيص، والقواعد المنظّمة لها. 4- تتولى الجهة المختصة تحديد الأدوات والآليات المناسبة لمتابعة التزام الجهات التي في خارج المملكة بالتزاماتها المقررة بموجب أحكام النظام واللوائح عند معالجتها لبيانات شخصية متعلقة بالأفراد المقيمين في المملكة بأي وسيلة كانت، والإجراءات المتعلقة بإنفاذ أحكام النظام واللوائح خارج المملكة",
+      "consolidation_method": "consolidated_from_instruments",
+      "consolidation_sha256": "64bf33599e9f8ac1da84438d9f4abec030a42b5f6ea50a7dcf89bb11ff1a56c2",
+      "consolidation_status": "needs_review",
+      "consolidation_note": "candidate composed from validated article-scope ops in effective order (33.0); NOT an official verbatim quote — pending licensed review"
     },
     {
       "id": "pdpl/art-34",
@@ -719,7 +1346,13 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "c7f86469d0d4ef48fe33b661dcefef25622a0d0df90dbb3350f7f770de77a90c",
-      "text_status": "operative"
+      "text_status": "operative",
+      "amendments": [],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "not_required",
+      "consolidation_note": null
     },
     {
       "id": "pdpl/art-35",
@@ -742,7 +1375,34 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "8fa3b5430725fecbd6b45646f3fbd550b3a1ba7575ef886910468e01e023c936",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "35.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "article",
+          "target": null,
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": "1- مع عدم الإخلال بأي عقوبة أشد منصوص عليها في نظام آخر، يُعاقب بالسجن مدة لا تزيد على (سنتين) وبغرامة لا تزيد على (ثلاثة ملايين) ريال، أو بإحدى هاتين العقوبتين؛ كل من أفصح عن بيانات حساسة أو نشرها مخالفاً أحكام النظام إذا كان ذلك بقصد الإضرار بصاحب البيانات أو بقصد تحقيق منفعة شخصية. 2- تختص النيابة العامة بمهمة التحقيق، والادعاء أمام المحكمة المختصة، عن المخالفة المنصوص عليها في الفقرة (1) من هذه المادة. 3- تتولى المحكمة المختصة النظر في الدعاوى الناشئة من تطبيق هذه المادة وإيقاع العقوبات المقررة. 4- يجوز للمحكمة المختصة مضاعفة عقوبة الغرامة المنصوص عليها في الفقرة (1) من هذه المادة في حالة العود حتى لو ترتب عليها تجاوز الحد الأقصى لها على ألا تتجاوز ضعف هذا الحد.",
+          "replacements": [],
+          "parse_status": "validated",
+          "parse_note": null
+        }
+      ],
+      "consolidated_text": "1- مع عدم الإخلال بأي عقوبة أشد منصوص عليها في نظام آخر، يُعاقب بالسجن مدة لا تزيد على (سنتين) وبغرامة لا تزيد على (ثلاثة ملايين) ريال، أو بإحدى هاتين العقوبتين؛ كل من أفصح عن بيانات حساسة أو نشرها مخالفاً أحكام النظام إذا كان ذلك بقصد الإضرار بصاحب البيانات أو بقصد تحقيق منفعة شخصية. 2- تختص النيابة العامة بمهمة التحقيق، والادعاء أمام المحكمة المختصة، عن المخالفة المنصوص عليها في الفقرة (1) من هذه المادة. 3- تتولى المحكمة المختصة النظر في الدعاوى الناشئة من تطبيق هذه المادة وإيقاع العقوبات المقررة. 4- يجوز للمحكمة المختصة مضاعفة عقوبة الغرامة المنصوص عليها في الفقرة (1) من هذه المادة في حالة العود حتى لو ترتب عليها تجاوز الحد الأقصى لها على ألا تتجاوز ضعف هذا الحد.",
+      "consolidation_method": "consolidated_from_instruments",
+      "consolidation_sha256": "6e034d4c87d77a8cc15dc5e880ce3c5414e08428e07c78f7a3091725cdf002e6",
+      "consolidation_status": "needs_review",
+      "consolidation_note": "candidate composed from validated article-scope ops in effective order (35.0); NOT an official verbatim quote — pending licensed review"
     },
     {
       "id": "pdpl/art-36",
@@ -765,7 +1425,34 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "261b691052ee1aef4378c5c510f82f5bfda63dbefbd44ac86f286a8c5a6b49be",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "36.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "paragraph",
+          "target": "2",
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": "2- تكوّن بقرار من رئيس الجهة المختصة لجنة (أو أكثر) لا يقل عدد أعضائها عن (ثلاثة)، ويسمى أحدهم رئيساً، ويكون منهم مختص فني ومستشار نظامي؛ تتولى النظر في المخالفات وإيقاع عقوبة الإنذار أو الغرامة المنصوص عليها في الفقرة (1) من هذه المادة، وذلك بحسب نوع المخالفة المرتكبة وجسامتها ومدى تأثيرها، على أن يعتمد قرار اللجنة رئيس الجهة المختصة أو من يفوضه بذلك. ويصدر رئيس الجهة المختصة -بقرار منه- قواعد عمل اللجنة، وتحدد فيها مكافآت أعضائها .",
+          "replacements": [],
+          "parse_status": "validated",
+          "parse_note": null
+        }
+      ],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "needs_review",
+      "consolidation_note": "v1 composes article-scope validated ops only; withheld: تعديل الفقرة 2"
     },
     {
       "id": "pdpl/art-37",
@@ -788,7 +1475,34 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "e4bbd8db2ea209b7d1d00f929c47026480087f9165ba9d84fa45327d2b0fc539",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "37.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "article",
+          "target": null,
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": "1- يتولى الموظفون أو العاملون -الذين يصدر بتسميتهم قرار من رئيس الجهة المختصة- صلاحيات الضبط والتفتيش المتعلقة بالمخالفات المنصوص عليها في النظام أو اللوائح. ويُصدر رئيس الجهة المختصة قواعد وإجراءات عملهم بما يتفق مع النصوص النظامية ذات الصلة. 2- للموظفين أو العاملين -المنصوص عليهم في الفقرة (1) من هذه المادة- الاستعانة بجهات الضبط الجنائي أو الجهات المختصة الأخرى؛ وذلك في سبيل قيامهم بمهمات وإجراءات الضبط والتفتيش المتعلقة بالمخالفات المنصوص عليها في النظام أو اللوائح. 3- للجهة المختصة الحق في حجز الوسائل أو الأدوات المستخدمة في ارتكاب المخالفة إلى حين البت فيها .",
+          "replacements": [],
+          "parse_status": "validated",
+          "parse_note": null
+        }
+      ],
+      "consolidated_text": "1- يتولى الموظفون أو العاملون -الذين يصدر بتسميتهم قرار من رئيس الجهة المختصة- صلاحيات الضبط والتفتيش المتعلقة بالمخالفات المنصوص عليها في النظام أو اللوائح. ويُصدر رئيس الجهة المختصة قواعد وإجراءات عملهم بما يتفق مع النصوص النظامية ذات الصلة. 2- للموظفين أو العاملين -المنصوص عليهم في الفقرة (1) من هذه المادة- الاستعانة بجهات الضبط الجنائي أو الجهات المختصة الأخرى؛ وذلك في سبيل قيامهم بمهمات وإجراءات الضبط والتفتيش المتعلقة بالمخالفات المنصوص عليها في النظام أو اللوائح. 3- للجهة المختصة الحق في حجز الوسائل أو الأدوات المستخدمة في ارتكاب المخالفة إلى حين البت فيها .",
+      "consolidation_method": "consolidated_from_instruments",
+      "consolidation_sha256": "2afaf397670f2e4238207100e888c7477a1f8df458e36e2dfe090c539f3ae3f9",
+      "consolidation_status": "needs_review",
+      "consolidation_note": "candidate composed from validated article-scope ops in effective order (37.0); NOT an official verbatim quote — pending licensed review"
     },
     {
       "id": "pdpl/art-38",
@@ -806,7 +1520,13 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "6c937e1b5d6477e619b5627590a2e7e958188c27f00e629751918239eaac8fe0",
-      "text_status": "operative"
+      "text_status": "operative",
+      "amendments": [],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "not_required",
+      "consolidation_note": null
     },
     {
       "id": "pdpl/art-39",
@@ -824,7 +1544,13 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "57964b078786844035e9e72221ca31a72880a5e1aedc26bfe4e224fafc67e9b8",
-      "text_status": "operative"
+      "text_status": "operative",
+      "amendments": [],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "not_required",
+      "consolidation_note": null
     },
     {
       "id": "pdpl/art-40",
@@ -842,7 +1568,13 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "41527274801dd96e134148bc6d774f433d9a439917835cb01f8b2b87a9506c2b",
-      "text_status": "operative"
+      "text_status": "operative",
+      "amendments": [],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "not_required",
+      "consolidation_note": null
     },
     {
       "id": "pdpl/art-41",
@@ -860,7 +1592,13 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "5f325b0b2941c2484673200bd20c2805a58f12628415e6adbd9005322a959bd4",
-      "text_status": "operative"
+      "text_status": "operative",
+      "amendments": [],
+      "consolidated_text": null,
+      "consolidation_method": null,
+      "consolidation_sha256": null,
+      "consolidation_status": "not_required",
+      "consolidation_note": null
     },
     {
       "id": "pdpl/art-42",
@@ -883,7 +1621,34 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "a260ac68e412700e7fde19db4d50ed5a9bf5e5915f07c8ce3b1a9ebb2235eb4d",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "42.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "article",
+          "target": null,
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": "يصدر رئيس الجهة المختصة اللوائح، وذلك في مدة لا تتجاوز (سبعمائة وعشرين) يوماً من تاريخ صدور النظام، على أن يُنسِّق -قبل إصدارها- مع: (وزارة الاتصالات وتقنية المعلومات، ووزارة الخارجية، وهيئة الاتصالات والفضاء والتقنية، وهيئة الحكومة الرقمية، والهيئة الوطنية للأمن السيبراني، والمجلس الصحي السعودي، والبنك المركزي السعودي)، كلٌّ فيما يخصه .",
+          "replacements": [],
+          "parse_status": "validated",
+          "parse_note": null
+        }
+      ],
+      "consolidated_text": "يصدر رئيس الجهة المختصة اللوائح، وذلك في مدة لا تتجاوز (سبعمائة وعشرين) يوماً من تاريخ صدور النظام، على أن يُنسِّق -قبل إصدارها- مع: (وزارة الاتصالات وتقنية المعلومات، ووزارة الخارجية، وهيئة الاتصالات والفضاء والتقنية، وهيئة الحكومة الرقمية، والهيئة الوطنية للأمن السيبراني، والمجلس الصحي السعودي، والبنك المركزي السعودي)، كلٌّ فيما يخصه .",
+      "consolidation_method": "consolidated_from_instruments",
+      "consolidation_sha256": "61df2aa8157b51d2e858edfc0e9d76d54a127daf41de7d8865fcb930c3795373",
+      "consolidation_status": "needs_review",
+      "consolidation_note": "candidate composed from validated article-scope ops in effective order (42.0); NOT an official verbatim quote — pending licensed review"
     },
     {
       "id": "pdpl/art-43",
@@ -906,7 +1671,34 @@
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
       "sha256": "3c81b37a0688a52a6f7434713f4bcbe5089c2fe332d9d3c3620239e19e7f38e8",
-      "text_status": "base_not_operative"
+      "text_status": "base_not_operative",
+      "amendments": [
+        {
+          "op_id": "43.0",
+          "instrument": "م/148",
+          "issued_on_hijri": "1444/9/5",
+          "issued_on_iso": "2023-03-27",
+          "effective_on_hijri": "1444/9/5",
+          "effective_on_iso": "2023-03-27",
+          "effective_order": 0,
+          "official_url": null,
+          "fetched_at": null,
+          "source_sha256": null,
+          "scope": "article",
+          "target": null,
+          "op": "replace",
+          "insert_after": null,
+          "quoted_text": "يُعمل بالنظام بعد (سبعمائة وعشرين) يوماً من التاريخ الذي نشر به في الجريدة الرسمية.",
+          "replacements": [],
+          "parse_status": "validated",
+          "parse_note": null
+        }
+      ],
+      "consolidated_text": "يُعمل بالنظام بعد (سبعمائة وعشرين) يوماً من التاريخ الذي نشر به في الجريدة الرسمية.",
+      "consolidation_method": "consolidated_from_instruments",
+      "consolidation_sha256": "fe2c3cf8c3bda0bd3a87f9910c0909ac6b65700f9d64567945e956b7d6ef0c8f",
+      "consolidation_status": "needs_review",
+      "consolidation_note": "candidate composed from validated article-scope ops in effective order (43.0); NOT an official verbatim quote — pending licensed review"
     }
   ],
   "safety": {
@@ -915,5 +1707,7 @@
     "html_tags_in_text": false,
     "article_count_ok": true
   },
-  "content_sha256": "e273e3c01e9eaf0055ec27fd5d65fadd31b06236345b915070f8313861d019fe"
+  "content_sha256": "e273e3c01e9eaf0055ec27fd5d65fadd31b06236345b915070f8313861d019fe",
+  "amendments_schema_version": "1.0",
+  "amendments_built_at": "2026-11-23T22:42:44.603209+00:00"
 }

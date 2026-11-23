@@ -112,6 +112,57 @@ def _run_golden_cases() -> None:
         f"got {None if labor84 is None else labor84.get('text_status')}",
     )
 
+    # — B1/B2 model (plan §2): structured ops + v1 composition outcomes —
+    labor53 = get_article("labor-law", "53")
+    check(
+        "labor-53 two validated article ops ordered م/46 then م/44",
+        labor53 is not None and [
+            (o.get("scope"), o.get("op"), o.get("parse_status"), o.get("instrument"))
+            for o in labor53.get("amendments", [])
+        ] == [
+            ("article", "replace", "validated", "م/46"),
+            ("article", "replace", "validated", "م/44"),
+        ],
+        f"got {None if labor53 is None else labor53.get('amendments')}",
+    )
+    check(
+        "labor-53 consolidated candidate (temporary) with methodology",
+        labor53 is not None
+        and labor53.get("consolidation_status") == "needs_review"
+        and labor53.get("consolidation_method") == "consolidated_from_instruments"
+        and bool(labor53.get("consolidated_text"))
+        and "مائة وثمانين" in (labor53.get("consolidated_text") or ""),
+        f"status={None if labor53 is None else labor53.get('consolidation_status')}",
+    )
+    labor107 = get_article("labor-law", "107")
+    check(
+        "labor-107 paragraph op withheld explicitly (v1: no paragraph auto-compose)",
+        labor107 is not None
+        and labor107.get("consolidation_status") == "needs_review"
+        and labor107.get("consolidated_text") is None,
+        f"got {None if labor107 is None else (labor107.get('consolidation_status'), bool(labor107.get('consolidated_text')))}",
+    )
+    labor74 = get_article("labor-law", "74")
+    check(
+        "labor-74 mixed ops withheld with مكرر targets recorded",
+        labor74 is not None
+        and labor74.get("consolidation_status") == "needs_review"
+        and labor74.get("consolidated_text") is None
+        and sorted(
+            o.get("target") for o in labor74.get("amendments", []) if "مكرر" in str(o.get("target"))
+        ) == ["3 مكرر", "7 مكرر"],
+        f"got {None if labor74 is None else ([o.get('target') for o in labor74.get('amendments', [])], labor74.get('consolidation_status'))}",
+    )
+    check(
+        "v1 never marks verified (licensed review or resync only)",
+        all(
+            a.get("consolidation_status") in ("needs_review", "failed", "not_required")
+            for stem in ("labor-law", "pdpl", "civil-transactions-law", "pdpl-exec-regulations")
+            for a in (load_corpus_file(stem) or {}).get("articles", [])
+        ),
+        "a verified status slipped into v1 data",
+    )
+
     for query in (
         "ما الحد الأقصى لفترة التجربة في نظام العمل",
         "كم مدة إشعار إنهاء عقد العمل غير محدد المدة",

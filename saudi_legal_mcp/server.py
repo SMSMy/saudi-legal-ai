@@ -30,7 +30,12 @@ from saudi_legal_mcp.tools.provenance import (
     PROVENANCE_UNLINKED,
     document_reference,
 )
-from saudi_legal_mcp.tools.corpus import available_corpus_sources, corpus_file_stats, corpus_stats
+from saudi_legal_mcp.tools.corpus import (
+    CORPUS_FILES,
+    available_corpus_sources,
+    corpus_file_stats,
+    corpus_stats,
+)
 from saudi_legal_mcp.tools import get_repo_path
 
 # ── Configuration ────────────────────────────────────────────────────────────────────────────────
@@ -340,12 +345,8 @@ def list_legal_domains() -> dict:
         # are split here for honest display.
         "corpus_files": {
             stem: corpus_file_stats(stem)
-            for stem in (
-                "labor-law",
-                "civil-transactions-law",
-                "pdpl",
-                "pdpl-exec-regulations",
-            )
+            for stems in CORPUS_FILES.values()
+            for stem in stems
             if corpus_file_stats(stem)
         },
         "article_level_articles": sum(
