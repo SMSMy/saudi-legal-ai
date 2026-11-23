@@ -260,6 +260,49 @@ def search_articles(
     return results[:limit]
 
 
+def stale_matches(
+    query: str,
+    source_id: str,
+    *,
+    limit: int = 2,
+) -> list[dict]:
+    """Best base-scored stale rows (for the Phase A fallback gate).
+
+    Pure detection: raw keyword score, no hint boost, no limit games.
+    Returns at most `limit` rows ordered by (score desc, article asc).
+    """
+    if not has_corpus(source_id):
+        return []
+    terms = tokenize_query(query)
+    if not terms:
+        return []
+    scored: list[tuple[int, tuple[int, str], dict]] = []
+    for article in iter_articles(source_id):
+        if article.get("status") == "canceled":
+            continue
+        if article.get("text_status") != "base_not_operative":
+            continue
+        text = article.get("text") or ""
+        if not text.strip():
+            continue
+        score = _score_article(article, terms)
+        if score <= 0:
+            continue
+        number = str(article.get("article", "")).strip()
+        try:
+            key = (int(number), "")
+        except (ValueError, TypeError):
+            key = (10**9, number)
+        scored.append((score, key, article))
+    scored.sort(key=lambda item: (-item[0], item[1], str(item[2].get("id") or "")))
+    out: list[dict] = []
+    for score, _, article in scored[:limit]:
+        row = dict(article)
+        row["relevance_score"] = score
+        out.append(row)
+    return out
+
+
 def _find_corpus(source_id: str, article: dict) -> Optional[dict]:
     for corpus in load_source_corpora(source_id):
         for candidate in corpus.get("articles", []):

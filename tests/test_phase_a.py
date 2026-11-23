@@ -145,6 +145,58 @@ def test_build_legal_brief_commercial_gives_five_years_or_abstains():
         assert "إقرار" in brief or "عذر" in brief
 
 
+def test_stale_wins_falls_back_to_summary_with_notice():
+    """Plan §1.4/§2.3: stale 53 outscores every quotable row → the corpus
+    cannot answer.  Fall back to the summary (the record) with an amendment
+    notice — never weak operative excerpts, never the old text as operative."""
+    result = search_legal_provision(
+        "ما الحد الأقصى لفترة التجربة في نظام العمل؟", "labor-law"
+    )
+    assert result.get("retrieval_scope") == "summary_after_stale_fallback"
+    notices = result.get("amendment_notices", [])
+    assert [n.get("article") for n in notices] and "53" in [n.get("article") for n in notices]
+    assert [q.get("article") for q in result.get("quotes", [])] == []
+    bodies = " ".join(s.get("body", "") for s in result.get("matched_sections", []))
+    assert "180" in bodies  # the record (م/44 rule) is shown
+    # The old number may still appear inside the explanatory record/notice —
+    # what must never happen is quoting it as an operative official text
+    # (asserted above via quotes == [] and scope != verbatim_corpus).
+
+
+def test_notice_query_falls_back_with_notice_75():
+    result = search_legal_provision(
+        "ما مدة إشعار إنهاء العقد غير محدد المدة إذا كان الأجر شهريًا؟",
+        "labor-law",
+    )
+    assert result.get("retrieval_scope") == "summary_after_stale_fallback"
+    assert "75" in [n.get("article") for n in result.get("amendment_notices", [])]
+    assert [q.get("article") for q in result.get("quotes", [])] == []
+
+
+def test_tie_keeps_corpus_without_notices():
+    """EOSB: stale 54 ties operative best (3=3) → corpus kept, 84 quoted."""
+    result = search_legal_provision("كيف تحسب مكافأة نهاية الخدمة؟", "labor-law")
+    assert result.get("retrieval_scope") == "verbatim_corpus"
+    assert "84" in [q.get("article") for q in result.get("quotes", [])]
+    assert result.get("amendment_notices", []) == []
+
+
+def test_brief_carries_amendment_notice_not_stale_quote():
+    result = build_legal_brief(
+        scenario="ما الحد الأقصى لفترة التجربة في نظام العمل؟",
+        domain="labor-law-analysis",
+        source_id="labor-law",
+    )
+    assert result.get("insufficient_evidence") is False
+    assert "53" in [n.get("article") for n in result.get("amendment_notices", [])]
+    brief = result.get("brief") or ""
+    assert "تنبيه تعديل" in brief
+    # No operative quote anywhere in the fallback brief (the old number may
+    # still appear inside the explanatory record/notice — never as a quote).
+    assert "اقتباس رسمي حرفي" not in brief
+    assert "180" in brief
+
+
 def test_skill_alone_does_not_cancel_statutory_insufficient():
     """Plan 4.2: generic skill text is not evidence for a statutory ruling."""
     result = build_legal_brief(

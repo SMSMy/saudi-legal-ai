@@ -124,6 +124,19 @@ def _run_golden_cases() -> None:
             f"quoted={quoted}",
         )
 
+    # Phase A stale-wins gate: stale outscores quotable → summary + notice.
+    for query, number in (
+        ("ما الحد الأقصى لفترة التجربة في نظام العمل؟", "53"),
+        ("ما مدة إشعار إنهاء العقد غير محدد المدة إذا كان الأجر شهريًا؟", "75"),
+    ):
+        result = search_legal_provision(query, "labor-law")
+        check(
+            f"stale-wins fallback for {number}",
+            result.get("retrieval_scope") == "summary_after_stale_fallback"
+            and number in [n.get("article") for n in result.get("amendment_notices", [])],
+            f"scope={result.get('retrieval_scope')} notices={[n.get('article') for n in result.get('amendment_notices', [])]}",
+        )
+
     # — P0 ranking (plan 3.3): template + reported 10-year failure —
     template = [a.get("article") for a in search_articles(
         "لا تسمع الدعوى على المنكر بانقضاء",

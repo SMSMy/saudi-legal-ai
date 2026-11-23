@@ -31,10 +31,12 @@ from saudi_legal_mcp.tools.arabic import (
 )
 from saudi_legal_mcp.tools.article_numbers import parse_arabic_article_number
 from saudi_legal_mcp.tools.corpus import (
+    _score_article,
     article_record,
     corpus_envelope,
     has_corpus,
     search_articles,
+    stale_matches,
 )
 from saudi_legal_mcp.tools.provenance import (
     DISCLAIMER,
@@ -332,6 +334,33 @@ def search_legal_provision(
                 operative_articles.append(a)
             # Anything else (e.g. amended without a tag) fails closed.
         articles = operative_articles
+        # Phase A stale-wins gate (plan §1.4/§2.3): when the best stale row
+        # outscores every quotable row, the corpus cannot answer — fall back
+        # to the hand-written summary (the record) with an amendment notice
+        # instead of filling the answer with weak operative excerpts.
+        # No consolidation happens here (that is Phase B); nothing is
+        # presented under a "النص النافذ" headline.
+        stale = stale_matches(query, source_id, limit=2)
+        if stale:
+            stale_best = max(a.get("relevance_score", 0) for a in stale)
+            operative_best = 0
+            if articles:
+                query_terms = tokenize_query(query)
+                operative_best = max(
+                    _score_article(a, query_terms) for a in articles
+                )
+            if stale_best > operative_best:
+                summary_result = _summary_search(
+                    query, source_id,
+                    max_sections=max_sections,
+                    max_chars_per_section=max_chars_per_section,
+                )
+                summary_result["retrieval_scope"] = "summary_after_stale_fallback"
+                summary_result["amendment_notices"] = [
+                    _amendment_notice(a) for a in stale
+                ]
+                summary_result["quotes"] = []
+                return _finish_summary_result(summary_result)
         if articles:
             quotes = [article_record(article) for article in articles]
             matched_sections: list[dict] = []
@@ -379,6 +408,44 @@ def search_legal_provision(
         max_sections=max_sections,
         max_chars_per_section=max_chars_per_section,
     )
+    return _finish_summary_result(
+        result, apply_confidence_gate=apply_confidence_gate
+    )
+
+def _amendment_notice(article: dict) -> dict:
+    """Phase A notice for a stale row (no consolidation — Phase B).
+
+    Points at the record (latest history segment + instruments) instead of
+    quoting the old text as operative.  The full history is never pasted;
+    only the latest operation excerpt (≤600 chars) is shown.
+    """
+    history = article.get("amendment_history") or ""
+    segments = re.split(r"(?=المادة\s+\S+\s*[:-])", history)
+    latest = segments[-1].strip() if segments else history.strip()
+    if len(latest) > 600:
+        latest = latest[:600] + "…"
+    number = str(article.get("article", ""))
+    return {
+        "article": number,
+        "article_label": article.get("article_label"),
+        "status": article.get("status"),
+        "text_status": article.get("text_status"),
+        "instruments": article.get("amendment_instruments", []),
+        "latest_history_excerpt": latest,
+        "warning": (
+            f"المادة {number} معدّلة وسجل تعديلها أحدث من النص المسحوب — "
+            "النص القديم لا يُقتبس كنافذ. القاعدة الحالية في الملخص البشري، "
+            "والنص النافذ الموحّد بانتظار مراجعة مرخّص (مؤقت — المرحلة أ)."
+        ),
+    }
+
+
+def _finish_summary_result(
+    result: dict,
+    *,
+    apply_confidence_gate: bool = False,
+) -> dict:
+    """Shared tail for every summary path (normal + stale fallback)."""
     if result.get("insufficient_evidence"):
         return result
 
@@ -412,7 +479,7 @@ def search_legal_provision(
         citation_note=result.get("citation_note"),
     )
     result["answer_markdown"] = build_answer_markdown(
-        title=f"{source_id} — نتائج البحث",
+        title=f"{result.get('source_id')} — نتائج البحث",
         content="\n\n".join(
             f"{s.get('heading', '')}\n{s.get('body', '')}" for s in sections
         ),
@@ -503,6 +570,7 @@ def build_legal_brief(
 
     provisions: list[dict] = []
     quotes: list[dict] = []
+    amendment_notices: list[dict] = []
     prov_placeholder_warning: Optional[str] = None
     prov_placeholder_dominated: bool = False
     prov_raw_count: int = 0
@@ -516,6 +584,8 @@ def build_legal_brief(
         )
         if prov_result.get("insufficient_evidence"):
             prov_insufficient = True
+        # Amendment notices ride along (summary or stale-fallback paths).
+        amendment_notices = list(prov_result.get("amendment_notices", []))
         if not prov_result.get("insufficient_evidence"):
             raw_sections = prov_result.get("matched_sections", [])
             prov_raw_count = len(raw_sections)
@@ -638,6 +708,23 @@ def build_legal_brief(
     for r in risks:
         risks_text += f"- [{r.get('risk_level','').upper()}] {r.get('risk_reason','')[:200]}\n"
 
+    # Phase A stale notice (plan §2.3, no "النص النافذ" headline): the
+    # summary above is the record; the operative text is pending review.
+    notice_text = ""
+    if amendment_notices and not quotes:
+        for n in amendment_notices[:2]:
+            instruments = ", ".join(
+                f"{i.get('instrument')} ({i.get('date')})"
+                for i in n.get("instruments", [])
+            )
+            notice_text += (
+                f"\n**تنبيه تعديل — المادة {n.get('article')} "
+                f"({n.get('article_label') or ''}):**\n"
+                f"{n.get('warning', '')}\n"
+                + (f"الأدوات: {instruments}\n" if instruments else "")
+                + (f"> {n.get('latest_history_excerpt', '')[:300]}\n" if n.get("latest_history_excerpt") else "")
+            )
+
     sources_text = ""
     seen_sources: set[str] = set()
     for p in provisions:
@@ -663,6 +750,7 @@ def build_legal_brief(
         f"**السيناريو:** {scenario}\n\n"
         f"### النصوص النظامية ذات الصلة\n{sections_text}\n"
         f"{quotes_text}"
+        f"{notice_text}"
         f"### السياق المجالي ({domain})\n{(skill_excerpt or skill_summary)[:400]}\n\n"
         f"### المخاطر التعاقدية\n{risks_text}\n"
         f"{sources_block}"
@@ -680,6 +768,8 @@ def build_legal_brief(
     ))
     if prov_placeholder_warning:
         response["placeholder_warning"] = prov_placeholder_warning
+    if amendment_notices:
+        response["amendment_notices"] = amendment_notices
     if quotes:
         response["text_origin"] = TEXT_ORIGIN_OFFICIAL
         response["provenance_level"] = quotes[0].get("provenance_level")
