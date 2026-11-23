@@ -1,8 +1,8 @@
 {
   "id": "arbitration-law",
   "path": "sources/arbitration-law.md",
-  "sha256": "3c499dcd3dc58b8644f3035d375564fb08257b14ba55a4b8cdcd44999d2f6bf5",
-  "generated_at": "2026-11-23T19:13:15.743888+00:00",
+  "sha256": "91cfa03be9d316865cef0ec5fbb36799e5509b795a92a81f539e69327b7cac31",
+  "generated_at": "2026-11-23T19:58:53.575975+00:00",
   "metadata_status": "field_tested",
   "verification_status": "field_tested",
   "verified_by": "field_tested_v04",
