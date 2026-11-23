@@ -1,7 +1,7 @@
 {
   "release": "0.4.0",
-  "git_commit": "ce05b7fe4d20d996ada71b8b210e51b7a69fb90c",
-  "generated_at": "2026-08-13T10:47:39.752613+00:00",
+  "git_commit": "14e1218feff539ce57a9c0c67f99d1c60df5c3dc",
+  "generated_at": "2026-11-23T20:12:34.652707+00:00",
   "sources_by_verification_status": {
     "field_tested": 20,
     "verified": 0,
@@ -12,7 +12,7 @@
   },
   "skills_verification_status": "not_applicable (reasoning guides — see legal_response_policy.md)",
   "tests": {
-    "passed": 90,
+    "passed": 179,
     "failed": 0
   },
   "evaluation": {
@@ -20,7 +20,7 @@
     "citation_precision": 0.9723,
     "source_recall": 0.9028,
     "abstention_accuracy": null,
-    "response_time_ms_avg": 1.8285
+    "response_time_ms_avg": 2.0238
   },
   "policy_gates": {
     "match_confidence_threshold": 0.7,
