@@ -34,7 +34,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "11e72326299f19213446ce5bd827d27b94b3f5a529b1b512e223c7fea02a8cff"
+      "sha256": "11e72326299f19213446ce5bd827d27b94b3f5a529b1b512e223c7fea02a8cff",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-2",
@@ -51,7 +52,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "4b31a56c6d244b7de19ccb5e9ceab47fa1d83fdaaa6f123504d91cdb589feb1f"
+      "sha256": "4b31a56c6d244b7de19ccb5e9ceab47fa1d83fdaaa6f123504d91cdb589feb1f",
+      "text_status": "operative"
     },
     {
       "id": "pdpl/art-3",
@@ -68,7 +70,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "5cc9bbf2d7859a5cc7cf0c6737bd081c6c00f9e1d2743bd60b973784ac0371d7"
+      "sha256": "5cc9bbf2d7859a5cc7cf0c6737bd081c6c00f9e1d2743bd60b973784ac0371d7",
+      "text_status": "operative"
     },
     {
       "id": "pdpl/art-4",
@@ -90,7 +93,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "41089b5cbc367b88a07d62d3eda1bb4c197a640a7f7555f757f4e4a100ce9494"
+      "sha256": "41089b5cbc367b88a07d62d3eda1bb4c197a640a7f7555f757f4e4a100ce9494",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-5",
@@ -112,7 +116,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "5a1cc7dba0069e0b23e643a1ebd88e6073a3a709c9a65e209daf956607c804fd"
+      "sha256": "5a1cc7dba0069e0b23e643a1ebd88e6073a3a709c9a65e209daf956607c804fd",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-6",
@@ -134,7 +139,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "419ae6130373d01b68f09ff55a61569f02b643716767fcc8b418fe05b05ea653"
+      "sha256": "419ae6130373d01b68f09ff55a61569f02b643716767fcc8b418fe05b05ea653",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-7",
@@ -151,7 +157,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "24411cd7d19e0e39c96b355629ec0d9d4ff1da0c5c340d7ac1358dc565e6affb"
+      "sha256": "24411cd7d19e0e39c96b355629ec0d9d4ff1da0c5c340d7ac1358dc565e6affb",
+      "text_status": "operative"
     },
     {
       "id": "pdpl/art-8",
@@ -173,7 +180,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "10b47826ec0c6745a08780c8864d2d49b243f1eb050583583a8da77c2ec1aa23"
+      "sha256": "10b47826ec0c6745a08780c8864d2d49b243f1eb050583583a8da77c2ec1aa23",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-9",
@@ -195,7 +203,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "316c9f497793a11b36183241fc12e8dbe9b4b5920daece6a495555fb66022a39"
+      "sha256": "316c9f497793a11b36183241fc12e8dbe9b4b5920daece6a495555fb66022a39",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-10",
@@ -217,7 +226,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "c2be9e894aa995f0e64fabadb695035255e4795d05611ba0cb6a16ab585cd49d"
+      "sha256": "c2be9e894aa995f0e64fabadb695035255e4795d05611ba0cb6a16ab585cd49d",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-11",
@@ -239,7 +249,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "58d40ade6f5b54dcd129ce458f175d39656d90f7a9240a28c309483ff038abc7"
+      "sha256": "58d40ade6f5b54dcd129ce458f175d39656d90f7a9240a28c309483ff038abc7",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-12",
@@ -261,7 +272,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "c779c15158014acca1ed7769c06ab74ccc026147df7d86279ded06ab445194c6"
+      "sha256": "c779c15158014acca1ed7769c06ab74ccc026147df7d86279ded06ab445194c6",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-13",
@@ -283,7 +295,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "6134aafc0404eefba522c9f796dcb65ae7a18c45641c211585f45c360e89bde1"
+      "sha256": "6134aafc0404eefba522c9f796dcb65ae7a18c45641c211585f45c360e89bde1",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-14",
@@ -300,7 +313,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "6d8e812bf87fc4fab2c3ef566a7e8b4e419c66641a86bd869f032660aeba1851"
+      "sha256": "6d8e812bf87fc4fab2c3ef566a7e8b4e419c66641a86bd869f032660aeba1851",
+      "text_status": "operative"
     },
     {
       "id": "pdpl/art-15",
@@ -322,7 +336,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "c30af7c117391503fb58184db03be3fc9e1abdc6105d67c390ddded5270975e2"
+      "sha256": "c30af7c117391503fb58184db03be3fc9e1abdc6105d67c390ddded5270975e2",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-16",
@@ -344,7 +359,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "59991f10aaa19bb34632664055625e798e4de4dfb2b553c78c212bab1679d6b1"
+      "sha256": "59991f10aaa19bb34632664055625e798e4de4dfb2b553c78c212bab1679d6b1",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-17",
@@ -361,7 +377,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "a929858fca27d4ee43cc4f769e9cd45301dc6f1f5285152cd8d74115ad1f934c"
+      "sha256": "a929858fca27d4ee43cc4f769e9cd45301dc6f1f5285152cd8d74115ad1f934c",
+      "text_status": "operative"
     },
     {
       "id": "pdpl/art-18",
@@ -383,7 +400,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "2bdde4321d220a155bf026c44c1d7b21790555f6e18837bd3682038d382348b7"
+      "sha256": "2bdde4321d220a155bf026c44c1d7b21790555f6e18837bd3682038d382348b7",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-19",
@@ -400,7 +418,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "594984eb1ef99b7618fe0763b9d4939de6f0271e0b3fa34e641fd30a59232b91"
+      "sha256": "594984eb1ef99b7618fe0763b9d4939de6f0271e0b3fa34e641fd30a59232b91",
+      "text_status": "operative"
     },
     {
       "id": "pdpl/art-20",
@@ -422,7 +441,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "757d460b69e997025333616e88583708f8c814a3f79f12efced2bce267c4c768"
+      "sha256": "757d460b69e997025333616e88583708f8c814a3f79f12efced2bce267c4c768",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-21",
@@ -439,7 +459,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "2509d7fcc3b5eeecf8b2acc3a3349068c84cc031f3032f49503261edf3515caa"
+      "sha256": "2509d7fcc3b5eeecf8b2acc3a3349068c84cc031f3032f49503261edf3515caa",
+      "text_status": "operative"
     },
     {
       "id": "pdpl/art-22",
@@ -456,7 +477,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "ceb4fd04ad6119cb96adf7647ea6d1d489556eef9fb1d275ab9f51f4a5319a32"
+      "sha256": "ceb4fd04ad6119cb96adf7647ea6d1d489556eef9fb1d275ab9f51f4a5319a32",
+      "text_status": "operative"
     },
     {
       "id": "pdpl/art-23",
@@ -473,7 +495,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "729f358a3449bd482b1cb3a1b09151c8ea346eea6090ad6900c7165b87a76130"
+      "sha256": "729f358a3449bd482b1cb3a1b09151c8ea346eea6090ad6900c7165b87a76130",
+      "text_status": "operative"
     },
     {
       "id": "pdpl/art-24",
@@ -495,7 +518,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "a5b91f458289d41f7c3a024557effcedb40e611163e571a58dc9022da2c70d54"
+      "sha256": "a5b91f458289d41f7c3a024557effcedb40e611163e571a58dc9022da2c70d54",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-25",
@@ -512,7 +536,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "46b167db5af425356472fc567f0002f6c93a1297157e4235b8cd3581edde00a6"
+      "sha256": "46b167db5af425356472fc567f0002f6c93a1297157e4235b8cd3581edde00a6",
+      "text_status": "operative"
     },
     {
       "id": "pdpl/art-26",
@@ -529,7 +554,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "596a4888a0676a0ceedec9e1abd453dd3d579e8c5dee6d8e1012554cb731984a"
+      "sha256": "596a4888a0676a0ceedec9e1abd453dd3d579e8c5dee6d8e1012554cb731984a",
+      "text_status": "operative"
     },
     {
       "id": "pdpl/art-27",
@@ -546,7 +572,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "0a0c90b1b460180cc4fbf3a668fd2828dd983c0560bf3830fc858cf54026ccdf"
+      "sha256": "0a0c90b1b460180cc4fbf3a668fd2828dd983c0560bf3830fc858cf54026ccdf",
+      "text_status": "operative"
     },
     {
       "id": "pdpl/art-28",
@@ -563,7 +590,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "fa3e0d3eda9ec161aab9e409433175d6ef1dee69097d678e43a36a9897cef67c"
+      "sha256": "fa3e0d3eda9ec161aab9e409433175d6ef1dee69097d678e43a36a9897cef67c",
+      "text_status": "operative"
     },
     {
       "id": "pdpl/art-29",
@@ -585,7 +613,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "c223e9a8bc7aef7d91a8b65d81ccbfe27b66cd61c4e37846be4b549da73cc59d"
+      "sha256": "c223e9a8bc7aef7d91a8b65d81ccbfe27b66cd61c4e37846be4b549da73cc59d",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-30",
@@ -607,7 +636,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "390b3cbf54c2dc6124fd8a92c25c9decc95305c1c839ef5c33527c26dca51e07"
+      "sha256": "390b3cbf54c2dc6124fd8a92c25c9decc95305c1c839ef5c33527c26dca51e07",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-31",
@@ -624,7 +654,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "999eaef908a921e8991bc3b14d2afd41fb9c87e839f6c87a16dfb1e9957a9bc3"
+      "sha256": "999eaef908a921e8991bc3b14d2afd41fb9c87e839f6c87a16dfb1e9957a9bc3",
+      "text_status": "operative"
     },
     {
       "id": "pdpl/art-32",
@@ -646,7 +677,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "be5a365b3b70206b84dae71747f3141e0d23690bded52853e9df033459d7969f"
+      "sha256": "be5a365b3b70206b84dae71747f3141e0d23690bded52853e9df033459d7969f",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-33",
@@ -668,7 +700,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "79c3ffc0bbde4d811307d54655d0f2b22339d5427adf9d54bb6f3ccc72bccf3f"
+      "sha256": "79c3ffc0bbde4d811307d54655d0f2b22339d5427adf9d54bb6f3ccc72bccf3f",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-34",
@@ -685,7 +718,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "c7f86469d0d4ef48fe33b661dcefef25622a0d0df90dbb3350f7f770de77a90c"
+      "sha256": "c7f86469d0d4ef48fe33b661dcefef25622a0d0df90dbb3350f7f770de77a90c",
+      "text_status": "operative"
     },
     {
       "id": "pdpl/art-35",
@@ -707,7 +741,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "8fa3b5430725fecbd6b45646f3fbd550b3a1ba7575ef886910468e01e023c936"
+      "sha256": "8fa3b5430725fecbd6b45646f3fbd550b3a1ba7575ef886910468e01e023c936",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-36",
@@ -729,7 +764,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "261b691052ee1aef4378c5c510f82f5bfda63dbefbd44ac86f286a8c5a6b49be"
+      "sha256": "261b691052ee1aef4378c5c510f82f5bfda63dbefbd44ac86f286a8c5a6b49be",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-37",
@@ -751,7 +787,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "e4bbd8db2ea209b7d1d00f929c47026480087f9165ba9d84fa45327d2b0fc539"
+      "sha256": "e4bbd8db2ea209b7d1d00f929c47026480087f9165ba9d84fa45327d2b0fc539",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-38",
@@ -768,7 +805,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "6c937e1b5d6477e619b5627590a2e7e958188c27f00e629751918239eaac8fe0"
+      "sha256": "6c937e1b5d6477e619b5627590a2e7e958188c27f00e629751918239eaac8fe0",
+      "text_status": "operative"
     },
     {
       "id": "pdpl/art-39",
@@ -785,7 +823,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "57964b078786844035e9e72221ca31a72880a5e1aedc26bfe4e224fafc67e9b8"
+      "sha256": "57964b078786844035e9e72221ca31a72880a5e1aedc26bfe4e224fafc67e9b8",
+      "text_status": "operative"
     },
     {
       "id": "pdpl/art-40",
@@ -802,7 +841,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "41527274801dd96e134148bc6d774f433d9a439917835cb01f8b2b87a9506c2b"
+      "sha256": "41527274801dd96e134148bc6d774f433d9a439917835cb01f8b2b87a9506c2b",
+      "text_status": "operative"
     },
     {
       "id": "pdpl/art-41",
@@ -819,7 +859,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "5f325b0b2941c2484673200bd20c2805a58f12628415e6adbd9005322a959bd4"
+      "sha256": "5f325b0b2941c2484673200bd20c2805a58f12628415e6adbd9005322a959bd4",
+      "text_status": "operative"
     },
     {
       "id": "pdpl/art-42",
@@ -841,7 +882,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "a260ac68e412700e7fde19db4d50ed5a9bf5e5915f07c8ce3b1a9ebb2235eb4d"
+      "sha256": "a260ac68e412700e7fde19db4d50ed5a9bf5e5915f07c8ce3b1a9ebb2235eb4d",
+      "text_status": "base_not_operative"
     },
     {
       "id": "pdpl/art-43",
@@ -863,7 +905,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
       "fetched_at": "2026-11-23T17:47:08.975564+00:00",
       "fetched_by": "local",
-      "sha256": "3c81b37a0688a52a6f7434713f4bcbe5089c2fe332d9d3c3620239e19e7f38e8"
+      "sha256": "3c81b37a0688a52a6f7434713f4bcbe5089c2fe332d9d3c3620239e19e7f38e8",
+      "text_status": "base_not_operative"
     }
   ],
   "safety": {

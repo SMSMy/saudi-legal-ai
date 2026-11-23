@@ -54,6 +54,138 @@ def _run(step_name: str, cmd: list[str], cwd: Path) -> int:
     return result.returncode
 
 
+def _run_golden_cases() -> None:
+    """Phase A golden cases — TEMPORARY until a licensed reviewer confirms
+    them (plan 2.4/7).  Used for negative testing (reject the old stale text)
+    rather than proving a new operative text.  Any failure is a hard gate
+    (sys.exit(1) — the release fails, it is never a warning).
+
+    Coverage note (review Q3): the canonical eval (eval_runner) goes through
+    find_legal_provision with prefer_corpus=False — the hand-written summary
+    path only — so blocking amended corpus rows cannot move its numbers.
+    These golden cases are therefore the ONLY automated evidence for the
+    stale-text fix, not the eval metrics.
+    """
+    import os
+
+    os.environ.setdefault("REPO_PATH", str(REPO_ROOT / "saudi_legal_mcp" / "data"))
+    if str(REPO_ROOT) not in sys.path:
+        sys.path.insert(0, str(REPO_ROOT))
+
+    from saudi_legal_mcp.tools.corpus import get_article, load_corpus_file, search_articles
+    from saudi_legal_mcp.tools.reasoning import (
+        build_legal_brief,
+        find_legal_provision,
+        search_legal_provision,
+    )
+
+    failures: list[str] = []
+
+    def check(name: str, cond: bool, detail: str = "") -> None:
+        print(f"  [{'OK' if cond else 'FAIL'}] {name}" + (f" — {detail}" if detail and not cond else ""))
+        if not cond:
+            failures.append(f"{name}: {detail}")
+
+    # — P0: stale bases are tagged and never quoted as in-force —
+    for number in ("53", "75", "107", "74"):
+        article = get_article("labor-law", number)
+        check(
+            f"labor-{number} tagged base_not_operative",
+            article is not None and article.get("text_status") == "base_not_operative",
+            f"got {None if article is None else article.get('text_status')}",
+        )
+    pdpl_law = load_corpus_file("pdpl") or {}
+    pdpl4 = next(
+        (a for a in pdpl_law.get("articles", []) if str(a.get("article")) == "4"),
+        None,
+    )
+    check(
+        "pdpl-4 tagged base_not_operative",
+        pdpl4 is not None and pdpl4.get("text_status") == "base_not_operative",
+        f"got {None if pdpl4 is None else pdpl4.get('text_status')}",
+    )
+    # Positive control: in-force rows stay quotable (no over-blocking).
+    labor84 = get_article("labor-law", "84")
+    check(
+        "labor-84 stays operative",
+        labor84 is not None and labor84.get("text_status") == "operative",
+        f"got {None if labor84 is None else labor84.get('text_status')}",
+    )
+
+    for query in (
+        "ما الحد الأقصى لفترة التجربة في نظام العمل",
+        "كم مدة إشعار إنهاء عقد العمل غير محدد المدة",
+    ):
+        result = search_legal_provision(query, "labor-law")
+        quoted = [q.get("article") for q in result.get("quotes", [])]
+        check(
+            f"53/75 not quoted for {query[:20]}…",
+            not ({"53", "75"} & set(quoted)),
+            f"quoted={quoted}",
+        )
+
+    # Phase A stale-wins gate: stale outscores quotable → summary + notice.
+    for query, number in (
+        ("ما الحد الأقصى لفترة التجربة في نظام العمل؟", "53"),
+        ("ما مدة إشعار إنهاء العقد غير محدد المدة إذا كان الأجر شهريًا؟", "75"),
+    ):
+        result = search_legal_provision(query, "labor-law")
+        check(
+            f"stale-wins fallback for {number}",
+            result.get("retrieval_scope") == "summary_after_stale_fallback"
+            and number in [n.get("article") for n in result.get("amendment_notices", [])],
+            f"scope={result.get('retrieval_scope')} notices={[n.get('article') for n in result.get('amendment_notices', [])]}",
+        )
+
+    # — P0 ranking (plan 3.3): template + reported 10-year failure —
+    template = [a.get("article") for a in search_articles(
+        "لا تسمع الدعوى على المنكر بانقضاء",
+        "civil-transactions-law",
+        limit=3,
+    )]
+    check("civil template ranks 295/296/297", template == ["295", "296", "297"], f"got={template}")
+
+    ten_year = search_legal_provision(
+        "متى لا تسمع الدعوى على المنكر في الحقوق بعد عشر سنوات ومتى ينقضي الحق بالتقادم المدني",
+        "civil-transactions-law",
+    )
+    top3 = [s.get("article") for s in ten_year.get("matched_sections", [])][:3]
+    check("civil 10-year has 295 in top-3", "295" in top3, f"top3={top3}")
+    check("civil 10-year has no 31/120/144 hijack", not ({"31", "120", "144"} & set(top3)), f"top3={top3}")
+
+    # — P0 brief (plan 4.3): commercial 5-year rule or explicit abstention —
+    summary = find_legal_provision("مدة عدم سماع الدعوى التجارية", "commercial-courts")
+    bodies = " ".join(s.get("body", "") for s in summary.get("matched_sections", []))
+    check("commercial م24 summary present", "خمس" in bodies, "missing خمس سنوات")
+    check(
+        "commercial م24 summary is hand-written",
+        summary.get("text_origin") == "hand_written_summary" and summary.get("quotes") == [],
+        f"origin={summary.get('text_origin')}",
+    )
+    brief = build_legal_brief(
+        scenario="ما مدة عدم سماع الدعوى التجارية من تاريخ نشوء الحق؟",
+        domain="commercial-dispute",
+        source_id="commercial-courts",
+    )
+    if brief.get("insufficient_evidence"):
+        check("commercial brief abstains cleanly", brief.get("brief") is None, "abstain must have no brief")
+    else:
+        text = brief.get("brief") or ""
+        check("commercial brief gives 5-year rule", "خمس" in text, "missing خمس")
+        check(
+            "commercial brief gives exception",
+            "إقرار" in text or "عذر" in text,
+            "missing إقرار/عذر",
+        )
+
+    if failures:
+        print("\n[verify_release] GOLDEN-CASE FAILURES (temporary, until licensed review):", file=sys.stderr)
+        for failure in failures:
+            print(f"  - {failure}", file=sys.stderr)
+        sys.exit(1)
+    print("[golden] All Phase A golden cases passed (TEMPORARY — pending licensed review) [OK]")
+
+
 def main() -> None:
     py = sys.executable
 
@@ -65,6 +197,10 @@ def main() -> None:
 
     # ── Gate 3: unit tests ───────────────────────────────────────────────────
     _run("pytest", [py, "-m", "pytest", "tests/", "-q", "--tb=short"], REPO_ROOT)
+
+    # ── Gate 3.5: Phase A golden cases (temporary, until licensed review) ──
+    print("\n[golden] Running Phase A golden cases ...")
+    _run_golden_cases()
 
     # ── Gate 4: eval metrics vs canonical baseline ───────────────────────────
     print("\n[eval] Running eval_runner.py ...")

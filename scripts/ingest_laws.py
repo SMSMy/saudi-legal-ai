@@ -370,12 +370,20 @@ def parse_boe(html_bytes: bytes, source: dict, source_key: str) -> dict:
         instruments = _instrument_history(
             " ".join(part for part in (effective_history, raw_text) if part)
         )
+        # Phase A (plan 2.1): pulled text predating a later amendment is
+        # tagged base_not_operative and must never be quoted as in-force.
+        text_status = (
+            "base_not_operative"
+            if (status == "amended" and effective_history)
+            else "operative"
+        )
         article = {
             "id": f"{source_key}/art-{number}",
             "article": str(number),
             "article_label": title.rstrip(" :"),
             "text": text,
             "text_origin": "official_verbatim",
+            "text_status": text_status,
             "status": status,
             "chapter": _chapter_for(item),
             "instrument": source["instrument"],
@@ -495,6 +503,7 @@ def parse_uqn(html_bytes: bytes, source: dict, source_key: str) -> dict:
                 "article_label": line.rstrip(" :"),
                 "article_title": title_part,
                 "text_origin": "official_verbatim",
+                "text_status": "operative",
                 "status": "in_force",
                 "chapter": chapter,
                 "instrument": source["instrument"],
