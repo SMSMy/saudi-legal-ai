@@ -15,6 +15,16 @@
     ]
   },
   "companies_law": {
+    "corpus": {
+      "files": [
+        "companies-law.json"
+      ],
+      "article_count": 281,
+      "fetched_at": "2026-11-23T22:30:48.295656+00:00",
+      "source_sha256": {
+        "companies-law": "247fdab4f7e620b52dd8dde72bc48f27a659b3d347661f30afffe3b5be33cc12"
+      }
+    },
     "name": "نظام الشركات",
     "decree": "م/132",
     "date": "1443/12/01هـ",
@@ -56,6 +66,16 @@
     "monitor": {"enabled": true, "signals": ["zatca_resolution_pdf", "sector_zatca_waves", "uqn_gazette", "istitlaa"]}
   },
   "labor_law": {
+    "corpus": {
+      "files": [
+        "labor-law.json"
+      ],
+      "article_count": 245,
+      "fetched_at": "2026-11-23T19:11:42.844449+00:00",
+      "source_sha256": {
+        "labor-law": "49203ddac4e0e947c68f2db38bda0692ac6d0bd66fa6839fbbb05307b8140cbe"
+      }
+    },
     "name": "نظام العمل",
     "decree": "م/51",
     "date": "1426/08/23هـ",
@@ -72,6 +92,16 @@
     "known_amendment_note": "النظام مُعدَّل مرات عدة بعد 1426هـ — أي تغيير في صفحة boe يستلزم مراجعة فورية لكل الأحكام الإلزامية السبع في saudi_legal_mcp/data/sources/labor-law.md"
   },
   "arbitration_law": {
+    "corpus": {
+      "files": [
+        "arbitration-law.json"
+      ],
+      "article_count": 58,
+      "fetched_at": "2026-11-23T22:30:49.467928+00:00",
+      "source_sha256": {
+        "arbitration-law": "d4f1e9b78c9d3f89980907bcd071e252900a1b65ae53a810418a051396b2b8c2"
+      }
+    },
     "name": "نظام التحكيم",
     "decree": "م/34",
     "date": "1433/05/24هـ",
@@ -88,6 +118,16 @@
     "known_amendment_note": "مصدر داخلي (saudi_legal_mcp/data/sources/arbitration-law.md) يشير لتعديل م/21 لعام 1447هـ — تحقق بشري مطلوب لتحديث date/citation عند التأكيد الرسمي"
   },
   "civil_transactions_law": {
+    "corpus": {
+      "files": [
+        "civil-transactions-law.json"
+      ],
+      "article_count": 721,
+      "fetched_at": "2026-11-23T17:47:08.507269+00:00",
+      "source_sha256": {
+        "civil-transactions-law": "4e7b2c05182f3c47b8775950d0efd4e753f8dd2198439ae47e001c4dc5615e44"
+      }
+    },
     "name": "نظام المعاملات المدنية",
     "decree": "م/191",
     "date": "1444/11/29هـ",
@@ -102,6 +142,16 @@
     "known_discrepancy_note": "فرق موثق: regulation-index يذكر 1443هـ بينما مصدر الملف يذكر 29/11/1444هـ (نشر أم القرى 4987) — المراقبة ستكشف أي تحديث رسمي يحسم التاريخ"
   },
   "commercial_courts_law": {
+    "corpus": {
+      "files": [
+        "commercial-courts.json"
+      ],
+      "article_count": 94,
+      "fetched_at": "2026-11-23T22:30:45.197773+00:00",
+      "source_sha256": {
+        "commercial-courts": "f9bd12bc45f3c33855b13d8083861498fbbe37a72d04df6b38e9c7d62ae4c70d"
+      }
+    },
     "name": "نظام المحاكم التجارية",
     "decree": "م/93",
     "date": "1441/10/15هـ",
@@ -115,6 +165,18 @@
     "monitor": {"enabled": true, "signals": ["uqn_gazette", "istitlaa", "sector_moj"]}
   },
   "pdpl_law": {
+    "corpus": {
+      "files": [
+        "pdpl.json",
+        "pdpl-exec-regulations.json"
+      ],
+      "article_count": 81,
+      "fetched_at": "2026-11-23T17:47:22.194682+00:00",
+      "source_sha256": {
+        "pdpl": "aaff67b81790573ba7930aa26bb3415663984e1cbafceffcfe405721c54e7ba1",
+        "pdpl-exec-regulations": "9e89fc7ee8de88ac68b2d8f0721ba756c164ed6cc9cae20baddfadeec7f9726c"
+      }
+    },
     "name": "نظام حماية البيانات الشخصية",
     "decree": "م/19",
     "date": "1443/02/09هـ",
@@ -144,6 +206,16 @@
     "monitor": {"enabled": true, "signals": ["moj_laws_portal", "uqn_gazette", "istitlaa", "sector_mc"]}
   },
   "e_commerce_law": {
+    "corpus": {
+      "files": [
+        "e-commerce-law.json"
+      ],
+      "article_count": 26,
+      "fetched_at": "2026-11-23T22:30:51.963323+00:00",
+      "source_sha256": {
+        "e-commerce-law": "270703d887abad847215682f8ffe3880afc287f930421314953b64470201b6b1"
+      }
+    },
     "name": "نظام التجارة الإلكترونية",
     "decree": "م/126",
     "date": "1440/11/07هـ",

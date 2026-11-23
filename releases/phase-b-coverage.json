@@ -1,0 +1,275 @@
+{
+  "generated_at": "2026-11-23T22:50:57.109064+00:00",
+  "git_head": "e793f6abf8f7280ccf33eefc54622e03712402d3",
+  "phase": "B (v1 composition; no verified rows without licensed review)",
+  "golden_values": "TEMPORARY until licensed review — negative tests only",
+  "corpora": {
+    "labor-law": {
+      "files": [
+        {
+          "stem": "labor-law",
+          "articles": 245,
+          "status": {
+            "in_force": 139,
+            "amended": 100,
+            "added": 6
+          },
+          "text_status": {
+            "operative": 145,
+            "base_not_operative": 100
+          },
+          "consolidation": {
+            "not_required": 145,
+            "needs_review": 100
+          },
+          "parse": {
+            "needs_review": 26,
+            "validated": 112
+          },
+          "source_sha256": "49203ddac4e0e947c68f2db38bda0692ac6d0bd66fa6839fbbb05307b8140cbe",
+          "fetched_at": "2026-11-23T19:11:42.844449+00:00",
+          "instrument": "المرسوم الملكي م/51 بتاريخ 23/8/1426هـ وتعديلاته",
+          "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
+          "amendments_schema": "1.0"
+        }
+      ],
+      "article_count": 245,
+      "fetched_at": "2026-11-23T19:11:42.844449+00:00",
+      "instruments": [
+        "المرسوم الملكي م/51 بتاريخ 23/8/1426هـ وتعديلاته"
+      ]
+    },
+    "civil-transactions-law": {
+      "files": [
+        {
+          "stem": "civil-transactions-law",
+          "articles": 721,
+          "status": {
+            "in_force": 721
+          },
+          "text_status": {
+            "operative": 721
+          },
+          "consolidation": {
+            "not_required": 721
+          },
+          "parse": {},
+          "source_sha256": "4e7b2c05182f3c47b8775950d0efd4e753f8dd2198439ae47e001c4dc5615e44",
+          "fetched_at": "2026-11-23T17:47:08.507269+00:00",
+          "instrument": "المرسوم الملكي م/191 بتاريخ 29/11/1444هـ",
+          "document_url": "https://uqn.gov.sa/details?p=23125",
+          "amendments_schema": "1.0"
+        }
+      ],
+      "article_count": 721,
+      "fetched_at": "2026-11-23T17:47:08.507269+00:00",
+      "instruments": [
+        "المرسوم الملكي م/191 بتاريخ 29/11/1444هـ"
+      ]
+    },
+    "pdpl": {
+      "files": [
+        {
+          "stem": "pdpl",
+          "articles": 43,
+          "status": {
+            "amended": 24,
+            "in_force": 19
+          },
+          "text_status": {
+            "base_not_operative": 24,
+            "operative": 19
+          },
+          "consolidation": {
+            "needs_review": 24,
+            "not_required": 19
+          },
+          "parse": {
+            "needs_review": 3,
+            "validated": 22
+          },
+          "source_sha256": "aaff67b81790573ba7930aa26bb3415663984e1cbafceffcfe405721c54e7ba1",
+          "fetched_at": "2026-11-23T17:47:08.975564+00:00",
+          "instrument": "المرسوم الملكي م/19 بتاريخ 9/2/1443هـ",
+          "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
+          "amendments_schema": "1.0"
+        },
+        {
+          "stem": "pdpl-exec-regulations",
+          "articles": 38,
+          "status": {
+            "in_force": 38
+          },
+          "text_status": {
+            "operative": 38
+          },
+          "consolidation": {
+            "not_required": 38
+          },
+          "parse": {},
+          "source_sha256": "9e89fc7ee8de88ac68b2d8f0721ba756c164ed6cc9cae20baddfadeec7f9726c",
+          "fetched_at": "2026-11-23T17:47:22.194682+00:00",
+          "instrument": "قرار رئيس مجلس إدارة سدايا رقم (298/م/ق) بتاريخ 1445/2/22هـ",
+          "document_url": "https://uqn.gov.sa/details?p=23595",
+          "amendments_schema": "1.0"
+        }
+      ],
+      "article_count": 81,
+      "fetched_at": "2026-11-23T17:47:22.194682+00:00",
+      "instruments": [
+        "المرسوم الملكي م/19 بتاريخ 9/2/1443هـ",
+        "قرار رئيس مجلس إدارة سدايا رقم (298/م/ق) بتاريخ 1445/2/22هـ"
+      ]
+    },
+    "commercial-courts": {
+      "files": [
+        {
+          "stem": "commercial-courts",
+          "articles": 94,
+          "status": {
+            "in_force": 91,
+            "amended": 1,
+            "canceled": 2
+          },
+          "text_status": {
+            "operative": 93,
+            "base_not_operative": 1
+          },
+          "consolidation": {
+            "not_required": 93,
+            "needs_review": 1
+          },
+          "parse": {
+            "validated": 1
+          },
+          "source_sha256": "f9bd12bc45f3c33855b13d8083861498fbbe37a72d04df6b38e9c7d62ae4c70d",
+          "fetched_at": "2026-11-23T22:30:45.197773+00:00",
+          "instrument": "المرسوم الملكي م/93 بتاريخ 15/10/1441هـ",
+          "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/38334008-3b70-4c6c-b3af-aba3016a8061/1",
+          "amendments_schema": "1.0"
+        }
+      ],
+      "article_count": 94,
+      "fetched_at": "2026-11-23T22:30:45.197773+00:00",
+      "instruments": [
+        "المرسوم الملكي م/93 بتاريخ 15/10/1441هـ"
+      ]
+    },
+    "companies-law": {
+      "files": [
+        {
+          "stem": "companies-law",
+          "articles": 281,
+          "status": {
+            "in_force": 281
+          },
+          "text_status": {
+            "operative": 281
+          },
+          "consolidation": {
+            "not_required": 281
+          },
+          "parse": {},
+          "source_sha256": "247fdab4f7e620b52dd8dde72bc48f27a659b3d347661f30afffe3b5be33cc12",
+          "fetched_at": "2026-11-23T22:30:48.295656+00:00",
+          "instrument": "المرسوم الملكي م/132 بتاريخ 1/12/1443هـ",
+          "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/a8376aea-1bc3-49d4-9027-aed900b555af/1",
+          "amendments_schema": "1.0"
+        }
+      ],
+      "article_count": 281,
+      "fetched_at": "2026-11-23T22:30:48.295656+00:00",
+      "instruments": [
+        "المرسوم الملكي م/132 بتاريخ 1/12/1443هـ"
+      ]
+    },
+    "arbitration-law": {
+      "files": [
+        {
+          "stem": "arbitration-law",
+          "articles": 58,
+          "status": {
+            "in_force": 55,
+            "amended": 3
+          },
+          "text_status": {
+            "operative": 55,
+            "base_not_operative": 3
+          },
+          "consolidation": {
+            "not_required": 55,
+            "needs_review": 3
+          },
+          "parse": {
+            "validated": 3
+          },
+          "source_sha256": "d4f1e9b78c9d3f89980907bcd071e252900a1b65ae53a810418a051396b2b8c2",
+          "fetched_at": "2026-11-23T22:30:49.467928+00:00",
+          "instrument": "المرسوم الملكي م/34 لعام 1433هـ",
+          "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/5535039e-13da-43f6-8f53-a9a700f26485/1",
+          "amendments_schema": "1.0"
+        }
+      ],
+      "article_count": 58,
+      "fetched_at": "2026-11-23T22:30:49.467928+00:00",
+      "instruments": [
+        "المرسوم الملكي م/34 لعام 1433هـ"
+      ]
+    },
+    "e-commerce-law": {
+      "files": [
+        {
+          "stem": "e-commerce-law",
+          "articles": 26,
+          "status": {
+            "in_force": 26
+          },
+          "text_status": {
+            "operative": 26
+          },
+          "consolidation": {
+            "not_required": 26
+          },
+          "parse": {},
+          "source_sha256": "270703d887abad847215682f8ffe3880afc287f930421314953b64470201b6b1",
+          "fetched_at": "2026-11-23T22:30:51.963323+00:00",
+          "instrument": "المرسوم الملكي م/126 لعام 1440هـ",
+          "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/360de590-0286-4fa5-a243-aa9100c31979/1",
+          "amendments_schema": "1.0"
+        }
+      ],
+      "article_count": 26,
+      "fetched_at": "2026-11-23T22:30:51.963323+00:00",
+      "instruments": [
+        "المرسوم الملكي م/126 لعام 1440هـ"
+      ]
+    }
+  },
+  "totals": {
+    "sources_with_corpus": 7,
+    "articles": 1506
+  },
+  "evaluation": {
+    "total_questions": 65,
+    "citation_precision_avg": 0.9723,
+    "source_recall_avg": 0.9028,
+    "abstention_accuracy": null
+  },
+  "retrieval_perf": {
+    "queries": 14,
+    "samples": 210,
+    "median_ms": 7.56,
+    "p95_ms": 23.16,
+    "max_ms": 32.63,
+    "budget_ms": 50.0,
+    "within_budget": true
+  },
+  "policy_gates": {
+    "match_confidence_threshold": 0.7,
+    "corpus_limit": 3,
+    "verified_requires": "licensed review or official resync (never v1 code)"
+  },
+  "deliberately_summary_only": {
+    "zatca-e-invoicing": "Official source is a regulator PDF on zatca.gov.sa, not a BOE/UQN law page; the ingest pipeline parses BOE/UQN HTML only and has no PDF parser. Kept as labeled hand-written summary rather than a partial scrape."
+  }
+}

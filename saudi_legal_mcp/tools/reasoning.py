@@ -415,9 +415,11 @@ def search_legal_provision(
 def _amendment_notice(article: dict) -> dict:
     """Phase A notice for a stale row (no consolidation — Phase B).
 
-    Points at the record (latest history segment + instruments) instead of
-    quoting the old text as operative.  The full history is never pasted;
-    only the latest operation excerpt (≤600 chars) is shown.
+    Points at the record (latest operation + instruments + effective dates)
+    instead of quoting the old text as operative.  The full history is never
+    pasted; only the latest operation excerpt (≤600 chars) is shown.
+    When structured amendments[] exist (B1), the notice cites the latest
+    op (instrument/effective/summary) rather than raw text parsing.
     """
     history = article.get("amendment_history") or ""
     segments = re.split(r"(?=المادة\s+\S+\s*[:-])", history)
@@ -425,12 +427,36 @@ def _amendment_notice(article: dict) -> dict:
     if len(latest) > 600:
         latest = latest[:600] + "…"
     number = str(article.get("article", ""))
+
+    operation: Optional[str] = None
+    instrument = ""
+    effective_hijri = ""
+    effective_iso = ""
+    ops = [o for o in (article.get("amendments") or []) if o.get("op_id")]
+    if ops:
+        try:
+            from saudi_legal_mcp.tools.amendments import sort_key as _op_sort
+            from saudi_legal_mcp.tools.amendments import summarize_operation as _op_summary
+        except ImportError:  # pragma: no cover - same package, defensive
+            _op_sort = None  # type: ignore[assignment]
+            _op_summary = None  # type: ignore[assignment]
+        if _op_sort is not None and _op_summary is not None:
+            latest_op = sorted(ops, key=_op_sort)[-1]
+            operation = _op_summary(latest_op)
+            instrument = latest_op.get("instrument") or ""
+            effective_hijri = latest_op.get("effective_on_hijri") or ""
+            effective_iso = latest_op.get("effective_on_iso") or ""
+
     return {
         "article": number,
         "article_label": article.get("article_label"),
         "status": article.get("status"),
         "text_status": article.get("text_status"),
         "instruments": article.get("amendment_instruments", []),
+        "operation": operation,
+        "instrument": instrument,
+        "effective_on_hijri": effective_hijri,
+        "effective_on_iso": effective_iso,
         "latest_history_excerpt": latest,
         "warning": (
             f"المادة {number} معدّلة وسجل تعديلها أحدث من النص المسحوب — "
@@ -717,10 +743,14 @@ def build_legal_brief(
                 f"{i.get('instrument')} ({i.get('date')})"
                 for i in n.get("instruments", [])
             )
+            operation = n.get("operation") or ""
+            effective = n.get("effective_on_iso") or n.get("effective_on_hijri") or ""
             notice_text += (
                 f"\n**تنبيه تعديل — المادة {n.get('article')} "
                 f"({n.get('article_label') or ''}):**\n"
                 f"{n.get('warning', '')}\n"
+                + (f"العملية الأخيرة: {operation}\n" if operation else "")
+                + (f"النفاذ: {effective}\n" if effective else "")
                 + (f"الأدوات: {instruments}\n" if instruments else "")
                 + (f"> {n.get('latest_history_excerpt', '')[:300]}\n" if n.get("latest_history_excerpt") else "")
             )

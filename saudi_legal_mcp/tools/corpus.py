@@ -50,6 +50,10 @@ CORPUS_FILES: dict[str, tuple[str, ...]] = {
     "labor-law": ("labor-law",),
     "civil-transactions-law": ("civil-transactions-law",),
     "pdpl": ("pdpl", "pdpl-exec-regulations"),
+    "commercial-courts": ("commercial-courts",),
+    "companies-law": ("companies-law",),
+    "arbitration-law": ("arbitration-law",),
+    "e-commerce-law": ("e-commerce-law",),
 }
 
 
@@ -353,6 +357,15 @@ def article_record(article: dict) -> dict:
         "chapter": article.get("chapter"),
         "instrument": article.get("instrument") or corpus.get("instrument"),
         "amendment_history": article.get("amendment_history"),
+        # Structured ops (plan §2.2) ride along for transparency; the
+        # composed text itself is NEVER attached to a quote in v1 —
+        # needs_review candidates live only on the direct record
+        # (get_article) pending licensed review.
+        "amendments": article.get("amendments", []),
+        "consolidation_status": article.get("consolidation_status", "not_required"),
+        "consolidation_method": article.get("consolidation_method"),
+        "display_text": article.get("display_text"),
+        "display_note": article.get("display_note"),
         "document_url": article.get("document_url") or corpus.get("document_url"),
         "article_url": article.get("article_url"),
         "fetched_at": fetched_at,

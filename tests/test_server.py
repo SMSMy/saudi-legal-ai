@@ -81,7 +81,11 @@ def test_list_legal_domains_reports_provenance_distribution_not_verified_count()
     }
     assert sum(distribution.values()) == result["regulation_count"]
     assert result["corpus_sources"] == [
+        "arbitration-law",
         "civil-transactions-law",
+        "commercial-courts",
+        "companies-law",
+        "e-commerce-law",
         "labor-law",
         "pdpl",
     ]
@@ -89,12 +93,23 @@ def test_list_legal_domains_reports_provenance_distribution_not_verified_count()
     assert coverage["labor-law"]["article_count"] == 245
     assert coverage["civil-transactions-law"]["article_count"] == 721
     assert coverage["pdpl"]["article_count"] == 43 + 38
+    assert coverage["commercial-courts"]["article_count"] == 94
+    assert coverage["companies-law"]["article_count"] == 281
+    assert coverage["arbitration-law"]["article_count"] == 58
+    assert coverage["e-commerce-law"]["article_count"] == 26
     # pdpl must not be displayed as one ambiguous number: per-file split.
     files = result["corpus_files"]
     assert files["pdpl"]["article_count"] == 43
     assert files["pdpl-exec-regulations"]["article_count"] == 38
     assert files["labor-law"]["article_count"] == 245
     assert files["civil-transactions-law"]["article_count"] == 721
+    assert files["commercial-courts"]["article_count"] == 94
+    assert files["companies-law"]["article_count"] == 281
+    assert files["arbitration-law"]["article_count"] == 58
+    assert files["e-commerce-law"]["article_count"] == 26
+    # New corpora carry no per-article deep links (honest document-level
+    # provenance): article_level count must stay exactly the labor-law three.
+    assert result["article_level_articles"] == 3
 
     labor = result["provenance_by_source"]["labor-law"]
     assert labor["dominant_provenance_level"] == "fetched_official"
