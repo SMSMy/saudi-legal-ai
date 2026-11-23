@@ -1,0 +1,177 @@
+name: Regulation Watch
+
+# Weekly metadata-only check for suspected Saudi regulation updates.
+# الفحص الأسبوعي لإشارات تحديث الأنظمة السعودية (بيانات وصفية فقط).
+#
+# Policy: this workflow NEVER copies or interprets legal text and NEVER
+# edits saudi_legal_mcp/data/ content. On suspicion it files a human-verification
+# Issue; a licensed Saudi attorney must confirm before any content PR.
+# Authoritative text: boe.gov.sa + Official Gazette uqn.gov.sa.
+
+on:
+  schedule:
+    # Sundays 06:00 UTC = 09:00 KSA — before the work week.
+    - cron: "0 6 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  watch:
+    name: Check regulation signals
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install checker dependency
+        run: pip install requests
+
+      - name: Restore watch baseline from state branch
+        # main is protected against bot pushes (GH013), so the baseline
+        # lives on the unprotected `regulation-watch-state` branch instead.
+        run: |
+          git fetch origin regulation-watch-state 2>/dev/null || echo "No state branch yet."
+          if git cat-file -e origin/regulation-watch-state:evals/.regulation-watch-state.json 2>/dev/null; then
+            git show origin/regulation-watch-state:evals/.regulation-watch-state.json > evals/.regulation-watch-state.json
+            echo "Baseline restored from regulation-watch-state branch."
+          else
+            echo "No baseline yet — this run will establish it."
+          fi
+
+      - name: Run regulation-watch check
+        id: watch
+        run: |
+          set +e
+          python3 scripts/check_regulation_updates.py --check \
+            --report regulation-watch-report.md \
+            --update-state-if-clean > watch-output.txt 2>&1
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+          set -e
+          cat watch-output.txt
+
+      - name: Ensure watch labels exist
+        # gh issue create fails when labels are missing (fresh repos).
+        if: steps.watch.outputs.exit_code == '1'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create "legal-source" \
+            --description "Saudi regulation source reference" \
+            --color "0E8A16" --force
+          gh label create "content-update" \
+            --description "Regulation content update" \
+            --color "FBCA04" --force
+
+      - name: Check for an already-open watch issue (dedupe)
+        # NOTE: GitHub's --search treats square brackets as label
+        # syntax, so we list open issues and filter titles with jq instead.
+        if: steps.watch.outputs.exit_code == '1'
+        id: existing
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          NUM=$(gh issue list --state open --limit 50 \
+            --json number,title \
+            --jq '[.[] | select(.title | startswith("[Regulation Watch] suspected update signals"))][0].number // empty')
+          echo "number=${NUM}" >> "$GITHUB_OUTPUT"
+          if [ -z "${NUM}" ]; then echo "No open watch issue."; else echo "Open watch issue: #${NUM}"; fi
+
+      - name: Upload report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regulation-watch-report
+          path: |
+            regulation-watch-report.md
+            watch-output.txt
+          retention-days: 90
+
+      - name: Persist baseline to state branch (only on signal change)
+        # main is protected (GH013 rejects bot pushes) → baseline lives on the
+        # unprotected `regulation-watch-state` branch. Two guards:
+        # 1. Fast-forward discipline: fetch the branch and commit ON TOP of its
+        #    tip (never `checkout -B` from main, which diverges history and
+        #    breaks the next push with non-fast-forward).
+        # 2. Signal gate: commit only when URL fingerprints actually moved.
+        #    Bookkeeping churn (last_seen / consecutive_unreachable) alone is
+        #    not a reason to push — avoids weekly noise commits.
+        if: steps.watch.outputs.exit_code == '0'
+        run: |
+          cp evals/.regulation-watch-state.json /tmp/new-state.json
+          git fetch origin regulation-watch-state 2>/dev/null || echo "No state branch yet."
+          if git cat-file -e origin/regulation-watch-state:evals/.regulation-watch-state.json 2>/dev/null; then
+            git show origin/regulation-watch-state:evals/.regulation-watch-state.json > /tmp/prev-state.json
+            DIFF=$(python3 -c "
+          import sys; sys.path.insert(0, 'scripts')
+          from check_regulation_updates import signals_snapshot, load_state
+          prev = signals_snapshot(load_state(__import__('pathlib').Path('/tmp/prev-state.json')))
+          cur = signals_snapshot(load_state(__import__('pathlib').Path('/tmp/new-state.json')))
+          print('changed' if prev != cur else 'same')")
+          else
+            DIFF="changed"
+            echo "No prior baseline — persisting first snapshot."
+          fi
+          if [ "${DIFF}" = "same" ]; then
+            echo "URL signals unchanged since last baseline — nothing to persist."
+            exit 0
+          fi
+          git config user.name "regulation-watch[bot]"
+          git config user.email "regulation-watch[bot]@users.noreply.github.com"
+          rm evals/.regulation-watch-state.json
+          git checkout regulation-watch-state
+          cp /tmp/new-state.json evals/.regulation-watch-state.json
+          git add evals/.regulation-watch-state.json
+          git commit -m "chore: refresh regulation-watch baseline [skip ci]" \
+            -m "Weekly metadata-only fingerprint refresh. No legal content changed."
+          git push origin regulation-watch-state
+
+      - name: File human-verification issue (on suspicion, no duplicate)
+        if: steps.watch.outputs.exit_code == '1' && steps.existing.outputs.number == ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          DATE=$(date -u +%Y-%m-%d)
+          BODY=$(cat regulation-watch-report.md)
+          gh issue create \
+            --title "[Regulation Watch] suspected update signals — ${DATE}" \
+            --label "legal-source,content-update" \
+            --body "## تنبيه آلي / Automated signal (NOT legal advice)
+
+          رصد الفحص الأسبوعي إشارات وصفية دقيقة (صفحة نظام / جريدة رسمية)
+          يُشتبه أن تكون تحديثًا تشريعيًا.
+          **يُمنع تعديل أي ملف قبل تحقق محامٍ مرخّص.**
+
+          The weekly check observed exact-confidence metadata signals of
+          suspected regulatory change.
+          **No file may be edited until a licensed attorney verifies.**
+
+          ### Required human steps
+          1. Open each SUSPECT exact-confidence URL below (uqn.gov.sa gazette link → named document → laws.moj.gov.sa portal).
+          2. Compare decree number + article text with \`saudi_legal_mcp/data/sources/regulation-index.md\` and the listed \`source_file\`.
+          3. If confirmed: update \`saudi_legal_mcp/data/sources/regulation-index.md\` FIRST, then the source file, then datasets (\`deprecated\`/\`superseded\` per the upstream legal-verification-lifecycle doc); open a PR with official links.
+          4. After the decision is recorded, refresh the baseline: \`python3 scripts/check_regulation_updates.py --check --update-state\`.
+
+          ### Issue template
+          Use for each confirmed change: [.github/ISSUE_TEMPLATE/legal-source-reference.yml](.github/ISSUE_TEMPLATE/legal-source-reference.yml)
+
+          ---
+
+          ${BODY}"
+
+      - name: Comment on the open watch issue (instead of a duplicate)
+        if: steps.watch.outputs.exit_code == '1' && steps.existing.outputs.number != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue comment "${{ steps.existing.outputs.number }}" \
+            --body-file regulation-watch-report.md
