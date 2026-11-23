@@ -250,8 +250,9 @@ def test_real_registry_loads_and_has_expected_keys():
         assert key in registry
     # #14: the BOE law page is preserved as an unmonitored reference (BOE is
     # geo-blocked from CI); the monitored target is the CI-reachable MOJ portal.
+    # GUID refreshed 2026-11-23 from BoeLaws/Laws/Folders (old 2569bd58 was stale).
     assert registry["labor_law"]["boe_reference_url"] == \
-        "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2569bd58-299f-4318-ab93-a9a700f26cf9/1"
+        "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1"
     assert registry["labor_law"]["url"] == "https://laws.moj.gov.sa/ar"
     assert registry["labor_law"]["date"] == "1426/08/23هـ"
     # v2.1: real gazette URL wired where documented.
