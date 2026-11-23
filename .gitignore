@@ -50,3 +50,6 @@ dist/
 saudi_legal_mcp/data/datasets/build/
 # Clean-venv smoke test dir
 .venv-test/
+
+# Judicial decision PDFs live in the judicial-decisions-1435 release; fetch with scripts/fetch_judicial_pdfs.sh
+saudi_legal_mcp/data/sources/judicial-decisions/*/*.pdf

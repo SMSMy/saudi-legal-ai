@@ -13,6 +13,20 @@
 
 ---
 
+## تحميل الملفات / Getting the PDFs
+
+ملفات PDF غير محفوظة داخل git لتقليل حجم المستودع. حملها بالأمر التالي، وسيتحقق السكربت من سلامتها تلقائيا:
+
+The PDFs are not stored in git to keep clones small. Download and verify them with:
+
+```bash
+./scripts/fetch_judicial_pdfs.sh
+```
+
+المصدر / Source: GitHub Release `judicial-decisions-1435` في المستودع الأصلي. Checksums: [`1435.SHA256SUMS`](1435.SHA256SUMS).
+
+---
+
 ## 1. ما هي مجموعات الأحكام القضائية / What Are Judicial Decision Collections
 
 مجموعات الأحكام القضائية هي وثائق تحتوي على نصوص أو ملخصات لأحكام صادرة عن المحاكم السعودية (تجارية، عمالية، مدنية، إدارية). قد تكون:
@@ -113,7 +127,7 @@ Any content extracted from judicial decisions before inclusion in the project mu
 | **مراجعة مختص** | يجب مراجعة الاستخلاص قبل الترقية إلى `reviewed` |
 | **تأكيد محامٍ** | الترقية إلى `verified` تستلزم تأكيدًا مكتوبًا من محامٍ مرخَّص |
 
-راجع [`docs/legal-verification-lifecycle.md`](../../docs/legal-verification-lifecycle.md) للتفصيل الكامل.
+راجع [`docs/legal-verification-lifecycle.md`](https://github.com/Samix2026/saudi-legal-ai-framework/blob/main/docs/legal-verification-lifecycle.md) للتفصيل الكامل (في المستودع الأصلي).
 
 ---
 
@@ -156,9 +170,9 @@ Remove all identifying data, add a file header with: court name, Hijri year, cas
 |-------|---------|
 | [`sources/regulation-index.md`](../regulation-index.md) | الأنظمة المُطبَّقة في الأحكام — المرجع الأول |
 | [`sources/open-data-judicial-sources.md`](../open-data-judicial-sources.md) | مصدر البيانات المفتوحة التكميلي |
-| [`docs/legal-verification-lifecycle.md`](../../docs/legal-verification-lifecycle.md) | معيار `verification_status` |
-| [`docs/ocr-strategy.md`](../../docs/ocr-strategy.md) | استراتيجية OCR للـ PDFs المُمسوحة — قراءة قبل أي محاولة استخراج آلي |
-| [`docs/official-api-sources.md`](../../docs/official-api-sources.md) | التصور المعماري لاستيعاب البيانات مستقبلًا |
+| [`docs/legal-verification-lifecycle.md`](https://github.com/Samix2026/saudi-legal-ai-framework/blob/main/docs/legal-verification-lifecycle.md) | معيار `verification_status` (في المستودع الأصلي) |
+| [`docs/ocr-strategy.md`](https://github.com/Samix2026/saudi-legal-ai-framework/blob/main/docs/ocr-strategy.md) | استراتيجية OCR للـ PDFs المُمسوحة — قراءة قبل أي محاولة استخراج آلي (في المستودع الأصلي) |
+| [`docs/official-api-sources.md`](https://github.com/Samix2026/saudi-legal-ai-framework/blob/main/docs/official-api-sources.md) | التصور المعماري لاستيعاب البيانات مستقبلًا (في المستودع الأصلي) |
 | [`datasets/judicial-reasoning/schema.md`](../../datasets/judicial-reasoning/schema.md) | مخطط الاستخراج المنظَّم (19 حقلاً) |
 | [`datasets/judicial-reasoning/extraction-guidelines.md`](../../datasets/judicial-reasoning/extraction-guidelines.md) | دليل الاستخراج والإخفاء |
 | [`datasets/judicial-reasoning/example-extraction.md`](../../datasets/judicial-reasoning/example-extraction.md) | مثال تعليمي افتراضي |
