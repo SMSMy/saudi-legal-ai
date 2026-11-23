@@ -1,0 +1,28 @@
+version: 2
+
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
+
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 3
+    labels:
+      - "dependencies"
+      - "python"
+    ignore:
+      # mcp 2.x removed mcp.server.fastmcp (FastMCP -> MCPServer). The <2.0.0
+      # pin in pyproject.toml / requirements.txt is deliberate until the
+      # server is migrated to the v2 API — do not propose major bumps.
+      - dependency-name: "mcp"
+        update-types: ["version-update:semver-major"]
