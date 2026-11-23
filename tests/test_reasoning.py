@@ -282,7 +282,7 @@ class TestEvidenceGates:
         """
         from saudi_legal_mcp.tools import reasoning as rmod
 
-        def fake_provision(query, source_id, max_sections=3, max_chars_per_section=1500):
+        def fake_provision(query, source_id, max_sections=3, max_chars_per_section=1500, **kwargs):
             return {
                 "source_id": source_id,
                 "query": query,
@@ -300,7 +300,7 @@ class TestEvidenceGates:
                 "placeholder_dominated": True,
             }
 
-        monkeypatch.setattr(rmod, "find_legal_provision", fake_provision)
+        monkeypatch.setattr(rmod, "search_legal_provision", fake_provision)
         result = build_legal_brief(
             scenario="سؤال عن مهلة غير متوفرة",
             domain="commercial-dispute",
@@ -315,7 +315,7 @@ class TestEvidenceGates:
         over-trigger when real evidence exists."""
         from saudi_legal_mcp.tools import reasoning as rmod
 
-        def fake_provision(query, source_id, max_sections=3, max_chars_per_section=1500):
+        def fake_provision(query, source_id, max_sections=3, max_chars_per_section=1500, **kwargs):
             return {
                 "source_id": source_id,
                 "query": query,
@@ -333,7 +333,7 @@ class TestEvidenceGates:
                 "placeholder_dominated": False,
             }
 
-        monkeypatch.setattr(rmod, "find_legal_provision", fake_provision)
+        monkeypatch.setattr(rmod, "search_legal_provision", fake_provision)
         result = build_legal_brief(
             scenario="هل يشترط إشعار قبل إنهاء العقد",
             domain="labor-law-analysis",
@@ -360,17 +360,27 @@ class TestCitationsPhase2:
         assert annual, f"sections: {list(by_heading)}"
         assert any(c["url"] == "https://www.boe.gov.sa" for c in annual)
 
-    def test_section_without_link_returns_empty_citations(self):
-        """A section with no link in its body must return [] — no whole-file fallback."""
+    def test_every_summary_section_has_a_document_link(self):
+        """Wave 1: a summary section without a link in its own body gets the
+        source document link, with an explicit document-scope label."""
         result = find_legal_provision(
             query="الحد الأدنى للإجازة السنوية",
             source_id="labor-law",
         )
-        empty = [s for s in result["matched_sections"] if not s.get("citations")]
-        assert empty, "expected at least one section with empty citations"
+        sections = result["matched_sections"]
+        assert sections
+        for section in sections:
+            assert section.get("citations"), (
+                f"section without a document link: {section.get('heading')}"
+            )
+            assert any(
+                c["link_type"] == "law_document_url"
+                for c in section["citations"]
+            )
+            assert section.get("text_origin") == "hand_written_summary"
 
     def test_brief_contains_sources_section(self):
-        """Brief must end with مصادر والروابط carrying the portal label verbatim."""
+        """Brief must end with مصادر والروابط carrying an honest document label."""
         result = build_legal_brief(
             scenario="كم يوماً الإجازة السنوية الدنيا للموظف في السعودية؟",
             domain="labor-law-analysis",
@@ -379,7 +389,8 @@ class TestCitationsPhase2:
         assert result.get("insufficient_evidence") is False
         brief = result.get("brief") or ""
         assert "المصادر والروابط" in brief
-        assert "للمادة مباشرة" in brief
+        assert "وثيقة النظام" in brief or "لا مادة محددة" in brief
+        assert "بوابة الهيئة الرسمية" not in brief
 
     def test_full_question_scenario_not_gated_by_confidence(self):
         """v0.4.9 regression: a natural-language scenario whose best
@@ -491,11 +502,14 @@ class TestCitationNote:
         else:
             assert result.get("citation_note") is None
 
-    def test_read_source_citation_note_when_no_links(self):
+    def test_read_source_section_with_document_link_has_no_citation_note(self):
+        """Wave 1: the document link is present inside the summary section, so
+        there is no longer a false 'no link' note."""
         from saudi_legal_mcp.tools.sources import read_source
         result = read_source("labor-law", section="الإجازات")
-        assert result["citations"] == []
-        assert result.get("citation_note") and "لا رابط مباشر" in result["citation_note"]
+        assert result["citations"]
+        assert any(c["link_type"] == "law_document_url" for c in result["citations"])
+        assert result.get("citation_note") is None
 
     def test_citation_note_absent_when_links_exist(self):
         from saudi_legal_mcp.tools.sources import read_source

@@ -1,8 +1,8 @@
 # مراقبة تحديثات الأنظمة / Regulation Watch
 
-> **تحذير:** هذا النظام يرصد **إشارات وصفية فقط** ولا يُعدّ استشارة قانونية. أي اشتباه بتغيير يتطلب تحقق محامٍ مرخّص في المملكة العربية السعودية قبل أي تعديل.
+> **تحذير:** هذه الآلية ترصد **إشارات وصفية فقط** ولا تُعدّ استشارة قانونية. أي اشتباه يفتح تذكرة، ولا يُستبدل النص المعروض إلا بعد بوابة السلامة والاحتفاظ بالنسخة السابقة. المراجعة المهنية اختيارية وليست بوابة إصدار.
 >
-> **Warning:** This system observes **metadata signals only** and is not legal advice. Any suspected change requires verification by a licensed Saudi attorney before any edit.
+> **Warning:** This mechanism observes **metadata signals only** and is not legal advice. A suspected change opens a ticket; displayed text is replaced only after the safety gate, with the previous version preserved. Professional review is optional, not a release gate.
 
 ---
 
@@ -19,6 +19,7 @@
 | تفعل / Does | لا تفعل / Does not do |
 |---|---|
 | ترصد تغيّر الإشارات الوصفية (HTTP status / final URL / ETag / Last-Modified / Content-Length) **لكل URL مراقَب على حدة** (صفحة نظام، جريدة، وثيقة استطلاع، بوابة قطاعية) | لا تنسخ أي نص قانوني ولا تفسّره |
+| تفصل بين **المراقبة** (وصفية، بلا نص) و**السحب الصريح** (`scripts/ingest_laws.py`، تخزين نص رسمي في `corpus/` بتاريخ وبصمة) | السحب الصريح لا يعمل تلقائياً من CI لهيئة الخبراء (محجوبة)، ولا يعدّل نصاً معروضاً بلا بوابة سلامة |
 | ترفع Issue تلقائية **فقط** عند تغيّر إشارة بثقة `exact` (صفحة نظام / جريدة / وثيقة مسماة) | لا تفتح Issue لضجيج البوابات (`portal`) ولا للأعلام الداخلية الثابتة |
 | تسجل الأعلام الداخلية المعروفة في التقرير كقسم مستقل (تقرير فقط) | لا تجمّد خط الأساس بسببها ولا تعتبرها اشتباهًا أسبوعيًا |
 | توثق خط الأساس لكل URL لتكشف التغيّر عبر الأسابيع | لا تغني عن مراجعة المحامي المرخّص |

@@ -1,8 +1,8 @@
 {
   "id": "zatca-e-invoicing",
   "path": "sources/zatca-e-invoicing.md",
-  "sha256": "a85c30b08664d39f2bf76375a9426ab112300b0b0f766ebbe72f5a46a2b98e0c",
-  "generated_at": "2026-08-13T00:29:02.468529+00:00",
+  "sha256": "60ed7af9066300dd4cac9f389b4edf385e84485cb4e49960766b6edc3c2f2174",
+  "generated_at": "2026-11-23T18:43:57.510797+00:00",
   "metadata_status": "field_tested",
   "verification_status": "field_tested",
   "verified_by": "field_tested_v04",

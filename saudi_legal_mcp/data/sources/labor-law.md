@@ -4,9 +4,16 @@
 **المرجع الرسمي:** نظام العمل الصادر بالمرسوم الملكي م/51 بتاريخ 23/8/1426هـ وتعديلاته
 **Official Reference:** Labor Law issued by Royal Decree M/51 dated 23/8/1426H and its amendments
 
+**الرابط الرسمي (وثيقة النظام على هيئة الخبراء):** https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1
+**Official document (Bureau of Experts):** https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1
+
+> **حالة النص في هذا الملف:** ملخص بشري (`hand_written_summary`) للفهم والترتيب، وليس اقتباساً نظامياً. النص الحرفي المسحوب في `saudi_legal_mcp/data/corpus/labor-law.json`؛ الأحكام تُقتبس من هناك أو من الصفحة الرسمية.
+
 ---
 
 ## ⚠️ تحذير / Warning
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 > هذا ملخص مرجعي تعليمي. النص القانوني الرسمي والسارية هو المعتمد. يجب الرجوع إلى محامٍ مرخّص في أي نزاع عمالي.
 >
@@ -15,6 +22,8 @@
 ---
 
 ## النطاق والتطبيق / Scope and Application
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 **يسري النظام على:**
 - جميع العلاقات العمالية داخل المملكة بين أصحاب العمل والعمال
@@ -29,7 +38,11 @@
 
 ## المحاور الرئيسية / Key Provisions
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 ### عقد العمل / Employment Contract (المواد 51-65)
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 **البيانات الإلزامية في العقد:**
 - اسم صاحب العمل ومقره
@@ -52,6 +65,8 @@
 
 ### الأجور / Wages (المواد 88-108)
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 | البند | الحكم |
 |-------|-------|
 | **أجر الساعات العادية** | الأجر المتفق عليه |
@@ -69,6 +84,8 @@
 
 ### ساعات العمل والراحة / Working Hours and Rest (المواد 98-105)
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 - **ساعات العمل العادية:** 8 ساعات/يوم أو 48 ساعة/أسبوع
 - **خلال رمضان:** 6 ساعات/يوم للمسلمين
 - **الراحة الأسبوعية:** يوم كامل على الأقل (عادة الجمعة)
@@ -77,6 +94,8 @@
 ---
 
 ### الإجازات / Leaves (المواد 109-122)
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 | نوع الإجازة | المدة | الأجر |
 |------------|-------|-------|
@@ -91,6 +110,8 @@
 ---
 
 ### إنهاء العقد / Termination (المواد 74-87)
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 **إنهاء العقد من صاحب العمل بعذر مشروع (مادة 80):**
 تتضمن 12 حالة محددة، منها:
@@ -110,6 +131,8 @@
 
 ### مكافأة نهاية الخدمة / End-of-Service Gratuity (المادة 84)
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 **الحساب:**
 - السنوات الخمس الأولى: نصف أجر شهري عن كل سنة
 - ما بعد الخمس سنوات: أجر شهري كامل عن كل سنة
@@ -126,6 +149,8 @@
 
 ### السعودة ونطاقات / Saudization (Nitaqat)
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 - برنامج تحدّد فيه وزارة الموارد البشرية نسبًا إلزامية لتوطين الوظائف
 - النسب تختلف بحسب القطاع وحجم المنشأة
 - يُقيَّم وضع المنشأة ببرنامج "نطاقات" ويُصنَّف في مناطق لونية
@@ -134,6 +159,8 @@
 ---
 
 ## المسار القضائي / Judicial Path
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 ```
 1. مركز التسوية الودية (وزارة الموارد البشرية)
@@ -149,6 +176,8 @@
 
 ## المصدر الرسمي / Official Source
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 - **هيئة الخبراء بمجلس الوزراء:** [boe.gov.sa](https://boe.gov.sa)
 - **الجريدة الرسمية (أم القرى):** [uqn.gov.sa](https://uqn.gov.sa)
 - **منصة قوى:** [qiwa.com.sa](https://www.qiwa.com.sa)
@@ -158,6 +187,8 @@
 
 ## Mandatory Non-Waivable Provisions / الأحكام الإلزامية غير قابلة التنازل
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 > أحكام نظام العمل آمرة — البنود التعاقدية المخالفة تقع باطلة ويُطبَّق النظام بدلاً منها. هذا المبدأ مُقرَّر صراحةً في نظام العمل (م/51 1426هـ).
 >
 > Saudi Labor Law provisions are mandatory — contractual clauses that deviate from them are void; the statutory rule applies instead. This principle is expressly established in the Labor Law (Royal Decree M/51 1426H).
@@ -165,6 +196,8 @@
 ---
 
 ### 1. الحد الأدنى للإجازة السنوية / Minimum Annual Leave
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 | الحقل | القيمة |
 |-------|-------|
@@ -199,6 +232,8 @@ Clauses granting less than 21 days are void; the statutory minimum applies regar
 
 ### 2. مكافأة نهاية الخدمة / End-of-Service Gratuity (EOSB)
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 | الحقل | القيمة |
 |-------|-------|
 | **الوصف** | لا يجوز الاتفاق على حرمان العامل من مكافأة نهاية الخدمة أو إنقاصها عما يستحقه نظامًا |
@@ -232,6 +267,8 @@ Many contracts calculate EOSB on total compensation including allowances. Prevai
 
 ### 3. الحد الأقصى لفترة التجربة / Maximum Probation Period
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 | الحقل | القيمة |
 |-------|-------|
 | **الوصف** | لا يجوز تمديد فترة التجربة تعاقديًا فوق 90 يومًا (أو 180 يومًا باتفاق كتابي)؛ ولا تُكرَّر مع نفس العامل على العمل ذاته |
@@ -260,6 +297,8 @@ Foreign templates sometimes include open-ended or employer-extensible probation 
 ---
 
 ### 4. أجر العمل الإضافي / Overtime Pay Rate
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 | الحقل | القيمة |
 |-------|-------|
@@ -290,6 +329,8 @@ Contracts bundling overtime into a lump "inclusive allowance" require careful re
 
 ### 5. حد الخصم من الأجر / Wage Deduction Ceiling
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 | الحقل | القيمة |
 |-------|-------|
 | **الوصف** | لا يجوز خصم أكثر من 50% من أجر العامل الشهري في دفعة واحدة لأي سبب كان |
@@ -318,6 +359,8 @@ Deduction limits apply even where the worker contractually agreed to higher dedu
 ---
 
 ### 6. إشعار إنهاء العقد / Termination Notice Minimum
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 | الحقل | القيمة |
 |-------|-------|
@@ -348,6 +391,8 @@ Contracts specifying shorter notice periods cannot reduce the statutory minimum.
 
 ### 7. التعويض عن الإنهاء التعسفي / Wrongful Dismissal Minimum Compensation
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 | الحقل | القيمة |
 |-------|-------|
 | **الوصف** | إذا أنهى صاحب العمل العقد دون سبب مشروع، يحق للعامل تعويضًا لا يقل عن أجر 15 يومًا عن كل سنة خدمة |
@@ -377,7 +422,11 @@ The 15-day-per-year figure is a statutory floor, not a cap. Labor courts may awa
 
 ## Human Legal Review Required / يجب مراجعة قانونية بشرية
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 ### TODOs وبنود تحتاج تحقق
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 | الموضوع | الإشكالية | أولوية المراجعة |
 |---------|----------|----------------|

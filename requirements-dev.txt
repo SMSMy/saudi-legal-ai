@@ -2,3 +2,5 @@
 # Install with: pip install -r requirements-dev.txt
 pytest>=8.0
 pytest-asyncio>=0.23
+# Optional ingest/probe scripts only; never imported by saudi_legal_mcp.
+beautifulsoup4>=4.12

@@ -1,6 +1,16 @@
 """
 sources.py — Saudi Legal AI MCP Server
 Trusted source registry with validation before registration.
+
+Wave 1 changes (2026-11-23):
+  - citations are classified honestly: portal / law_document_url /
+    direct_article_url.  A LawDetails page is a DOCUMENT, never a portal.
+  - a section whose own body has no link falls back to the source document
+    reference (when one is already present in the source file).  It never
+    fabricates a link and never silently falls back to a whole-file portal
+    list without saying so.
+  - every response carries `text_origin`, `provenance_level`, `fetched_at`
+    (None when unknown), `answer_markdown`, and `disclaimer`.
 """
 from __future__ import annotations
 
@@ -9,6 +19,19 @@ from pathlib import Path
 from typing import Optional
 
 from saudi_legal_mcp.tools import get_repo_path
+from saudi_legal_mcp.tools.provenance import (
+    DISCLAIMER,
+    PROVENANCE_LINKED_DOCUMENT,
+    PROVENANCE_LINKED_PORTAL,
+    PROVENANCE_UNLINKED,
+    TEXT_ORIGIN_HAND_WRITTEN,
+    best_provenance_level,
+    build_answer_markdown,
+    citation,
+    citations_for_document,
+    document_reference,
+    provenance_envelope,
+)
 from saudi_legal_mcp.tools.schemas import human_status
 
 # ---------------------------------------------------------------------------
@@ -94,6 +117,11 @@ def read_source(
 ) -> dict:
     """Return structured information about an official Saudi regulation.
 
+    Text returned here is a HAND-WRITTEN SUMMARY of the current corpus, not an
+    official verbatim text.  The response says so in `text_origin` and in
+    `answer_markdown`.  Article-level verbatim quotes live in `corpus/` and are
+    served by `search_legal_provision` / `get_legal_article`.
+
     Args:
         regulation:      A key from VALID_REGULATIONS.
         section:         Optional section hint (e.g. "المادة 74").
@@ -110,7 +138,7 @@ def read_source(
         return {
             "error": f"Unknown regulation '{regulation}'.",
             "valid_options": sorted(VALID_REGULATIONS),
-            "disclaimer": "هذه معلومات قانونية عامة وليست استشارة قانونية.",
+            "disclaimer": DISCLAIMER,
         }
 
     source_path: Path = get_repo_path() / "sources" / f"{regulation}.md"
@@ -118,7 +146,7 @@ def read_source(
         return {
             "error": f"Source file not found: {source_path.name}",
             "source_id": regulation,
-            "disclaimer": "هذه معلومات قانونية عامة وليست استشارة قانونية.",
+            "disclaimer": DISCLAIMER,
         }
 
     # Load manifest if available (populated in step 3)
@@ -126,6 +154,7 @@ def read_source(
     verification_status = manifest.get("verification_status", "unverified") if manifest else "unverified"
 
     full_text = source_path.read_text(encoding="utf-8")
+    document = document_reference(full_text)
 
     content: Optional[str] = None
     content_truncated = False
@@ -144,19 +173,37 @@ def read_source(
     if content_truncated:
         sections_index = _extract_headings(full_text)
 
-    # v0.4.8: citations extracted from retrieved content scope only.
-    # Metadata-only requests (no content) return [] — no whole-file fallback.
-    citations: list[dict] = _extract_links(content) if content else []
+    # Citations are scope-bound to the retrieved content.  If the section has
+    # no link of its own, the source's document reference is attached with an
+    # honest "opens the document, not this section" label.
+    citations: list[dict] = _extract_links(content, document=document) if content else []
 
-    # v0.4.14: when content was returned but carries no link, say so
-    # EXPLICITLY — the rendering agent must relay this instead of
-    # silently presenting unverifiable numbers (discovery #5 follow-up).
     citation_note: Optional[str] = None
     if content and not citations:
         citation_note = (
-            "لا رابط مباشر متاح لهذا القسم تحديداً — تحقق من النص الرسمي "
-            "عبر بوابة هيئة الخبراء (boe.gov.sa) بنفسك."
+            "لا رابط مباشر متاح لهذا القسم تحديداً، ولا توجد وثيقة نظام معرّفة "
+            "لهذا المصدر — تحقق من النص الرسمي عبر بوابة هيئة الخبراء "
+            "(boe.gov.sa) بنفسك."
         )
+    elif content and not any(
+        c.get("link_type") in ("law_document_url", "direct_article_url")
+        for c in citations
+    ):
+        citation_note = (
+            "الرابط المتاح لهذا القسم بوابة عامة فقط، ولا يفتح المادة أو القسم "
+            "مباشرة. ابحث داخل البوابة للوصول للنص الدقيق."
+        )
+
+    provenance_level = best_provenance_level(citations)
+    answer = build_answer_markdown(
+        title=f"{regulation}" + (f" — {section}" if section else ""),
+        content=content,
+        citations=citations,
+        text_origin=TEXT_ORIGIN_HAND_WRITTEN,
+        provenance_level=provenance_level,
+        fetched_at=None,
+        citation_note=citation_note,
+    )
 
     return {
         "source_id": regulation,
@@ -172,7 +219,23 @@ def read_source(
         ),
         "citations": citations,
         "citation_note": citation_note,
-        "disclaimer": "هذه معلومات قانونية عامة وليست استشارة قانونية.",
+        "text_origin": TEXT_ORIGIN_HAND_WRITTEN,
+        "provenance_level": provenance_level,
+        "fetched_at": None,
+        "provenance": provenance_envelope(
+            citations,
+            fetched_at=None,
+            # The manifest sha256 hashes this summary file, not the official
+            # page.  Do not present it as a source-page fingerprint.
+            sha256=None,
+            freshness="unverified",
+            citation_note=citation_note,
+        ),
+        "source_document": document,
+        "answer_markdown": answer,
+        "quotes": [],
+        "commentary": [],
+        "disclaimer": DISCLAIMER,
     }
 
 
@@ -193,74 +256,62 @@ def _load_manifest(regulation: str) -> Optional[dict]:
         return None
 
 
-def _extract_links(text: str) -> list[dict]:
+def _extract_links(text: str, document: Optional[dict] = None) -> list[dict]:
     """Extract official links from retrieved content (section-scoped).
 
     v0.4.8 — links come ONLY from the text passed in (the retrieved
-    section or content), never from the whole file.  A section without
-    a link in its own body returns [].  No silent fallback to the
-    file-level "المصادر الرسمية" list.
+    section or content), never from the whole file.
 
-    Citation dict (decisions v0.4.8):
-      - link_type: "official_source_url" for authority pages (all
-        current links); "direct_article_url" reserved for future
-        deep per-article links (none exist yet)
-      - label carries the distinction PROGRAMMATICALLY — a general
-        portal link must never be displayed as if it led to the
-        article text.  Labels are full instructional sentences that
-        name the portal domain and direct the user to use the
-        portal's internal search to reach the exact text.  The agent
-        rendering the answer copies the label verbatim.
-      - Presence of a citation does NOT affect evidence sufficiency
-        in enforce_evidence (documented in legal_response_policy.md)
+    Wave 1 (2026-11-23) — if the section body has no link, `document`
+    (a document reference already present in the source file) is attached
+    as a fallback.  The fallback label states explicitly that it opens the
+    document, not the section.  If a portal link is present but no document
+    link, the document is attached too.
 
-    Patterns matched (in scope text only):
-      1. table row:  | **الرابط الرسمي** | URL |
-      2. markdown:   [label](URL)
-      3. bare URL:   https://... (no surrounding markdown)
-    Deduplicated by URL.
+    link_type values:
+      - portal             → the authority's general gateway
+      - law_document_url   → the law document itself
+      - direct_article_url → a link proven to open the article
     """
     import re
+
     citations: list[dict] = []
     seen_urls: set[str] = set()
 
-    def _portal_label(url: str) -> str:
-        """Full instructional label for a general portal link.
-
-        v0.4.9 — names the portal domain and tells the user the link
-        leads to the general gateway, not the article text, and to use
-        the portal's internal search to reach the exact text.
-        """
-        from urllib.parse import urlparse
-        host = urlparse(url).netloc.lower()
-        if host.startswith("www."):
-            host = host[4:]
-        return (
-            f"رابط بوابة الهيئة الرسمية ({host}) — الرابط يوصلك للبوابة العامة، "
-            "لا للمادة مباشرة؛ استخدم البحث داخل الموقع للوصول للنص الدقيق"
-        )
-
-    def add(url: str, label: Optional[str], link_type: str = "official_source_url") -> None:
-        url = url.strip().rstrip(").")
+    def add(url: str, label: Optional[str] = None) -> None:
+        url = url.strip().rstrip(").,;")
         if not url.startswith(("http://", "https://")):
             return
         if url in seen_urls:
             return
         seen_urls.add(url)
-        citations.append({"url": url, "label": label, "link_type": link_type})
+        citations.append(citation(url, label=label))
 
     for line in text.splitlines():
         # 1. table row: | **الرابط الرسمي** | URL |
         m = re.search(r"\|\s*\*\*الرابط الرسمي\*\*\s*\|\s*(https?://[^\s|]+)", line)
         if m:
-            add(m.group(1), _portal_label(m.group(1)))
+            add(m.group(1))
             continue
         # 2. markdown link: [label](URL)  (may appear multiple per line)
         for m in re.finditer(r"\[([^\]]+)\]\((https?://[^)\s]+)\)", line):
-            add(m.group(2), _portal_label(m.group(2)))
+            add(m.group(2))
         # 3. bare URL in this line if not already handled by 1/2
         for m in re.finditer(r"https?://[^\s|)\]]+", line):
-            add(m.group(0), _portal_label(m.group(0)))
+            add(m.group(0))
+
+    # Attach the source's document reference when the section itself carries
+    # no document/article link.  This is explicit, labelled, and deduplicated.
+    if document:
+        has_document = any(
+            c.get("link_type") in ("law_document_url", "direct_article_url")
+            for c in citations
+        )
+        if not has_document:
+            for doc_citation in citations_for_document(document):
+                if doc_citation["url"] not in seen_urls:
+                    seen_urls.add(doc_citation["url"])
+                    citations.append(doc_citation)
 
     return citations
 

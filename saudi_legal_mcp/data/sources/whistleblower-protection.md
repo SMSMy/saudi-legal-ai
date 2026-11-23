@@ -20,6 +20,8 @@
 
 ## تحذير / Warning
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 > هذا ملخص مرجعي تعليمي. اللائحة التنفيذية الصادرة عام 2026م تضيف تفاصيل جوهرية لم يتضمنها النظام وحده. النص القانوني الرسمي والساري هو المعتمد. يجب الرجوع الى محامٍ مرخص في المملكة العربية السعودية قبل اتخاذ أي قرار.
 >
 > This is an educational reference summary. The 2026 Implementing Regulations add material detail not covered by the Law alone. The official current legal text prevails. A licensed attorney in the Kingdom of Saudi Arabia must be consulted before taking any action.
@@ -41,7 +43,11 @@ The Law establishes an integrated legislative framework protecting four categori
 
 ## 2. نطاق التطبيق / Scope of Application
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 ### الجرائم المشمولة بأحكام النظام
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 يسري النظام على المشاركين في الاجراءات الجنائية المتعلقة بالجرائم الجسيمة بوجه عام، ويشمل بصفة خاصة:
 - جرائم الفساد المالي والاداري
@@ -55,6 +61,8 @@ The Law applies to participants in criminal proceedings involving serious offenc
 > **ملاحظة:** النطاق الدقيق للجرائم المشمولة يحتاج تحقق من نص المادة الاولى والمواد ذات الصلة [يحتاج تحقق من النص الرسمي]
 
 ### الفئات المشمولة بالحماية / Protected Categories
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 وفق المادة الاولى من النظام، تشمل الحماية الفئات الاربع التالية:
 
@@ -73,13 +81,19 @@ The Law applies to participants in criminal proceedings involving serious offenc
 
 ## 3. برنامج الحماية / Protection Programme
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 ### الانشاء والاساس النظامي
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 **المادة 4:** انشأ النظام برنامجاً متخصصاً للحماية يتخذ من النيابة العامة مقراً ومرجعاً. البرنامج هو الجهة المنوط بها تلقي طلبات الحماية واتخاذ القرارات المتعلقة بها وتنسيق تنفيذها مع الجهات الامنية والقضائية والرقابية.
 
 Article 4 establishes a dedicated protection programme housed within the Public Prosecution. The programme is the competent authority for receiving protection applications, making decisions, and coordinating implementation with security, judicial, and oversight bodies.
 
 ### صلاحيات ادارة البرنامج (المادة 5)
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 **المادة 5:** منح النظام ادارة البرنامج صلاحيات واسعة تشمل:
 - تلقي طلبات الحماية وتقييمها
@@ -91,6 +105,8 @@ Article 4 establishes a dedicated protection programme housed within the Public 
 Article 5 grants programme management broad authority: receiving and assessing applications; making acceptance, rejection, and suspension decisions; determining the appropriate protection level per case based on risk degree; coordinating with the Ministry of Interior and security agencies for implementation; and issuing decisions necessary to preserve the protected person's safety.
 
 ### شروط القبول في البرنامج
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 يخضع القبول في البرنامج لجملة من الضوابط تشمل عموماً:
 - تقييم درجة الخطر المحدق بالمتقدم أو ذويه
@@ -104,9 +120,13 @@ Article 5 grants programme management broad authority: receiving and assessing a
 
 ## 4. أنواع الحماية المتاحة (المادة 14) / Types of Available Protection
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 المادة 14 من النظام تُعدِّد اشكال الحماية التي يجوز منحها، وتشمل:
 
 ### 4.1 اخفاء البيانات والهوية / Identity and Data Concealment
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 - اخفاء الهوية الحقيقية للمشمول في الوثائق الرسمية والاجراءات القضائية
 - استخدام اسم مستعار أو رمز في المراسلات والسجلات الرسمية
@@ -117,6 +137,8 @@ Concealing the protected person's real identity in official documents and judici
 
 ### 4.2 النقل الوظيفي المؤقت أو الدائم / Temporary or Permanent Job Transfer
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 - نقل الموظف المشمول من بيئة العمل التي قد تشكل خطراً عليه
 - النقل داخل المنشأة أو الى منشأة اخرى أو الى جهة حكومية مختلفة
 - ضمان عدم المساس بالمرتبة والاجر وحقوق الترقي جراء النقل
@@ -124,6 +146,8 @@ Concealing the protected person's real identity in official documents and judici
 Transferring the protected employee away from a work environment that may pose risk; transfer within the same entity, to another entity, or to a different government body; ensuring rank, salary, and promotion rights are not prejudiced by the transfer.
 
 ### 4.3 المساعدة في الحصول على عمل بديل / Assistance in Obtaining Alternative Employment
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 - توفير وساطة رسمية لايجاد عمل بديل في القطاع العام أو الخاص
 - منح الاولوية في فرص العمل الحكومية ضمن الضوابط النظامية
@@ -133,6 +157,8 @@ Providing official mediation to find alternative employment in the public or pri
 
 ### 4.4 الارشاد القانوني والنفسي والاجتماعي / Legal, Psychological and Social Counselling
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 - تقديم استشارات قانونية مجانية تتعلق بالاجراءات والحقوق
 - خدمات الدعم النفسي للمشمول وذويه اذا اقتضت الحاجة
 - خدمات العمل الاجتماعي لمساعدة المشمول على استعادة الاستقرار
@@ -140,6 +166,8 @@ Providing official mediation to find alternative employment in the public or pri
 Free legal consultations on procedures and rights; psychological support services for the protected person and their dependants where needed; social work services to help restore stability.
 
 ### 4.5 وسائل الابلاغ الفوري عن الخطر / Immediate Danger Reporting Means
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 - توفير قنوات تواصل مباشرة وسريعة مع البرنامج أو الجهات الامنية
 - اجراءات استجابة طارئة عند تعرض المشمول لخطر فوري
@@ -150,6 +178,8 @@ Providing direct and rapid communication channels with the programme or security
 ---
 
 ## 5. الاجراءات الوظيفية المحظورة ضد المشمولين / Prohibited Employment Actions Against Protected Persons
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 لا يجوز لأي جهة عامة أو خاصة اتخاذ الاجراءات التالية ضد المبلِّغ أو الشاهد بسبب تبليغه أو ادلائه بشهادته:
 
@@ -170,13 +200,19 @@ Any action taken against a protected person on account of their reporting or coo
 
 ## 6. البلاغات الكيدية / Malicious Reports
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 ### التعريف
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 البلاغ الكيدي هو البلاغ الذي يقدمه شخص مع علمه بعدم صحة ما يُبلِّغ به، أو بقصد الاضرار بالمبلَّغ عنه أو ابتزازه أو الانتقام منه دون وجود اساس حقيقي للبلاغ.
 
 A malicious report is one submitted by a person with knowledge of its falsity, or with intent to harm, extort, or retaliate against the reported party without genuine basis.
 
 ### العقوبات
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 يعرِّض مقدم البلاغ الكيدي نفسه للمسؤولية الجنائية والمدنية وفق الانظمة السارية:
 - العقوبات الجنائية المقررة للبلاغ الكاذب وفق نظام الاجراءات الجزائية وما يكمله
@@ -191,7 +227,11 @@ A malicious report exposes the reporting person to criminal and civil liability:
 
 ## 7. طلبات السلطات الاجنبية / Foreign Authority Requests
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 ### دور النيابة العامة
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 تضطلع النيابة العامة بدور محوري في التعامل مع طلبات السلطات الاجنبية المتعلقة بالمشمولين بالحماية، ويشمل هذا الدور:
 - استلام الطلبات وتقييمها في ضوء الاتفاقيات الدولية المعمول بها
@@ -201,6 +241,8 @@ A malicious report exposes the reporting person to criminal and civil liability:
 The Public Prosecution plays a central role in handling foreign authority requests concerning protected persons: receiving and assessing requests in light of applicable international agreements; deciding whether responding to the request would prejudice the protected person's protection; and requiring reciprocal guarantees to ensure the protected person's safety outside the Kingdom when applicable.
 
 ### اللجنة الدائمة لطلبات المساعدة القانونية
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 تتولى اللجنة الدائمة لطلبات المساعدة القانونية الدولية — المنبثقة عن وزارة الداخلية — النظر في طلبات التسليم والتعاون القانوني الدولي التي قد تمس المشمولين. تحرص اللجنة على الموازنة بين التزامات المملكة بموجب الاتفاقيات الثنائية ومتطلبات حماية المشمولين داخلياً.
 
@@ -212,7 +254,11 @@ The Permanent Committee for International Legal Assistance Requests — operatin
 
 ## 8. التقاطع مع انظمة اخرى / Intersection with Other Regulations
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 ### 8.1 نظام مكافحة الفساد (نظام هيئة الرقابة ومكافحة الفساد)
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 نظام حماية المبلغين يكمل الاطار التشريعي لمكافحة الفساد من خلال:
 - توفير الضمانات التي تشجع على الابلاغ عن جرائم الفساد دون خشية الانتقام
@@ -223,6 +269,8 @@ The Permanent Committee for International Legal Assistance Requests — operatin
 
 ### 8.2 نظام الاجراءات الجزائية
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 يرتبط النظام ارتباطاً وثيقاً بنظام الاجراءات الجزائية (م/39 لعام 1422هـ) من حيث:
 - الاجراءات القضائية التي تخضع لها شهادة الشاهد المشمول بالحماية
 - ضمانات سرية هوية الشاهد امام المحكمة
@@ -232,6 +280,8 @@ The Permanent Committee for International Legal Assistance Requests — operatin
 
 ### 8.3 نظام العمل — حماية الموظف المبلِّغ
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 يتقاطع النظام مع نظام العمل (م/51 لعام 1426هـ) في حماية الموظف من الفصل أو الانتقام بسبب ابلاغه عن مخالفات صاحب العمل:
 - اذا كان المبلِّغ موظفاً في القطاع الخاص، يتمتع بالحماية المزدوجة: نظام العمل ونظام حماية المبلغين
 - الفصل الانتقامي بسبب التبليغ يُعدّ انهاءً تعسفياً وفق نظام العمل، فضلاً عن المسؤولية بموجب نظام المبلغين
@@ -240,6 +290,8 @@ The Permanent Committee for International Legal Assistance Requests — operatin
 **المرجع:** نظام العمل الصادر بالمرسوم الملكي م/51 لعام 1426هـ وتعديلاته — `sources/labor-law.md`
 
 ### 8.4 نظام حماية البيانات الشخصية (PDPL)
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 تتقاطع متطلبات PDPL مع نظام المبلغين في جانبين رئيسيين:
 - **حماية بيانات المشمولين:** أي بيانات شخصية يجمعها البرنامج تخضع لمتطلبات PDPL في التخزين والمعالجة والافصاح، وتُعدّ من البيانات الحساسة التي تستوجب حماية مشددة
@@ -251,9 +303,13 @@ The Permanent Committee for International Legal Assistance Requests — operatin
 
 ## 9. اهمية اللائحة التنفيذية الجديدة (2026م) / Significance of the 2026 Implementing Regulations
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 اللائحة التنفيذية الصادرة عام 2026م تُعدّ وثيقة تشغيلية لا غنى عنها، وتتناول:
 
 ### الهيكل التنظيمي للبرنامج
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 - التسلسل الاداري داخل برنامج الحماية في النيابة العامة
 - آلية تشكيل لجان التقييم ومعايير اتخاذ القرار
@@ -262,11 +318,15 @@ The Permanent Committee for International Legal Assistance Requests — operatin
 
 ### آلية الصرف والتمويل
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 - الجهة المنوط بها صرف المزايا المالية للمشمولين عند الاقتضاء
 - الاجراءات المالية لتمويل خدمات الدعم النفسي والقانوني والاجتماعي
 - ضوابط الصرف والرقابة المالية على البرنامج
 
 ### التنسيق بين الجهات القضائية والامنية والرقابية
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 - آليات التنسيق بين النيابة العامة ووزارة الداخلية وهيئة نزاهة
 - بروتوكولات التواصل الامن بين الجهات لحماية سرية هوية المشمول
@@ -278,7 +338,11 @@ The Permanent Committee for International Legal Assistance Requests — operatin
 
 ## 10. مناطق المخاطر القانونية / Legal Risk Areas
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 ### ما يجب على الشركات والمؤسسات مراعاته
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 **1. سياسة الابلاغ الداخلي**
 ينبغي أن تمتلك المنشآت الكبرى قناة ابلاغ داخلية واضحة وامنة. غياب هذه القناة أو ضعفها يدفع الموظفين الى الابلاغ الخارجي مباشرة، مما يُصعِّب على المنشأة احتواء الموضوع داخلياً.
@@ -302,6 +366,8 @@ A written non-retaliation policy with management training is strongly advised to
 
 ### حماية الموظف المبلِّغ داخلياً
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 الموظف الذي يُبلِّغ صاحب العمل داخلياً عن مخالفة قانونية يستحق الحماية ذاتها التي يحظى بها من يُبلِّغ الجهات الخارجية — شريطة ان يكون البلاغ بحسن نية وعلى اساس معقول. الحماية الداخلية لا تُسقط حقه في اللجوء لاحقاً الى النيابة العامة.
 
 An employee who reports a legal violation internally to their employer deserves the same protection as one reporting to external authorities — provided the report is made in good faith on reasonable grounds. Internal reporting does not forfeit the right to subsequently approach the Public Prosecution.
@@ -309,6 +375,8 @@ An employee who reports a legal violation internally to their employer deserves 
 ---
 
 ## 11. الجهات المختصة / Competent Authorities
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 | الجهة | الدور | الرابط |
 |-------|-------|--------|
@@ -331,6 +399,8 @@ An employee who reports a legal violation internally to their employer deserves 
 ---
 
 ## الاحكام الإلزامية غير قابلة التنازل / Mandatory Non-Waivable Provisions
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 > أحكام هذا النظام آمرة — لا يجوز الاتفاق على اسقاط الحماية المقررة فيه. اي بند تعاقدي يُوجب على الموظف التنازل عن حقه في الابلاغ أو يعرِّضه لعقوبة بسبب ذلك يقع باطلاً بطلاناً مطلقاً.
 >
@@ -406,7 +476,11 @@ Disclosing a reporter's identity — even indirectly — to persons outside the 
 
 ## يجب مراجعة قانونية بشرية / Human Legal Review Required
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 ### TODOs وبنود تحتاج تحقق
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6c421c5c-c137-442e-a854-b12200c46ffe/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 | الموضوع | الاشكالية | اولوية المراجعة |
 |---------|-----------|----------------|

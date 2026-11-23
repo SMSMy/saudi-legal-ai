@@ -10,6 +10,8 @@ When citing any regulation in any other project file, use the **Common Citation 
 
 ## كيفية الاستخدام / How to Use
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 - **في ملفات `skills/` و`prompts/` و`examples/`:** استخدم عمود "صيغة الاستشهاد" مباشرةً.
 - **في عمود `related_regulation` بالـ dataset:** استخدم نفس الصيغة — أضف رقم المادة بعدها إذا احتجت: `... Art. 84`
 - **عند صدور تعديل على نظام:** حدّث هذا الملف أولًا، ثم ابحث عن جميع الاستشهادات في المشروع وعدّلها.
@@ -22,9 +24,13 @@ When citing any regulation in any other project file, use the **Common Citation 
 
 ## الأنظمة المسجَّلة / Registered Regulations
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 ---
 
 ### 1. نظام المعاملات المدنية
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 | الحقل | القيمة |
 |-------|-------|
@@ -41,6 +47,8 @@ When citing any regulation in any other project file, use the **Common Citation 
 
 ### 2. نظام العمل
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 | الحقل | القيمة |
 |-------|-------|
 | **الاسم العربي** | نظام العمل |
@@ -55,6 +63,8 @@ When citing any regulation in any other project file, use the **Common Citation 
 ---
 
 ### 3. نظام الشركات
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 | الحقل | القيمة |
 |-------|-------|
@@ -71,6 +81,8 @@ When citing any regulation in any other project file, use the **Common Citation 
 
 ### 4. نظام المحاكم التجارية
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 | الحقل | القيمة |
 |-------|-------|
 | **الاسم العربي** | نظام المحاكم التجارية |
@@ -85,6 +97,8 @@ When citing any regulation in any other project file, use the **Common Citation 
 ---
 
 ### 5. نظام حماية البيانات الشخصية (PDPL)
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 | الحقل | القيمة |
 |-------|-------|
@@ -101,6 +115,8 @@ When citing any regulation in any other project file, use the **Common Citation 
 
 ### 6. نظام التحكيم
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 | الحقل | القيمة |
 |-------|-------|
 | **الاسم العربي** | نظام التحكيم |
@@ -116,6 +132,8 @@ When citing any regulation in any other project file, use the **Common Citation 
 
 ### 7. نظام الوكالة التجارية
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 | الحقل | القيمة |
 |-------|-------|
 | **الاسم العربي** | نظام الوكالة التجارية |
@@ -130,6 +148,8 @@ When citing any regulation in any other project file, use the **Common Citation 
 ---
 
 ### 8. أنظمة الملكية الفكرية (عنقود أنظمة تحت إشراف SAIP)
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 | الحقل | القيمة |
 |-------|-------|
@@ -147,6 +167,8 @@ When citing any regulation in any other project file, use the **Common Citation 
 
 ### 9. نظام الإفلاس
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 | الحقل | القيمة |
 |-------|-------|
 | **الاسم العربي** | نظام الإفلاس |
@@ -162,6 +184,8 @@ When citing any regulation in any other project file, use the **Common Citation 
 
 ### 10. نظام التعاملات الإلكترونية
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 | الحقل | القيمة |
 |-------|-------|
 | **الاسم العربي** | نظام التعاملات الإلكترونية |
@@ -176,6 +200,8 @@ When citing any regulation in any other project file, use the **Common Citation 
 ---
 
 ### 11. نظام حماية المبلغين والشهود والخبراء والضحايا
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 | الحقل | القيمة |
 |-------|-------|
@@ -212,6 +238,8 @@ When citing any regulation in any other project file, use the **Common Citation 
 
 ### 13. لائحة الفوترة الإلكترونية (ZATCA E-Invoicing)
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 | الحقل | القيمة |
 |-------|-------|
 | **الاسم العربي** | لائحة الفوترة الإلكترونية |
@@ -229,6 +257,8 @@ When citing any regulation in any other project file, use the **Common Citation 
 
 ### 14. نظام المنافسة (Competition Law)
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 | الحقل | القيمة |
 |-------|-------|
 | **الاسم العربي** | نظام المنافسة |
@@ -245,6 +275,8 @@ When citing any regulation in any other project file, use the **Common Citation 
 ---
 
 ## جدول مرجع سريع / Quick Reference Table
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 | الاسم الإنجليزي | رقم المرسوم | السنة | صيغة الاستشهاد المختصرة |
 |----------------|------------|-------|------------------------|
@@ -267,6 +299,8 @@ When citing any regulation in any other project file, use the **Common Citation 
 
 ## إضافة نظام جديد / Adding a New Regulation
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 لإضافة نظام جديد لهذا السجل:
 1. أضف قسمًا بالترقيم التالي في القائمة أعلاه
 2. أضف سطرًا في جدول المرجع السريع
@@ -281,6 +315,8 @@ To add a new regulation to this registry:
 
 ## مصادر البيانات المفتوحة الرسمية / Official Open Data Sources
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 > هذا القسم يُدرج مصادر البيانات المفتوحة الحكومية ذات الصلة بالمنظومة القانونية السعودية.
 > هذه المصادر **مكمِّلة** — تُفيد في الإحصاء والأنماط وإشارات الممارسة القضائية، **ولا تُعوِّض** النصوص التشريعية الرسمية.
 >
@@ -290,7 +326,11 @@ To add a new regulation to this registry:
 ---
 
 ### منصة البيانات المفتوحة السعودية — ناشر قضائي
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 ### Saudi Open Data Platform — Judicial Publisher
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 | الحقل | القيمة |
 |-------|-------|
@@ -313,7 +353,11 @@ To add a new regulation to this registry:
 ---
 
 ### البوابة القانونية — وزارة العدل
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 ### MOJ Legal Portal — Ministry of Justice
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 | الحقل | القيمة |
 |-------|-------|

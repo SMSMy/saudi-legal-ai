@@ -1,6 +1,10 @@
 # مهارة: فحص الامتثال / Skill: Compliance Check
 # Saudi Legal Context — الامتثال التنظيمي السعودي
 
+<!-- reasoning-guide-banner -->
+> **هذا دليل تفكير، لا نص نظامي.** لا يُقتبس من هذا الملف كحكم. الاقتباس الرسمي من `corpus/` أو من الصفحة الرسمية، وما هنا إلا منهج تحليل.
+
+
 **Version:** 1.1 | **Applies to:** All AI assistants | **Language:** AR / EN
 
 ---

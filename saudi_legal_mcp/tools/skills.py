@@ -8,6 +8,12 @@ from pathlib import Path
 from typing import Optional
 
 from saudi_legal_mcp.tools import get_repo_path
+from saudi_legal_mcp.tools.provenance import (
+    DISCLAIMER,
+    PROVENANCE_UNLINKED,
+    TEXT_ORIGIN_REASONING_GUIDE,
+    build_answer_markdown,
+)
 from saudi_legal_mcp.tools.schemas import human_status
 
 
@@ -123,6 +129,19 @@ def read_skill(
     if content_truncated:
         sections_index = _extract_headings(full_text)
 
+    answer = build_answer_markdown(
+        title=f"دليل تفكير — {domain}",
+        content=content,
+        citations=[],
+        text_origin=TEXT_ORIGIN_REASONING_GUIDE,
+        provenance_level=PROVENANCE_UNLINKED,
+        fetched_at=None,
+        citation_note=(
+            "هذا دليل تفكير وليس النص النظامي. لا تُنسب أي جملة فيه إلى النظام "
+            "ما لم تُقتبس حرفياً من corpus/ أو من الصفحة الرسمية."
+        ),
+    )
+
     return {
         "domain": domain,
         "verification_status": "not_applicable",
@@ -135,7 +154,14 @@ def read_skill(
             "استخدم section أو include_content=True عند الحاجة للنص الكامل."
             if not include_content and not section else None
         ),
-        "disclaimer": "هذه معلومات قانونية عامة وليست استشارة قانونية.",
+        "text_origin": TEXT_ORIGIN_REASONING_GUIDE,
+        "provenance_level": PROVENANCE_UNLINKED,
+        "fetched_at": None,
+        "citations": [],
+        "quotes": [],
+        "commentary": [],
+        "answer_markdown": answer,
+        "disclaimer": DISCLAIMER,
     }
 
 

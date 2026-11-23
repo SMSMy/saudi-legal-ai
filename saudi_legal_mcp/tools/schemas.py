@@ -56,6 +56,16 @@ class SourceResponse:
     # never the raw verification_status term, in user-facing text.
     verification_status_explanation: Optional[str] = None
     disclaimer: str = _DISCLAIMER
+    # Wave 1 (2026-11-23): provenance envelope.  Summary files are marked
+    # hand_written_summary and never presented as official verbatim text.
+    text_origin: str = "hand_written_summary"
+    provenance_level: str = "unlinked"
+    fetched_at: Optional[str] = None
+    provenance: dict = field(default_factory=dict)
+    source_document: Optional[dict] = None
+    answer_markdown: Optional[str] = None
+    quotes: list[dict] = field(default_factory=list)
+    commentary: list[dict] = field(default_factory=list)
 
     def __post_init__(self) -> None:
         if self.verification_status not in _VALID_VERIFICATION_STATUSES:
@@ -194,6 +204,13 @@ class MatchedSection:
     match_score: int
     match_confidence: float
     citations: list[dict] = field(default_factory=list)
+    # Wave 1/2: a section is either a hand-written summary or a verbatim
+    # article.  The consumer must render them differently.
+    text_origin: str = "hand_written_summary"
+    provenance_level: str = "unlinked"
+    fetched_at: Optional[str] = None
+    article: Optional[str] = None
+    article_id: Optional[str] = None
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -231,6 +248,16 @@ class ProvisionResponse:
     placeholder_dominated: bool = False
     citation_note: Optional[str] = None
     disclaimer: str = _DISCLAIMER
+    # Wave 1/2 envelope.  `quotes` is the only place where official_verbatim
+    # text is exposed; summary sections are not quotes.
+    as_of: Optional[str] = None
+    text_origin: str = "hand_written_summary"
+    provenance_level: str = "unlinked"
+    fetched_at: Optional[str] = None
+    provenance: dict = field(default_factory=dict)
+    answer_markdown: Optional[str] = None
+    quotes: list[dict] = field(default_factory=list)
+    commentary: list[dict] = field(default_factory=list)
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -255,6 +282,9 @@ class LegalBriefResponse:
     brief: Optional[str]  # capped at 4000 chars by caller
     insufficient_evidence: bool
     disclaimer: str = _DISCLAIMER
+    text_origin: str = "hand_written_summary"
+    provenance_level: str = "unlinked"
+    fetched_at: Optional[str] = None
 
     def to_dict(self) -> dict:
         return asdict(self)

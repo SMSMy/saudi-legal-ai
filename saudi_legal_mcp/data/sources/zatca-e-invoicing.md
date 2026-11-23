@@ -17,6 +17,8 @@
 
 ## ⚠️ تحذير / Warning
 
+> **رابط الوثيقة:** [وثيقة النظام](https://zatca.gov.sa/ar/RulesRegulations/Taxes/Documents/E-Invoicing_Resolution.pdf) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 > هذا ملخص تعليمي. الموجات والتواريخ والمواصفات الفنية للفوترة الإلكترونية تُصدَر وتُحدَّث عبر إعلانات ZATCA الرسمية، ويجب التحقق من آخر إعلان على zatca.gov.sa قبل أي اعتماد.
 >
 > This is an educational summary. The e-invoicing waves, dates, and technical specifications are issued and updated through official ZATCA announcements. Always verify the latest announcement on zatca.gov.sa before relying on it.
@@ -24,6 +26,8 @@
 ---
 
 ## النطاق والتطبيق / Scope and Application
+
+> **رابط الوثيقة:** [وثيقة النظام](https://zatca.gov.sa/ar/RulesRegulations/Taxes/Documents/E-Invoicing_Resolution.pdf) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 - تسري على **المكلفين الخاضعين لضريبة القيمة المضافة** المقيمين في المملكة (وبعض الأطراف الأخرى وفق ما تحدده الهيئة).
 - لا تسري على غير الخاضعين لضريبة القيمة المضافة.
@@ -33,6 +37,8 @@ Applies to **VAT-registered taxpayers** resident in the Kingdom (and certain oth
 ---
 
 ## المرحلتان: الإصدار مقابل الربط والتكامل / The Two Phases: Generation vs Integration
+
+> **رابط الوثيقة:** [وثيقة النظام](https://zatca.gov.sa/ar/RulesRegulations/Taxes/Documents/E-Invoicing_Resolution.pdf) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 | المرحلة | المضمون | التوقيت |
 |---------|---------|---------|
@@ -47,6 +53,8 @@ Applies to **VAT-registered taxpayers** resident in the Kingdom (and certain oth
 
 ## الموجات (Waves) / Integration Waves
 
+> **رابط الوثيقة:** [وثيقة النظام](https://zatca.gov.sa/ar/RulesRegulations/Taxes/Documents/E-Invoicing_Resolution.pdf) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 - يتم تطبيق مرحلة الربط والتكامل على **موجات متتابعة**.
 - تُعلِن الهيئة عن كل موجة وتُبلِغ الفئة المستهدفة **قبل مدة كافية** من تاريخ الإلزام.
 - **عدد الموجات وحدودها (حدّ الإيرادات) وتواريخها تتغيّر باستمرار عبر إعلانات ZATCA** — يجب التحقق من آخر إعلان رسمي.
@@ -58,6 +66,8 @@ Integration is rolled out in **successive waves**. ZATCA announces each wave and
 ---
 
 ## الأحكام الإلزامية / Mandatory Provisions
+
+> **رابط الوثيقة:** [وثيقة النظام](https://zatca.gov.sa/ar/RulesRegulations/Taxes/Documents/E-Invoicing_Resolution.pdf) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 > الالتزام بالفوترة الإلكترونية التزام نظامي تجاه الهيئة لا يجوز التحلّل منه بالاتفاق التعاقدي.
 >
@@ -86,6 +96,8 @@ verification_metadata:
 ```
 
 ### 2. الربط والتكامل التدريجي عبر الموجات / Phased Integration via Waves
+
+> **رابط الوثيقة:** [وثيقة النظام](https://zatca.gov.sa/ar/RulesRegulations/Taxes/Documents/E-Invoicing_Resolution.pdf) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 | الحقل | القيمة |
 |-------|-------|
@@ -124,6 +136,8 @@ Confusing the general electronic-generation obligation (everyone) with the integ
 ---
 
 ## Human Legal Review Required / يجب مراجعة قانونية بشرية
+
+> **رابط الوثيقة:** [وثيقة النظام](https://zatca.gov.sa/ar/RulesRegulations/Taxes/Documents/E-Invoicing_Resolution.pdf) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 | الموضوع | الإشكالية | أولوية المراجعة |
 |---------|----------|----------------|

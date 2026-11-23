@@ -20,6 +20,8 @@
 
 ## تحذير / Warning
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 > هذا ملخص مرجعي تعليمي لا يُعوِّض النص القانوني الرسمي الساري. اللوائح التنفيذية وقرارات الهيئة السعودية للمحامين تُضيف تفاصيل جوهرية لم يتناولها هذا الملف. يجب الرجوع الى محامٍ مرخص في المملكة العربية السعودية والى الموقع الرسمي للهيئة (sba.gov.sa) قبل اتخاذ أي قرار يتعلق بمزاولة المهنة أو التعاقد مع محامٍ أو التحقق من ترخيصه.
 >
 > This is an educational reference summary and does not replace the current official legal text. SBA implementing regulations and decisions add material detail not covered here. Always consult a licensed Saudi attorney and the SBA official website (sba.gov.sa) before making any decision about legal practice, engaging an attorney, or verifying a lawyer's credentials.
@@ -42,7 +44,11 @@ The legal profession in Saudi Arabia is a regulated liberal profession governed 
 
 ## 2. تعريف المحامي المرخص وشروط المزاولة / Definition of a Licensed Lawyer and Practice Conditions
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 ### شروط الترخيص بمزاولة مهنة المحاماة
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 لا يجوز لأي شخص تمثيل موكلين أمام المحاكم السعودية أو تقديم خدمات قانونية باسم الغير مقابل أتعاب إلا بعد استيفاء شروط الترخيص الصادر من الهيئة السعودية للمحامين. وتشمل هذه الشروط عموماً:
 
@@ -58,6 +64,8 @@ Practice of law before Saudi courts or provision of legal services on behalf of 
 
 ### أنواع العضوية في الهيئة السعودية للمحامين
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 | نوع العضوية | الصلاحيات | القيود |
 |------------|-----------|--------|
 | **عضو كامل — محامٍ مرخص** | التمثيل أمام جميع درجات المحاكم — إبرام عقود المحاماة — تلقي الأتعاب | تجديد الترخيص دورياً وفق اشتراطات التطوير المهني |
@@ -67,6 +75,8 @@ Practice of law before Saudi courts or provision of legal services on behalf of 
 
 ### الاعتماد المهني السعودي للقانونيين (SASL)
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 يُعدّ الاعتماد المهني السعودي للقانونيين (SASL) مؤهلاً مهنياً مُعترفاً به يُصدره جهة معتمدة ويُتيح لحامله الانتساب إلى فئة المستشارين القانونيين في الهيئة السعودية للمحامين أو تطوير الكفاءات اللازمة لطلب الترخيص الكامل. يختلف عن الترخيص الكامل في أنه لا يُخوِّل صاحبه التمثيل القضائي المستقل.
 
 The Saudi Association of Legal Scholars (SASL) credential is a recognised professional qualification that enables holders to join the SBA as legal consultant members or to build competencies required for full licensing. It differs from a full license in that it does not confer independent court representation rights.
@@ -74,6 +84,8 @@ The Saudi Association of Legal Scholars (SASL) credential is a recognised profes
 > ملاحظة: وصف SASL ومساراته الدقيقة تحتاج تحقق مباشر من sba.gov.sa [يحتاج تحقق من النص الرسمي]
 
 ### الفرق بين المحامي المرخص والمستشار القانوني
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 | المعيار | المحامي المرخص | المستشار القانوني |
 |---------|--------------|-----------------|
@@ -87,9 +99,13 @@ The Saudi Association of Legal Scholars (SASL) credential is a recognised profes
 
 ## 3. كيف تتحقق من ترخيص محامٍ / How to Verify a Lawyer's License
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 هذا القسم هو الأهم لوكلاء الذكاء الاصطناعي الذين يساعدون المستخدمين على التحقق من صحة ترخيص محامٍ قبل التعاقد معه.
 
 ### الدليل الرسمي للمحامين المرخصين
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 **الرابط:** [https://eservice.sba.gov.sa/lawyers](https://eservice.sba.gov.sa/lawyers)
 
@@ -98,6 +114,8 @@ The Saudi Association of Legal Scholars (SASL) credential is a recognised profes
 The lawyer directory is the sole official source for verifying any lawyer's license in Saudi Arabia. Operated by the SBA and updated periodically.
 
 ### البيانات المتاحة في الدليل
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 يُتيح الدليل البحث عن المحامين المرخصين وعرض البيانات التالية بصورة عامة:
 
@@ -113,6 +131,8 @@ The lawyer directory is the sole official source for verifying any lawyer's lice
 
 ### خطوات التحقق العملية
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 1. افتح الدليل على [eservice.sba.gov.sa/lawyers](https://eservice.sba.gov.sa/lawyers)
 2. ابحث باسم المحامي أو رقم ترخيصه أو رقم هويته الوطنية
 3. تحقق من أن حالة الترخيص **ساري** وليس موقوفاً أو منتهياً
@@ -120,6 +140,8 @@ The lawyer directory is the sole official source for verifying any lawyer's lice
 5. احتفظ بلقطة شاشة تُوثِّق تاريخ ووقت التحقق كدليل احترازي
 
 ### ما يعنيه غياب الاسم من الدليل
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 إذا لم يظهر اسم الشخص الذي يدّعي أنه محامٍ في دليل الهيئة السعودية للمحامين، فهذا يعني واحدة من الحالات التالية:
 
@@ -136,7 +158,11 @@ The lawyer directory is the sole official source for verifying any lawyer's lice
 
 ## 4. حدود عمل المحامي وفق النظام / Scope of Practice Under the Law
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 ### الأعمال المقتصرة على المحامين المرخصين
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 وفق نظام المحاماة، لا يجوز لأي شخص غير مرخص القيام بالأعمال التالية نيابةً عن الغير مقابل أتعاب:
 
@@ -151,6 +177,8 @@ Under the Legal Profession Law, no unlicensed person may, on behalf of others an
 
 ### ما يجوز للمستشار غير المرخص القيام به
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 يجوز للمستشار القانوني غير المرخص (العضو المنتسب أو أي شخص ذي تأهيل قانوني دون ترخيص مزاولة) تقديم:
 
 - الاستشارات القانونية المكتبية
@@ -159,6 +187,8 @@ Under the Legal Profession Law, no unlicensed person may, on behalf of others an
 - تقديم الرأي القانوني كتابياً دون تمثيل أمام جهة قضائية
 
 ### المخاطر القانونية للتمثيل بدون ترخيص
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 مزاولة أعمال المحاماة دون ترخيص تُعرِّض الشخص والمنشأة التي استعانت به للمسؤولية القانونية:
 
@@ -170,6 +200,8 @@ Under the Legal Profession Law, no unlicensed person may, on behalf of others an
 
 ## 5. عقد المحاماة الموحد / Standard Legal Services Contract
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 ### وجوده وإلزاميته
 
 أتاحت الهيئة السعودية للمحامين نموذج عقد محاماة موحداً لتنظيم العلاقة التعاقدية بين المحامي وموكله. يُوصى باستخدام هذا النموذج أو ما يُعادله لضمان توثيق كامل لعلاقة التوكيل وتجنب النزاعات حول نطاق التكليف والأتعاب.
@@ -179,6 +211,8 @@ Under the Legal Profession Law, no unlicensed person may, on behalf of others an
 The SBA has made available a standard legal services contract template to govern the contractual relationship between a lawyer and their client. Using this template or its equivalent is recommended to ensure full documentation of the retainer relationship and avoid disputes about scope and fees.
 
 ### البنود الأساسية التي يجب أن يتضمنها عقد المحاماة
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 | البند | الأهمية |
 |------|---------|
@@ -196,6 +230,8 @@ The SBA has made available a standard legal services contract template to govern
 
 ## 6. تقدير الأتعاب / Fee Assessment
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 ### آلية تقدير الهيئة للأتعاب
 
 أتاحت الهيئة السعودية للمحامين حاسبة أتعاب رسمية لمساعدة الموكلين على تقدير نطاق الأتعاب المعقولة استناداً إلى نوع القضية وقيمتها.
@@ -206,6 +242,8 @@ The SBA has published an official fee calculator to help clients estimate reason
 
 ### أنواع هياكل الأتعاب الشائعة
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 | نوع الأتعاب | الوصف | ملاحظة |
 |------------|-------|--------|
 | **أتعاب ثابتة** | مبلغ محدد لخدمة بعينها | الأكثر وضوحاً — ينصح بتحديدها كتابياً |
@@ -214,6 +252,8 @@ The SBA has published an official fee calculator to help clients estimate reason
 | **أتعاب دورية** | رسم سنوي أو شهري لخدمات استشارية مستمرة | شائع في عقود الاستشارة المؤسسية |
 
 ### أهمية التوثيق في النزاعات
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 توثيق الاتفاق على الأتعاب في عقد مكتوب ضرورة لا اختياراً:
 
@@ -225,6 +265,8 @@ The SBA has published an official fee calculator to help clients estimate reason
 
 ## 7. البلاغات والشكاوى ضد المحامين / Complaints Against Lawyers
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 ### آلية تقديم البلاغ
 
 **رابط البلاغ الرسمي:** [https://sba.gov.sa/violation-report/](https://sba.gov.sa/violation-report/)
@@ -234,6 +276,8 @@ The SBA has published an official fee calculator to help clients estimate reason
 Any client or aggrieved party may file a complaint against a lawyer's conduct with the SBA through the official reporting portal. The SBA investigates the complaint in accordance with approved disciplinary procedures.
 
 ### الجهة المختصة بالنظر في الشكاوى
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 تتولى الهيئة السعودية للمحامين بصفتها الجهة التنظيمية النظرَ في الشكاوى والبلاغات المقدمة ضد المحامين المرخصين وتملك صلاحية:
 
@@ -256,7 +300,11 @@ Any client or aggrieved party may file a complaint against a lawyer's conduct wi
 
 ## 8. التقاطع مع انظمة اخرى / Intersection with Other Regulations
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 ### 8.1 نظام المحاكم التجارية — التمثيل القانوني الإلزامي
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 بموجب نظام المحاكم التجارية (م/93 لعام 1441هـ)، تشترط المحاكم التجارية في الغالب أن تكون الشركات والأشخاص الاعتباريون ممثَّلين أمامها بمحامٍ مرخص، لا سيما في الدعاوى التي تتجاوز قيمتها الحد المحدد. التمثيل من قِبَل موظف غير محامٍ قد يُرفض أو يُفضي إلى قصور إجرائي.
 
@@ -266,6 +314,8 @@ Under the Commercial Courts Law (Royal Decree M/93 1441H), commercial courts gen
 
 ### 8.2 نظام التحكيم — اشتراطات التمثيل
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 وفق نظام التحكيم (م/34 لعام 1433هـ)، لا تشترط إجراءات التحكيم بالضرورة تمثيل محامٍ مرخص (إذ يحق للأطراف تعيين من يُمثِّلهم)، غير أن وجود محامٍ مرخص يُعزِّز صحة الإجراءات ويضمن الالتزام بمتطلبات نظام التحكيم السعودي وقواعد مراكز التحكيم المعتمدة كالمركز السعودي للتحكيم التجاري (SCCA).
 
 Under the Saudi Arbitration Law (Royal Decree M/34 1433H), arbitration proceedings do not strictly require a licensed lawyer (parties may appoint any representative), but having a licensed lawyer strengthens procedural integrity and ensures compliance with Saudi arbitration requirements and approved centre rules such as SCCA.
@@ -273,6 +323,8 @@ Under the Saudi Arbitration Law (Royal Decree M/34 1433H), arbitration proceedin
 **المرجع:** `sources/regulation-index.md` — إدخال نظام التحكيم
 
 ### 8.3 نظام الإثبات — أهلية الشهود والخبراء
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 نظام الإثبات السعودي يُحدد معايير قبول شهادة الشهود والخبراء أمام المحاكم. المحامون المرخصون الذين يعملون شهوداً في قضايا تتعلق بموكليهم قد يواجهون إشكاليات تعارض المصالح. أما الخبراء القانونيون الذين تستعين بهم المحكمة فيخضعون لضوابط مختلفة عن ضوابط المحامين.
 
@@ -284,7 +336,11 @@ The Saudi Evidence Law sets criteria for the admission of witness and expert tes
 
 ## 9. مناطق المخاطر القانونية / Legal Risk Areas
 
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 ### 1. التحقق من الترخيص قبل التعاقد
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 **المخاطرة:** الاستعانة بشخص يدّعي أنه محامٍ دون التحقق من ترخيصه في دليل الهيئة السعودية للمحامين.
 
@@ -305,6 +361,8 @@ Engaging a person claiming to be a lawyer without verifying their license in the
 Agreeing on a retainer verbally without a written contract risks fee disputes difficult to resolve, scope ambiguity leading to professional liability, and difficulty proving agreed terms before adjudicators. Use the SBA template from [sba.gov.sa/scfl/](https://sba.gov.sa/scfl/) or any written contract containing the key clauses in Section 5.
 
 ### 3. الاستعانة بمحامٍ غير مرخص وعواقبه
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 **المخاطرة للمنشآت:** تعيين مستشار قانوني منتسب لتمثيل الشركة أمام المحاكم التجارية.
 
@@ -342,6 +400,8 @@ Appointing an associate legal consultant to represent a company before commercia
 ---
 
 ## يجب مراجعة قانونية بشرية / Human Legal Review Required
+
+> **رابط البوابة:** [بوابة الجهة](https://sba.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 | الموضوع | الإشكالية | اولوية المراجعة |
 |---------|-----------|----------------|

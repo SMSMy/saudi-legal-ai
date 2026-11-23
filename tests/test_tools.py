@@ -206,15 +206,20 @@ def test_every_contract_type_has_field_tested_risk():
 # ---------------------------------------------------------------------------
 
 def test_read_source_section_returns_its_own_link():
-    """The annual-leave section carries its own الرابط الرسمي table link."""
+    """The annual-leave section carries its own document link."""
     result = read_source("labor-law", section="الحد الأدنى للإجازة السنوية")
     urls = [c["url"] for c in result["citations"]]
-    assert "https://www.boe.gov.sa" in urls
+    assert any("LawDetails/08381293" in url for url in urls)
 
-def test_read_source_section_without_link_returns_empty():
-    """No whole-file fallback: a section with no link in its body → []."""
+def test_read_source_section_without_body_link_gets_document_link():
+    """Wave 1 acceptance: a section without a link in its own body must still
+    carry the source document link when that document is known — but the label
+    must say it opens the document, not this section."""
     result = read_source("labor-law", section="نطاقات")
-    assert result["citations"] == []
+    assert result["citations"], "document link must not be silently dropped"
+    document = [c for c in result["citations"] if c["link_type"] == "law_document_url"]
+    assert document, result["citations"]
+    assert "لا مادة محددة" in document[0]["label"] or "لا هذا القسم" in document[0]["label"]
 
 def test_read_source_metadata_only_no_citations():
     """Metadata-only request retrieves no content → no citations."""
@@ -222,25 +227,66 @@ def test_read_source_metadata_only_no_citations():
     assert result["citations"] == []
 
 def test_citations_have_explicit_link_type():
-    """Every citation must carry url + label + link_type (official_source_url)."""
+    """Every citation must carry url + label + link_type from the honest set."""
+    allowed = {"portal", "law_document_url", "direct_article_url"}
     result = read_source("pdpl", include_content=True)
+    assert result["citations"]
     for c in result["citations"]:
         assert "url" in c and c["url"].startswith("https://")
         assert "link_type" in c
-        assert c["link_type"] == "official_source_url"
+        assert c["link_type"] in allowed
+    assert any(c["link_type"] == "law_document_url" for c in result["citations"])
 
 def test_extract_links_unit_scoped_to_text():
     """_extract_links extracts only from the passed text (no file access).
-    Label must carry the portal-vs-article distinction programmatically."""
+    An unknown authority page is a portal, never a law document."""
     from saudi_legal_mcp.tools.sources import _extract_links
     text = "| **الرابط الرسمي** | https://example.gov.sa |"
     links = _extract_links(text)
     assert len(links) == 1
     assert links[0]["url"] == "https://example.gov.sa"
-    assert links[0]["link_type"] == "official_source_url"
+    assert links[0]["link_type"] == "portal"
     assert "example.gov.sa" in links[0]["label"]
-    assert "بوابة الهيئة الرسمية" in links[0]["label"]
+    assert "بوابة" in links[0]["label"]
     assert "استخدم البحث داخل الموقع" in links[0]["label"]
+
+def test_lawdetails_url_is_document_not_portal():
+    """Wave 1 acceptance: a LawDetails URL is the law document, not the portal."""
+    from saudi_legal_mcp.tools.provenance import classify_url
+    info = classify_url(
+        "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/"
+        "08381293-6388-48e2-8ad2-a9a700f2aa94/1"
+    )
+    assert info["link_type"] == "law_document_url"
+    assert info["is_deep_link"] is False
+    assert "بوابة" not in info["label"]
+    assert "مادة محددة" in info["label"]
+
+def test_viewer_article_url_is_direct_article():
+    """direct_article_url is reserved for a link that opens the article."""
+    from saudi_legal_mcp.tools.provenance import classify_url
+    info = classify_url(
+        "https://laws.boe.gov.sa/BoeLaws/Laws/Viewer/"
+        "c5caee1f-a619-489e-876c-b20800d59dc1?attachmentTitle=المادة الثانية"
+    )
+    assert info["link_type"] == "direct_article_url"
+    assert info["is_deep_link"] is True
+    assert "المادة" in info["label"]
+
+def test_extract_links_fallback_document_when_no_body_link():
+    """A no-link section with a known document returns the document citation,
+    not an empty list, and the label is explicit about the scope."""
+    from saudi_legal_mcp.tools.sources import _extract_links
+    document = {
+        "url": (
+            "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/"
+            "08381293-6388-48e2-8ad2-a9a700f2aa94/1"
+        )
+    }
+    links = _extract_links("سطر بلا أي رابط في جسمه", document=document)
+    assert len(links) == 1
+    assert links[0]["link_type"] == "law_document_url"
+    assert "لا مادة محددة" in links[0]["label"]
 
 def test_extract_links_dedup_and_no_link_case():
     from saudi_legal_mcp.tools.sources import _extract_links
@@ -266,6 +312,15 @@ def test_read_source_has_status_explanation():
     explanation = result["verification_status_explanation"]
     assert explanation and len(explanation) > 5
     assert "field_tested" not in explanation
+
+def test_skill_is_reasoning_guide_not_statute_text():
+    """A skill is a reasoning guide: no quotes and no official_verbatim origin."""
+    result = read_skill("labor-law-analysis", include_content=True)
+    assert result["text_origin"] == "reasoning_guide"
+    assert result["quotes"] == []
+    assert result["provenance_level"] == "unlinked"
+    assert "دليل تفكير" in result["answer_markdown"]
+
 
 def test_skill_status_explanation_not_applicable():
     result = read_skill("labor-law-analysis", include_content=True)

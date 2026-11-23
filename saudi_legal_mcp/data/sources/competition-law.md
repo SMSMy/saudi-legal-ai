@@ -14,6 +14,8 @@
 
 ## ⚠️ تحذير / Warning
 
+> **رابط البوابة:** [بوابة الجهة](https://gac.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 > هذا ملخص تعليمي. اللائحة التنفيذية لنظام المنافسة والإرشادات والأدلة وعتبات التركز الاقتصادي تصدر وتُحدَّث عن طريق الهيئة العامة للمنافسة، ويجب التحقق من آخر اللوائح والإرشادات على gac.gov.sa قبل أي اعتماد.
 >
 > This is an educational summary. The Competition Law's Implementing Regulations, guidelines, and economic-concentration thresholds are issued and updated by the General Authority for Competition. Always verify the latest regulations and guidance on gac.gov.sa before relying on it.
@@ -21,6 +23,8 @@
 ---
 
 ## النطاق والتطبيق / Scope and Application
+
+> **رابط البوابة:** [بوابة الجهة](https://gac.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 - يسري على **جميع المنشآت** العاملة في السوق السعودية وعلى أي ممارسات تقع خارج المملكة ويكون لها أثر على المنافسة داخلها.
 - تُستثنى بعض الجهات وفق ما يحدده النظام ولائحته (مثل ما تملكه الدولة بالكامل في حالات معينة) — يحتاج تحقق من النص واللائحة.
@@ -31,7 +35,11 @@ Applies to **all establishments** active in the Saudi market, and to conduct occ
 
 ## المحاور الرئيسية / Core Pillars
 
+> **رابط البوابة:** [بوابة الجهة](https://gac.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 ### 1. الاتفاقات والممارسات المخلّة بالمنافسة / Anti-Competitive Agreements & Practices
+
+> **رابط البوابة:** [بوابة الجهة](https://gac.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 تُحظر الاتفاقات والممارسات بين المنشآت المتنافسة التي يكون موضوعها أو أثرها الإخلال بالمنافسة، ومنها:
 - تحديد الأسعار أو شروط البيع/الشراء (اتفاق الأسعار)
@@ -42,6 +50,8 @@ Applies to **all establishments** active in the Saudi market, and to conduct occ
 Agreements and practices among competitors whose object or effect is to restrict competition are prohibited — including price fixing, market/customer/supply allocation, bid rigging, and output restriction.
 
 ### 2. إساءة استغلال الوضع المهيمن / Abuse of Dominant Position
+
+> **رابط البوابة:** [بوابة الجهة](https://gac.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 يُحظر على المنشأة ذات **الوضع المهيمن** في السوق إساءة استغلاله، مثل:
 - فرض أسعار بيع أو شراء غير عادلة
@@ -55,6 +65,8 @@ A dominant establishment may not abuse its position (unfair pricing, discriminat
 
 ### 3. التركز الاقتصادي / Economic Concentration
 
+> **رابط البوابة:** [بوابة الجهة](https://gac.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
+
 عمليات التركز الاقتصادي (الاندماج، الاستحواذ، الدمج، أو امتلاك أصول/حقوق تنقل السيطرة) التي تتجاوز **العتبات** المحددة تتطلب **إشعار/موافقة مسبقة** من الهيئة قبل الإتمام.
 
 - **العتبات (حدود الإيرادات/الحصص) تتغيّر** وتُحدَّد عبر لوائح وإرشادات الهيئة — يجب التحقق من آخر نسخة.
@@ -63,6 +75,8 @@ A dominant establishment may not abuse its position (unfair pricing, discriminat
 Economic-concentration transactions (mergers, acquisitions, transfers of control) exceeding defined **thresholds** require prior notification/approval from the Authority before closing. Thresholds change and are set via GAC regulations/guidance — verify the latest. Closing before clearance may expose the parties to liability.
 
 ### 4. دور الهيئة العامة للمنافسة / Role of the General Authority for Competition (GAC)
+
+> **رابط البوابة:** [بوابة الجهة](https://gac.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 - إصدار اللوائح والأدلة الإرشادية وعتبات التركز
 - تلقّي إشعارات التركز الاقتصادي والبتّ فيها
@@ -74,6 +88,8 @@ GAC issues regulations/guidance and concentration thresholds, reviews concentrat
 ---
 
 ## الأحكام الإلزامية / Mandatory Provisions
+
+> **رابط البوابة:** [بوابة الجهة](https://gac.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 > أحكام نظام المنافسة من النظام العام؛ لا يجوز للأطراف الاتفاق تعاقدياً على ما يخالفها أو على إعفاء أنفسهم منها.
 >
@@ -137,6 +153,8 @@ Non-compete, exclusive-supply, and pricing clauses in commercial contracts may i
 ---
 
 ## Human Legal Review Required / يجب مراجعة قانونية بشرية
+
+> **رابط البوابة:** [بوابة الجهة](https://gac.gov.sa) — رابط عام، لا يفتح هذا القسم مباشرة.
 
 | الموضوع | الإشكالية | أولوية المراجعة |
 |---------|----------|----------------|
