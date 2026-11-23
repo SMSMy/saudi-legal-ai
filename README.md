@@ -1,6 +1,6 @@
 # المنظومة القانونية السعودية للذكاء الاصطناعي 🇸🇦 — Saudi Legal AI MCP retrieval server
 
-[![Version](https://img.shields.io/badge/version-0.4.0--pre-blue.svg)](https://github.com/SMSMy/saudi-legal-ai)
+[![Version](https://img.shields.io/badge/version-0.4.0-blue.svg)](https://github.com/SMSMy/saudi-legal-ai/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-stdio-blue.svg)](https://modelcontextprotocol.io)
 
@@ -8,9 +8,9 @@
 > For preliminary research only — not legal advice. Must be reviewed by a licensed Saudi legal professional.
 
 > **ترقيم الإصدار / Versioning:** رقم semver في `pyproject.toml` هو المرجع الرسمي الوحيد
-> (حالياً `0.4.0` — قبل الإصدار الأول). أرقام `v0.4.x` في رسائل الـcommits
-> علامات تغيير داخلية، **ليست إصدارات**. عند أول إصدار رسمي يُرفع semver
-> ويُولَّد `releases/<version>-evidence.json` عبر `generate_release_evidence.py`.
+> (`0.4.0` — الإصدار الرسمي الأول؛ دليل أدلته `releases/0.4.0-evidence.json` وصفحة
+> [Releases](https://github.com/SMSMy/saudi-legal-ai/releases)).
+> أرقام `v0.4.x` في رسائل الـcommits علامات تغيير داخلية، **ليست إصدارات**.
 
 ---
 
@@ -58,6 +58,12 @@ openclaw mcp reload
 ```
 
 **Done!** Legal tools ready — standard Python package, no env-var hacks needed. 🔓
+
+## ✅ ما لا تحتاجه | What you DON'T need
+
+- 🔑 **لا مفتاح API** — السيرفر استرجاع خالص؛ لا يستدعي أي نموذج لغوي ولا أي خدمة خارجية في مسار الطلب.
+- 🐳 **لا Docker** — أمر `pip install -e .` يكفي، وأمر stdio واحد (`saudi-legal-mcp`) يُسجَّل في أي عميل MCP.
+- 🌐 **لا اتصال خارجي في مسار الطلب** — كل القراءة من ملفات محلية. اللمسة الشبكية الوحيدة هي سكربتات السحب الصريحة (`scripts/ingest_laws.py` ونحوها) التي يشغّلها إنسان بيده من داخل المملكة، وليست جزءًا من مسار الإجابة.
 
 > OpenClaw هنا **مثال على عميل MCP** فقط. نفس أمر stdio يعمل في Claude Desktop
 > وCursor وCline وCodex وGemini CLI وأي عميل MCP آخر.
@@ -218,6 +224,26 @@ release gate.
 MIT License — للاستخدام الحر مع نسب المصدر والاحتفاظ بإخلاء المسؤولية القانوني.
 
 MIT License — free to use with attribution and retention of legal disclaimer.
+
+---
+
+## 🔀 الفرق عن الإطار الأصلي | Difference from the original framework
+
+هذا المستودع مشتق من [Samix2026/saudi-legal-ai-framework](https://github.com/Samix2026/saudi-legal-ai-framework):
+إطار مهارات يُنسخ محتواها يدويًا في المحادثة، وخادم MCP عبر Docker بثلاث أدوات
+(`analyze_contract_clause` / `get_regulation_summary` / `search_contract_risks`).
+ما تغيّر هنا:
+
+| | الإطار الأصلي | هذا المستودع |
+|---|---|---|
+| طريقة الاستخدام | نسخ ملف المهارة ولصقه في Claude/ChatGPT/Gemini | سيرفر MCP محلي (stdio) يعمل مع أي عميل: OpenClaw وClaude Desktop وCursor وغيرها |
+| خادم MCP | Docker + 3 أدوات + `.env` | Python مباشر + **9 أدوات**، بلا Docker وبلا مفاتيح |
+| النص النظامي | ملخصات مرجعية فقط | **متن حرفي** (`corpus/`: 245 + 721 + 43 + 38) مع `sha256` وتاريخ سحب |
+| الإسناد | روابط عامة | تصنيف صريح: `portal` / `law_document_url` / `direct_article_url` |
+| الضمان | — | بوابة إصدار + 179 اختبارًا + 65 سؤال eval (precision 97.2% / recall 90.3%) |
+
+إن كنت تريد اللصق اليدوي في المحادثة فالأصلي يكفيك;
+وإن كنت تريد استرجاعًا موثّقًا عبر MCP فهذا المستودع.
 
 ---
 
