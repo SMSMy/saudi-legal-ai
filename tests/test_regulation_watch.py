@@ -1,0 +1,741 @@
+# tests/test_regulation_watch.py
+"""
+Tests for scripts/check_regulation_updates.py (v2.1).
+Saudi Legal AI Framework — regulation-watch (metadata-only) checker.
+
+All network probing is mocked via injected probe_fn — no real HTTP.
+v2: per-URL fingerprints, exact/portal confidence, static flags are
+report-only (never a status, never blocking the baseline).
+v2.1 (#14): HTTP >= 400 answers are PROBE_ERROR — never baselined, never
+silent OK; retired portal probes are listed in Retired Links.
+"""
+import json
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
+
+import check_regulation_updates as rw
+
+
+# ── Helpers ──────────────────────────────────────────────────────────────────
+
+LAW_URL = "https://example.gov.sa/law/99"
+SECTOR_URL = "https://example.gov.sa/sector-feed"
+
+
+def _entry(**over):
+    base = {
+        "name": "نظام تجريبي",
+        "decree": "م/99",
+        "date": "1440هـ",
+        "url": LAW_URL,
+        "url_confidence": "exact",
+        "citation": "Test Law (Royal Decree M/99 1440H)",
+        "source_file": "sources/test-law.md",
+        "review_priority": "medium",
+        "monitor": {"enabled": True, "signals": ["boe_law_page"]},
+    }
+    base.update(over)
+    return base
+
+
+def _probe_ok(url, status=200, final=None, etag='"abc"', lm="Wed, 01 Jan 2025 00:00:00 GMT",
+              length="1234"):
+    return {"ok": True, "url": url, "status": status,
+            "final_url": final or url, "etag": etag,
+            "last_modified": lm, "content_length": length}
+
+
+def _probe_fail(url):
+    return {"ok": False, "url": url, "error": "ConnectionError: blocked"}
+
+
+def _no_sleep(s):
+    return None
+
+
+def _prior_for(probe_dicts):
+    """Build a v2 prior entry from {url: probe} with matching fingerprints."""
+    urls = {}
+    for url, p in probe_dicts.items():
+        urls[url] = {
+            "fingerprint": rw.fingerprint_of(
+                p["status"], p["final_url"], p["etag"],
+                p["last_modified"], p["content_length"]),
+            "signal": {k: p[k] for k in rw.SIGNAL_KEYS},
+        }
+    return {"urls": urls}
+
+
+# ── Fingerprint ──────────────────────────────────────────────────────────────
+
+def test_fingerprint_changes_when_headers_change():
+    a = rw.fingerprint_of(200, "https://x/law", '"a"', "D1", "10")
+    b = rw.fingerprint_of(200, "https://x/law", '"b"', "D1", "10")
+    assert a != b
+
+
+def test_fingerprint_stable_for_same_headers():
+    assert (rw.fingerprint_of(200, "https://x/law", '"a"', "D1", "10") ==
+            rw.fingerprint_of(200, "https://x/law", '"a"', "D1", "10"))
+
+
+def test_fingerprint_ignores_body_by_design():
+    # Signature takes headers only — there is no body parameter at all.
+    import inspect
+    assert "body" not in inspect.signature(rw.fingerprint_of).parameters
+
+
+# ── Watch targets ────────────────────────────────────────────────────────────
+
+def test_watch_targets_include_gazette_plus_istitlaa_when_present():
+    e = _entry(gazette_url="https://uqn.gov.sa/details?p=1",
+               istitlaa_url="https://istitlaa.example/doc.pdf",
+               sector_feed=SECTOR_URL)
+    targets = rw.watch_targets(e)
+    by_kind = {t["kind"]: t for t in targets}
+    assert by_kind["law_page"]["confidence"] == "exact"
+    assert by_kind["gazette"]["confidence"] == "exact"
+    assert by_kind["istitlaa"]["confidence"] == "exact"
+    assert by_kind["sector"]["confidence"] == "portal"
+
+
+def test_watch_targets_skip_absent_fields_honestly():
+    targets = rw.watch_targets(_entry())
+    assert [t["url"] for t in targets] == [LAW_URL]
+
+
+def test_watch_targets_dedupe_repeated_urls():
+    targets = rw.watch_targets(_entry(sector_feed=LAW_URL))
+    assert len(targets) == 1
+
+
+# ── Entry states ─────────────────────────────────────────────────────────────
+
+def test_first_seen_entry_is_new_not_suspect():
+    res = rw.check_entry("t", _entry(), None,
+                         probe_fn=_probe_ok, sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_NEW
+
+
+def test_identical_signals_are_ok():
+    probe = _probe_ok(LAW_URL)
+    prior = _prior_for({LAW_URL: probe})
+    res = rw.check_entry("t", _entry(), prior,
+                         probe_fn=lambda u: dict(probe, url=u), sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_OK
+
+
+def test_changed_exact_etag_is_suspect():
+    prior = _prior_for({LAW_URL: _probe_ok(LAW_URL, etag='"old"')})
+    res = rw.check_entry("t", _entry(), prior,
+                         probe_fn=_probe_ok, sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_SUSPECT
+    assert "ETag" in res["detail"]
+    assert LAW_URL in res["detail"]
+
+
+def test_second_url_change_detected_not_just_first_probe():
+    # Regression: v1 fingerprinted only the first successful probe.
+    law_probe = _probe_ok(LAW_URL)
+    sector_probe = _probe_ok(SECTOR_URL)
+    prior = _prior_for({LAW_URL: law_probe, SECTOR_URL: sector_probe})
+
+    def probe(u):
+        if u == SECTOR_URL:
+            return _probe_ok(u, etag='"changed"')
+        return _probe_ok(u)
+
+    entry = _entry(sector_feed=SECTOR_URL)  # sector confidence = portal
+    res = rw.check_entry("t", entry, prior, probe_fn=probe, sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_PORTAL_CHANGED
+    assert SECTOR_URL in res["detail"]
+
+
+def test_portal_only_change_is_not_actionable():
+    law_probe = _probe_ok(LAW_URL)
+    sector_probe = _probe_ok(SECTOR_URL)
+    prior = _prior_for({LAW_URL: law_probe, SECTOR_URL: sector_probe})
+
+    def probe(u):
+        if u == SECTOR_URL:
+            return _probe_ok(u, etag='"changed"')
+        return _probe_ok(u)
+
+    entry = _entry(sector_feed=SECTOR_URL)
+    res = rw.check_entry("t", entry, prior, probe_fn=probe, sleep_fn=_no_sleep)
+    s = rw.summarize([res])
+    assert res["status"] == rw.STATUS_PORTAL_CHANGED
+    assert s["actionable"] == []
+
+
+def test_exact_change_wins_over_portal_noise():
+    prior = _prior_for({LAW_URL: _probe_ok(LAW_URL, etag='"old"'),
+                        SECTOR_URL: _probe_ok(SECTOR_URL, etag='"old2"')})
+
+    def probe(u):
+        return _probe_ok(u, etag='"new"')
+
+    entry = _entry(sector_feed=SECTOR_URL)
+    res = rw.check_entry("t", entry, prior, probe_fn=probe, sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_SUSPECT
+    assert "Portal-noise" in res["detail"]
+
+
+def test_unreachable_does_not_claim_law_change():
+    res = rw.check_entry("t", _entry(), {"urls": {LAW_URL: {"fingerprint": "x" * 32}}},
+                         probe_fn=_probe_fail, sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_UNREACHABLE
+    assert "SUSPECT" not in res["status"]
+
+
+def test_static_flag_does_not_change_status_or_block_baseline():
+    # Regression: v1 escalated flags to NEEDS_HUMAN_REVIEW and froze the baseline.
+    res = rw.check_entry("t", _entry(known_amendment_note="تعديل م/21 لعام 1447هـ"),
+                         None, probe_fn=_probe_ok, sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_NEW
+    assert res["flags"] == ["تعديل م/21 لعام 1447هـ"]
+
+    probe = _probe_ok(LAW_URL)
+    prior = _prior_for({LAW_URL: probe})
+    res = rw.check_entry("t", _entry(known_discrepancy_note="فرق تاريخ"),
+                         prior, probe_fn=lambda u: dict(probe, url=u),
+                         sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_OK
+    s = rw.summarize([res])
+    assert s["actionable"] == []
+    assert s["flagged"] == ["t"]
+
+
+def test_rate_limit_halts_further_probes():
+    calls = []
+
+    def probe(u):
+        calls.append(u)
+        if len(calls) == 1:
+            p = _probe_ok(u)
+            p.update({"status": 429, "rate_limited": True})
+            return p
+        return _probe_ok(u)
+
+    res = rw.check_entry("t", _entry(sector_feed=SECTOR_URL),
+                         None, probe_fn=probe, sleep_fn=_no_sleep)
+    assert any(p.get("skipped") for p in res["probes"])
+    assert len(calls) == 1
+
+
+# ── Offline + registry ───────────────────────────────────────────────────────
+
+def test_offline_lists_targets_and_flags_without_status_change():
+    registry = {"a": _entry(known_amendment_note="x"), "b": _entry()}
+    results = rw.run_checks(registry, {"entries": {}}, offline=True)
+    by_id = {r["source_id"]: r for r in results}
+    assert by_id["a"]["status"] == rw.STATUS_SKIPPED
+    assert by_id["a"]["flags"] == ["x"]
+    assert by_id["b"]["status"] == rw.STATUS_SKIPPED
+    assert by_id["a"]["targets"][0]["url"] == LAW_URL
+
+
+def test_disabled_entries_are_skipped():
+    registry = {"a": _entry(monitor={"enabled": False})}
+    assert rw.run_checks(registry, {"entries": {}}, offline=True) == []
+
+
+def test_real_registry_loads_and_has_expected_keys():
+    repo = Path(__file__).parent.parent
+    registry = rw.load_registry(repo / "evals" / "source-registry.json")
+    for key in ("labor_law", "arbitration_law", "companies_law",
+                "pdpl_exec_regs", "zatca_e_invoicing_regs"):
+        assert key in registry
+    # #14: the BOE law page is preserved as an unmonitored reference (BOE is
+    # geo-blocked from CI); the monitored target is the CI-reachable MOJ portal.
+    assert registry["labor_law"]["boe_reference_url"] == \
+        "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2569bd58-299f-4318-ab93-a9a700f26cf9/1"
+    assert registry["labor_law"]["url"] == "https://laws.moj.gov.sa/ar"
+    assert registry["labor_law"]["date"] == "1426/08/23هـ"
+    # v2.1: real gazette URL wired where documented.
+    assert registry["whistleblower_law"]["gazette_url"] == \
+        "https://uqn.gov.sa/details?p=24614"
+
+
+def test_real_registry_offline_run_reports_five_flags_without_actionable():
+    repo = Path(__file__).parent.parent
+    registry = rw.load_registry(repo / "evals" / "source-registry.json")
+    results = rw.run_checks(registry, {"entries": {}}, offline=True)
+    assert len(results) == 20
+    s = rw.summarize(results)
+    assert s["actionable"] == []
+    assert len(s["flagged"]) == 5
+
+
+def test_whistleblower_watches_gazette_and_sector():
+    # #14: the BOE law page moved to boe_reference_url (unmonitored); the
+    # exact target is the documented gazette link, plus the pp.gov.sa sector.
+    repo = Path(__file__).parent.parent
+    registry = rw.load_registry(repo / "evals" / "source-registry.json")
+    targets = rw.watch_targets(registry["whistleblower_law"])
+    kinds = sorted(t["kind"] for t in targets)
+    assert kinds == ["gazette", "sector"]
+
+
+# ── Verified official links (#14: BOE references preserved, targets reachable) ──
+
+VERIFIED_BOE_REFERENCES = {
+    "commercial_courts_law": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/38334008-3b70-4c6c-b3af-aba3016a8061/1",
+    "pdpl_law": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1",
+    "competition_law": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/e3605c0d-ef87-4cff-b5da-aa3f0102bbb4/1",
+    "e_transactions_law": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6f509360-2c39-4358-ae2a-a9a700f2ed16/1",
+    "commercial_agency_law": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b19a8aa6-7b50-43f0-ab8c-a9a700f1a446/1",
+}
+
+VERIFIED_GAZETTE_URLS = {
+    "whistleblower_law": "https://uqn.gov.sa/details?p=24614",
+    "pdpl_exec_regs": "https://uqn.gov.sa/details?p=23595",
+}
+
+# #14 coverage model: BOE LawDetails pages are geo-blocked from GitHub runners
+# (ConnectTimeout, documented 2026-09-04), so they are preserved as
+# boe_reference_url and the monitored primary is the CI-reachable MOJ laws
+# portal at honest `portal` confidence — or a documented gazette/document
+# exact target where one exists. Entries whose old BOE url duplicated an
+# existing MOJ sector_feed dropped the url entirely (civil_transactions,
+# commercial_courts, evidence, e_transactions, whistleblower, pdpl_exec_regs).
+# Update this set when a CI-reachable exact law page is documented.
+HONEST_PORTAL_PRIMARIES = {
+    "companies_law", "labor_law", "arbitration_law", "pdpl_law",
+    "bankruptcy_law", "e_commerce_law", "competition_law",
+    "commercial_agency_law", "ip_copyright_law", "legal_profession_law",
+}
+
+# Rulebooks tracked on a documents index rather than one named document.
+# fifa_rstp's index builds itself in JavaScript (no-store, HEAD 405, weekly ETag
+# churn), so it is a portal signal — demoted from `exact` by decision (follows
+# #11 / PR #10). Kept in a separate set so it is never mixed into the gap above:
+# the two are different problems. sources/fifa-rstp.md is untouched.
+RULEBOOK_PORTAL_PRIMARIES = {"fifa_rstp"}
+
+
+def test_verified_boe_references_are_preserved():
+    repo = Path(__file__).parent.parent
+    registry = rw.load_registry(repo / "evals" / "source-registry.json")
+    for source_id, url in VERIFIED_BOE_REFERENCES.items():
+        entry = registry[source_id]
+        assert entry["boe_reference_url"] == url, source_id
+
+
+def test_companies_law_tracks_current_boe_guid():
+    # BOE rotated the Companies Law page GUID (old 10d19e91 superseded).
+    # #14: the current GUID lives in boe_reference_url (unmonitored reference);
+    # this edition has no evals/cases cross-check (openclaw layout).
+    repo = Path(__file__).parent.parent
+    registry = rw.load_registry(repo / "evals" / "source-registry.json")
+    url = registry["companies_law"]["boe_reference_url"]
+    assert url == "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/a8376aea-1bc3-49d4-9027-aed900b555af/1"
+    assert "10d19e91" not in url
+
+
+def test_verified_gazette_urls_are_watched():
+    repo = Path(__file__).parent.parent
+    registry = rw.load_registry(repo / "evals" / "source-registry.json")
+    for source_id, url in VERIFIED_GAZETTE_URLS.items():
+        entry = registry[source_id]
+        assert entry.get("gazette_url") == url, source_id
+        kinds = [t["kind"] for t in rw.watch_targets(entry)]
+        assert "gazette" in kinds, source_id
+
+
+def test_every_entry_has_a_ci_reachable_target():
+    # #14 acceptance: no entry may be left blind. Every entry must watch at
+    # least one target proven reachable from CI: the MOJ laws portal, a
+    # documented uqn.gov.sa gazette link, or a named sector document host
+    # that answered 200 in CI reports (zatca/saip/sba/reac/saff/fifa).
+    repo = Path(__file__).parent.parent
+    registry = rw.load_registry(repo / "evals" / "source-registry.json")
+    ci_reachable_hosts = {
+        "laws.moj.gov.sa", "uqn.gov.sa", "www.uqn.gov.sa",
+        "zatca.gov.sa", "www.saip.gov.sa", "sba.gov.sa",
+        "reac.rega.gov.sa", "www.saff.com.sa", "inside.fifa.com",
+    }
+    from urllib.parse import urlparse
+    for sid, entry in registry.items():
+        targets = rw.watch_targets(entry)
+        assert targets, sid
+        assert any(urlparse(t["url"]).netloc in ci_reachable_hosts
+                   for t in targets), sid
+
+
+def test_portal_gap_is_exactly_the_documented_set():
+    repo = Path(__file__).parent.parent
+    registry = rw.load_registry(repo / "evals" / "source-registry.json")
+    law_kinds = {"law_page"}
+    portal_primaries = {
+        sid for sid, e in registry.items()
+        if e.get("url_confidence") == "portal"
+        and any(t["kind"] in law_kinds for t in rw.watch_targets(e))
+        and not any(t["kind"] in ("gazette", "istitlaa") for t in rw.watch_targets(e))
+    }
+    # Sector/rulebook entries (reac/saff) track named documents, not
+    # Royal-Decree law pages — they are exact by nature, not part of the gap.
+    # fifa_rstp was moved out of that group: its index is a churning portal.
+    assert portal_primaries == HONEST_PORTAL_PRIMARIES | RULEBOOK_PORTAL_PRIMARIES
+
+
+# ── State + summary ──────────────────────────────────────────────────────────
+
+def test_state_update_records_per_url_baseline_then_detects_change():
+    state = {"version": 2, "entries": {}}
+    res_new = rw.check_entry("t", _entry(), None,
+                             probe_fn=_probe_ok, sleep_fn=_no_sleep)
+    assert res_new["status"] == rw.STATUS_NEW
+    state = rw.apply_state_updates(state, [res_new])
+    stored = state["entries"]["t"]["urls"][LAW_URL]
+    assert stored["fingerprint"] == res_new["probes"][0]["fingerprint"]
+
+    res_ok = rw.check_entry("t", _entry(), state["entries"]["t"],
+                            probe_fn=_probe_ok, sleep_fn=_no_sleep)
+    assert res_ok["status"] == rw.STATUS_OK
+
+    res_sus = rw.check_entry("t", _entry(), state["entries"]["t"],
+                             probe_fn=lambda u: _probe_ok(u, etag='"changed"'),
+                             sleep_fn=_no_sleep)
+    assert res_sus["status"] == rw.STATUS_SUSPECT
+    state = rw.apply_state_updates(state, [res_sus])
+    assert state["entries"]["t"]["last_change"]
+
+
+def test_old_v1_state_is_discarded_as_baseline():
+    v1 = {"version": 1, "entries": {"t": {"fingerprint": "abc", "signal": {}}}}
+    import tempfile
+    with tempfile.TemporaryDirectory() as d:
+        p = Path(d) / "state.json"
+        p.write_text(json.dumps(v1), encoding="utf-8")
+        loaded = rw.load_state(p)
+    assert loaded == {"version": 2, "updated_at": None, "entries": {}}
+
+
+def test_signals_snapshot_ignores_bookkeeping():
+    # Weekly CI must tell "URL signals moved" apart from "a week passed":
+    # last_seen / consecutive_unreachable churn alone must not count.
+    base = {"entries": {"t": {
+        "first_seen": "2026-09-04T00:00:00Z", "last_seen": "2026-09-04T00:00:00Z",
+        "consecutive_unreachable": 0,
+        "urls": {LAW_URL: {"fingerprint": "ab" * 16, "kind": "law_page"}}}}}
+    aged = {"entries": {"t": {
+        "first_seen": "2026-09-04T00:00:00Z", "last_seen": "2026-09-11T00:00:00Z",
+        "consecutive_unreachable": 3,
+        "urls": {LAW_URL: {"fingerprint": "ab" * 16, "kind": "law_page"}}}}}
+    assert rw.signals_snapshot(base) == rw.signals_snapshot(aged)
+    moved = {"entries": {"t": {"urls": {LAW_URL: {"fingerprint": "cd" * 16}}}}}
+    assert rw.signals_snapshot(base) != rw.signals_snapshot(moved)
+
+
+def test_summarize_actionable_only_suspect():
+    results = [{"source_id": "a", "status": rw.STATUS_OK, "flags": ["x"]},
+               {"source_id": "b", "status": rw.STATUS_SUSPECT, "flags": []},
+               {"source_id": "c", "status": rw.STATUS_PORTAL_CHANGED, "flags": []}]
+    s = rw.summarize(results)
+    assert s["total"] == 3
+    assert s["actionable"] == ["b"]
+    assert s["flagged"] == ["a"]
+
+
+def test_report_contains_flags_section_disclaimer_and_bilingual_header():
+    results = [{"source_id": "a", "citation": "C", "status": rw.STATUS_OK,
+                "detail": "d", "flags": ["تعديل مشتبه"]},
+               {"source_id": "b", "citation": "C", "status": rw.STATUS_OK,
+                "detail": "d", "flags": []}]
+    md = rw.render_markdown(results, rw.summarize(results))
+    assert "Regulation Watch" in md
+    assert "تقرير مراقبة الأنظمة" in md
+    assert "not legal advice" in md
+    assert "لا يُعدّ استشارة قانونية" in md
+    assert "Internal Flags" in md
+    assert "report-only" in md
+
+
+# ── URL_RETIRED (retired / dead monitored links) ─────────────────────────────
+#
+# `ok: True` means "an HTTP reply came back", not "the resource exists":
+# probe_url follows redirects, so a documented URL that now redirects to an
+# error or login page used to be compared (and stored) as content and could
+# raise SUSPECT. A retired URL is an INTERRUPTED WATCH, never a content signal.
+
+PDF_URL = "https://example.gov.sa/docs/regulation.pdf"
+PAGE_404 = "https://example.gov.sa/ar/Pages/PageNotFound.aspx"
+LOGIN_URL = "https://example.gov.sa/Account/Login"
+
+
+def _probe_html(url, status=200, final=PAGE_404):
+    return _probe_ok(url, status=status, final=final, etag="", lm="",
+                     length="244976") | {"content_type": "text/html; charset=utf-8"}
+
+
+def test_document_url_redirected_to_error_page_is_retired_not_suspect():
+    # The ZATCA case: /….pdf 302 → /ar/Pages/PageNotFound.aspx, HTML body.
+    prior = _prior_for({PDF_URL: _probe_ok(PDF_URL, etag='"pdf"', length="90000")})
+    res = rw.check_entry("zatca", _entry(url=PDF_URL), prior,
+                         probe_fn=lambda u: _probe_html(u), sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_URL_RETIRED
+    assert "definitely-not-a-pdf" not in res["detail"]
+    assert res["probes"][0]["retired"] is True
+    assert res["probes"][0]["retired_reason"]
+
+
+def test_direct_404_is_retired():
+    res = rw.check_entry("x", _entry(url=LAW_URL), None,
+                         probe_fn=lambda u: _probe_ok(u, status=404, etag="", lm=""),
+                         sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_URL_RETIRED
+    assert "404" in res["probes"][0]["retired_reason"]
+
+
+def test_login_redirect_is_retired():
+    res = rw.check_entry("x", _entry(url=LAW_URL), None,
+                         probe_fn=lambda u: _probe_ok(u, final=LOGIN_URL),
+                         sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_URL_RETIRED
+    assert "login" in res["probes"][0]["retired_reason"].lower()
+
+
+def test_live_law_page_etag_change_is_still_suspect():
+    prior = _prior_for({LAW_URL: _probe_ok(LAW_URL)})
+    res = rw.check_entry("x", _entry(), prior,
+                         probe_fn=lambda u: _probe_ok(u, etag='"moved"'),
+                         sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_SUSPECT
+
+
+def test_timeout_stays_unreachable_not_retired():
+    res = rw.check_entry("x", _entry(), None,
+                         probe_fn=lambda u: _probe_fail(u), sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_UNREACHABLE
+
+
+def test_retired_url_is_not_actionable_but_stays_visible():
+    # It must not open a suspected-update Issue nor freeze the baseline,
+    # but it must stay loud in the report (otherwise the watch goes blind).
+    res = rw.check_entry("zatca", _entry(url=PDF_URL), None,
+                         probe_fn=lambda u: _probe_html(u), sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_URL_RETIRED
+    summary = rw.summarize([res])
+    assert summary["actionable"] == []
+    md = rw.render_markdown([res], summary)
+    assert "URL_RETIRED" in md
+    assert "Retired Links" in md
+    assert "pagenotfound" in md.lower()
+
+
+def test_retired_exact_url_with_live_portal_noise():
+    # ZATCA-shaped entry: exact document (retired) + portal sector feed (moved).
+    entry = _entry(url=PDF_URL, sector_feed=SECTOR_URL)
+    prior = _prior_for({
+        PDF_URL: _probe_ok(PDF_URL, etag='"pdf"', length="90000"),
+        SECTOR_URL: _probe_ok(SECTOR_URL, etag='"old"'),
+    })
+    res = rw.check_entry(
+        "zatca", entry, prior,
+        probe_fn=lambda u: (_probe_html(u) if u == PDF_URL
+                            else _probe_ok(u, etag='"new"')),
+        sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_URL_RETIRED
+    assert rw.summarize([res])["actionable"] == []
+
+
+def test_apply_state_updates_does_not_store_retired_or_failed_fingerprints():
+    # A stale baseline for a URL that has since retired must be dropped, so it
+    # can never be compared against an error page and read as a change later.
+    state = {"version": 2, "entries": {}}
+    fresh = rw.check_entry("x", _entry(), None,
+                           probe_fn=_probe_ok, sleep_fn=_no_sleep)
+    state = rw.apply_state_updates(state, [fresh])
+    assert LAW_URL in state["entries"]["x"]["urls"]
+
+    retired = rw.check_entry("x", _entry(), state["entries"]["x"],
+                             probe_fn=lambda u: _probe_html(u, final=PAGE_404),
+                             sleep_fn=_no_sleep)
+    assert retired["status"] == rw.STATUS_URL_RETIRED
+    state = rw.apply_state_updates(state, [retired])
+    assert LAW_URL not in state["entries"]["x"]["urls"]
+
+    failed = rw.check_entry("x", _entry(), None,
+                            probe_fn=lambda u: _probe_fail(u), sleep_fn=_no_sleep)
+    state = rw.apply_state_updates(state, [failed])
+    assert LAW_URL not in state["entries"]["x"]["urls"]
+    assert state["entries"]["x"]["consecutive_unreachable"] == 1
+
+
+def test_clean_entries_keep_their_baseline_when_a_sibling_is_retired():
+    state = {"version": 2, "entries": {}}
+    ok_res = rw.check_entry("good", _entry(), None,
+                            probe_fn=_probe_ok, sleep_fn=_no_sleep)
+    state = rw.apply_state_updates(state, [ok_res])
+    retired_res = rw.check_entry("dead", _entry(url=PDF_URL), None,
+                                 probe_fn=lambda u: _probe_html(u),
+                                 sleep_fn=_no_sleep)
+    state = rw.apply_state_updates(state, [ok_res, retired_res])
+    assert LAW_URL in state["entries"]["good"]["urls"]
+    assert state["entries"]["dead"]["urls"] == {}
+
+
+# ── CLI: --update-state-if-clean ─────────────────────────────────────────────
+
+def _write_registry(tmp_path: Path, flagged: bool = False) -> Path:
+    ent = {"name": "X", "decree": "م/1", "date": "1400هـ",
+           "url": "https://example.gov.sa/x",
+           "citation": "X (M/1)", "source_file": "",
+           "review_priority": "low",
+           "monitor": {"enabled": True, "signals": []}}
+    if flagged:
+        ent["known_amendment_note"] = "تعديل مشتبه"
+    p = tmp_path / "registry.json"
+    p.write_text(json.dumps({"x": ent}), encoding="utf-8")
+    return p
+
+
+def test_cli_flags_do_not_block_baseline_or_exit_code(tmp_path):
+    # Regression for the weekly-freeze bug: static flags must not yield
+    # exit 1 and must not prevent --update-state-if-clean.
+    reg = _write_registry(tmp_path, flagged=True)
+    state = tmp_path / "state.json"
+    code = rw.main(["--offline", "--registry", str(reg), "--state", str(state),
+                    "--update-state-if-clean", "--json"])
+    assert code == 0
+    saved = json.loads(state.read_text(encoding="utf-8"))
+    assert saved["entries"]["x"]["last_seen"]
+
+
+# ── PROBE_ERROR (issue #14: HTTP >= 400 is not a live resource) ──────────────
+#
+# `ok: True` means "an HTTP reply came back", NOT "the resource is well".
+# A 500 on the gazette or a 400 on a sector feed used to be stored as a
+# content baseline: the first 200 after a stored 500 raised a false SUSPECT,
+# and persistent errors masqueraded as silent OK. v2.1 classifies any
+# non-retired HTTP >= 400 answer as a probe error: never baselined, never
+# silent, report-only (outside `actionable`).
+
+GAZETTE_URL = "https://uqn.gov.sa/details?p=99999"
+
+
+def _gazette_entry():
+    e = _entry()
+    del e["url"]
+    del e["url_confidence"]
+    e["gazette_url"] = GAZETTE_URL
+    return e
+
+
+def test_http_500_gazette_is_probe_error_and_not_baselined():
+    res = rw.check_entry("wb", _gazette_entry(), None,
+                         probe_fn=lambda u: _probe_ok(u, status=500, etag="", lm="", length=""),
+                         sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_PROBE_ERROR
+    assert res["probes"][0]["probe_error"] is True
+    assert "500" in res["detail"]
+    # Not actionable: no Issue, no baseline freeze.
+    s = rw.summarize([res])
+    assert s["actionable"] == []
+    # Never stored as a content baseline.
+    state = rw.apply_state_updates({"version": 2, "entries": {}}, [res])
+    assert state["entries"]["wb"]["urls"] == {}
+    # Visible in the report.
+    md = rw.render_markdown([res], s)
+    assert "Probe Errors" in md
+    assert "أخطاء مسبار" in md
+    assert GAZETTE_URL in md
+
+
+def test_http_400_sector_feed_not_baselined_and_not_silent_ok():
+    entry = _entry(sector_feed=SECTOR_URL)
+    prior = _prior_for({LAW_URL: _probe_ok(LAW_URL)})
+
+    def probe(u):
+        if u == SECTOR_URL:
+            return _probe_ok(u, status=400, etag="", lm="", length="")
+        return _probe_ok(u)
+
+    res = rw.check_entry("wb", entry, prior, probe_fn=probe, sleep_fn=_no_sleep)
+    # The healthy exact law page still baselines normally…
+    assert res["status"] == rw.STATUS_OK
+    # …but the 400 sector answer is flagged, listed, and never stored.
+    sector_probe = next(p for p in res["probes"] if p["url"] == SECTOR_URL)
+    assert sector_probe["probe_error"] is True
+    assert "Probe errors" in res["detail"]
+    state = rw.apply_state_updates({"version": 2, "entries": {}}, [res])
+    assert LAW_URL in state["entries"]["wb"]["urls"]
+    assert SECTOR_URL not in state["entries"]["wb"]["urls"]
+    md = rw.render_markdown([res], rw.summarize([res]))
+    assert "Probe Errors" in md
+    assert "HTTP 400" in md
+
+
+def test_500_then_200_does_not_raise_false_suspect():
+    # The documented false-positive oscillation: a stored 500 followed by a
+    # real 200 used to read as an exact-signal change (500 → 200). With the
+    # 500 never baselined, the first 200 is a fresh baseline, not SUSPECT.
+    entry = _gazette_entry()
+    run1 = rw.check_entry("wb", entry, None,
+                          probe_fn=lambda u: _probe_ok(u, status=500, etag="", lm="", length=""),
+                          sleep_fn=_no_sleep)
+    state = rw.apply_state_updates({"version": 2, "entries": {}}, [run1])
+    run2 = rw.check_entry("wb", entry, state["entries"]["wb"],
+                          probe_fn=lambda u: _probe_ok(u), sleep_fn=_no_sleep)
+    assert run2["status"] != rw.STATUS_SUSPECT
+    assert rw.summarize([run2])["actionable"] == []
+    state = rw.apply_state_updates(state, [run2])
+    assert GAZETTE_URL in state["entries"]["wb"]["urls"]
+
+
+def test_probe_error_is_distinct_from_unreachable():
+    entry = _entry()
+    err = rw.check_entry("x", entry, None,
+                         probe_fn=lambda u: _probe_ok(u, status=503, etag="", lm=""),
+                         sleep_fn=_no_sleep)
+    net = rw.check_entry("x", entry, None,
+                         probe_fn=_probe_fail, sleep_fn=_no_sleep)
+    assert err["status"] == rw.STATUS_PROBE_ERROR
+    assert net["status"] == rw.STATUS_UNREACHABLE
+
+
+def test_retired_portal_alone_is_listed_in_retired_links():
+    # #14 acceptance: a retired `portal` probe must appear in Retired Links
+    # even when the entry's exact URL is alive (no URL_RETIRED status).
+    entry = _entry(sector_feed=SECTOR_URL)
+    prior = _prior_for({LAW_URL: _probe_ok(LAW_URL),
+                        SECTOR_URL: _probe_ok(SECTOR_URL)})
+
+    def probe(u):
+        if u == SECTOR_URL:
+            return _probe_ok(u, status=404, etag="", lm="")
+        return _probe_ok(u)
+
+    res = rw.check_entry("x", entry, prior, probe_fn=probe, sleep_fn=_no_sleep)
+    assert res["status"] != rw.STATUS_URL_RETIRED  # exact resource is alive
+    sector_probe = next(p for p in res["probes"] if p["url"] == SECTOR_URL)
+    assert sector_probe["retired"] is True
+    s = rw.summarize([res])
+    assert s["actionable"] == []
+    md = rw.render_markdown([res], s)
+    assert "Retired Links" in md
+    assert SECTOR_URL in md
+    # The retired portal is not stored as a baseline either.
+    state = rw.apply_state_updates({"version": 2, "entries": {}}, [res])
+    assert SECTOR_URL not in state["entries"]["x"]["urls"]
+    assert LAW_URL in state["entries"]["x"]["urls"]
+
+
+def test_exact_retired_plus_probe_error_stays_url_retired_and_visible():
+    entry = _entry(url=PDF_URL, sector_feed=SECTOR_URL)
+
+    def probe(u):
+        if u == PDF_URL:
+            return _probe_html(u)
+        return _probe_ok(u, status=500, etag="", lm="", length="")
+
+    res = rw.check_entry("zatca", entry, None, probe_fn=probe, sleep_fn=_no_sleep)
+    assert res["status"] == rw.STATUS_URL_RETIRED
+    assert rw.summarize([res])["actionable"] == []
+    md = rw.render_markdown([res], rw.summarize([res]))
+    assert "Retired Links" in md
+    assert "Probe Errors" in md
+    assert "HTTP 500" in md
