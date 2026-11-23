@@ -1,5 +1,4 @@
-# المنظومة القانونية السعودية للذكاء الاصطناعي 🇸🇦
-# Saudi Legal AI — MCP retrieval server
+# المنظومة القانونية السعودية للذكاء الاصطناعي 🇸🇦 — Saudi Legal AI MCP retrieval server
 
 [![Version](https://img.shields.io/badge/version-0.4.0--pre-blue.svg)](https://github.com/SMSMy/saudi-legal-ai)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -46,11 +45,13 @@
 git clone https://github.com/SMSMy/saudi-legal-ai.git
 cd saudi-legal-ai
 python3 -m venv .venv
-.venv/bin/pip install -e .
+.venv/bin/pip install -e .   # Linux/macOS
+# Windows (PowerShell): .venv\Scripts\pip install -e .
 
 # 2. Register in OpenClaw
 openclaw mcp set saudi-legal \
   '{"command":"'$(pwd)'/.venv/bin/saudi-legal-mcp","args":[]}'
+# Windows (PowerShell): '{"command":"'$(Get-Location)'\\.venv\\Scripts\\saudi-legal-mcp.exe","args":[]}'
 
 # 3. Reload
 openclaw mcp reload
@@ -100,7 +101,7 @@ python scripts/verify_release.py
 |---------|-----------|
 | `generate_manifests.py --check` | تعديل مصدر بدون تحديث الـmanifest (sha256 غير متطابق → exit 1 برسالة إرشادية دقيقة) |
 | `validate_manifests.py` | manifests ناقصة/يتيمة/ذات حقول قانونية بلا مراجعة بشرية |
-| `pytest tests/ -q` | 178 اختباراً — منها حراسة تسجيل الأدوات، تغطية كل مصدر بأسئلة eval، قبول الموجة 1/2، وبوابات السلامة |
+| `pytest tests/ -q` | 179 اختباراً — منها حراسة تسجيل الأدوات، تغطية كل مصدر بأسئلة eval، قبول الموجة 1/2، وبوابات السلامة |
 | مقارنة الـeval بالـbaseline المعياري | انحدار `citation_precision`/`source_recall` بأكثر من 1% → تحذير صريح |
 
 **Evidence bundle:** `generate_release_evidence.py` ينتج `releases/<version>-evidence.json` —
@@ -114,14 +115,14 @@ python scripts/verify_release.py
 | المجلد | المحتوى |
 |--------|---------|
 | `skills/` | 9 مهارات قانونية — كل ملف يبدأ بتنبيه أنه **دليل تفكير لا نص نظامي** |
-| `sources/` | 20 ملخصاً نظامياً مكتوباً يدوياً (`hand_written_summary`)، كل عنوان محتوى يحمل رابط وثيقة/بوابة في جسمه (يتحقق آلياً) |
+| `sources/` | 20 ملخصاً نظامياً مكتوباً يدوياً (`hand_written_summary`) — كل عنوان محتوى يحمل **رابط وثيقة** (`law_document_url`) في جسمه المباشر، والبوابة وحدها لا تكفي (يتحقق آلياً باختبار سلبي). الاستثناء الوحيد: 9 مصادر `portal-only` بلا LawDetails مستقر موثق، موسومة بملصق بوابة صريح |
 | `corpus/` | **النص الحرفي**: نظام العمل 245 مادة، المدنية 721، PDPL 43، لائحتها 38 — مع `fetched_at` و`sha256` ومستوى إسناد |
 | `sources/manifests/` | 20 manifest JSON لكل مصدر (sha256، verification_status، مواعيد المراجعة الدورية) |
 | `datasets/` | مجموعة مخاطر تعاقدية + جدول مصادر + تعريفات المجال |
 | `examples/` | 14 مثال تفاعلي مع كل الأدوات |
 | `prompts/` | نصوص التوجيه (الإجابة الآمنة، الصياغة المقيدة، الكشف عن المخاطر) |
-| `scripts/` | generate_manifests.py (مع --check) · validate_manifests.py · verify_release.py · generate_release_evidence.py · **ingest_laws.py** · **check_boe_guids.py** · **embed_document_links.py** · **audit_section_links.py** · probe_moj_api.py · والبقية |
-| `tests/` | 178 اختباراً آلياً (بدون API خارجي) — تشمل حراسة تسجيل الأدوات، قبول الموجة 1/2، بوابات السلامة، release gate، و`tests/adversarial/` (حقن الأوامر) |
+| `scripts/` | generate_manifests.py (مع --check) · validate_manifests.py · verify_release.py · generate_release_evidence.py · **ingest_laws.py** · **check_boe_guids.py** · **check_source_links.py** (فحص حي للروابط الوثائقية الجديدة) · **embed_document_links.py** · **audit_section_links.py** · probe_moj_api.py · والبقية |
+| `tests/` | 179 اختباراً آلياً (بدون API خارجي) — تشمل حراسة تسجيل الأدوات، قبول الموجة 1/2، بوابات السلامة، release gate، و`tests/adversarial/` (حقن الأوامر) |
 | `evals/` | corpus 65 سؤالاً عبر الـ20 مصدراً + eval_runner.py — آخر أرقام: precision=97.2%، recall=90.3% |
 | `releases/` | evidence bundles (`0.4.0-evidence.json`) — المصدر المعلن للحقائق لكل إصدار |
 | `memory/` | دروس الجلسات الحرجة — ما تعلمه المشروع من اكتشافات الاستخدام الفعلي |

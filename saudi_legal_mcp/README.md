@@ -9,7 +9,8 @@
 git clone https://github.com/SMSMy/saudi-legal-ai.git
 cd saudi-legal-ai
 python3 -m venv .venv
-.venv/bin/pip install -e .
+.venv/bin/pip install -e .   # Linux/macOS
+# Windows (PowerShell): .venv\Scripts\pip install -e .
 ```
 
 ## MCP client registration (OpenClaw example)
@@ -40,7 +41,8 @@ client.
 
 ## Data layout
 
-- `data/sources/` — 20 hand-written summaries, each section linked to its document.
+- `data/sources/` — 20 hand-written summaries. Every content heading carries a **document link** in its own body (portal-only alone fails the automated gate); 9 documented `portal-only` sources carry an honest portal label instead.
+- FIFA RSTP pins the January-2025 PDF as a **dated historical snapshot** (registry stays `portal` — `digitalhub` IDs churn per edition, PR #10).
 - `data/corpus/` — verbatim articles (Labor 245, Civil Transactions 721, PDPL 43,
   PDPL Implementing Regulation 38), with `fetched_at`, `sha256`, and provenance.
 - `data/skills/` — reasoning guides; each starts with a "not statute text" banner.
