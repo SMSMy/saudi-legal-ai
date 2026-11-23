@@ -1,7 +1,7 @@
 # المنظومة القانونية السعودية للذكاء الاصطناعي 🇸🇦
 # Saudi Legal AI Framework — OpenClaw Edition
 
-[![Version](https://img.shields.io/badge/version-0.4.0--pre-blue.svg)](https://github.com/SMSMy/saudi-legal-ai-openclaw)
+[![Version](https://img.shields.io/badge/version-0.4.0--pre-blue.svg)](https://github.com/SMSMy/saudi-legal-ai)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-ready-green.svg)](https://openclaw.ai)
 
@@ -37,8 +37,8 @@
 
 ```bash
 # 1. Clone + venv
-git clone https://github.com/SMSMy/saudi-legal-ai-openclaw.git
-cd saudi-legal-ai-openclaw
+git clone https://github.com/SMSMy/saudi-legal-ai.git
+cd saudi-legal-ai
 python3 -m venv .venv
 .venv/bin/pip install -e .
 

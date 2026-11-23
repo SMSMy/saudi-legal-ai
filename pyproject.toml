@@ -3,7 +3,7 @@ requires = ["setuptools>=70", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "saudi-legal-ai-openclaw"
+name = "saudi-legal-ai"
 version = "0.4.0"
 # NOTE: v0.2/v0.3/v0.4 were internal development phase labels, not semver releases.
 # This is the first installable package release — semver starts at 0.4.0.

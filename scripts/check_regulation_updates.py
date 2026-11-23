@@ -60,7 +60,7 @@ DEFAULT_STATE = REPO_ROOT / "evals" / ".regulation-watch-state.json"
 
 USER_AGENT = (
     "SaudiLegalAI-RegulationWatch/2.1 "
-    "(+https://github.com/SMSMy/saudi-legal-ai-openclaw)"
+    "(+https://github.com/SMSMy/saudi-legal-ai)"
 )
 REQUEST_TIMEOUT = 15
 RATE_LIMIT_SECONDS = 1.5
