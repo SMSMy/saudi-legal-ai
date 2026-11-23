@@ -1,9 +1,9 @@
 # المنظومة القانونية السعودية للذكاء الاصطناعي 🇸🇦
-# Saudi Legal AI Framework — OpenClaw Edition
+# Saudi Legal AI — MCP retrieval server
 
 [![Version](https://img.shields.io/badge/version-0.4.0--pre-blue.svg)](https://github.com/SMSMy/saudi-legal-ai)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![OpenClaw](https://img.shields.io/badge/OpenClaw-ready-green.svg)](https://openclaw.ai)
+[![MCP](https://img.shields.io/badge/MCP-stdio-blue.svg)](https://modelcontextprotocol.io)
 
 > ⚠️ للبحث الأولي فقط — ليس استشارة قانونية. يجب مراجعة مختص قانوني مرخص في المملكة العربية السعودية.
 > For preliminary research only — not legal advice. Must be reviewed by a licensed Saudi legal professional.
@@ -15,20 +15,26 @@
 
 ---
 
-## 🦞 مبني لـ OpenClaw | Built for OpenClaw
+## 🔌 سيرفر MCP مستقل | An independent MCP server
 
-هذه النسخة **مُكيّفة خصيصاً لـ [OpenClaw](https://openclaw.ai)** — مساعد ذكي متعدد القنوات والنماذج.
+هذه نواة **استرجاع محلي** تعمل مع أي وكيل يتكلم MCP: OpenClaw وClaude Desktop
+وCursor وCline وCodex وGemini CLI وغيرها. لا تحتاج مفتاح API ولا Docker ولا
+اتصالاً خارجياً في مسار الطلب.
 
-> This edition is **specifically adapted for OpenClaw** — a multi-channel, multi-model AI assistant.
+> A **local retrieval core** for any MCP-capable agent: OpenClaw, Claude Desktop,
+> Cursor, Cline, Codex, Gemini CLI, and others. No API keys, no Docker, no
+> network calls in the request path.
 
-**الفرق عن النسخة الأصلية:**
-- ✅ سيرفر **استرجاع خالص** — لا يحتاج أي مفتاح API (المساعد هو اللي يحلل بالنموذج النشط)
-- ✅ تكامل كامل مع OpenClaw — أي نموذج (DeepSeek, GLM, Mimo, ...) يشتغل مباشرة
+**ما يميزها:**
+- ✅ **اقتباس رسمي** من `corpus/` مع رابط وتاريخ سحب، لا ملخص يُقدَّم كنص نظامي
+- ✅ **إسناد صريح**: `portal` / `law_document_url` / `direct_article_url` — والملخص اليدوي `hand_written_summary`
+- ✅ سيرفر استرجاع خالص — أي نموذج يعمل، والمفاتيح خارج النواة
 - ✅ لا Docker، لا Anthropic، لا مفاتيح خارجية
 
-**What's different from the original:**
-- ✅ Pure **retrieval server** — no API keys needed (the agent analyzes with its active model)
-- ✅ Full OpenClaw integration — any model works out of the box
+**What it does:**
+- ✅ **Official quotes** from `corpus/` with a link and fetch date — not a summary dressed as statute
+- ✅ **Honest provenance**: `portal` / `law_document_url` / `direct_article_url`; hand-written text is `hand_written_summary`
+- ✅ Pure retrieval — any model works; keys stay outside the core
 - ✅ No Docker, no Anthropic, no external keys
 
 ---
@@ -52,6 +58,12 @@ openclaw mcp reload
 
 **Done!** Legal tools ready — standard Python package, no env-var hacks needed. 🔓
 
+> OpenClaw هنا **مثال على عميل MCP** فقط. نفس أمر stdio يعمل في Claude Desktop
+> وCursor وCline وCodex وGemini CLI وأي عميل MCP آخر.
+>
+> OpenClaw is **one MCP client example**. The same stdio command works in
+> Claude Desktop, Cursor, Cline, Codex, Gemini CLI, and any other MCP client.
+
 > **تلميح:** الحزمة تثبّت `mcp<2.0.0` تلقائياً (مُقيَّدة في pyproject.toml).
 > لو ظهر خطأ `ModuleNotFoundError: No module named 'mcp.server.fastmcp'`
 > فبيئتك فيها mcp 2.0.0 — أزله ثم أعد التثبيت: `pip uninstall mcp && pip install -e .`
@@ -63,13 +75,13 @@ openclaw mcp reload
 | الأداة | الوصف |
 |--------|---------|
 | `get_legal_skill` | استرجاع/تحميل المهارات القانونية المجالية بالكامل (أو metadata / section فقط) |
-| `get_regulation_source` | قراءة المصادر النظامية المحددة (metadata افتراضياً؛ include_content لقراءة النص). **روابط موثقة**: `citations[]` تحمل `link_type` يميّز رابط الجهة العامة عن رابط المادة المباشر — والـlabel يوضح الفرق نصياً |
+| `get_regulation_source` | قراءة **الملخص المكتوب يدوياً** لمصدر نظامي (metadata افتراضياً؛ include_content للنص). كل نتيجة تحمل `text_origin: hand_written_summary` و`provenance_level`، ولا تُقدَّم كنص رسمي. **روابط موثقة**: `link_type` يميّز `portal` عن `law_document_url` عن `direct_article_url` |
 | `get_legal_context` | تجميع سياق قانوني موحّد (مهارة + مصدر + حالة في استدعاء واحد) |
 | `search_contract_risks` | بحث في مخاطر العقود مع policy enforcement (evidence إلزامي) |
-| `list_legal_domains` | قائمة كل المجالات والمصادر المتاحة مع حالة التحقق |
+| `list_legal_domains` | قائمة المجالات والمصادر مع **توزيع مستويات الإسناد** (وثيقة/بوابة/مُسحوب/مادة)، لا `verified_count` |
 | `get_source_status` | حالة المصدر: verification_status + صياغة عربية مفهومة (لا مصطلحات داخلية) + تحذير منتهي الصلاحية |
 | `report_source_issue` | تسجيل مشكلة في مصدر (يتطلب ENABLE_LOCAL_REPORTS=true) |
-| `search_legal_provision` | بحث نصي في نصوص الأنظمة (تطبيع عربي: أل التعريف، همزات، تشكيل + ترادف موثق). **بوابة ثقة 0.7**: الأقسام الأضعف تُستبعد برمجياً. كل قسم يحمل `citations` من نطاقه هو |
+| `search_legal_provision` | **يبحث المخزن الحرفي أولاً**: يعيد `quotes[]` بـ`text_origin: official_verbatim` مع رابط وتاريخ سحب. إن لم يجد، يبحث في الملخص موسوماً `hand_written_summary`. بوابة 0.7 تبقى على الملخص فقط، لا على الاقتباس الحرفي |
 | `get_legal_brief` | مذكرة موحّدة من مهارة + نصوص + مخاطر تختتم بقسم "المصادر والروابط". **بوابات إلزامية**: `insufficient_evidence` عند نقص الدليل أو هيمنة `[يحتاج تحقق]` |
 
 **سياسة الأدلة (evidence policy):** لا ادعاء بلا citation داخل المستودع. أي نتيجة يجب أن تحمل `evidence[]` أو `insufficient_evidence: true`. عند اقتطاع المحتوى الطويل يُعاد `sections_index` (فهرس العناوين) ليكتشف الوكيل الأقسام البعيدة بدل تخمينها.
@@ -88,7 +100,7 @@ python scripts/verify_release.py
 |---------|-----------|
 | `generate_manifests.py --check` | تعديل مصدر بدون تحديث الـmanifest (sha256 غير متطابق → exit 1 برسالة إرشادية دقيقة) |
 | `validate_manifests.py` | manifests ناقصة/يتيمة/ذات حقول قانونية بلا مراجعة بشرية |
-| `pytest tests/ -q` | 109 اختباراً — منها حراسة تسجيل الأدوات، تغطية كل مصدر بأسئلة eval، وتفاعل بوابات الثقة |
+| `pytest tests/ -q` | 178 اختباراً — منها حراسة تسجيل الأدوات، تغطية كل مصدر بأسئلة eval، قبول الموجة 1/2، وبوابات السلامة |
 | مقارنة الـeval بالـbaseline المعياري | انحدار `citation_precision`/`source_recall` بأكثر من 1% → تحذير صريح |
 
 **Evidence bundle:** `generate_release_evidence.py` ينتج `releases/<version>-evidence.json` —
@@ -101,25 +113,40 @@ python scripts/verify_release.py
 
 | المجلد | المحتوى |
 |--------|---------|
-| `skills/` | 9 مهارات قانونية: العقود، نظام العمل، حماية البيانات، النزاعات، الشركات، العقارات، التجارة الإلكترونية، الرياضة، ZATCA |
-| `sources/` | 20 مصدر نظامي (source_documents_count=20، reference_collections_count=2، verified_sources_count=0) |
+| `skills/` | 9 مهارات قانونية — كل ملف يبدأ بتنبيه أنه **دليل تفكير لا نص نظامي** |
+| `sources/` | 20 ملخصاً نظامياً مكتوباً يدوياً (`hand_written_summary`)، كل عنوان محتوى يحمل رابط وثيقة/بوابة في جسمه (يتحقق آلياً) |
+| `corpus/` | **النص الحرفي**: نظام العمل 245 مادة، المدنية 721، PDPL 43، لائحتها 38 — مع `fetched_at` و`sha256` ومستوى إسناد |
 | `sources/manifests/` | 20 manifest JSON لكل مصدر (sha256، verification_status، مواعيد المراجعة الدورية) |
 | `datasets/` | مجموعة مخاطر تعاقدية + جدول مصادر + تعريفات المجال |
 | `examples/` | 14 مثال تفاعلي مع كل الأدوات |
 | `prompts/` | نصوص التوجيه (الإجابة الآمنة، الصياغة المقيدة، الكشف عن المخاطر) |
-| `scripts/` | generate_manifests.py (مع --check) · validate_manifests.py · verify_release.py · generate_release_evidence.py · propose_verification.py · verify_all_manifests.py · audit_substring_vs_wordboundary.py |
-| `tests/` | 109 اختباراً آلياً (بدون API خارجي) — تشمل حراسة تسجيل الأدوات، بوابات الثقة، release gate، و`tests/adversarial/` (حقن الأوامر) |
+| `scripts/` | generate_manifests.py (مع --check) · validate_manifests.py · verify_release.py · generate_release_evidence.py · **ingest_laws.py** · **check_boe_guids.py** · **embed_document_links.py** · **audit_section_links.py** · probe_moj_api.py · والبقية |
+| `tests/` | 178 اختباراً آلياً (بدون API خارجي) — تشمل حراسة تسجيل الأدوات، قبول الموجة 1/2، بوابات السلامة، release gate، و`tests/adversarial/` (حقن الأوامر) |
 | `evals/` | corpus 65 سؤالاً عبر الـ20 مصدراً + eval_runner.py — آخر أرقام: precision=97.2%، recall=90.3% |
 | `releases/` | evidence bundles (`0.4.0-evidence.json`) — المصدر المعلن للحقائق لكل إصدار |
 | `memory/` | دروس الجلسات الحرجة — ما تعلمه المشروع من اكتشافات الاستخدام الفعلي |
 
 ---
 
+## 🧾 الإسناد والاقتباس | Provenance and quotes
+
+| الحالة | ما يعنيه للمستخدم |
+|---|---|
+| `quotes[]` + `text_origin: official_verbatim` | نص مادة مسحوب حرفياً من صفحة رسمية، ومعه `fetched_at` و`sha256` |
+| `law_document_url` | الرابط يفتح وثيقة النظام كاملة، **لا مادة محددة** |
+| `direct_article_url` | رابط BOE Viewer يفتح أصل المادة الممسوح — لا مرساة نصية مخترعة |
+| `portal` | بوابة عامة؛ ابحث داخلها للوصول للنص الدقيق |
+| `hand_written_summary` | ملخص بشري. يُعرض كملخص، ولا يُنسب إلى النظام كاقتباس |
+
+`answer_markdown` يُبنى في الخادم من هذه الحقول: الاقتباس، ثم الرابط، ثم تاريخ
+السحب، ثم إخلاء المسؤولية. التفاصيل في [docs/corpus.md](docs/corpus.md) و
+[docs/source-coverage-2026-11.md](docs/source-coverage-2026-11.md).
+
 ## 🔒 الأمان | Security
 
 - ✅ **بدون أي مفتاح API** — السيرفر لا يتصل بأي خدمة خارجية
-- ✅ **بيانات محلية** — كل الملفات نصية مقروءة محلياً
-- ✅ **مصادر رسمية** — الأنظمة منشورة على boe.gov.sa و uqn.gov.sa
+- ✅ **بيانات محلية** — كل الملفات نصية مقروءة محلياً، والاقتباس من `corpus/`
+- ✅ **مصادر رسمية** — نصوص `corpus/` مسحوبة من boe.gov.sa و uqn.gov.sa بتاريخ ظاهر
 - ✅ **مُثبَت ضد حقن الأوامر** — `tests/adversarial/`: لا SDK نموذج ولا HTTP client في الحزمة (فحص بنيوي)، ونص تعليمات محقون في مصدر يُعاد كنص عادي مع بقاء الـdisclaimer الإلزامي (إثبات سلوكي)
 - ⚠️ **ليس استشارة قانونية** — للمراجعة الأولية فقط
 
@@ -130,8 +157,9 @@ python scripts/verify_release.py
 **ما يضمنه السيرفر (ويُثبته بالاختبارات):**
 
 - أدواته **لا تختلق** — أي نتيجة تحمل `evidence[]` أو `insufficient_evidence: true`
-- الأقسام دون عتبة الثقة تُستبعد، والقوالب الفارغة (`[يحتاج تحقق]`) تُرفض بواباتها
-- الروابط تُرجع بنوعها الصريح (`link_type`)، وغيابها يُعلَن عبر `citation_note` لا يُخفى
+- `text_origin` صريح: `official_verbatim` للاقتباس من `corpus/`، و`hand_written_summary` للملخص
+- كل مادة في `corpus/` تحمل `fetched_at` و`sha256`، والنسخة السابقة تُحفظ عند التغيير
+- الروابط تُرجع بنوعها الصريح (`portal` / `law_document_url` / `direct_article_url`)، وغيابها يُعلَن عبر `citation_note` لا يُخفى
 
 **ما لا يضمنه السيرفر — حد بنيوي صريح لا ثغرة قابلة للسد:**
 
@@ -167,18 +195,20 @@ python scripts/verify_release.py
 
 ## 🤝 المساهمة | Contributing
 
-> 🔴 **الأولوية القصوى — نبحث عن مراجعة قانونية بشرية:**
-> محامٍ أو مستشار قانوني مرخّص في المملكة لمراجعة دقة المصادر النظامية
-> (20 مصدراً كلها `field_tested` — أي مُجرَّبة تقنياً — بانتظار الترقية
-> إلى `verified` عبر مراجعة مختص). **هذه أثمن مساهمة ممكنة الآن**، وهي
-> الطريق الوحيد الذي يحوّل "يعمل تقنياً" إلى "صحيح قانونياً".
-> معايير الترقية موثقة في [legal_response_policy.md](legal_response_policy.md).
+> **أثمن مساهمة الآن:** رابط وثيقة رسمية ناقص، أو تشغيل `saudi-legal ingest`
+> من داخل المملكة لمصدر لا يصل من CI، أو سؤال تقييم يفشل، أو تصحيح استشهاد
+> لا يطابق المادة المسحوبة. المراجعة المهنية تُقبل شارة إضافية على مادة
+> محددة، وليست شرطاً لاستخدام الأداة ولا لنشر إصدار.
 
 المنظومة القانونية السعودية مشروع مفتوح المصدر. رحب بمساهماتك: إضافة أنظمة جديدة، تحسين المهارات، بيانات مخاطر، أمثلة تطبيقية.
 
 راجع [CONTRIBUTING.md](CONTRIBUTING.md) للتفاصيل.
 
-This is an open-source project. Contributions welcome: new regulations, improved skills, risk data, worked examples.
+This is an open-source project. Contributions welcome: a missing official
+document link, an ingest run from inside the Kingdom for a source CI cannot
+reach, a failing eval question, or a citation that does not match the fetched
+article. Professional review is an optional badge on a specific article, not a
+release gate.
 
 ---
 
@@ -193,4 +223,4 @@ MIT License — free to use with attribution and retention of legal disclaimer.
 ## 🔗 الشكر | Credits
 
 - النسخة الأصلية: [Samix2026/saudi-legal-ai-framework](https://github.com/Samix2026/saudi-legal-ai-framework)
-- هذا الـ fork: مُكيّف خصيصاً لـ OpenClaw بواسطة [SMSMy](https://github.com/SMSMy)
+- هذا المستودع: [SMSMy/saudi-legal-ai](https://github.com/SMSMy/saudi-legal-ai) — نواة استرجاع MCP محلية

@@ -12,14 +12,16 @@ version = "0.4.0"
 # markers, not releases.  semver stays 0.4.0 until the first official
 # release, at which point it is bumped and an evidence bundle is generated
 # via scripts/generate_release_evidence.py (see README "Versioning").
-description = "Saudi Legal AI MCP Server for OpenClaw — pure retrieval, no LLM keys needed"
+description = "Saudi Legal AI — local MCP retrieval server, verbatim quotes with provenance, no LLM keys"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.11"
 dependencies = ["mcp>=1.27.2,<2.0.0"]
 
 [project.optional-dependencies]
-dev = ["pytest>=8.0", "pytest-asyncio>=0.23"]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23", "beautifulsoup4>=4.12"]
+# Ingest/probe scripts only.  The retrieval package itself imports neither
+# httpx/requests nor beautifulsoup4 (adversarial test enforces this).
 
 [project.scripts]
 saudi-legal-mcp = "saudi_legal_mcp.server:main"

@@ -1,8 +1,8 @@
 {
   "id": "fifa-rstp",
   "path": "sources/fifa-rstp.md",
-  "sha256": "7abc03eaee786e192bcb7782c3f4ecb83bf3768ea41b97c5d3295e352f5f9b60",
-  "generated_at": "2026-08-13T00:29:02.242891+00:00",
+  "sha256": "dcbca7f29b3131e16b203f04f9fb57f03c2efc02e570cbe538cf40d8b9264a4b",
+  "generated_at": "2026-11-23T19:35:51.598722+00:00",
   "metadata_status": "field_tested",
   "verification_status": "field_tested",
   "verified_by": "field_tested_v04",

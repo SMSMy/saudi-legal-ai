@@ -1,8 +1,8 @@
 {
   "id": "pdpl",
   "path": "sources/pdpl.md",
-  "sha256": "512e481375dd2a1d76b28a6cd3fd19ff1594825a90c790a6bdd2602555d9c528",
-  "generated_at": "2026-08-13T00:29:02.346209+00:00",
+  "sha256": "2ad65735183c91b716a554269e9b58b0acd03d0b206e25331ef1578cfaa41645",
+  "generated_at": "2026-11-23T18:16:27.107484+00:00",
   "metadata_status": "field_tested",
   "verification_status": "field_tested",
   "verified_by": "field_tested_v04",

@@ -1,6 +1,6 @@
 """
 server.py — Saudi Legal AI MCP Server (v0.4)
-Pure retrieval server for OpenClaw. No external API calls. No LLM keys needed.
+Pure local retrieval for any MCP client. No external API calls, no LLM keys.
 """
 from __future__ import annotations
 
@@ -14,11 +14,23 @@ from mcp.server.fastmcp import FastMCP
 
 from saudi_legal_mcp.tools.skills import read_skill, VALID_DOMAINS
 from saudi_legal_mcp.tools.sources import read_source, VALID_REGULATIONS
-from saudi_legal_mcp.tools.search import find_risks, MATCH_CONFIDENCE_THRESHOLD
-from saudi_legal_mcp.tools.reasoning import find_legal_provision, build_legal_brief
+from saudi_legal_mcp.tools.search import find_risks
+from saudi_legal_mcp.tools.reasoning import search_legal_provision as search_provisions, build_legal_brief
 from saudi_legal_mcp.tools.manifests import read_manifest
 from saudi_legal_mcp.tools.policy import enforce_evidence
 from saudi_legal_mcp.tools.schemas import SourceStatusResponse, ReportIssueResponse, human_status
+from saudi_legal_mcp.tools.provenance import (
+    LINK_ARTICLE,
+    LINK_DOCUMENT,
+    LINK_PORTAL,
+    PROVENANCE_FETCHED_OFFICIAL,
+    PROVENANCE_ARTICLE_LEVEL,
+    PROVENANCE_LINKED_DOCUMENT,
+    PROVENANCE_LINKED_PORTAL,
+    PROVENANCE_UNLINKED,
+    document_reference,
+)
+from saudi_legal_mcp.tools.corpus import available_corpus_sources, corpus_file_stats, corpus_stats
 from saudi_legal_mcp.tools import get_repo_path
 
 # ── Configuration ────────────────────────────────────────────────────────────────────────────────
@@ -51,11 +63,14 @@ mcp = FastMCP(
         "When evidence is insufficient, tools return insufficient_evidence:true. "
         "Always pair retrieval with the mandatory disclaimer: "
         "'هذه معلومات قانونية عامة وليست استشارة قانونية.' "
-        "CITATION WORDING RULE: citations carry link_type; an "
-        "official_source_url leads to the authority's GENERAL portal, not to "
-        "the specific article text. When rendering an answer, copy the "
-        "citation label verbatim and NEVER present a portal link as if it "
-        "opened the article directly. "
+        "CITATION WORDING RULE: citations carry link_type. A `portal` link "
+        "opens the authority's general gateway; a `law_document_url` opens the "
+        "law document itself; only `direct_article_url` opens a specific "
+        "article. Copy the citation label verbatim and NEVER present a portal "
+        "or document link as if it opened the article directly. "
+        "TEXT ORIGIN RULE: `text_origin: official_verbatim` is a real quote; "
+        "`hand_written_summary` is commentary and must not be presented as "
+        "the official text. "
         "STATUS WORDING RULE: never write raw internal status terms "
         "(field_tested, verification_status, unverified...) into user-facing "
         "answers. Use the provided verification_status_explanation text — "
@@ -111,8 +126,10 @@ def get_regulation_source(
 ) -> dict:
     """Returns reference information about an official Saudi regulation.
 
-    Returns decree numbers, key articles, competent authority, and deadlines.
-    Factual reference only — not the full legal text.
+    Returns the hand-written summary: decree numbers, key articles, competent
+    authority, and deadlines.  The response is marked
+    `text_origin: hand_written_summary` and is NOT the official verbatim text.
+    Use `search_legal_provision` for `quotes` from the verbatim corpus.
 
     DRAFTING RULES (verified delivery channel): (1) tag facts NOT present
     in any tool output as 'معلومة عامة خارج قاعدة المعرفة الموثَّقة';
@@ -245,13 +262,102 @@ def search_contract_risks(
 
 @mcp.tool()
 def list_legal_domains() -> dict:
-    """Lists all available legal skill domains and regulation sources."""
+    """Lists legal domains and regulation sources with their provenance mix.
+
+    `verified_count` is intentionally gone.  It measured a human-review gate
+    that is not a release condition.  The distribution below reports what each
+    source actually has: a document link, a portal link only, or no link.
+    """
+    levels = {
+        PROVENANCE_UNLINKED: 0,
+        PROVENANCE_LINKED_PORTAL: 0,
+        PROVENANCE_LINKED_DOCUMENT: 0,
+        PROVENANCE_FETCHED_OFFICIAL: 0,
+        PROVENANCE_ARTICLE_LEVEL: 0,
+    }
+    per_source: dict[str, dict] = {}
+    corpus_sources = set(available_corpus_sources())
+
+    for source_id in sorted(VALID_REGULATIONS):
+        path = get_repo_path() / "sources" / f"{source_id}.md"
+        document = None
+        if path.exists():
+            document = document_reference(path.read_text(encoding="utf-8"))
+        if source_id in corpus_sources:
+            stats = corpus_stats(source_id)
+            article_levels = int(stats.get("article_url_count") or 0)
+            fetched_levels = max(
+                int(stats.get("in_force_count") or stats.get("article_count") or 0)
+                - article_levels,
+                0,
+            )
+            source_levels = {
+                PROVENANCE_ARTICLE_LEVEL: article_levels,
+                PROVENANCE_FETCHED_OFFICIAL: fetched_levels,
+            }
+            # A source is classified by its dominant evidence, not by its
+            # best three articles.  Labor is fetched_official, not article_level.
+            dominant = (
+                PROVENANCE_ARTICLE_LEVEL
+                if article_levels > fetched_levels
+                else PROVENANCE_FETCHED_OFFICIAL
+            )
+        else:
+            source_levels = {}
+            if document is None:
+                dominant = PROVENANCE_UNLINKED
+            elif document.get("link_type") in (LINK_DOCUMENT, LINK_ARTICLE):
+                dominant = PROVENANCE_LINKED_DOCUMENT
+            elif document.get("link_type") == LINK_PORTAL:
+                dominant = PROVENANCE_LINKED_PORTAL
+            else:
+                dominant = PROVENANCE_UNLINKED
+            source_levels[dominant] = 1
+
+        levels[dominant] += 1
+        per_source[source_id] = {
+            "dominant_provenance_level": dominant,
+            "provenance_levels": source_levels,
+            "document_url": (document or {}).get("url"),
+            "document_link_type": (document or {}).get("link_type"),
+        }
+
     return {
         "skills": sorted(VALID_DOMAINS),
         "regulations": sorted(VALID_REGULATIONS),
         "skill_count": len(VALID_DOMAINS),
         "regulation_count": len(VALID_REGULATIONS),
-        "verified_count": 0,  # updated as human verification progresses
+        "provenance_distribution": levels,
+        "provenance_by_source": per_source,
+        "corpus_sources": sorted(corpus_sources),
+        "corpus_coverage": {
+            source_id: corpus_stats(source_id)
+            for source_id in sorted(corpus_sources)
+        },
+        # Per-file breakdown to avoid the ambiguous pdpl=81 single number:
+        # pdpl is 43, pdpl-exec-regulations is 38.  Retrieval still merges
+        # both files under source_id=pdpl (see CORPUS_FILES); only the stats
+        # are split here for honest display.
+        "corpus_files": {
+            stem: corpus_file_stats(stem)
+            for stem in (
+                "labor-law",
+                "civil-transactions-law",
+                "pdpl",
+                "pdpl-exec-regulations",
+            )
+            if corpus_file_stats(stem)
+        },
+        "article_level_articles": sum(
+            int(corpus_stats(source_id).get("article_url_count") or 0)
+            for source_id in corpus_sources
+        ),
+        "provenance_note": (
+            "التوزيع يقيس قوة الرابط المتاح، لا مراجعة بشرية. "
+            "linked_document = رابط وثيقة نظام؛ linked_portal = بوابة عامة فقط؛ "
+            "fetched_official = نص رسمي مسحوب بتارِيخ؛ "
+            "article_level = مادة مجزّأة ورابط يفتحها."
+        ),
         "disclaimer": "هذه معلومات قانونية عامة وليست استشارة قانونية.",
     }
 
@@ -390,64 +496,49 @@ def search_legal_provision(
     max_sections: int = 3,
     max_chars_per_section: int = 1500,
 ) -> dict:
-    """Searches a regulation source file for sections matching the query.
+    """Searches the legal corpus for the best matching provisions.
 
-    Keyword-based section retrieval with Arabic definite-article (ال) aliasing.
-    Returns up to max_sections best-matching sections with match confidence.
+    Corpus-first: for labor-law, civil-transactions-law, and pdpl the verbatim
+    articles are searched first.  A hit returns `quotes[]` with
+    `text_origin: official_verbatim`, the article number, the document
+    (and article link where BOE exposes one), `fetched_at`, and
+    `answer_markdown`.  When the corpus cannot answer, the hand-written
+    summary is searched and explicitly marked `hand_written_summary`.
 
-    v0.4.7 confidence gate (programmatic, not advisory):
-      Sections with match_confidence below MATCH_CONFIDENCE_THRESHOLD (0.7)
-      are EXCLUDED from matched_sections — not returned with a warning.
-      excluded_low_confidence_count reports how many were dropped.
-      If nothing passes the gate, insufficient_evidence: true.
+    The legacy confidence gate (0.7) still applies to SUMMARY sections only —
+    it is a relative keyword score, not a probability.  Verbatim articles are
+    never discarded for scoring below 0.7.
 
     The response includes:
-      - matched_sections: list of {heading, body, match_score, match_confidence}
-      - excluded_low_confidence_count: sections dropped by the confidence gate
-      - insufficient_evidence: true when no section passed the gate
-      - placeholder_warning: set when sections contain [يحتاج تحقق] markers
-      - placeholder_dominated: true when ALL sections contain such markers
+      - quotes: official verbatim articles (the only place for legal quotes)
+      - matched_sections: the same quotes (or summary sections) with citations
+      - provenance / provenance_level / fetched_at / as_of
+      - answer_markdown: ready-to-paste quote + link + date + disclaimer
+      - excluded_low_confidence_count: summary sections dropped by the gate
+      - insufficient_evidence: true when nothing usable was found
+      - placeholder_warning: set when summary sections contain [يحتاج تحقق]
 
     DRAFTING RULES (verified delivery channel): (1) tag facts NOT present
     in any tool output as 'معلومة عامة خارج قاعدة المعرفة الموثَّقة';
     (2) never state uncited numbers/dates/legal conditions — omit or tag
     'غير موثَّق'; (3) relay citation_note verbatim when no direct link;
     (4) on insufficient_evidence prefer abstention, never pad with your
-    own knowledge.
+    own knowledge. Never present hand_written_summary as the official text.
 
     Args:
         query:      Search query (Arabic or English).
         source_id:  A key from VALID_REGULATIONS (e.g. "labor-law", "pdpl").
         max_sections: Maximum sections to return (default 3).
-        max_chars_per_section: Cap on returned section body length (default 1500).
+        max_chars_per_section: Cap on returned summary body length (default 1500).
     """
-    result = find_legal_provision(
+    return search_provisions(
         query=query,
         source_id=source_id,
         max_sections=max_sections,
         max_chars_per_section=max_chars_per_section,
+        apply_confidence_gate=True,
+        prefer_corpus=True,
     )
-    if result.get("error") or result.get("insufficient_evidence"):
-        return result
-
-    sections = result.get("matched_sections", [])
-    strong = [
-        s for s in sections
-        if s.get("match_confidence", 0.0) >= MATCH_CONFIDENCE_THRESHOLD
-    ]
-    dropped = len(sections) - len(strong)
-
-    result["excluded_low_confidence_count"] = dropped
-    if not strong:
-        result["matched_sections"] = []
-        result["total_matched"] = 0
-        result["insufficient_evidence"] = True
-        result["placeholder_warning"] = (
-            "أفضل الأقسام المطابقة كانت دون عتبة الثقة (0.7) — لا دليل كافٍ."
-        )
-    else:
-        result["matched_sections"] = strong
-    return result
 
 
 # ── Tool 9: build_legal_brief (v0.4.6 — was dead code, now registered) ────────
@@ -464,6 +555,9 @@ def get_legal_brief(
     Orchestrator tool: retrieves the domain skill, searches the regulation
     source for matching provisions, and pulls known contract risks — then
     assembles them into a single capped brief (max 4000 chars).
+
+    When the verbatim corpus answers, the brief carries the official quote
+    (`text_origin: official_verbatim`) and its document link, not a summary row.
 
     Evidence policy:
       - insufficient_evidence: true when no usable evidence is found

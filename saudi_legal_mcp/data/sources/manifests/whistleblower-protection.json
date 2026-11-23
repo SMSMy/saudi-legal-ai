@@ -1,8 +1,8 @@
 {
   "id": "whistleblower-protection",
   "path": "sources/whistleblower-protection.md",
-  "sha256": "f9458e0b3bfdd61439b4a3642844cc732fe9fb81f5e5cdf5083d053041499bc4",
-  "generated_at": "2026-08-13T11:18:27.698849+00:00",
+  "sha256": "d0346a711993c88bb8d0ed33720921e4078ef886945d141bb783cfcf86692c1b",
+  "generated_at": "2026-11-23T18:43:57.510114+00:00",
   "metadata_status": "field_tested",
   "verification_status": "field_tested",
   "verified_by": "field_tested_v04",

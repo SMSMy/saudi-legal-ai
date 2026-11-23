@@ -1,10 +1,16 @@
 """
-reasoning.py - Saudi Legal AI v0.3
-Semantic section retrieval and legal brief orchestration.
+reasoning.py — section retrieval, article-level retrieval, and legal briefs.
 
-Tools:
-  - find_legal_provision: Keyword-based section retrieval from a regulation file.
-  - build_legal_brief: Orchestrator that assembles skill + provisions + risks into a brief.
+Canonical public function: `search_legal_provision`.
+Legacy raw-summary alias: `find_legal_provision` (kept for internal callers and
+existing evals; it is a thin preset over the same implementation).
+
+Resolution order:
+  1. If a verbatim corpus exists for the source, search it and return
+     `quotes` with `text_origin: official_verbatim`.
+  2. If the corpus does not answer, use the hand-written summary.  Summary
+     sections are explicitly marked `text_origin: hand_written_summary` and are
+     never presented as official quotes.
 """
 from __future__ import annotations
 
@@ -13,25 +19,55 @@ from dataclasses import asdict
 from typing import Optional
 
 from saudi_legal_mcp.tools import get_repo_path
-from saudi_legal_mcp.tools.sources import VALID_REGULATIONS, _extract_links
-from saudi_legal_mcp.tools.schemas import ProvisionResponse, MatchedSection, LegalBriefResponse
+from saudi_legal_mcp.tools.arabic import (
+    ARABIC_STOPWORDS,
+    SYNONYM_GROUPS,
+    normalize_arabic,
+    normalize_phrase,
+    strip_diacritics,
+    strip_placeholders,
+    synonym_variants,
+    tokenize_query,
+)
+from saudi_legal_mcp.tools.article_numbers import parse_arabic_article_number
+from saudi_legal_mcp.tools.corpus import (
+    article_record,
+    corpus_envelope,
+    has_corpus,
+    search_articles,
+)
+from saudi_legal_mcp.tools.provenance import (
+    DISCLAIMER,
+    PROVENANCE_LINKED_DOCUMENT,
+    PROVENANCE_LINKED_PORTAL,
+    PROVENANCE_UNLINKED,
+    TEXT_ORIGIN_HAND_WRITTEN,
+    TEXT_ORIGIN_OFFICIAL,
+    best_provenance_level,
+    build_answer_markdown,
+    document_reference,
+    provenance_envelope,
+)
+from saudi_legal_mcp.tools.schemas import LegalBriefResponse, MatchedSection, ProvisionResponse
 from saudi_legal_mcp.tools.skills import read_skill
-from saudi_legal_mcp.tools.search import find_risks, MATCH_CONFIDENCE_THRESHOLD
+from saudi_legal_mcp.tools.sources import VALID_REGULATIONS, _extract_links
+from saudi_legal_mcp.tools.search import MATCH_CONFIDENCE_THRESHOLD, find_risks
+
+# Backwards-compatible module-level aliases (tests and third-party callers
+# imported these private helpers before the arabic.py extraction).
+_normalize_arabic = normalize_arabic
+_strip_diacritics = strip_diacritics
+_tokenize_query = tokenize_query
+_synonym_variants = synonym_variants
+_strip_placeholders = strip_placeholders
 
 # Constants
 _MAX_CHARS_PER_SECTION = 1500
 _MAX_SECTIONS_RETURNED = 3
 _BRIEF_MAX_CHARS = 4000
 
-
-def _strip_placeholders(text: str) -> str:
-    """Remove [يحتاج تحقق ...] placeholder markers from text.
-
-    v0.4.5: these markers indicate missing/not-yet-verified information.
-    Sections whose query match depends entirely on placeholder text are
-    not real evidence and should be excluded from retrieval results.
-    """
-    return re.sub(r"\[يحتاج تحقق[^\]]*\]", "", text)
+_ARABIC_NUMBER_HINT_RE = re.compile(r"المادة\s*(?:رقم\s*)?([0-9\u0660-\u0669]{1,3})")
+_ARABIC_WORD_HINT_RE = re.compile(r"المادة\s+([^\n|،.:]{2,40})")
 
 
 def _split_into_sections(text: str) -> list[dict]:
@@ -70,107 +106,19 @@ def _split_into_sections(text: str) -> list[dict]:
     return sections
 
 
-# v0.4.9 — diacritics stripped from both haystack and query terms so
-# 'يوما' matches 'يومًا' (tanween/fatha/sukun are not semantic for
-# retrieval).  ROADMAP Arabic-normalisation backlog item, now justified
-# by a concrete false-insufficient case.
-_DIACRITICS_RE = re.compile(r"[\u064B-\u0652\u0670]")
-
-# v0.4.10 — orthographic normalization (safe, no true stemming):
-# hamza seats أ/إ/آ → ا, alef maqsura ى → ي, ta marbuta ة → ه.
-# These variants are pure spelling differences — same word, same root.
-# True synonym mapping (الموظف/العامل) is deliberately OUT of scope
-# (would need a dictionary and carries over-matching risk).
-_HAMZA_TABLE = str.maketrans({"أ": "ا", "إ": "ا", "آ": "ا", "ى": "ي", "ة": "ه"})
-
-
-def _strip_diacritics(s: str) -> str:
-    return _DIACRITICS_RE.sub("", s)
-
-
-def _normalize_arabic(s: str) -> str:
-    """Diacritics removal + orthographic normalization for matching."""
-    return _strip_diacritics(s).translate(_HAMZA_TABLE)
-
-
-# v0.4.12 — minimal synonym groups for scoring-side expansion.
-# Built ONLY from the documented direct-tool failure
-# ('كم يستحق الموظف إجازة في السنة؟' → insufficient_evidence:true
-# although the leaves section contains the answer): الموظف↔العامل,
-# السنة↔سنوياً/سنوية, يستحق↔تستحق.  Groups are in NORMALIZED form.
-# Per the v0.4.3 lesson, expansion happens at scoring time — the query
-# term count (confidence denominator) stays unchanged.
-_SYNONYM_GROUPS: tuple[frozenset[str], ...] = (
-    frozenset({"الموظف", "العامل"}),
-    frozenset({"السنه", "سنه", "سنويا", "سنويه", "سنوي", "السنوي"}),
-    frozenset({"يستحق", "تستحق"}),
-    # v0.4.16 — two specific pairs from documented failures (S1, S10).
-    # NO general verb↔masdar stemming (v0.4.11 rule: specific documented pairs only).
-    frozenset({"يجدد", "تجديد"}),
-    frozenset({"افصل", "فصل", "انهاء"}),
-)
-
-
-def _synonym_variants(term_normalized: str) -> frozenset[str]:
-    """Return the synonym group containing the term (normalized), or just the term."""
-    for group in _SYNONYM_GROUPS:
-        if term_normalized in group:
-            return group
-    return frozenset({term_normalized})
-
-
-# v0.4.11 — phrase-level equivalence for the EVAL comparison layer.
-# The eval compares expected_answer_contains terms against retrieved
-# content literally, while the retrieval engine treats these forms as
-# equivalent: phrase-level definite article (تسوية وقائية ↔ التسوية
-# الوقائية), prepositional ال elision (للمحاكم ↔ المحاكم), word-medial
-# hamza (غسل أموال ↔ غسل الاموال).  The comparison must speak the same
-# normalization language as retrieval — otherwise the metric punishes
-# correct retrieval for spelling variance.
-_ARABIC_PREFIXES = ("لل", "وال", "بال", "كال", "فال", "ال")
-
-
-def normalize_phrase(s: str) -> str:
-    """Normalize Arabic text for equivalence comparison.
-
-    Diacritics + orthographic normalization, then per-word stripping of
-    leading prefixes (لل/وال/بال/كال/فال/ال).  Symmetric on both sides —
-    used by the eval runner's recall check, not by retrieval scoring.
-    """
-    normalized = _normalize_arabic(s)
-    out_words = []
-    for w in normalized.split():
-        for pref in _ARABIC_PREFIXES:
-            if w.startswith(pref) and len(w) > len(pref) + 1:
-                w = w[len(pref):]
-                break
-        out_words.append(w)
-    return " ".join(out_words)
-
-
 def _score_section(section: dict, query_terms: list[str]) -> int:
-    """Return hit count of query_terms found in section heading + body.
-
-    v0.4.3: Arabic definite-article (ال) aliasing (v0.3 decision implemented).
-    A query token "مدعي" matches section text "المدعي" and vice versa.
-    v0.4.9: diacritics-stripped matching ('يوما' ↔ 'يومًا').
-    v0.4.10: orthographic normalization (أ/إ/آ→ا, ى→ي, ة→ه) on both sides.
-    Only Arabic-script tokens receive alias expansion to avoid false matches
-    on Latin text.  Query term count is unchanged — this is scoring-side
-    expansion, not query-side inflation.
-    """
-    haystack = _normalize_arabic(
+    """Return hit count of query_terms found in section heading + body."""
+    haystack = normalize_arabic(
         (section["heading"] + " " + section["body"]).lower()
     )
     score = 0
     for term in query_terms:
-        t = _normalize_arabic(term.lower())
+        t = normalize_arabic(term.lower())
         matched = False
-        for variant in _synonym_variants(t):
+        for variant in synonym_variants(t):
             if variant in haystack:
                 matched = True
                 break
-            # ال-aliasing per variant (المدعي/مدعي — v0.4.3 decision)
             if len(variant) > 2 and variant[:2] == "ال" and variant[2:] in haystack:
                 matched = True
                 break
@@ -187,85 +135,19 @@ def _is_arabic(s: str) -> bool:
     return bool(re.fullmatch(r"[\u0600-\u06ff]+", s))
 
 
-# v0.4.9 — Arabic function words excluded from scoring.  Full-question
-# scenarios were diluted by tokens like كم/في/هل, pushing confidence
-# below the 0.7 gate and triggering false insufficient_evidence.
-_ARABIC_STOPWORDS = frozenset({
-    "كم", "في", "من", "إلى", "على", "عن", "هل", "ما", "هذا", "هذه",
-    "ذلك", "تلك", "الذي", "التي", "الذين", "أن", "إن", "هو", "هي",
-    "هم", "لم", "لن", "لا", "قد", "كان", "كانت", "كل", "بعض", "أي",
-    "غير", "حيث", "إذا", "ثم", "أو", "حتى", "مع", "بين", "بعد", "قبل",
-    "عند", "لدى", "نحو", "حول", "مثل", "دون", "كيف", "متى", "أين",
-    "لماذا", "ماذا", "هل", "ما",
-    # v0.4.16 — colloquial function words (from documented S1/S10 retrieval failures).
-    # Function words only: no independent semantic meaning, safe to drop.
-    "يبي", "تبي", "لي", "له", "وبعد", "لأن",
-})
-
-
-def _tokenize_query(query: str) -> list[str]:
-    """Extract meaningful tokens from query.
-
-    v0.4.9: Arabic letters only (U+0621-U+064A — punctuation such as
-    '؟' and diacritics are no longer glued to tokens), and function
-    words are excluded.  Latin tokens unchanged (>= 3 chars).
-    """
-    tokens = re.findall(r"[\u0621-\u064A]{2,}|[a-zA-Z]{3,}", query)
-    seen: set[str] = set()
-    unique: list[str] = []
-    for t in tokens:
-        t_lower = t.lower()
-        if t_lower in _ARABIC_STOPWORDS:
-            continue
-        if t not in seen:
-            seen.add(t)
-            unique.append(t)
-    return unique
-
-
-def find_legal_provision(
+def _summary_search(
     query: str,
     source_id: str,
     max_sections: int = _MAX_SECTIONS_RETURNED,
     max_chars_per_section: int = _MAX_CHARS_PER_SECTION,
 ) -> dict:
-    """Search a regulation file for sections matching the query.
-
-    Uses keyword scoring across all Markdown headings/bodies.
-    Returns up to max_sections best-matching sections, each capped
-    at max_chars_per_section characters.
-
-    Returns insufficient_evidence=True if no matches found.
-
-    *** ARCHITECTURAL CONTRACT (v0.3) ***
-    This function is a RAW INFORMATION LAYER — it applies NO confidence threshold.
-    Every section with score > 0 is returned, each carrying its own match_confidence.
-    THE CALLER is solely responsible for applying MATCH_CONFIDENCE_THRESHOLD before
-    presenting results as supported evidence to the user.
-    build_legal_brief() does this correctly via its enforce_evidence gate.
-    Any future tool that calls find_legal_provision() directly (not via build_legal_brief)
-    MUST apply the threshold before treating matched_sections as confirmed evidence.
-    Failure to do so will silently surface low-confidence sections as legal authority.
-    """
-    if source_id not in VALID_REGULATIONS:
-        return {
-            "error": f"Unknown source_id '{source_id}'.",
-            "valid_options": sorted(VALID_REGULATIONS),
-            "disclaimer": "هذه معلومات قانونية عامة وليست استشارة قانونية.",
-        }
-
+    """Raw keyword retrieval over a hand-written summary file."""
     source_path = get_repo_path() / "sources" / f"{source_id}.md"
-    if not source_path.exists():
-        return {
-            "error": f"Source file not found: {source_path.name}",
-            "source_id": source_id,
-            "disclaimer": "هذه معلومات قانونية عامة وليست استشارة قانونية.",
-        }
-
     full_text = source_path.read_text(encoding="utf-8")
+    document = document_reference(full_text)
     sections = _split_into_sections(full_text)
 
-    query_terms = _tokenize_query(query)
+    query_terms = tokenize_query(query)
     if not query_terms:
         return {
             "source_id": source_id,
@@ -273,7 +155,7 @@ def find_legal_provision(
             "matched_sections": [],
             "total_matched": 0,
             "insufficient_evidence": True,
-            "disclaimer": "هذه معلومات قانونية عامة وليست استشارة قانونية.",
+            "disclaimer": DISCLAIMER,
         }
 
     scored = sorted(
@@ -283,17 +165,16 @@ def find_legal_provision(
     )
     hits = [(s, score) for s, score in scored if score > 0]
 
-    # v0.4.5 — exclude sections whose score comes entirely from
-    # [يحتاج تحقق] placeholder markers.
+    # Exclude sections whose score comes entirely from [يحتاج تحقق] markers.
     substantive_hits: list[tuple[dict, int]] = []
     for section, score in hits:
-        stripped = _strip_placeholders(section["body"])
+        stripped = strip_placeholders(section["body"])
         stripped_score = _score_section(
             {"heading": section["heading"], "body": stripped},
             query_terms,
         )
         if stripped_score == 0:
-            continue  # all query matches were inside [يحتاج تحقق] blocks
+            continue
         substantive_hits.append((section, score))
 
     if not substantive_hits:
@@ -303,15 +184,14 @@ def find_legal_provision(
             "matched_sections": [],
             "total_matched": 0,
             "insufficient_evidence": True,
-            "disclaimer": "هذه معلومات قانونية عامة وليست استشارة قانونية.",
+            "disclaimer": DISCLAIMER,
         }
 
     top = substantive_hits[:max_sections]
     matched: list[dict] = []
-
-    # Check placeholder signals on the sections actually returned
     any_placeholder = False
     all_placeholder = len(top) > 0
+
     for section, score in top:
         has_marker = "يحتاج تحقق" in section["body"]
         if has_marker:
@@ -320,13 +200,15 @@ def find_legal_provision(
             all_placeholder = False
         body = section["body"][:max_chars_per_section]
         confidence = round(score / max(len(query_terms), 1), 2)
+        citations = _extract_links(section["body"], document=document)
         matched.append(asdict(MatchedSection(
             heading=section["heading"],
             body=body,
             match_score=score,
             match_confidence=confidence,
-            # v0.4.9: citations scope-bound to THIS section's body
-            citations=_extract_links(section["body"]),
+            citations=citations,
+            text_origin=TEXT_ORIGIN_HAND_WRITTEN,
+            provenance_level=best_provenance_level(citations),
         )))
 
     placeholder_warning: Optional[str] = None
@@ -342,9 +224,6 @@ def find_legal_provision(
             "تشير إلى معلومات غير مكتملة أو لم تُراجع بعد."
         )
 
-    # v0.4.14: citation absence must be explicit, never silent
-    # (discovery #5 — the leaves table returned citations:[] and the
-    # user saw unverifiable numbers with no verification path).
     citation_note: Optional[str] = None
     if matched and not any(s.get("citations") for s in matched):
         citation_note = (
@@ -352,16 +231,208 @@ def find_legal_provision(
             "الرسمي عبر بوابة هيئة الخبراء (boe.gov.sa) بنفسك."
         )
 
-    return asdict(ProvisionResponse(
-        source_id=source_id,
+    return {
+        "source_id": source_id,
+        "query": query,
+        "matched_sections": matched,
+        "total_matched": len(hits),
+        "insufficient_evidence": False,
+        "placeholder_warning": placeholder_warning,
+        "citation_note": citation_note,
+        "placeholder_dominated": all_placeholder,
+        "text_origin": TEXT_ORIGIN_HAND_WRITTEN,
+        "provenance_level": best_provenance_level(
+            [c for s in matched for c in s.get("citations", [])]
+        ),
+        "fetched_at": None,
+    }
+
+
+def _extract_article_hints(query: str, source_id: str) -> list[str]:
+    """Resolve a topic through summary article references (grounded hints).
+
+    The summary contains sentences like "المادة 84 من نظام العمل".  We use
+    those explicit references only; we never guess an article number.
+    """
+    try:
+        summary = _summary_search(query, source_id, max_sections=3)
+    except Exception:
+        return []
+    if summary.get("insufficient_evidence"):
+        return []
+
+    hints: list[str] = []
+    for section in summary.get("matched_sections", []):
+        haystack = f"{section.get('heading', '')}\n{section.get('body', '')}"
+        for match in _ARABIC_NUMBER_HINT_RE.finditer(haystack):
+            value = match.group(1).translate(str.maketrans("٠١٢٣٤٥٦٧٨٩", "0123456789"))
+            if value not in hints:
+                hints.append(value)
+        for match in _ARABIC_WORD_HINT_RE.finditer(haystack):
+            number = parse_arabic_article_number(match.group(1))
+            if number and str(number) not in hints:
+                hints.append(str(number))
+    return hints[:3]
+
+
+def search_legal_provision(
+    query: str,
+    source_id: str,
+    max_sections: int = _MAX_SECTIONS_RETURNED,
+    max_chars_per_section: int = _MAX_CHARS_PER_SECTION,
+    *,
+    apply_confidence_gate: bool = False,
+    prefer_corpus: bool = True,
+) -> dict:
+    """Search a source for the best legal provisions.
+
+    Corpus-first: when a verbatim corpus exists, results carry
+    `text_origin: "official_verbatim"` and a real document/article URL.
+    Otherwise the hand-written summary is searched and explicitly marked.
+
+    `apply_confidence_gate` applies the legacy 0.7 relative-score gate to
+    SUMMARY sections only.  It is not applied to verbatim articles: a verbatim
+    article with one matching term is still a real quote, not a probability.
+    """
+    if source_id not in VALID_REGULATIONS:
+        return {
+            "error": f"Unknown source_id '{source_id}'.",
+            "valid_options": sorted(VALID_REGULATIONS),
+            "disclaimer": DISCLAIMER,
+        }
+
+    source_path = get_repo_path() / "sources" / f"{source_id}.md"
+    if not source_path.exists():
+        return {
+            "error": f"Source file not found: {source_path.name}",
+            "source_id": source_id,
+            "disclaimer": DISCLAIMER,
+        }
+
+    if prefer_corpus and has_corpus(source_id):
+        hints = _extract_article_hints(query, source_id)
+        articles = search_articles(
+            query,
+            source_id,
+            limit=max_sections,
+            article_hints=hints,
+        )
+        if articles:
+            quotes = [article_record(article) for article in articles]
+            matched_sections: list[dict] = []
+            for quote in quotes:
+                relevance = next(
+                    (
+                        article.get("relevance_score")
+                        for article in articles
+                        if article.get("id") == quote.get("id")
+                    ),
+                    None,
+                )
+                matched_sections.append(asdict(MatchedSection(
+                    heading=f"## {quote.get('article_label') or 'المادة ' + str(quote.get('article'))}",
+                    body=quote.get("text") or "",
+                    match_score=max(1, int(round((relevance or 1.0) * 100))),
+                    match_confidence=float(relevance if relevance is not None else 1.0),
+                    citations=quote.get("citations", []),
+                    text_origin=TEXT_ORIGIN_OFFICIAL,
+                    provenance_level=quote.get("provenance_level"),
+                    fetched_at=quote.get("fetched_at"),
+                    article=quote.get("article"),
+                    article_id=quote.get("id"),
+                )))
+
+            result = {
+                "source_id": source_id,
+                "query": query,
+                "matched_sections": matched_sections,
+                "total_matched": len(quotes),
+                "insufficient_evidence": False,
+                "placeholder_warning": None,
+                "placeholder_dominated": False,
+                "citation_note": None,
+                "excluded_low_confidence_count": 0,
+                "retrieval_scope": "verbatim_corpus",
+            }
+            result.update(corpus_envelope(source_id, quotes))
+            return result
+
+    # ── Summary fallback ────────────────────────────────────────────────────
+    result = _summary_search(
+        query,
+        source_id,
+        max_sections=max_sections,
+        max_chars_per_section=max_chars_per_section,
+    )
+    if result.get("insufficient_evidence"):
+        return result
+
+    sections = result.get("matched_sections", [])
+    if apply_confidence_gate:
+        strong = [
+            s for s in sections
+            if s.get("match_confidence", 0.0) >= MATCH_CONFIDENCE_THRESHOLD
+        ]
+        dropped = len(sections) - len(strong)
+        result["excluded_low_confidence_count"] = dropped
+        if not strong:
+            result["matched_sections"] = []
+            result["total_matched"] = 0
+            result["insufficient_evidence"] = True
+            result["placeholder_warning"] = (
+                "أفضل الأقسام المطابقة كانت دون عتبة الثقة (0.7) — لا دليل كافٍ."
+            )
+            return result
+        result["matched_sections"] = strong
+        sections = strong
+    else:
+        result["excluded_low_confidence_count"] = 0
+
+    all_citations = [c for s in sections for c in s.get("citations", [])]
+    result["provenance"] = provenance_envelope(
+        all_citations,
+        fetched_at=None,
+        sha256=None,
+        freshness="unverified",
+        citation_note=result.get("citation_note"),
+    )
+    result["answer_markdown"] = build_answer_markdown(
+        title=f"{source_id} — نتائج البحث",
+        content="\n\n".join(
+            f"{s.get('heading', '')}\n{s.get('body', '')}" for s in sections
+        ),
+        citations=all_citations,
+        text_origin=TEXT_ORIGIN_HAND_WRITTEN,
+        provenance_level=result.get("provenance_level", PROVENANCE_UNLINKED),
+        fetched_at=None,
+        citation_note=result.get("citation_note"),
+    )
+    result["quotes"] = []
+    result["commentary"] = []
+    result["as_of"] = None
+    result["disclaimer"] = DISCLAIMER
+    return result
+
+
+def find_legal_provision(
+    query: str,
+    source_id: str,
+    max_sections: int = _MAX_SECTIONS_RETURNED,
+    max_chars_per_section: int = _MAX_CHARS_PER_SECTION,
+) -> dict:
+    """Legacy raw-summary alias (no corpus, no confidence gate).
+
+    Kept for `evals/`, internal brief assembly, and third-party callers.  New
+    code should call `search_legal_provision`.
+    """
+    return search_legal_provision(
         query=query,
-        matched_sections=matched,
-        total_matched=len(hits),
-        insufficient_evidence=False,
-        placeholder_warning=placeholder_warning,
-        citation_note=citation_note,
-        placeholder_dominated=all_placeholder,
-    ))
+        source_id=source_id,
+        max_sections=max_sections,
+        max_chars_per_section=max_chars_per_section,
+        apply_confidence_gate=False,
+        prefer_corpus=False,
+    )
 
 
 def build_legal_brief(
@@ -370,16 +441,13 @@ def build_legal_brief(
     contract_type: Optional[str] = None,
     source_id: Optional[str] = None,
 ) -> dict:
-    """Orchestrate a brief legal analysis from skill + provisions + risks.
+    """Orchestrate a brief from skill + provisions + risks.
 
-    enforce_evidence is applied: if no evidence found across all sources,
-    returns insufficient_evidence=True with no brief.
+    When a verbatim corpus answers, the brief carries the official quote and
+    its link; the summary is not substituted for the quote.
     """
-    import json
     evidence_parts: list[str] = []
 
-    # include_content=True required — default graduated interface returns
-    # metadata only, which would leave the skill section empty (v0.4.6 fix)
     skill_result = read_skill(domain, include_content=True)
     skill_summary: str = ""
     if isinstance(skill_result, dict) and not skill_result.get("error"):
@@ -388,19 +456,22 @@ def build_legal_brief(
             evidence_parts.append(f"[skill:{domain}]")
 
     provisions: list[dict] = []
+    quotes: list[dict] = []
     prov_placeholder_warning: Optional[str] = None
     prov_placeholder_dominated: bool = False
     prov_raw_count: int = 0
     if source_id:
-        prov_result = find_legal_provision(scenario, source_id)
+        prov_result = search_legal_provision(
+            scenario,
+            source_id,
+            apply_confidence_gate=False,
+            prefer_corpus=True,
+        )
         if not prov_result.get("insufficient_evidence"):
             raw_sections = prov_result.get("matched_sections", [])
             prov_raw_count = len(raw_sections)
-            # v0.4.9: brief includes all substantively-matched sections.
-            # Confidence gating lives in search_legal_provision (tool layer);
-            # the orchestrator keeps real retrieved text and relies on the
-            # placeholder gate for safety (see insufficient-evidence gate).
             provisions = list(raw_sections)
+            quotes = list(prov_result.get("quotes", []))
             prov_placeholder_warning = prov_result.get("placeholder_warning")
             prov_placeholder_dominated = prov_result.get("placeholder_dominated", False)
             for p in provisions:
@@ -408,12 +479,11 @@ def build_legal_brief(
 
     risks: list[dict] = []
     if contract_type:
-        risk_result = find_risks(contract_type=contract_type)  # returns dict directly
+        risk_result = find_risks(contract_type=contract_type)
         raw_risks = risk_result.get("risks", [])
-        resp_confidence = risk_result.get("match_confidence")  # None = exact match (always trusted)
-        # Gate: if fuzzy matching was used and confidence is below threshold, treat as no evidence
+        resp_confidence = risk_result.get("match_confidence")
         confidence_ok = (
-            resp_confidence is None  # exact match — always trusted
+            resp_confidence is None
             or resp_confidence >= MATCH_CONFIDENCE_THRESHOLD
         )
         if confidence_ok:
@@ -432,13 +502,6 @@ def build_legal_brief(
             "disclaimer": "لا يوجد دليل كافٍ لإصدار مذكرة قانونية. يرجى الاستعانة بمحامٍ مرخّص.",
         }
 
-    # v0.4.5/0.4.9 gate: insufficient when ALL data evidence is
-    # placeholder-dominated (gate A).  Confidence gating (0.7) is the
-    # tool-layer responsibility of search_legal_provision — applying it
-    # here as well produced false insufficient_evidence on full
-    # natural-language scenarios, where token-ratio confidence is
-    # systematically depressed by synonym/morphology variance.
-    # The safety-critical gate is placeholder dominance, which stays.
     has_data = prov_raw_count > 0 or bool(risks)
     data_all_placeholder = (
         prov_raw_count > 0
@@ -462,19 +525,28 @@ def build_legal_brief(
         }
 
     sections_text = ""
-    for p in provisions:
-        # strip markdown # prefix — heading already includes it, wrapping in
-        # ** would render "**## 8. ...**" instead of a clean heading (v0.4.6)
-        clean_heading = p.get('heading', '').lstrip('#').strip()
-        sections_text += f"\n**{clean_heading}**\n{p.get('body','')[:400]}\n"
+    if not quotes:
+        for p in provisions:
+            clean_heading = p.get("heading", "").lstrip("#").strip()
+            sections_text += f"\n**{clean_heading}**\n{p.get('body','')[:400]}\n"
+
+    quotes_text = ""
+    if quotes:
+        for q in quotes:
+            sources = "، ".join(
+                f"[{c['label']}]({c['url']})" for c in q.get("citations", [])
+            )
+            quotes_text += (
+                f"\n> **{q.get('article_label') or 'المادة ' + str(q.get('article'))}** — "
+                f"اقتباس رسمي حرفي.\n>\n"
+                + "\n".join(f"> {line}" for line in (q.get("text") or "").splitlines())
+                + f"\n>\n> {sources}\n"
+            )
 
     risks_text = ""
     for r in risks:
         risks_text += f"- [{r.get('risk_level','').upper()}] {r.get('risk_reason','')[:200]}\n"
 
-    # v0.4.9: sources & links section — citations from matched sections
-    # and risk related_regulation.  Portal labels are copied verbatim so
-    # the portal-vs-article distinction survives into the brief text.
     sources_text = ""
     seen_sources: set[str] = set()
     for p in provisions:
@@ -500,6 +572,7 @@ def build_legal_brief(
         f"**السيناريو:** {scenario}\n\n"
         f"### السياق المجالي ({domain})\n{skill_summary[:400]}\n\n"
         f"### النصوص النظامية ذات الصلة\n{sections_text}\n"
+        f"{quotes_text}"
         f"### المخاطر التعاقدية\n{risks_text}\n"
         f"{sources_block}"
         f"\n*الأدلة المستخدمة: {len(evidence_parts)} مصدر(اً)*"
@@ -516,4 +589,15 @@ def build_legal_brief(
     ))
     if prov_placeholder_warning:
         response["placeholder_warning"] = prov_placeholder_warning
+    if quotes:
+        response["text_origin"] = TEXT_ORIGIN_OFFICIAL
+        response["provenance_level"] = quotes[0].get("provenance_level")
+        response["fetched_at"] = quotes[0].get("fetched_at")
+    else:
+        response["text_origin"] = TEXT_ORIGIN_HAND_WRITTEN
+        response["provenance_level"] = PROVENANCE_LINKED_DOCUMENT if any(
+            p.get("citations") for p in provisions
+        ) else PROVENANCE_UNLINKED
+        response["fetched_at"] = None
+    response["disclaimer"] = DISCLAIMER
     return response

@@ -1,6 +1,10 @@
 # مهارة: عقود العقارات والايجار في السعودية / Skill: Saudi Real Estate Contracts
 # Saudi Legal Context - العقود العقارية والايجارية في المملكة العربية السعودية
 
+<!-- reasoning-guide-banner -->
+> **هذا دليل تفكير، لا نص نظامي.** لا يُقتبس من هذا الملف كحكم. الاقتباس الرسمي من `corpus/` أو من الصفحة الرسمية، وما هنا إلا منهج تحليل.
+
+
 **Version:** 1.0 | **Applies to:** All AI assistants | **Language:** AR / EN
 
 ---

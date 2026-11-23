@@ -64,6 +64,61 @@ def test_search_legal_provision_confidence_gate():
 
 
 
+def test_list_legal_domains_reports_provenance_distribution_not_verified_count():
+    """Wave 1: verified_count was a false maturity gate.  The tool now reports
+    the actual link/provenance mix."""
+    from saudi_legal_mcp.server import list_legal_domains
+
+    result = list_legal_domains()
+    assert "verified_count" not in result
+    distribution = result["provenance_distribution"]
+    assert set(distribution) == {
+        "unlinked",
+        "linked_portal",
+        "linked_document",
+        "fetched_official",
+        "article_level",
+    }
+    assert sum(distribution.values()) == result["regulation_count"]
+    assert result["corpus_sources"] == [
+        "civil-transactions-law",
+        "labor-law",
+        "pdpl",
+    ]
+    coverage = result["corpus_coverage"]
+    assert coverage["labor-law"]["article_count"] == 245
+    assert coverage["civil-transactions-law"]["article_count"] == 721
+    assert coverage["pdpl"]["article_count"] == 43 + 38
+    # pdpl must not be displayed as one ambiguous number: per-file split.
+    files = result["corpus_files"]
+    assert files["pdpl"]["article_count"] == 43
+    assert files["pdpl-exec-regulations"]["article_count"] == 38
+    assert files["labor-law"]["article_count"] == 245
+    assert files["civil-transactions-law"]["article_count"] == 721
+
+    labor = result["provenance_by_source"]["labor-law"]
+    assert labor["dominant_provenance_level"] == "fetched_official"
+    assert labor["provenance_levels"]["article_level"] == coverage["labor-law"]["article_url_count"]
+    assert labor["provenance_levels"]["fetched_official"] > labor["provenance_levels"]["article_level"]
+    assert "provenance_level" not in labor
+    assert result["article_level_articles"] == 3
+
+
+def test_server_search_tool_returns_verbatim_corpus_quote():
+    """The registered tool, not only the internal function, must return the
+    verbatim article and its document link."""
+    from saudi_legal_mcp.server import search_legal_provision
+
+    result = search_legal_provision("مكافأة نهاية الخدمة", "labor-law")
+    assert result["insufficient_evidence"] is False
+    assert result["retrieval_scope"] == "verbatim_corpus"
+    article_84 = [q for q in result["quotes"] if q["article"] == "84"]
+    assert article_84
+    assert article_84[0]["text_origin"] == "official_verbatim"
+    assert article_84[0]["fetched_at"]
+    assert "laws.boe.gov.sa" in result["answer_markdown"]
+
+
 def test_instructions_carry_drafting_rules_contract():
     """The four drafting rules must be delivered in the default
     instructions (empirically proven to reach clients via the MCP

@@ -32,11 +32,15 @@ The Law was issued by Royal Decree No. M/43 and made available through official 
 
 ### Purpose of this file / الغرض من هذا الملف
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 This file is designed for legal workflow mapping, AI evaluation, litigation-document review, and evidence-oriented legal analysis — not for direct legal advice.
 
 صُمم هذا الملف لدعم رسم مسارات العمل القانونية، وتقييم مخرجات الذكاء الاصطناعي، ومراجعة مستندات التقاضي، والتحليل القانوني المتعلق بالإثبات — وليس لتقديم استشارة قانونية مباشرة.
 
 ### ⚠️ تحذير / Warning
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 > هذا ملخص مرجعي تعليمي. النص القانوني الرسمي والسارية هو المعتمد. يجب الرجوع إلى محامٍ مرخّص في أي مسألة تتعلق بالإثبات.
 >
@@ -45,6 +49,8 @@ This file is designed for legal workflow mapping, AI evaluation, litigation-docu
 ---
 
 ## Scope / النطاق
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 This draft focuses on civil and commercial transactions, consistent with Article 1. Criminal procedure is outside the scope of this file unless a specific official cross-reference is verified.
 
@@ -73,9 +79,13 @@ This draft focuses on civil and commercial transactions, consistent with Article
 
 ## Key concepts / المفاهيم الأساسية
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 The following concepts are summarized at a high educational level only. Article-level references are intentionally left to the verification scaffold and should be confirmed against the official Arabic text.
 
 ### 1. Burden of proof / عبء الإثبات
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 - The party asserting a fact generally bears the burden of proving it.
 - The burden may shift in defined circumstances based on the nature of the claim or defense.
@@ -83,6 +93,8 @@ The following concepts are summarized at a high educational level only. Article-
 - *Article mapping:* **Article 2 — Verified from official Arabic text**.
 
 ### 2. Agreement on evidence rules / الاتفاق على قواعد الإثبات
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 - Parties may have evidence-related agreements or procedural positions that affect how proof is handled, subject to the official text, public order limits, and applicable procedural rules.
 - AI/legal workflows should not assume that a contractual evidence clause is automatically valid, invalid, or decisive without checking the Saudi Evidence Law and procedural rules.
@@ -93,6 +105,8 @@ The following concepts are summarized at a high educational level only. Article-
 
 ### 3. Admission / الإقرار
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 - An admission by a party may operate as evidence against that party.
 - Court-facing (judicial) admissions and out-of-court admissions are treated differently.
 - Relying on informal statements (chat, email, social media) as "admissions" carries authenticity, context, and legal-effect risks.
@@ -100,12 +114,16 @@ The following concepts are summarized at a high educational level only. Article-
 
 ### 4. Interrogation of parties / استجواب الخصوم
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 - The court may question a party regarding disputed facts.
 - Interrogation is related to, but distinct from, admissions: it is a procedural mechanism for eliciting positions on factual matters.
 - The mechanism, conditions, and consequences are governed by the official text and applicable procedural rules.
 - *Article mapping:* **Article 20 — Verified from official Arabic text**.
 
 ### 5. Written evidence / المحررات
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 Distinguishes between:
 
@@ -122,6 +140,8 @@ High-level concepts include:
 
 ### 6. Electronic evidence / الدليل الرقمي
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 Includes (as workflow examples only, not as legal definitions):
 
 - Digital records
@@ -135,12 +155,16 @@ Includes (as workflow examples only, not as legal definitions):
 
 ### 7. Witness testimony / الشهادة
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 - Testimony is one path of proof, subject to defined conditions and limits.
 - The legal sufficiency of testimony depends on the type of fact, type of dispute, and applicable rules.
 - Do not overstate when testimony alone is sufficient — this varies by context.
 - *Article mapping:* **TO VERIFY**.
 
 ### 8. Presumptions / القرائن
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 - Presumptions may be statutory (established by law) or judicial (drawn by the court from established facts).
 - A presumption shifts attention to whether and how it can be rebutted.
@@ -149,11 +173,15 @@ Includes (as workflow examples only, not as legal definitions):
 
 ### 9. Custom / العرف
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 - Custom may be relevant in civil or commercial evidentiary reasoning where the official text permits it.
 - AI systems should not infer custom from common practice without proof, legal relevance, and judicial acceptance.
 - *Article mapping:* **TO VERIFY**.
 
 ### 10. Expert evidence / الخبرة
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 - Courts may rely on experts (court-appointed or party-submitted) for technical, accounting, engineering, digital forensics, valuation, and similar matters.
 - An expert report informs the court but is not, by itself, automatically conclusive.
@@ -162,11 +190,15 @@ Includes (as workflow examples only, not as legal definitions):
 
 ### 11. Inspection / المعاينة
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 - Inspection may be relevant where the court needs to observe a place, object, condition, or technical state directly.
 - It should not be treated as a substitute for expert evidence unless the official text and court direction support that.
 - *Article mapping:* **TO VERIFY**.
 
 ### 12. Oaths / اليمين
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 - Oaths function as a defined evidentiary mechanism in specified circumstances.
 - The conditions, consequences, and limits are governed by the official text — this is a high-caution area.
@@ -175,12 +207,16 @@ Includes (as workflow examples only, not as legal definitions):
 
 ### 13. Procedural timing and applicable evidentiary law / الزمن الإجرائي والنظام الواجب التطبيق
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 - Evidence analysis may depend on the timing of the facts, transactions, dispute, and evidentiary procedure.
 - AI/legal workflows should not assume that the current rule automatically applies to all historical facts or documents without checking the applicable transitional and procedural rules.
 - The procedural stage also matters: pre-suit review, pleadings, hearing, expert appointment, appeal, and enforcement may involve different evidentiary consequences.
 - *Article mapping:* **TO VERIFY**.
 
 ### 14. Evidence and AI workflows / الإثبات ومسارات الذكاء الاصطناعي
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 - AI must not assert facts as proven merely because a supporting document exists.
 - AI/legal workflows should separate:
@@ -203,6 +239,8 @@ Includes (as workflow examples only, not as legal definitions):
 ---
 
 ## Important article mapping scaffold / هيكل أولي لإحالات المواد المهمة
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 This section is a **verification scaffold**, not an article-level reference yet. Article numbers should be added only after direct review of the official Arabic text.
 
@@ -239,6 +277,8 @@ This section is a **verification scaffold**, not an article-level reference yet.
 
 ## Common legal risk areas / مناطق المخاطر القانونية الشائعة
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 - Treating allegations as proven facts.
 - Treating a document as admissible or conclusive without checking evidentiary rules.
 - Ignoring the burden of proof and on whom it lies.
@@ -262,6 +302,8 @@ This section is a **verification scaffold**, not an article-level reference yet.
 
 ## Saudi-specific considerations / اعتبارات خاصة بالمملكة العربية السعودية
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 - The Law applies to civil and commercial transactions.
 - Criminal procedure is outside the scope of this draft unless a specific official cross-reference is verified.
 - The Evidence Law's core scope is civil and commercial transactions. Labor and personal-status contexts should be treated through applicable official procedural rules and any special provisions, not by broad assumption.
@@ -283,6 +325,8 @@ This section is a **verification scaffold**, not an article-level reference yet.
 
 ## Official and Supporting References
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 ### Official Saudi Sources
 
 - **BOE / هيئة الخبراء بمجلس الوزراء** — official online reference for the Arabic text of the Law.
@@ -290,6 +334,8 @@ This section is a **verification scaffold**, not an article-level reference yet.
 - **Umm Al-Qura / جريدة أم القرى** — official publication source for Saudi legislation; specific issue number for this Law to be verified from [uqn.gov.sa](https://uqn.gov.sa) if cited.
 
 ### Supporting References
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 - **Procedural Evidence Rules / الأدلة الإجرائية لنظام الإثبات** — official procedural materials published in Umm Al-Qura; should be reviewed alongside the Evidence Law for procedural application. Not a replacement for the Evidence Law.
 - **Ministry of Justice / وزارة العدل** — supporting legal and judicial material; not the issuing authority of the Law.
@@ -301,6 +347,8 @@ This section is a **verification scaffold**, not an article-level reference yet.
 ---
 
 ## Draft status / verification notes — حالة المسودة وملاحظات التحقق
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 - The file is intentionally a draft.
 - Source-backed metadata is based on the BOE law record linked in this file. Article-level mappings remain `TO VERIFY` until direct article-by-article verification against the official Arabic text.
@@ -316,6 +364,8 @@ This draft is suitable for early maintainer review because it separates source-b
 
 ### Article-level mappings currently verified
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 - Article 1 — scope and applicability
 - Article 2 — burden of proof
 - Article 6 — agreement on evidence rules
@@ -325,6 +375,8 @@ This draft is suitable for early maintainer review because it separates source-b
 - Article 110 — expert evidence
 
 ### Remaining article mappings to verify
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 1. Admission
 2. Private documents
@@ -347,9 +399,13 @@ Seven article-level mappings are currently verified against the official Arabic 
 
 ## Example QA checks / أمثلة على فحوصات الجودة
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 These examples illustrate how AI/legal workflows should and should not reason about evidentiary matters. They are educational, non-advisory, and do not include article numbers.
 
 ### Example 1 — Treating allegations as proven facts
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 - **Bad answer:** "Since the claimant alleges non-payment, non-payment is established."
 - **Why it is wrong:** An allegation is not a proven fact. The burden of proof has not been addressed, no admissible evidence has been evaluated, and no court has weighed the matter.
@@ -357,11 +413,15 @@ These examples illustrate how AI/legal workflows should and should not reason ab
 
 ### Example 2 — Assuming screenshots are automatically conclusive
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 - **Bad answer:** "The WhatsApp screenshot proves the agreement; the case is decided."
 - **Why it is wrong:** Screenshots are digital artifacts; authenticity, integrity, attribution, context, and admissibility must still be assessed. Existence ≠ admissibility ≠ weight ≠ legal conclusion.
 - **Better answer:** Treat the screenshot as a potential piece of electronic evidence whose admissibility and weight depend on the official Evidence Law and applicable procedural rules. Flag the need to consider original source, metadata, context, integrity, and authenticity risks where relevant.
 
 ### Example 3 — Ignoring burden of proof
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 - **Bad answer:** "The defendant did not produce documents, therefore the defendant loses."
 - **Why it is wrong:** This conflates an evidentiary gap by one party with an automatic legal conclusion. Burden of proof, the nature of the claim, and any applicable shifting rules must be analyzed first.
@@ -369,11 +429,15 @@ These examples illustrate how AI/legal workflows should and should not reason ab
 
 ### Example 4 — Treating expert reports as binding
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 - **Bad answer:** "The expert concluded X, so the court must rule X."
 - **Why it is wrong:** Expert reports inform the court but are not automatically binding. The court evaluates methodology, qualifications, and persuasive weight under applicable rules.
 - **Better answer:** Summarize the expert's findings and methodology, note that the court independently weighs expert evidence, and avoid presenting the expert's conclusion as a legal conclusion.
 
 ### Example 5 — Applying common-law evidence assumptions
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 - **Bad answer:** "Under the hearsay rule, this statement is inadmissible."
 - **Why it is wrong:** The common-law hearsay framework is not the Saudi framework. Saudi evidentiary categories and conditions are set by the Saudi Evidence Law and applicable procedural rules.
@@ -381,11 +445,15 @@ These examples illustrate how AI/legal workflows should and should not reason ab
 
 ### Example 6 — Treating admissions outside their legal context
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 - **Bad answer:** "The defendant said 'I owe you' in a private message, so this is a judicial admission."
 - **Why it is wrong:** Informal statements are not automatically judicial admissions. Their legal characterization, authenticity, context, and effect depend on the official text and procedural setting.
 - **Better answer:** Distinguish out-of-court statements from judicial admissions, flag authenticity and context issues, and note that the legal effect is determined under the Saudi Evidence Law, not by informal labels.
 
 ### Example 7 — Confusing digital evidence with the Electronic Transactions Law
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 - **Bad answer:** "The Electronic Transactions Law makes any electronic record valid evidence."
 - **Why it is wrong:** This conflates two distinct frameworks. The Electronic Transactions Law and the Evidence Law address different questions (validity/effect of electronic transactions vs. evidentiary rules). Admissibility and weight of electronic evidence must still be assessed under the Evidence Law and applicable rules.
@@ -393,11 +461,15 @@ These examples illustrate how AI/legal workflows should and should not reason ab
 
 ### Example 8 — Treating evidence clauses as automatically decisive
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 - **Bad answer:** "The contract says screenshots are conclusive evidence, so the court must accept them."
 - **Why it is wrong:** Evidence-related agreements or clauses may be relevant, but their effect depends on the official text, public order limits, procedural rules, authenticity, and the court's assessment.
 - **Better answer:** Treat the clause as a relevant issue to verify under the Saudi Evidence Law and procedural rules, while separately assessing the evidence item, authenticity, context, and evidentiary weight.
 
 ### Example 9 — Ignoring timing and procedural stage
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 - **Bad answer:** "The current evidence rule applies automatically to this old transaction."
 - **Why it is wrong:** Evidence analysis may depend on the timing of the underlying facts, transaction, dispute, and evidentiary procedure.
@@ -406,6 +478,8 @@ These examples illustrate how AI/legal workflows should and should not reason ab
 ---
 
 ## Final warning / تحذير ختامي
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/2716057c-c097-4bad-8e1e-ae1400c678d5/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 > **Warning:** This file is an educational/reference draft only. It is not legal advice. Review the official Arabic text and applicable procedural rules before making litigation, evidence, contracting, or compliance decisions.
 >

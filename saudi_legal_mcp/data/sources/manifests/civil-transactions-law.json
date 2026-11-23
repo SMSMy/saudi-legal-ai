@@ -1,8 +1,8 @@
 {
   "id": "civil-transactions-law",
   "path": "sources/civil-transactions-law.md",
-  "sha256": "512a6c1783e8a1b5b65dc761859f362bf5eebedc64ce7cf04f94a58109d3a9fb",
-  "generated_at": "2026-11-23T12:10:31.599360+00:00",
+  "sha256": "7e07b084cd017fd014565e2233e2169f88223f45c20e41767c22e21ada92cf11",
+  "generated_at": "2026-11-23T18:43:57.499924+00:00",
   "metadata_status": "field_tested",
   "verification_status": "field_tested",
   "verified_by": "field_tested_v04",

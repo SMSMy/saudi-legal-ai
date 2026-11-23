@@ -74,6 +74,142 @@ def test_no_unregistered_skill_files(data_dir: Path):
     )
 
 
+def test_every_content_heading_has_a_link_in_its_immediate_body(data_dir: Path):
+    """Wave 1+2: every level-2/3/4 content heading must carry a DOCUMENT link
+    (law_document_url / direct_article_url) in its own immediate body — a
+    portal-only link is not enough.  A parent heading is not covered by a link
+    inside a child heading.
+
+    Exemptions (explicit allowlist, documented):
+      * NAV_EXEMPT titles list local files, not legal text.
+      * PORTAL_ONLY_SOURCES have no stable BOE LawDetails documented yet;
+        they stay portal-only with an honest portal label (see
+        evals/source-registry.json url_confidence=portal).  They must still
+        carry at least a portal link — silence is never allowed.
+    """
+    import re
+
+    from saudi_legal_mcp.tools.provenance import classify_url
+
+    exempt = ("See also", "انظر أيضا", "انظر أيضًا", "المصادر الرسمية", "Official Legal Sources", "المصادر والمراجع")
+    # Portal-only by documented decision: no stable LawDetails found yet.
+    # Kept as portal with honest labels; registry tracks them as portal.
+    portal_only_sources = frozenset({
+        "commercial-courts",
+        "companies-law",
+        "competition-law",
+        "intellectual-property-law",
+        "legal-profession-law",
+        "open-data-judicial-sources",
+        "real-estate-arbitration-reac",
+        "regulation-index",
+        "saudi-laws",
+    })
+    missing: list[str] = []
+    portal_instead_of_document: list[str] = []
+    headings = 0
+    _URL_RE = re.compile(r"https?://[^\s|)\]]+")
+
+    def _has_document_link(body: str) -> bool:
+        for m in _URL_RE.finditer(body):
+            url = m.group(0).strip().rstrip(").,;")
+            try:
+                if classify_url(url)["link_type"] in ("law_document_url", "direct_article_url"):
+                    return True
+            except Exception:
+                continue
+        return False
+
+    for source_id in sorted(VALID_REGULATIONS):
+        lines = (data_dir / "sources" / f"{source_id}.md").read_text(encoding="utf-8").splitlines()
+        i = 0
+        while i < len(lines):
+            match = re.match(r"^(#{2,4})\s+(.*)$", lines[i])
+            if not match:
+                i += 1
+                continue
+            title = match.group(2)
+            headings += 1
+            j = i + 1
+            while j < len(lines) and not re.match(r"^#{1,6}\s+", lines[j]):
+                j += 1
+            body = "\n".join(lines[i:j])
+            if any(word in title for word in exempt):
+                i += 1
+                continue
+            if "https://" not in body and "http://" not in body:
+                missing.append(f"{source_id}: {title}")
+            elif source_id not in portal_only_sources and not _has_document_link(body):
+                portal_instead_of_document.append(f"{source_id}: {title}")
+            i += 1
+
+    assert headings > 500
+    assert missing == [], "content headings without a link:\n" + "\n".join(missing)
+    assert portal_instead_of_document == [], (
+        "content headings with portal-only link (document required):\n"
+        + "\n".join(portal_instead_of_document)
+    )
+
+
+def test_portal_only_section_fails_document_gate():
+    """Negative guard against green-false: a portal-only body must NOT pass
+    the document gate unless its source is in the portal-only allowlist."""
+    import re
+
+    from saudi_legal_mcp.tools.provenance import classify_url
+
+    _URL_RE = re.compile(r"https?://[^\s|)\]]+")
+
+    def _has_document_link(body: str) -> bool:
+        for m in _URL_RE.finditer(body):
+            url = m.group(0).strip().rstrip(").,;")
+            try:
+                if classify_url(url)["link_type"] in ("law_document_url", "direct_article_url"):
+                    return True
+            except Exception:
+                continue
+        return False
+
+    portal_body = "> **رابط البوابة:** [بوابة الجهة](https://laws.boe.gov.sa) — رابط عام."
+    document_body = (
+        "> **رابط الوثيقة:** [وثيقة النظام]"
+        "(https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1)"
+        " — يفتح الوثيقة كاملة."
+    )
+    assert _has_document_link(document_body) is True
+    assert _has_document_link(portal_body) is False
+    # The gate from the test above would flag the portal body in a
+    # document-required source and allow it only in a portal-only source.
+    assert "laws.boe.gov.sa/BoeLaws/Laws/LawDetails" in document_body
+
+
+def test_embed_document_links_is_idempotent_and_section_scoped():
+    """Wave 1: each section gets its document link, once, and rerunning is a no-op."""
+    import importlib.util
+    import sys
+
+    script = Path(__file__).parent.parent / "scripts" / "embed_document_links.py"
+    spec = importlib.util.spec_from_file_location("embed_document_links", script)
+    module = importlib.util.module_from_spec(spec)
+    sys.modules["embed_document_links"] = module
+    assert spec.loader is not None
+    spec.loader.exec_module(module)
+
+    document = {
+        "url": (
+            "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/"
+            "08381293-6388-48e2-8ad2-a9a700f2aa94/1"
+        )
+    }
+    text = "# T\n\n## A\nنص أ\n\n## B\nنص ب\n"
+    once, changes = module.embed(text, document)
+    assert changes == 2
+    assert once.count(document["url"]) == 2
+    twice, second_changes = module.embed(once, document)
+    assert second_changes == 0
+    assert twice == once
+
+
 def test_every_registered_source_has_eval_questions():
     """Coverage guard (2026-08-13 lesson): every registered regulation
     must be exercised by at least one eval question.  A source added to

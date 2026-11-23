@@ -10,9 +10,16 @@
 **الجهة التنظيمية:** الهيئة السعودية للبيانات والذكاء الاصطناعي (سدايا)
 **Regulatory Authority:** Saudi Data and Artificial Intelligence Authority (SDAIA)
 
+**الرابط الرسمي (وثيقة النظام على هيئة الخبراء):** https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1
+**اللائحة التنفيذية (أم القرى 23595):** https://uqn.gov.sa/details?p=23595
+
+> **حالة النص في هذا الملف:** ملخص بشري (`hand_written_summary`) للفهم والترتيب، وليس اقتباساً نظامياً. النص الحرفي المسحوب في `saudi_legal_mcp/data/corpus/pdpl.json` و`pdpl-exec-regulations.json`؛ الأحكام تُقتبس من هناك أو من الصفحة الرسمية.
+
 ---
 
 ## ⚠️ تحذير / Warning
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 > هذا ملخص تعليمي. لائحة PDPL التنفيذية تُضيف تفاصيل جوهرية. استشر خبير قانوني أو مختصًا في حماية البيانات قبل اتخاذ أي قرار تنظيمي.
 >
@@ -21,6 +28,8 @@
 ---
 
 ## النطاق والتطبيق / Scope and Application
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 **يسري PDPL على:**
 - أي جهة (حكومية أو خاصة) تعالج بيانات شخصية لأفراد داخل المملكة
@@ -33,6 +42,8 @@
 
 ## المفاهيم الأساسية / Core Concepts
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 | المصطلح | التعريف |
 |---------|---------|
 | **البيانات الشخصية** | أي معلومات تتعلق بشخص طبيعي يمكن التعرف عليه |
@@ -44,6 +55,8 @@
 ---
 
 ## حقوق أصحاب البيانات / Data Subject Rights
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 | الحق | الوصف |
 |------|-------|
@@ -60,6 +73,8 @@
 
 ## أسس المعالجة المشروعة / Legal Bases for Processing
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 يجب أن تستند معالجة البيانات إلى إحدى الأسس:
 
 1. **موافقة صاحب البيانات** — صريحة، مستنيرة، قابلة للسحب
@@ -73,6 +88,8 @@
 
 ## البيانات الحساسة / Sensitive Data
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 تخضع لمتطلبات إضافية:
 - موافقة صريحة ومحددة من صاحبها، أو
 - ضرورة مرتبطة بالصحة والعلاج، أو
@@ -83,6 +100,8 @@
 ---
 
 ## نقل البيانات خارج المملكة / Cross-Border Data Transfers
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 **الشروط الأساسية:**
 - أن تكون الدولة المستقبِلة توفر مستوى حماية مناسبًا
@@ -98,7 +117,11 @@
 
 ## الالتزامات التنظيمية / Compliance Obligations
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 ### على الجهات الخاضعة:
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 **1. سياسة الخصوصية:**
 - وثيقة واضحة ومتاحة للعموم
@@ -121,6 +144,8 @@
 
 ## العقوبات / Penalties
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 | المخالفة | العقوبة القصوى |
 |---------|--------------|
 | الإفصاح عن بيانات حساسة دون وجه حق | السجن سنة + غرامة 1 مليون ريال |
@@ -131,6 +156,8 @@
 ---
 
 ## مقارنة سريعة مع GDPR / Quick Comparison with GDPR
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 | الجانب | PDPL | GDPR |
 |--------|------|------|
@@ -154,6 +181,8 @@
 
 ## Mandatory Non-Waivable Provisions / الأحكام الإلزامية غير قابلة التنازل
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 > نظام PDPL (م/19 1443هـ) يُقرِّر حقوقًا لأصحاب البيانات والتزامات على الجهات المعالِجة لا يجوز الاتفاق تعاقديًا على إسقاطها أو تخفيفها. السياسات الداخلية وعقود المعالجة لا تستطيع خفض هذه الضمانات.
 >
 > PDPL (Royal Decree M/19 1443H) establishes rights for data subjects and obligations on controllers that cannot be contractually waived or reduced. Internal policies and processing contracts cannot lower these protections.
@@ -161,6 +190,8 @@
 ---
 
 ### 1. الإبلاغ عن الاختراقات خلال 72 ساعة / 72-Hour Breach Notification
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 | الحقل | القيمة |
 |-------|-------|
@@ -195,6 +226,8 @@ Cloud and SaaS agreements from non-Saudi vendors often grant providers longer no
 
 ### 2. الرد على طلبات أصحاب البيانات خلال 30 يومًا / 30-Day Data Subject Request Response
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 | الحقل | القيمة |
 |-------|-------|
 | **الوصف** | يجب الرد على طلبات أصحاب البيانات (اطلاع، تصحيح، حذف، سحب موافقة) خلال 30 يومًا من الاستلام |
@@ -223,6 +256,8 @@ Privacy policies that omit response timelines or extend them beyond 30 days with
 ---
 
 ### 3. الاشتراطات الإلزامية لنقل البيانات خارج المملكة / Mandatory Cross-Border Transfer Conditions
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 | الحقل | القيمة |
 |-------|-------|
@@ -258,6 +293,8 @@ SaaS and cloud contracts using servers outside Saudi Arabia inherently involve d
 
 ### 4. الموافقة الصريحة على البيانات الحساسة / Explicit Consent for Sensitive Data
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 | الحقل | القيمة |
 |-------|-------|
 | **الوصف** | معالجة البيانات الحساسة (صحة، بيومترية، عرق، دين، آراء سياسية، جرائم) تستلزم موافقة صريحة ومحددة من صاحبها أو ضرورة مرتبطة بالصحة أو التزام قانوني |
@@ -286,6 +323,8 @@ A general privacy policy consent does not constitute the explicit and specific c
 ---
 
 ### 5. حق سحب الموافقة في أي وقت / Right to Withdraw Consent
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 | الحقل | القيمة |
 |-------|-------|
@@ -316,7 +355,11 @@ Some service agreements require users to maintain consent as a condition of cont
 
 ## Human Legal Review Required / يجب مراجعة قانونية بشرية
 
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1) — يفتح الوثيقة كاملة، لا هذا القسم.
+
 ### TODOs وبنود تحتاج تحقق
+
+> **رابط الوثيقة:** [وثيقة النظام](https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1) — يفتح الوثيقة كاملة، لا هذا القسم.
 
 | الموضوع | الإشكالية | أولوية المراجعة |
 |---------|----------|----------------|
