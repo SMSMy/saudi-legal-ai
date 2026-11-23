@@ -128,13 +128,34 @@ def get_article(source_id: str, article_number: str | int) -> Optional[dict]:
     return found
 
 
+def _is_operative(article: dict) -> bool:
+    """Phase A gate: a base text predating a later amendment must never be
+    quoted as the in-force rule.
+
+    `text_status == "base_not_operative"` marks the pulled `text` as stale:
+    the operative rule lives in `amendment_history` until a verified
+    consolidated text exists (Phase B).  Missing field falls back to the
+    legacy `status` signal so older corpus files fail closed.
+    """
+    status = article.get("text_status")
+    if status == "base_not_operative":
+        return False
+    if status == "operative":
+        return True
+    # Fail closed for legacy files without the tag.
+    return article.get("status") != "amended"
+
+
 def _score_article(article: dict, query_terms: list[str]) -> int:
-    """Keyword score over the article label + text + chapter."""
+    """Keyword score over label + text + chapter + amendment quoted text."""
+    amendment_text = article.get("amendment_history") or ""
     haystack = normalize_arabic(
         " ".join(
             str(article.get(key, ""))
             for key in ("article_label", "text", "chapter", "instrument")
         ).lower()
+        + " "
+        + str(amendment_text).lower()
     )
     score = 0
     for term in query_terms:
@@ -164,6 +185,11 @@ def search_articles(
 ) -> list[dict]:
     """Return the best verbatim articles for a query.
 
+    Phase A ranking (plan 3.2): hints and keyword hits share ONE candidate
+    pool with a single unified score; `limit` applies AFTER sorting.
+    A hint earns a small +1 boost only when the hinted article's own text
+    already matches a distinctive query term — it never reserves a seat.
+
     `article_hints` lets the caller resolve a topic through the hand-written
     summary's explicit article references (e.g. "المادة 84") and then return
     the official text for that article.  It never invents a number.
@@ -172,43 +198,64 @@ def search_articles(
         return []
 
     query_terms = tokenize_query(query)
-    results: list[dict] = []
-    seen_ids: set[str] = set()
-
-    # 1. Explicit hints from the summary (grounded article references).
+    hint_numbers: set[str] = set()
     if article_hints:
         for number in article_hints:
-            article = get_article(source_id, number)
-            if article is None:
-                continue
-            article_id = article.get("id") or f"{source_id}/art-{number}"
-            if article_id in seen_ids:
-                continue
-            seen_ids.add(article_id)
-            results.append({**article, "_corpus": article.get("_corpus") or _find_corpus(source_id, article)})
+            hint_numbers.add(str(number).strip())
 
-    # 2. Direct keyword scoring.
-    if query_terms:
-        scored: list[tuple[int, dict]] = []
+    # Definition intent: only then do Articles 1-2 keep full weight.
+    _DEF_MARKERS = ("تعريف", "معنى", "مصطلح", "يقصد", "عرف", "مفهوم", "يقصدب")
+    norm_query = normalize_arabic(query.lower())
+    definition_intent = any(m in norm_query for m in _DEF_MARKERS)
+
+    def _article_sort_key(number_str: object) -> tuple[int, str]:
+        try:
+            return (int(str(number_str).strip()), "")
+        except (ValueError, TypeError):
+            return (10**9, str(number_str))
+
+    candidates: list[tuple[int, tuple[int, str], dict]] = []
+    if query_terms or hint_numbers:
         for article in iter_articles(source_id):
             if article.get("status") == "canceled":
+                continue
+            # P0 safety: stale base texts are never quotable as in-force.
+            if not _is_operative(article):
                 continue
             text = article.get("text") or ""
             if not text.strip():
                 continue
-            score = _score_article(article, query_terms)
-            if score > 0:
-                scored.append((score, article))
-        scored.sort(key=lambda item: item[0], reverse=True)
-        max_score = scored[0][0] if scored else 1
-        for score, article in scored:
-            article_id = article.get("id") or f"{source_id}/art-{article.get('article')}"
-            if article_id in seen_ids:
-                continue
-            seen_ids.add(article_id)
-            enriched = dict(article)
-            enriched["relevance_score"] = round(score / max_score, 2)
-            results.append(enriched)
+            number = str(article.get("article", "")).strip()
+            base_score = _score_article(article, query_terms) if query_terms else 0
+            hint_boost = 0
+            if number and number in hint_numbers:
+                # Grounded hint: +2 only with independent textual support.
+                # The hint bridges paraphrase gaps (e.g. 84 "مكافأة عن مدة
+                # خدمته" vs query "مكافأة نهاية الخدمة"); +2 keeps it
+                # competitive without reserving a seat — an unhinted article
+                # with a clearly higher keyword score still wins, and a
+                # hint with zero textual support is skipped entirely.
+                if base_score > 0:
+                    hint_boost = 2
+                else:
+                    continue
+            total = base_score + hint_boost
+            # Down-weight generic Articles 1-2 for non-definition queries.
+            if number in ("1", "2") and not definition_intent and total > 0:
+                total = max(0, total - 2)
+            if total > 0:
+                candidates.append((total, _article_sort_key(number), article))
+
+    # Unified sort: score desc, then article number asc, then id asc.
+    candidates.sort(
+        key=lambda item: (-item[0], item[1], str(item[2].get("id") or ""))
+    )
+    max_score = candidates[0][0] if candidates else 1
+    results: list[dict] = []
+    for total, _, article in candidates:
+        enriched = dict(article)
+        enriched["relevance_score"] = round(total / max_score, 2)
+        results.append(enriched)
 
     return results[:limit]
 
@@ -256,6 +303,8 @@ def article_record(article: dict) -> dict:
         "article_label": article.get("article_label"),
         "text": article.get("text"),
         "text_origin": TEXT_ORIGIN_OFFICIAL,
+        "text_status": article.get("text_status", "operative"),
+        "is_operative": _is_operative(article),
         "provenance_level": provenance_level,
         "status": article.get("status", "in_force"),
         "chapter": article.get("chapter"),

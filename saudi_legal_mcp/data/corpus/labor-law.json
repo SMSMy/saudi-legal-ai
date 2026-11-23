@@ -31,7 +31,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "de50e2d4f97e3ab15b261c5e3a8550147e116dd54719f278d5bc4065d4359e53"
+      "sha256": "de50e2d4f97e3ab15b261c5e3a8550147e116dd54719f278d5bc4065d4359e53",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-2",
@@ -58,7 +59,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "86b1a15850a19a0ee32967763ef41d4075579068dd7cb284c469cdc90b256b94"
+      "sha256": "86b1a15850a19a0ee32967763ef41d4075579068dd7cb284c469cdc90b256b94",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-3",
@@ -81,7 +83,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "4c986a2f73a31e9da82af98fb1d2a2c19cc484feb6c1bcdb4364ebe7c3818eb7"
+      "sha256": "4c986a2f73a31e9da82af98fb1d2a2c19cc484feb6c1bcdb4364ebe7c3818eb7",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-4",
@@ -99,7 +102,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "92fcfbdfe03b748e5126cc170cc3be095cb7fa909f8f147b71ae9130b2cd0639"
+      "sha256": "92fcfbdfe03b748e5126cc170cc3be095cb7fa909f8f147b71ae9130b2cd0639",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-5",
@@ -122,7 +126,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "500eb24dc5aff963b3e33e429bb0052bad146f41df4eaa454b634f3d648049ef"
+      "sha256": "500eb24dc5aff963b3e33e429bb0052bad146f41df4eaa454b634f3d648049ef",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-6",
@@ -140,7 +145,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "0492c529ee0cfdc9e6fc6abc9b2b8338f108377545a452eeefa4773407619e16"
+      "sha256": "0492c529ee0cfdc9e6fc6abc9b2b8338f108377545a452eeefa4773407619e16",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-7",
@@ -167,7 +173,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "eddf7a101deb60132daf1ac5e41a8c4610739f514e38c92a0e26559ccbe50c78"
+      "sha256": "eddf7a101deb60132daf1ac5e41a8c4610739f514e38c92a0e26559ccbe50c78",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-8",
@@ -185,7 +192,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "414b80f2bfd8d95b8df4cb8748a2b9b2a18e037afa2bf8133ef504f8438784c2"
+      "sha256": "414b80f2bfd8d95b8df4cb8748a2b9b2a18e037afa2bf8133ef504f8438784c2",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-9",
@@ -203,7 +211,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "16956f7b00ba20f7a41d0ef9223ac0bb809d71154c7e504bae1198af04189619"
+      "sha256": "16956f7b00ba20f7a41d0ef9223ac0bb809d71154c7e504bae1198af04189619",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-10",
@@ -221,7 +230,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "dde09f70cdf38ade411810e1a1a822e8dd6e44a6feca3bc542fd2dbb1fb2885d"
+      "sha256": "dde09f70cdf38ade411810e1a1a822e8dd6e44a6feca3bc542fd2dbb1fb2885d",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-11",
@@ -244,7 +254,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "5717ff22998087e50251854808f991d5170558ba6580fab81a6fe18658ac5141"
+      "sha256": "5717ff22998087e50251854808f991d5170558ba6580fab81a6fe18658ac5141",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-12",
@@ -267,7 +278,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "621e938f0f5d799fefe8a9b98e47f48d9651a5caba1e38af039c2c1b7f30c886"
+      "sha256": "621e938f0f5d799fefe8a9b98e47f48d9651a5caba1e38af039c2c1b7f30c886",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-13",
@@ -290,7 +302,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "25f44f82beed05d9f4da5868da41d31278fd1d27636a9c7f98cca5865315dc8c"
+      "sha256": "25f44f82beed05d9f4da5868da41d31278fd1d27636a9c7f98cca5865315dc8c",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-14",
@@ -313,7 +326,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "960582544122deb1a9778905b229b44793d4a574460a79fb267cd4dc9ff0dde4"
+      "sha256": "960582544122deb1a9778905b229b44793d4a574460a79fb267cd4dc9ff0dde4",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-15",
@@ -331,7 +345,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "61a5c72b33961ed40765696ee5cfd8bdb68623ecc21a51b121a9d84d9cfd302c"
+      "sha256": "61a5c72b33961ed40765696ee5cfd8bdb68623ecc21a51b121a9d84d9cfd302c",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-16",
@@ -349,7 +364,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "2c58f9ac5aa1f6e74c58f505666d14cc56dcddeba7072671b3b74e887bb739aa"
+      "sha256": "2c58f9ac5aa1f6e74c58f505666d14cc56dcddeba7072671b3b74e887bb739aa",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-17",
@@ -367,7 +383,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "79e164cb6f95f28094403db64742d819c98a3e226ca673297049043a1b043bec"
+      "sha256": "79e164cb6f95f28094403db64742d819c98a3e226ca673297049043a1b043bec",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-18",
@@ -385,7 +402,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "90e1e7c3ccc99d2983e72000814ad8a90c8f7e9af666cd8aef4a17f2bbe978c9"
+      "sha256": "90e1e7c3ccc99d2983e72000814ad8a90c8f7e9af666cd8aef4a17f2bbe978c9",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-19",
@@ -403,7 +421,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "24c427aa76a73b8b7bb1958120ff627b0a63b0a61c12f04351f75e67c491673d"
+      "sha256": "24c427aa76a73b8b7bb1958120ff627b0a63b0a61c12f04351f75e67c491673d",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-20",
@@ -421,7 +440,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "65671a21ddd4af3d4a3bb916a34114759b4847641e380d07d8e0ae108ffcbf92"
+      "sha256": "65671a21ddd4af3d4a3bb916a34114759b4847641e380d07d8e0ae108ffcbf92",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-21",
@@ -439,7 +459,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "224468029abdba713fe3a573735576034a6cb68565e07bb4116085027ec5fe3f"
+      "sha256": "224468029abdba713fe3a573735576034a6cb68565e07bb4116085027ec5fe3f",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-22",
@@ -462,7 +483,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "04e28dcd144e2eca2fad2e6c45529a35bc467e60b0f2f8725601d385080c61ed"
+      "sha256": "04e28dcd144e2eca2fad2e6c45529a35bc467e60b0f2f8725601d385080c61ed",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-23",
@@ -485,7 +507,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "869a61043b70d35099c16ac3aa55d86481f4e5887865143dd6e1c3a04b73a38f"
+      "sha256": "869a61043b70d35099c16ac3aa55d86481f4e5887865143dd6e1c3a04b73a38f",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-24",
@@ -508,7 +531,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "a56459edae59c958d0399407570b06704be0d6a3ae7f6b4625f42a2309635379"
+      "sha256": "a56459edae59c958d0399407570b06704be0d6a3ae7f6b4625f42a2309635379",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-25",
@@ -531,7 +555,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "8b8d1b867336355f8b6bb1e67c917a8c1b65477a7c8f0f7009b42d3768339378"
+      "sha256": "8b8d1b867336355f8b6bb1e67c917a8c1b65477a7c8f0f7009b42d3768339378",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-26",
@@ -549,7 +574,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "ea421cbe0e4191fed785327229e047557eec0ddfcdae8f0632f97aa112d846d6"
+      "sha256": "ea421cbe0e4191fed785327229e047557eec0ddfcdae8f0632f97aa112d846d6",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-27",
@@ -572,7 +598,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "4ef19c49efd523e7d6e67f5d4cd7256e2a51534a8a3f457011c0f63afd3cfa39"
+      "sha256": "4ef19c49efd523e7d6e67f5d4cd7256e2a51534a8a3f457011c0f63afd3cfa39",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-28",
@@ -595,7 +622,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "7834f229713eb83862a356397d0f22659593b125a6f20afe157a3cf27b683b71"
+      "sha256": "7834f229713eb83862a356397d0f22659593b125a6f20afe157a3cf27b683b71",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-29",
@@ -613,7 +641,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "567ba875d546e52bd7e41aa03994741a3c61a12b26152f6b735c01301bb08a58"
+      "sha256": "567ba875d546e52bd7e41aa03994741a3c61a12b26152f6b735c01301bb08a58",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-30",
@@ -636,7 +665,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "abe491e484a480a19c6b301ccef91afbc948d89b171778a924058572a2e88d9f"
+      "sha256": "abe491e484a480a19c6b301ccef91afbc948d89b171778a924058572a2e88d9f",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-31",
@@ -659,7 +689,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "0cd3c0ca16d37240423af0976c220a1f256e49c51ba11d4b6d5789af09af5ec9"
+      "sha256": "0cd3c0ca16d37240423af0976c220a1f256e49c51ba11d4b6d5789af09af5ec9",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-32",
@@ -677,7 +708,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "20d82960019ea0f7e60e3456d479202c8e5971a5d89232b268b0512a63de86e5"
+      "sha256": "20d82960019ea0f7e60e3456d479202c8e5971a5d89232b268b0512a63de86e5",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-33",
@@ -695,7 +727,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "f5491d9b26d0a66f6304eeb5165520ff91aca8b2c48182e48d18c9aede2a14fd"
+      "sha256": "f5491d9b26d0a66f6304eeb5165520ff91aca8b2c48182e48d18c9aede2a14fd",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-34",
@@ -713,7 +746,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "2eedbdc191263e6b0c18130590494d3c2fc08cfddb7abb5555d137b69dffa82b"
+      "sha256": "2eedbdc191263e6b0c18130590494d3c2fc08cfddb7abb5555d137b69dffa82b",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-35",
@@ -740,7 +774,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "954157e65625ed6cd802597438526710c584d183018089c095c5c620f648cb98"
+      "sha256": "954157e65625ed6cd802597438526710c584d183018089c095c5c620f648cb98",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-36",
@@ -758,7 +793,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "fdecd47b4f66abd84791b7d5e23bc23656e00a89ff85244c420cab93ec8b65c4"
+      "sha256": "fdecd47b4f66abd84791b7d5e23bc23656e00a89ff85244c420cab93ec8b65c4",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-37",
@@ -781,7 +817,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "bbf2b4309a14d88d5a54d30bc1e43f1214033e135117f1938bf13cb7fda5c353"
+      "sha256": "bbf2b4309a14d88d5a54d30bc1e43f1214033e135117f1938bf13cb7fda5c353",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-38",
@@ -799,7 +836,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "2340ca79eaf20e6ca40f52c1610cc800a45f0cf1b2707d345e78469aa781c90a"
+      "sha256": "2340ca79eaf20e6ca40f52c1610cc800a45f0cf1b2707d345e78469aa781c90a",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-39",
@@ -826,7 +864,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "bbd77924320170719ebe5c421cd23b7a28201dc803558b8508b26d5dc2bf00f3"
+      "sha256": "bbd77924320170719ebe5c421cd23b7a28201dc803558b8508b26d5dc2bf00f3",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-40",
@@ -849,7 +888,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "b0709c99f8fe066b0e86d445de261d4b4fb5c02cc061014fb99541bd99c543c2"
+      "sha256": "b0709c99f8fe066b0e86d445de261d4b4fb5c02cc061014fb99541bd99c543c2",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-41",
@@ -867,7 +907,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "e49efa381347cb8c6c5dc2129f591a70bb5d47f4a063d7d86d546416cf7590e8"
+      "sha256": "e49efa381347cb8c6c5dc2129f591a70bb5d47f4a063d7d86d546416cf7590e8",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-42",
@@ -890,7 +931,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "82eb5ef1659d8b699a377ffa5692d1124cd43a0d36831980810cd38c4df51d95"
+      "sha256": "82eb5ef1659d8b699a377ffa5692d1124cd43a0d36831980810cd38c4df51d95",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-43",
@@ -917,7 +959,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "55f73fa642aa692e23617712fd419e81235babe6ad8f07fce23d4515f419d3cb"
+      "sha256": "55f73fa642aa692e23617712fd419e81235babe6ad8f07fce23d4515f419d3cb",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-44",
@@ -940,7 +983,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "610782198b330757b18db4bda1e5f9cfadae77fa63444e6a9618a7b110ee3cd5"
+      "sha256": "610782198b330757b18db4bda1e5f9cfadae77fa63444e6a9618a7b110ee3cd5",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-45",
@@ -958,7 +1002,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "6798974a1edcf7f5338170a7c9fbca5fa168fec1978660f17a97fa2586687806"
+      "sha256": "6798974a1edcf7f5338170a7c9fbca5fa168fec1978660f17a97fa2586687806",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-46",
@@ -981,7 +1026,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "21410356c826d9536b5b1648f14d47867a67004f0c7ad6f99916a18443d2b35b"
+      "sha256": "21410356c826d9536b5b1648f14d47867a67004f0c7ad6f99916a18443d2b35b",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-47",
@@ -1004,7 +1050,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "8641f9b9e05393d3ccbbd9789db4cbb9d95e7d3d001faf6bf6004d9f412d73c5"
+      "sha256": "8641f9b9e05393d3ccbbd9789db4cbb9d95e7d3d001faf6bf6004d9f412d73c5",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-48",
@@ -1031,7 +1078,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "60854cd8283298cd2799df0b8c13003f6a559b551bc9a156f47bbb384744912e"
+      "sha256": "60854cd8283298cd2799df0b8c13003f6a559b551bc9a156f47bbb384744912e",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-49",
@@ -1049,7 +1097,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "b6e0446e0c80320a8fb31224cd8faa09c45f666d07c0317b4a896d9250cfba10"
+      "sha256": "b6e0446e0c80320a8fb31224cd8faa09c45f666d07c0317b4a896d9250cfba10",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-50",
@@ -1067,7 +1116,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "735c9303fe88549c94d0a7354d2589771bfdf55deed97ec9268703afcc59f603"
+      "sha256": "735c9303fe88549c94d0a7354d2589771bfdf55deed97ec9268703afcc59f603",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-51",
@@ -1090,7 +1140,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "993bb6ea5a73d52785c4f5c14ce087579f08c7e9cf7b19cdcf78d76caee36a21"
+      "sha256": "993bb6ea5a73d52785c4f5c14ce087579f08c7e9cf7b19cdcf78d76caee36a21",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-52",
@@ -1117,7 +1168,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "284abe1bf2085acdb1ac4cad7ef06e08ea604dfc672a57a78b1983a87f424f3b"
+      "sha256": "284abe1bf2085acdb1ac4cad7ef06e08ea604dfc672a57a78b1983a87f424f3b",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-53",
@@ -1144,7 +1196,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "32b4220c60218df9f6f54cfa0961a83640f9bae01d96445ffe720012c7764dc3"
+      "sha256": "32b4220c60218df9f6f54cfa0961a83640f9bae01d96445ffe720012c7764dc3",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-54",
@@ -1167,7 +1220,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "b2ec1f950232921c5ce77c8b898f3c46fc0808656a727d6536d8443878f16bef"
+      "sha256": "b2ec1f950232921c5ce77c8b898f3c46fc0808656a727d6536d8443878f16bef",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-55",
@@ -1190,7 +1244,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "b8001fb2d0aed044ba5106a7c753fb4846a43b34969583d794054ce2379c4ef3"
+      "sha256": "b8001fb2d0aed044ba5106a7c753fb4846a43b34969583d794054ce2379c4ef3",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-56",
@@ -1208,7 +1263,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "e1e71c59259b2f3d832e638b8733d933b6a4a8364c08f7bd553976cc72fea608"
+      "sha256": "e1e71c59259b2f3d832e638b8733d933b6a4a8364c08f7bd553976cc72fea608",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-57",
@@ -1226,7 +1282,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "e0315a0ba27d7651d431e1005d8b0649ff4fc6f13eab64c09cf51e1f842548be"
+      "sha256": "e0315a0ba27d7651d431e1005d8b0649ff4fc6f13eab64c09cf51e1f842548be",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-58",
@@ -1249,7 +1306,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "e9b3773700ce19ccb96d877c890c886077669609247e746805de8903146c0f9a"
+      "sha256": "e9b3773700ce19ccb96d877c890c886077669609247e746805de8903146c0f9a",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-59",
@@ -1267,7 +1325,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "af556aa47c348b5c237ed6d545be0150a3e49089fc0b1f8352c3896e40a6a14a"
+      "sha256": "af556aa47c348b5c237ed6d545be0150a3e49089fc0b1f8352c3896e40a6a14a",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-60",
@@ -1285,7 +1344,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "b334fcfcee6493ea7c3e8e8c255dd1f7f87f22a8d89569fa90da8960b61eeecb"
+      "sha256": "b334fcfcee6493ea7c3e8e8c255dd1f7f87f22a8d89569fa90da8960b61eeecb",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-61",
@@ -1308,7 +1368,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "49703c4f0b80d5571aa4b54bbb0dba5f0800569cc3fdc995688f6d820f38e1cb"
+      "sha256": "49703c4f0b80d5571aa4b54bbb0dba5f0800569cc3fdc995688f6d820f38e1cb",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-62",
@@ -1326,7 +1387,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "ae46cc7f48778d76c15773e07b284466993d8c0cb5ab95f5a7d5fc789bb50661"
+      "sha256": "ae46cc7f48778d76c15773e07b284466993d8c0cb5ab95f5a7d5fc789bb50661",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-63",
@@ -1344,7 +1406,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "6c833d92d3a683c02cdf1cf7847111c4c979021f9b425ffb7108b782d2f88294"
+      "sha256": "6c833d92d3a683c02cdf1cf7847111c4c979021f9b425ffb7108b782d2f88294",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-64",
@@ -1367,7 +1430,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "5dc5459ec9e7ca98410824dcfccd256a92b3da67b1d9cc7af6a8d41d0d529d13"
+      "sha256": "5dc5459ec9e7ca98410824dcfccd256a92b3da67b1d9cc7af6a8d41d0d529d13",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-65",
@@ -1385,7 +1449,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "0baf433d227fe6242288c61298e2b4e96c84308bc2d1960c32d2693b6ebfc687"
+      "sha256": "0baf433d227fe6242288c61298e2b4e96c84308bc2d1960c32d2693b6ebfc687",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-66",
@@ -1403,7 +1468,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "af778775f2664baa7a7214ebcca2e324efe21407c79cf8142ede2710cbcb24a1"
+      "sha256": "af778775f2664baa7a7214ebcca2e324efe21407c79cf8142ede2710cbcb24a1",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-67",
@@ -1421,7 +1487,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "6fa2ccc93a15bd5f99cf86bf9dfd814fa1e145237000d2d623ea5ab4e576eb2e"
+      "sha256": "6fa2ccc93a15bd5f99cf86bf9dfd814fa1e145237000d2d623ea5ab4e576eb2e",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-68",
@@ -1439,7 +1506,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "c42d83665e56295e275293d6a65f1fa22dfd69dece33b843aa0998afbb459e7a"
+      "sha256": "c42d83665e56295e275293d6a65f1fa22dfd69dece33b843aa0998afbb459e7a",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-69",
@@ -1457,7 +1525,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "00507fe49c0b1fb7bf9e0e97c623aa1824ae147bd91fd4997583eb7b7911413d"
+      "sha256": "00507fe49c0b1fb7bf9e0e97c623aa1824ae147bd91fd4997583eb7b7911413d",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-70",
@@ -1475,7 +1544,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "8e1cda7f8334aab4f70d2bec559c7d095526e7eb28e44004e52e0075bd455331"
+      "sha256": "8e1cda7f8334aab4f70d2bec559c7d095526e7eb28e44004e52e0075bd455331",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-71",
@@ -1493,7 +1563,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "3f6cc72dd20ab85478da488894e3f4a78279377317bf62fc12a03584a0cbdcd3"
+      "sha256": "3f6cc72dd20ab85478da488894e3f4a78279377317bf62fc12a03584a0cbdcd3",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-72",
@@ -1516,7 +1587,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "058e2de6e26d3d865004fa6616f7655851b75445bfaf06fc5a2370bd8f13831c"
+      "sha256": "058e2de6e26d3d865004fa6616f7655851b75445bfaf06fc5a2370bd8f13831c",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-73",
@@ -1539,7 +1611,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "8fd4430cbf9f924553d29c12753e7d68aeb107f420968adbd7821ba45aa48ce8"
+      "sha256": "8fd4430cbf9f924553d29c12753e7d68aeb107f420968adbd7821ba45aa48ce8",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-74",
@@ -1570,7 +1643,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "ddb4e0e0c59adc09a91ffb25baf4357b16a0936baf6aad2f83594636ac9e3725"
+      "sha256": "ddb4e0e0c59adc09a91ffb25baf4357b16a0936baf6aad2f83594636ac9e3725",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-75",
@@ -1597,7 +1671,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "a64b52ed0a30a07f58b1d2dc4539efcf9a98a70c7d6d84d8ce24776ed4158a77"
+      "sha256": "a64b52ed0a30a07f58b1d2dc4539efcf9a98a70c7d6d84d8ce24776ed4158a77",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-76",
@@ -1620,7 +1695,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "1165fd388f819ebe36770940377a96c7ef76ee90a01c7add98bb7cbb0d4d7ced"
+      "sha256": "1165fd388f819ebe36770940377a96c7ef76ee90a01c7add98bb7cbb0d4d7ced",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-77",
@@ -1643,7 +1719,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "441010ef6465a4bd6de7d4b50cdadc2034a04afdcd990a7126e86e5595fe0376"
+      "sha256": "441010ef6465a4bd6de7d4b50cdadc2034a04afdcd990a7126e86e5595fe0376",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-78",
@@ -1666,7 +1743,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "c49aaa2510dd2cb24cea6d47fe75819e57e076c6ac63f519239606e93ca117a6"
+      "sha256": "c49aaa2510dd2cb24cea6d47fe75819e57e076c6ac63f519239606e93ca117a6",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-79",
@@ -1684,7 +1762,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "bb7ab2e2f75a0ea47ef0b437abaec493da02f27baaca7fa943013275efb1c93f"
+      "sha256": "bb7ab2e2f75a0ea47ef0b437abaec493da02f27baaca7fa943013275efb1c93f",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-80",
@@ -1707,7 +1786,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "e22036fd66f7cb403bf2e39bb7acb3c4e08ffdb3ffd6d49b1f879636030c3e83"
+      "sha256": "e22036fd66f7cb403bf2e39bb7acb3c4e08ffdb3ffd6d49b1f879636030c3e83",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-81",
@@ -1725,7 +1805,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "56f4cf0c311ae26f2ee7eaef5109bbe3037c2bfc760e916c6c62d5fead055124"
+      "sha256": "56f4cf0c311ae26f2ee7eaef5109bbe3037c2bfc760e916c6c62d5fead055124",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-82",
@@ -1743,7 +1824,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "c90ac81baa5cda5da5f44bcc1eb78dfe4d92d9e8cd5994024a7d8d0e4b3159b0"
+      "sha256": "c90ac81baa5cda5da5f44bcc1eb78dfe4d92d9e8cd5994024a7d8d0e4b3159b0",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-83",
@@ -1766,7 +1848,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "3ba6279dd22469b89d67849cd37a6c34083528687bc6ded1b2677c9fbdc9a542"
+      "sha256": "3ba6279dd22469b89d67849cd37a6c34083528687bc6ded1b2677c9fbdc9a542",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-84",
@@ -1784,7 +1867,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "852b4975dfd9c11144b0dcd1696f512b938c14732e8ab48951a95a38afc30daf"
+      "sha256": "852b4975dfd9c11144b0dcd1696f512b938c14732e8ab48951a95a38afc30daf",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-85",
@@ -1802,7 +1886,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "6b8d7a56914985235654bae2b2f10cef8d28a5fe1b9cdec06e264a7dc1b3ff85"
+      "sha256": "6b8d7a56914985235654bae2b2f10cef8d28a5fe1b9cdec06e264a7dc1b3ff85",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-86",
@@ -1820,7 +1905,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "8e353b0aa03e8ba0dc697837995efaabcae2b946e76f65b5bf8fda48b0f81e9e"
+      "sha256": "8e353b0aa03e8ba0dc697837995efaabcae2b946e76f65b5bf8fda48b0f81e9e",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-87",
@@ -1838,7 +1924,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "0fbb4685490d635d75095954b3a7f757e8020218ab666871be14e37b66ee2f73"
+      "sha256": "0fbb4685490d635d75095954b3a7f757e8020218ab666871be14e37b66ee2f73",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-88",
@@ -1856,7 +1943,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "789e8f4906bbe59780b72b75dd202f230503e208687513d9cc953452e6ff1fe8"
+      "sha256": "789e8f4906bbe59780b72b75dd202f230503e208687513d9cc953452e6ff1fe8",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-89",
@@ -1874,7 +1962,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "843c678594804e0d82c2912f16a60f87c4987e1258cdf0f5b4bc7879622612b0"
+      "sha256": "843c678594804e0d82c2912f16a60f87c4987e1258cdf0f5b4bc7879622612b0",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-90",
@@ -1897,7 +1986,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "4e518cd6a82b4181d3e56d746ace913634cb50dcd8863432e4b815aac60475b9"
+      "sha256": "4e518cd6a82b4181d3e56d746ace913634cb50dcd8863432e4b815aac60475b9",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-91",
@@ -1915,7 +2005,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "b53cf19afa03849b0b395a0b44c84be673a68c26cf14656cb5e160eecb88faec"
+      "sha256": "b53cf19afa03849b0b395a0b44c84be673a68c26cf14656cb5e160eecb88faec",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-92",
@@ -1933,7 +2024,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "cf862202e3e3ed6656e2369fc383f621b3f7ea00faf3130a516078c6cee22eeb"
+      "sha256": "cf862202e3e3ed6656e2369fc383f621b3f7ea00faf3130a516078c6cee22eeb",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-93",
@@ -1951,7 +2043,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "642fd13e93fa13a8f8b3e54497f6d9b06ad87a6b0aacb8e7f1ced1bfedb004ae"
+      "sha256": "642fd13e93fa13a8f8b3e54497f6d9b06ad87a6b0aacb8e7f1ced1bfedb004ae",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-94",
@@ -1969,7 +2062,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "250e52a8c35205a81cdc1382cf738496966ca78ac0f0dd4320a15cdcb49fff71"
+      "sha256": "250e52a8c35205a81cdc1382cf738496966ca78ac0f0dd4320a15cdcb49fff71",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-95",
@@ -1987,7 +2081,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "92dd5f4ae691be163b33b981b4cd8f3d4b90d692a29052a9b4a3245fb738766b"
+      "sha256": "92dd5f4ae691be163b33b981b4cd8f3d4b90d692a29052a9b4a3245fb738766b",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-96",
@@ -2005,7 +2100,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "d028fd8e52cfdc714e08398971da064aa1a3307c9f89a46e83b4e122b06b68d3"
+      "sha256": "d028fd8e52cfdc714e08398971da064aa1a3307c9f89a46e83b4e122b06b68d3",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-97",
@@ -2023,7 +2119,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "54ce966e80b5f76f57f1bb6b06b5d8a89291e0bb86f66d30f8b83dba13b14207"
+      "sha256": "54ce966e80b5f76f57f1bb6b06b5d8a89291e0bb86f66d30f8b83dba13b14207",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-98",
@@ -2041,7 +2138,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "704b209455f2f08204e0155ea5075b929d90c04813851d695da746055db778a5"
+      "sha256": "704b209455f2f08204e0155ea5075b929d90c04813851d695da746055db778a5",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-99",
@@ -2059,7 +2157,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "a7cd9d0aae7dbe87b2a97dab883ff0bb607b8db3c596a94ab9751a4bfde9d95d"
+      "sha256": "a7cd9d0aae7dbe87b2a97dab883ff0bb607b8db3c596a94ab9751a4bfde9d95d",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-100",
@@ -2077,7 +2176,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "a593ee0407ae6fd2fe6b396eb9099c7d8d5beddc31e5234e2996189b706b7eaa"
+      "sha256": "a593ee0407ae6fd2fe6b396eb9099c7d8d5beddc31e5234e2996189b706b7eaa",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-101",
@@ -2100,7 +2200,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "c4389bf201334c50f803b7599999f0e9590814f334ef71cb502f44772ed58cb1"
+      "sha256": "c4389bf201334c50f803b7599999f0e9590814f334ef71cb502f44772ed58cb1",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-102",
@@ -2118,7 +2219,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "46721530b22414b787d26fa4bd9109f9633fc756517e7f746f38e7a41f6c91b8"
+      "sha256": "46721530b22414b787d26fa4bd9109f9633fc756517e7f746f38e7a41f6c91b8",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-103",
@@ -2136,7 +2238,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "641f83a18784c23a9bb2ba247b5347275d4ef17006e16fc4ff8e0560dbfc22d4"
+      "sha256": "641f83a18784c23a9bb2ba247b5347275d4ef17006e16fc4ff8e0560dbfc22d4",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-104",
@@ -2154,7 +2257,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "901f7e39b81670b8677152125104f92e4c9139b25f17bc6e19b548f30c23d1e2"
+      "sha256": "901f7e39b81670b8677152125104f92e4c9139b25f17bc6e19b548f30c23d1e2",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-105",
@@ -2172,7 +2276,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "b78a1b8903862fd0a177418620c597eae0796f3f1a2f0f340c1c76469f38648e"
+      "sha256": "b78a1b8903862fd0a177418620c597eae0796f3f1a2f0f340c1c76469f38648e",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-106",
@@ -2190,7 +2295,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "1421449523f628bb2a651abce5d987c0bf26b4b728ccd378d1d9f03ca396b515"
+      "sha256": "1421449523f628bb2a651abce5d987c0bf26b4b728ccd378d1d9f03ca396b515",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-107",
@@ -2213,7 +2319,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "5fd0688c82cb14cfd687913f7d5c9115ce4bd11f12023f71189bca151ea096c3"
+      "sha256": "5fd0688c82cb14cfd687913f7d5c9115ce4bd11f12023f71189bca151ea096c3",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-108",
@@ -2231,7 +2338,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "8b95e72bb885b0811f0e13f88e9f760d16914850ca14fce536d8e5d75777433b"
+      "sha256": "8b95e72bb885b0811f0e13f88e9f760d16914850ca14fce536d8e5d75777433b",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-109",
@@ -2249,7 +2357,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "3c5c96a00b39db62e6b226ac4e556270211f1d3a5279c0ed6bfd590fca61fa57"
+      "sha256": "3c5c96a00b39db62e6b226ac4e556270211f1d3a5279c0ed6bfd590fca61fa57",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-110",
@@ -2267,7 +2376,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "b5237fa54df86f78a840d2c442eeac73934b8d61d40672b9c731256c5d863051"
+      "sha256": "b5237fa54df86f78a840d2c442eeac73934b8d61d40672b9c731256c5d863051",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-111",
@@ -2285,7 +2395,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "0def7dd67ca80826f850fad8d0b0ff285cf853db57f8f779196895ed50965878"
+      "sha256": "0def7dd67ca80826f850fad8d0b0ff285cf853db57f8f779196895ed50965878",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-112",
@@ -2303,7 +2414,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "b6eead691bb92d36f1643ce3905d9913b69055db5e6b1e7fefed914877ea4b67"
+      "sha256": "b6eead691bb92d36f1643ce3905d9913b69055db5e6b1e7fefed914877ea4b67",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-113",
@@ -2330,7 +2442,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "8b8ab585ee9dbc8e62f6fbd2047e118a02644921ceb73d6cb6728a557f98860a"
+      "sha256": "8b8ab585ee9dbc8e62f6fbd2047e118a02644921ceb73d6cb6728a557f98860a",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-114",
@@ -2348,7 +2461,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "e9e0b86e2e81a4afcf3b3601b6efa6a112a02c50b5842462a6a52d5b85bb23bb"
+      "sha256": "e9e0b86e2e81a4afcf3b3601b6efa6a112a02c50b5842462a6a52d5b85bb23bb",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-115",
@@ -2371,7 +2485,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "6b2beaa53ad14b1e802901afcec324e92a5c2147dae3fc0a4424623655d1a04e"
+      "sha256": "6b2beaa53ad14b1e802901afcec324e92a5c2147dae3fc0a4424623655d1a04e",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-116",
@@ -2389,7 +2504,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "728a01e0265f9dbddd19417e45df0aaaf1e1f810eeb686be4262751ff380c924"
+      "sha256": "728a01e0265f9dbddd19417e45df0aaaf1e1f810eeb686be4262751ff380c924",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-117",
@@ -2407,7 +2523,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "03f69319ad61e210bf003f34e1ccae36c380c13a014157c17161eb815b03a4b9"
+      "sha256": "03f69319ad61e210bf003f34e1ccae36c380c13a014157c17161eb815b03a4b9",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-118",
@@ -2425,7 +2542,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "731f764db10942dbde266712e8292b41370237462a40955e20aec21895923ee0"
+      "sha256": "731f764db10942dbde266712e8292b41370237462a40955e20aec21895923ee0",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-119",
@@ -2443,7 +2561,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "ccfebd3e8a39d12608e4419ad1ffee4d2859f8b45c81c42c48c2c0cf443b1308"
+      "sha256": "ccfebd3e8a39d12608e4419ad1ffee4d2859f8b45c81c42c48c2c0cf443b1308",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-120",
@@ -2461,7 +2580,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "13cc327997813cb7dbfb82da0a3d7ffe2795c34c5c884edfed50cb3bca2256ad"
+      "sha256": "13cc327997813cb7dbfb82da0a3d7ffe2795c34c5c884edfed50cb3bca2256ad",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-121",
@@ -2479,7 +2599,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "17ce5fa912ea2a56c68205e9e27578ed9d3c111561dde50a3afdfd8895b12ae4"
+      "sha256": "17ce5fa912ea2a56c68205e9e27578ed9d3c111561dde50a3afdfd8895b12ae4",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-122",
@@ -2497,7 +2618,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "8bec44c8c33ddcdf7e873b4d51d30a770179eedf091e1067254e846048b02478"
+      "sha256": "8bec44c8c33ddcdf7e873b4d51d30a770179eedf091e1067254e846048b02478",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-123",
@@ -2515,7 +2637,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "f7ec09492a6dba3f60ae7d8a5975685c2c17af34433e5e72c9be8f52266b3f78"
+      "sha256": "f7ec09492a6dba3f60ae7d8a5975685c2c17af34433e5e72c9be8f52266b3f78",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-124",
@@ -2533,7 +2656,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "e665628799d1bb599e12acdacd4d03a62652affeffd74cff560ef6412dffc734"
+      "sha256": "e665628799d1bb599e12acdacd4d03a62652affeffd74cff560ef6412dffc734",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-125",
@@ -2551,7 +2675,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "18248899f939cfd578ffbd1f4aa09ae004de994eddb63d9dc51c2f95ed12312e"
+      "sha256": "18248899f939cfd578ffbd1f4aa09ae004de994eddb63d9dc51c2f95ed12312e",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-126",
@@ -2569,7 +2694,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "2323c31b2540f71acadd6e3b5d5d65df621d21662105b067511ad830dfe709e4"
+      "sha256": "2323c31b2540f71acadd6e3b5d5d65df621d21662105b067511ad830dfe709e4",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-127",
@@ -2587,7 +2713,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "1385c4375ef647a9a260d83e43f78e6d9dcd793391972f1e2544e48562e434b5"
+      "sha256": "1385c4375ef647a9a260d83e43f78e6d9dcd793391972f1e2544e48562e434b5",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-128",
@@ -2605,7 +2732,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "a7e7cde7e8aebddd27948b022ad4b957369d0fe425ebbfc2d9dc062b722a2803"
+      "sha256": "a7e7cde7e8aebddd27948b022ad4b957369d0fe425ebbfc2d9dc062b722a2803",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-129",
@@ -2623,7 +2751,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "ec04db4b6e6d457736b167528cdb49e6fcbd60a605ec15d541c82ef0f6eed243"
+      "sha256": "ec04db4b6e6d457736b167528cdb49e6fcbd60a605ec15d541c82ef0f6eed243",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-130",
@@ -2641,7 +2770,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "d64677cf52784ec8d105468d82c5815a83fdd2e81b50b6d172dbd4780acb12b6"
+      "sha256": "d64677cf52784ec8d105468d82c5815a83fdd2e81b50b6d172dbd4780acb12b6",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-131",
@@ -2664,7 +2794,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "6243c866e9d9fd2689c3b60228edce3dc6c88557480dd9e0bd31855e89fe5fe4"
+      "sha256": "6243c866e9d9fd2689c3b60228edce3dc6c88557480dd9e0bd31855e89fe5fe4",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-132",
@@ -2682,7 +2813,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "e6d8f3eb128d07b5dc56a89a092e6f7ed5a53175643aa23aea3e4bb21939fc47"
+      "sha256": "e6d8f3eb128d07b5dc56a89a092e6f7ed5a53175643aa23aea3e4bb21939fc47",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-133",
@@ -2700,7 +2832,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "c4218319d15483a75e0e69b683a209c01f13946bcd72b7c3a869cd3f849a8295"
+      "sha256": "c4218319d15483a75e0e69b683a209c01f13946bcd72b7c3a869cd3f849a8295",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-134",
@@ -2718,7 +2851,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "96cce215425fe8ea82eafb763b11b80fe692cdba3fafa8b6414f576548ce391d"
+      "sha256": "96cce215425fe8ea82eafb763b11b80fe692cdba3fafa8b6414f576548ce391d",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-135",
@@ -2736,7 +2870,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "1021fb70077af6335612affe56a63624d3bb92a028c5be5de6d59d9e2e9a1ed0"
+      "sha256": "1021fb70077af6335612affe56a63624d3bb92a028c5be5de6d59d9e2e9a1ed0",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-136",
@@ -2754,7 +2889,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "56c5c3125f616ae6c0d2142ebdbe1abe0e59f3dfe368b28a7d503fe896c8daf2"
+      "sha256": "56c5c3125f616ae6c0d2142ebdbe1abe0e59f3dfe368b28a7d503fe896c8daf2",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-137",
@@ -2777,7 +2913,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "d154b20c884c41be79e722e532506ad155ff8ec271bbe0544d96757b1d86a08c"
+      "sha256": "d154b20c884c41be79e722e532506ad155ff8ec271bbe0544d96757b1d86a08c",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-138",
@@ -2795,7 +2932,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "9ff256a0823c8b254bec634c282108e08d2eaad8b8c98657408a70a9b358f663"
+      "sha256": "9ff256a0823c8b254bec634c282108e08d2eaad8b8c98657408a70a9b358f663",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-139",
@@ -2813,7 +2951,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "f13f4317c9c7f47d7edd0303f731d8ed8322e36abb8ca713cae8ff219b09fdd0"
+      "sha256": "f13f4317c9c7f47d7edd0303f731d8ed8322e36abb8ca713cae8ff219b09fdd0",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-140",
@@ -2831,7 +2970,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "8c56b0aa67fd031006f649126a34e164eebf09ea10d6a7dfc2e06f997629fe9f"
+      "sha256": "8c56b0aa67fd031006f649126a34e164eebf09ea10d6a7dfc2e06f997629fe9f",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-141",
@@ -2849,7 +2989,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "3bb693de9d829813c84c12e83d17893780d6209bfcb2ec32a4fcc466b3f16143"
+      "sha256": "3bb693de9d829813c84c12e83d17893780d6209bfcb2ec32a4fcc466b3f16143",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-142",
@@ -2867,7 +3008,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "8685b54b2eb60fad4e45581a1d7b027585be33e2d708e09ea5ca6a29bb50b006"
+      "sha256": "8685b54b2eb60fad4e45581a1d7b027585be33e2d708e09ea5ca6a29bb50b006",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-143",
@@ -2885,7 +3027,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "591ead017227e29b5d0aa7646aca323b9b13e0702d0d72910ef16199d2143cca"
+      "sha256": "591ead017227e29b5d0aa7646aca323b9b13e0702d0d72910ef16199d2143cca",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-144",
@@ -2903,7 +3046,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "0977cbcec0ea58d9356c827e5b48c633bbf09806ca140b1fecb4917e18624507"
+      "sha256": "0977cbcec0ea58d9356c827e5b48c633bbf09806ca140b1fecb4917e18624507",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-145",
@@ -2921,7 +3065,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "53a6372ced550e051a9e61c35f611ceb51e639bf2950278176f94f6895bc8815"
+      "sha256": "53a6372ced550e051a9e61c35f611ceb51e639bf2950278176f94f6895bc8815",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-146",
@@ -2939,7 +3084,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "797e0546bb50a7a6456d4e66e22290b4e4c158078307dfd2bad71dd38326f540"
+      "sha256": "797e0546bb50a7a6456d4e66e22290b4e4c158078307dfd2bad71dd38326f540",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-147",
@@ -2957,7 +3103,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "af925ccc61c8668c64d04976d652c561347a1d188f57b13fc829905fdd87ce0b"
+      "sha256": "af925ccc61c8668c64d04976d652c561347a1d188f57b13fc829905fdd87ce0b",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-148",
@@ -2975,7 +3122,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "5b6b6fca970a9ff37a0d1228be577e3cb8324623c9c7ba1c18003879ee5514e8"
+      "sha256": "5b6b6fca970a9ff37a0d1228be577e3cb8324623c9c7ba1c18003879ee5514e8",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-149",
@@ -3002,7 +3150,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "e19c0cbf583e413df9905ec0e13a063f3bce7a3c1422c9f4f0b5cae54dec4596"
+      "sha256": "e19c0cbf583e413df9905ec0e13a063f3bce7a3c1422c9f4f0b5cae54dec4596",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-150",
@@ -3025,7 +3174,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "4748d717bff745ade6bf71e43d963c5a574c4554433a4760ca3b8744644f167f"
+      "sha256": "4748d717bff745ade6bf71e43d963c5a574c4554433a4760ca3b8744644f167f",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-151",
@@ -3052,7 +3202,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "ac4f897a1682c5e0cd6e4a71710a379ec03c284b23e8591aa9b32ea6c4096a29"
+      "sha256": "ac4f897a1682c5e0cd6e4a71710a379ec03c284b23e8591aa9b32ea6c4096a29",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-152",
@@ -3075,7 +3226,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "e91c3e55da5294a1e91d0eb5fcb2cbaa9a7e7f64ce57d8ee458bddb792383f10"
+      "sha256": "e91c3e55da5294a1e91d0eb5fcb2cbaa9a7e7f64ce57d8ee458bddb792383f10",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-153",
@@ -3093,7 +3245,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "2182e61611f6357d0b6f21247e98aaf2b68861e90c8b7ef8e2414ca36e8eec9b"
+      "sha256": "2182e61611f6357d0b6f21247e98aaf2b68861e90c8b7ef8e2414ca36e8eec9b",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-154",
@@ -3111,7 +3264,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "81590e8640d8db350255743c2f2c2166f0c1e8914386de9658c549152531139c"
+      "sha256": "81590e8640d8db350255743c2f2c2166f0c1e8914386de9658c549152531139c",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-155",
@@ -3134,7 +3288,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "671d074cfa668d665e4ade08022110cc3797bc6454650a40f74a1e675c0c12c0"
+      "sha256": "671d074cfa668d665e4ade08022110cc3797bc6454650a40f74a1e675c0c12c0",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-156",
@@ -3157,7 +3312,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "90872405a209524b70232ef57faddf9e27a30d4b5102d9ebbb5d1dd06f335bdb"
+      "sha256": "90872405a209524b70232ef57faddf9e27a30d4b5102d9ebbb5d1dd06f335bdb",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-157",
@@ -3175,7 +3331,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "4c4ce97bf7872cc66206c8571feea57e57e3745867f67c795c9938e291b5f0b4"
+      "sha256": "4c4ce97bf7872cc66206c8571feea57e57e3745867f67c795c9938e291b5f0b4",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-158",
@@ -3193,7 +3350,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "1e6cb2167eede4812a177b5faba5de1c61492b2f3629e82c2f084f0f701601ac"
+      "sha256": "1e6cb2167eede4812a177b5faba5de1c61492b2f3629e82c2f084f0f701601ac",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-159",
@@ -3211,7 +3369,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "9718db2e2665e802a6059a6cb43a0b2575f5115f58fde6d068719f6f5d35ba83"
+      "sha256": "9718db2e2665e802a6059a6cb43a0b2575f5115f58fde6d068719f6f5d35ba83",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-160",
@@ -3234,7 +3393,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "aa2f10b3f0657d40fb909f8b3f9f024fe23b8676bc7ce1340e38ae4be0b22519"
+      "sha256": "aa2f10b3f0657d40fb909f8b3f9f024fe23b8676bc7ce1340e38ae4be0b22519",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-161",
@@ -3252,7 +3412,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "a3bbe27ca0cd6c3daa220b5d89f195a22ccb0d3091b65d99de1f35aa1624453d"
+      "sha256": "a3bbe27ca0cd6c3daa220b5d89f195a22ccb0d3091b65d99de1f35aa1624453d",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-162",
@@ -3270,7 +3431,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "d050adf9df23285a10dd991c067fd4d385b4bf8c71bad5b03183b1cd2ea12740"
+      "sha256": "d050adf9df23285a10dd991c067fd4d385b4bf8c71bad5b03183b1cd2ea12740",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-163",
@@ -3288,7 +3450,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "0aab719354e47bab83646cacd8639e1918142b048fe70c8a296aa180bb41e879"
+      "sha256": "0aab719354e47bab83646cacd8639e1918142b048fe70c8a296aa180bb41e879",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-164",
@@ -3306,7 +3469,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "f9e228f2f12ce40ed2c138e87a1ceed108dacc39a67a21745208be5234cdff6e"
+      "sha256": "f9e228f2f12ce40ed2c138e87a1ceed108dacc39a67a21745208be5234cdff6e",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-165",
@@ -3324,7 +3488,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "bcc4f820d1505d6cb29640679885765501b8159bafa20494c0a01d24a6f3937d"
+      "sha256": "bcc4f820d1505d6cb29640679885765501b8159bafa20494c0a01d24a6f3937d",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-166",
@@ -3342,7 +3507,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "18e267df563a75e1211676f0e7d1e3156836528b36c8ed94323e96e9e110b37c"
+      "sha256": "18e267df563a75e1211676f0e7d1e3156836528b36c8ed94323e96e9e110b37c",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-167",
@@ -3360,7 +3526,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "a9a181520b47b622d58a44a490a59cf4512df2862c579bfc60733fac755c7828"
+      "sha256": "a9a181520b47b622d58a44a490a59cf4512df2862c579bfc60733fac755c7828",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-168",
@@ -3383,7 +3550,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "6a5c7d280b0a55edac7fd899eecb227450a9e3437a27fd224e57ed169e0997a4"
+      "sha256": "6a5c7d280b0a55edac7fd899eecb227450a9e3437a27fd224e57ed169e0997a4",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-169",
@@ -3401,7 +3569,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "a09fb2a6359440db9fc52d5834f2abbe18aa77c6bbc38e7861b8025cf2d8c36c"
+      "sha256": "a09fb2a6359440db9fc52d5834f2abbe18aa77c6bbc38e7861b8025cf2d8c36c",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-170",
@@ -3419,7 +3588,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "9ac8fd99a9651bc0737f41b60905d4c11953fb05c4d51216cc10795534f00139"
+      "sha256": "9ac8fd99a9651bc0737f41b60905d4c11953fb05c4d51216cc10795534f00139",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-171",
@@ -3437,7 +3607,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "04f9e815323b8c87725e6ebaabb6c5fa3ef4a538e4f4145d1fa7e11ef79e28f3"
+      "sha256": "04f9e815323b8c87725e6ebaabb6c5fa3ef4a538e4f4145d1fa7e11ef79e28f3",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-172",
@@ -3455,7 +3626,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "6dde7c91dda7f0ccd50f0be9c62f68e20ac663d4adef9b2baf33394441680c10"
+      "sha256": "6dde7c91dda7f0ccd50f0be9c62f68e20ac663d4adef9b2baf33394441680c10",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-173",
@@ -3473,7 +3645,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "12f1d41d1505e03d5d6e3f48aff05eed2ca7670dc4fbe11a2922a03709c5e6b9"
+      "sha256": "12f1d41d1505e03d5d6e3f48aff05eed2ca7670dc4fbe11a2922a03709c5e6b9",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-174",
@@ -3491,7 +3664,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "fa5f503eee6a95b1864c994ea31e83eab0dcb795a6f109ebce935fb9edcc58d9"
+      "sha256": "fa5f503eee6a95b1864c994ea31e83eab0dcb795a6f109ebce935fb9edcc58d9",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-175",
@@ -3509,7 +3683,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "b13d3c109f5b1559ce73c16f09e7b544fe71bde09dc35e0ac173a2f116344e66"
+      "sha256": "b13d3c109f5b1559ce73c16f09e7b544fe71bde09dc35e0ac173a2f116344e66",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-176",
@@ -3527,7 +3702,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "85df0a06c1a26d0f2ffb2a8231c9241c5ea7845dd3b0786fc1d98ce371c7d7c8"
+      "sha256": "85df0a06c1a26d0f2ffb2a8231c9241c5ea7845dd3b0786fc1d98ce371c7d7c8",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-177",
@@ -3545,7 +3721,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "96c861de7017b5515d402a9a6ff1c88bf5b2d2f3ec7cab2b7fef6d2b014691aa"
+      "sha256": "96c861de7017b5515d402a9a6ff1c88bf5b2d2f3ec7cab2b7fef6d2b014691aa",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-178",
@@ -3568,7 +3745,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "9c2e706e5f982131bb1143108910e77fd9ca20d0b601307468cc07964498c6e3"
+      "sha256": "9c2e706e5f982131bb1143108910e77fd9ca20d0b601307468cc07964498c6e3",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-179",
@@ -3586,7 +3764,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "887127d7d8b4d0f2a14f5e3bbdb2694c5b039463123239000db0354d118d07da"
+      "sha256": "887127d7d8b4d0f2a14f5e3bbdb2694c5b039463123239000db0354d118d07da",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-180",
@@ -3604,7 +3783,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "efb3b931582d25d3f485788052fc7f494cd6322bb56f159572dec9718e244c83"
+      "sha256": "efb3b931582d25d3f485788052fc7f494cd6322bb56f159572dec9718e244c83",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-181",
@@ -3622,7 +3802,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "1389011870cfb9cad32c9a9a8f7fc3f556512200160db10ca67a19bfc518d9d2"
+      "sha256": "1389011870cfb9cad32c9a9a8f7fc3f556512200160db10ca67a19bfc518d9d2",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-182",
@@ -3645,7 +3826,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "6d651241f1e89c3296e3d689b5ced385379499104b798aaa012323e884d6e1a3"
+      "sha256": "6d651241f1e89c3296e3d689b5ced385379499104b798aaa012323e884d6e1a3",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-183",
@@ -3663,7 +3845,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "15724cdb08cdf0553040c84143da19757f1740384eb56cf77209d11520c64240"
+      "sha256": "15724cdb08cdf0553040c84143da19757f1740384eb56cf77209d11520c64240",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-184",
@@ -3681,7 +3864,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "8571d388ae7da5bc71d09d2fe1ae12c14f60759140ce2aaa265e2020da51db78"
+      "sha256": "8571d388ae7da5bc71d09d2fe1ae12c14f60759140ce2aaa265e2020da51db78",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-185",
@@ -3699,7 +3883,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "83ee4e3bd20b594aa1e2a598836a9f5018f3374e958f83689994d5eec59baf15"
+      "sha256": "83ee4e3bd20b594aa1e2a598836a9f5018f3374e958f83689994d5eec59baf15",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-186",
@@ -3722,7 +3907,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "8b493f770aa6533e7e534d9e149ca38e62b55f6a986d75e13bd5a9523c2e665a"
+      "sha256": "8b493f770aa6533e7e534d9e149ca38e62b55f6a986d75e13bd5a9523c2e665a",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-187",
@@ -3740,7 +3926,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "c3493f57cbcf05544651641a7a53b06cfefb3444f25be3d5b6b5054cece73292"
+      "sha256": "c3493f57cbcf05544651641a7a53b06cfefb3444f25be3d5b6b5054cece73292",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-188",
@@ -3758,7 +3945,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "af75957c43c4d3d4a46aa742ac35477508f102f4602cee812995823161f2c152"
+      "sha256": "af75957c43c4d3d4a46aa742ac35477508f102f4602cee812995823161f2c152",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-189",
@@ -3776,7 +3964,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "59ca9e7a33653b8e8c09936c43993ef615acd111f0ecdb4de6bf9b742943c837"
+      "sha256": "59ca9e7a33653b8e8c09936c43993ef615acd111f0ecdb4de6bf9b742943c837",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-190",
@@ -3794,7 +3983,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "c9f5f92511189930bd9c9db3a4d1ce1263112d0287448c87c13e1b6ed0d8c242"
+      "sha256": "c9f5f92511189930bd9c9db3a4d1ce1263112d0287448c87c13e1b6ed0d8c242",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-191",
@@ -3812,7 +4002,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "2cbe7619284c2a707e1a6c6a96fd9bd315f4d82186d522e2fb8dc6fde8ca60f7"
+      "sha256": "2cbe7619284c2a707e1a6c6a96fd9bd315f4d82186d522e2fb8dc6fde8ca60f7",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-192",
@@ -3830,7 +4021,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "cd2167ebaa6997e210e454dce15fdb5f4c87ff86763ca3d1a9da994156a6395f"
+      "sha256": "cd2167ebaa6997e210e454dce15fdb5f4c87ff86763ca3d1a9da994156a6395f",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-193",
@@ -3848,7 +4040,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "295759a94dda0d569bda37edfa791cbac1efa574038d6b2f643a898266e58b92"
+      "sha256": "295759a94dda0d569bda37edfa791cbac1efa574038d6b2f643a898266e58b92",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-194",
@@ -3871,7 +4064,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "6dbda9e0e9d78561b242f4abf37d5052052916571dd47fc5dba4ddda91f0f178"
+      "sha256": "6dbda9e0e9d78561b242f4abf37d5052052916571dd47fc5dba4ddda91f0f178",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-195",
@@ -3894,7 +4088,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "c0cfd05a0aafc139259339596141f9441feb1b7a8c3784f65b1623d60827552c"
+      "sha256": "c0cfd05a0aafc139259339596141f9441feb1b7a8c3784f65b1623d60827552c",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-196",
@@ -3921,7 +4116,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "81c68794ebb391f2d8d1c7d6854d2616831b664d4f1530cb8470e1580b0afbb8"
+      "sha256": "81c68794ebb391f2d8d1c7d6854d2616831b664d4f1530cb8470e1580b0afbb8",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-197",
@@ -3948,7 +4144,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "7cb6e4013a30320c676aa5ffd25d7b0314eba1e4e72e3f83e07d98d767f28a5f"
+      "sha256": "7cb6e4013a30320c676aa5ffd25d7b0314eba1e4e72e3f83e07d98d767f28a5f",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-198",
@@ -3971,7 +4168,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "7b6e46b88781a3bdb92dc6c602fd0cf6b8d125682f9effa1f769c0d078bd1b82"
+      "sha256": "7b6e46b88781a3bdb92dc6c602fd0cf6b8d125682f9effa1f769c0d078bd1b82",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-199",
@@ -3994,7 +4192,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "c2e2d3e1740236e61fa58379249daf8e64454ba41f65d736ed815b28a74cfe21"
+      "sha256": "c2e2d3e1740236e61fa58379249daf8e64454ba41f65d736ed815b28a74cfe21",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-200",
@@ -4012,7 +4211,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "59e91782a6a6bfbb1c42f511bf8c57151048d9c558d25e51d1fb2dc3b259a802"
+      "sha256": "59e91782a6a6bfbb1c42f511bf8c57151048d9c558d25e51d1fb2dc3b259a802",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-201",
@@ -4030,7 +4230,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "0d789684c85ae2ca47f0ff1cfd94d62e67b792ffc5f664aa916241dd64992878"
+      "sha256": "0d789684c85ae2ca47f0ff1cfd94d62e67b792ffc5f664aa916241dd64992878",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-202",
@@ -4048,7 +4249,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "f857ce8d5cbc3b48f87f27d6f2ff0d0ce5f1988c7b47482d5982743d16e6cd98"
+      "sha256": "f857ce8d5cbc3b48f87f27d6f2ff0d0ce5f1988c7b47482d5982743d16e6cd98",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-203",
@@ -4075,7 +4277,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "3c8def5bc3611dc2d352ca4752f3c10227a703561a9c55abb60c966b516d2313"
+      "sha256": "3c8def5bc3611dc2d352ca4752f3c10227a703561a9c55abb60c966b516d2313",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-204",
@@ -4093,7 +4296,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "7198d87d3d41d0253e1f67082fb988b5af9c82cad2750ee00491e97ac610b2f5"
+      "sha256": "7198d87d3d41d0253e1f67082fb988b5af9c82cad2750ee00491e97ac610b2f5",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-205",
@@ -4116,7 +4320,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "62c625eada6d9e4e3b3e10dece04d04eea9d9ac079cf57d94ee8e25f5b550efc"
+      "sha256": "62c625eada6d9e4e3b3e10dece04d04eea9d9ac079cf57d94ee8e25f5b550efc",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-206",
@@ -4139,7 +4344,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "8eeb833329407b038b03c0dd57a224cbc944b9787484d22684375421b397b4d5"
+      "sha256": "8eeb833329407b038b03c0dd57a224cbc944b9787484d22684375421b397b4d5",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-207",
@@ -4162,7 +4368,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "5bad37b74e45585245f90f2c7e99461db751e703018154a6ffc5f6e2bda59162"
+      "sha256": "5bad37b74e45585245f90f2c7e99461db751e703018154a6ffc5f6e2bda59162",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-208",
@@ -4185,7 +4392,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "c38c9a1b8f8bfdea1d277b0fcfef3464dffef918ddbbeb353514762f06080031"
+      "sha256": "c38c9a1b8f8bfdea1d277b0fcfef3464dffef918ddbbeb353514762f06080031",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-209",
@@ -4208,7 +4416,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "0be4b866be90461878284543ab752e194dc608f8f8c46e4940e447a44ec8bea6"
+      "sha256": "0be4b866be90461878284543ab752e194dc608f8f8c46e4940e447a44ec8bea6",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-210",
@@ -4231,7 +4440,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "2f0f8872193958ed274529d807e0a5bc0b1452999b6b0dfcc0cac0eca3372e93"
+      "sha256": "2f0f8872193958ed274529d807e0a5bc0b1452999b6b0dfcc0cac0eca3372e93",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-211",
@@ -4254,7 +4464,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "6f0aab2090171a431ac08e82ae4dfb2460562f7f3d26f7fc0dc1faa7e6a127c3"
+      "sha256": "6f0aab2090171a431ac08e82ae4dfb2460562f7f3d26f7fc0dc1faa7e6a127c3",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-212",
@@ -4277,7 +4488,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "b76c1077dfc25e72144af3e73d106c998bf5b11568886fe3c7c7ebc0cf8858e2"
+      "sha256": "b76c1077dfc25e72144af3e73d106c998bf5b11568886fe3c7c7ebc0cf8858e2",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-213",
@@ -4300,7 +4512,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "9bc4b55662ff10ab98dc48aa730efe42f7bbd16f1e75158803cb6defc346e727"
+      "sha256": "9bc4b55662ff10ab98dc48aa730efe42f7bbd16f1e75158803cb6defc346e727",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-214",
@@ -4323,7 +4536,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "0ae0335a8ac35a98c3e76eb3dad817195ff0376bb19b193432e681eb745336d4"
+      "sha256": "0ae0335a8ac35a98c3e76eb3dad817195ff0376bb19b193432e681eb745336d4",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-215",
@@ -4346,7 +4560,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "1c08ad7ca358930c43c7eaf7f0a72c3d99c71ece5ac4e05dadf9470d6ebcc575"
+      "sha256": "1c08ad7ca358930c43c7eaf7f0a72c3d99c71ece5ac4e05dadf9470d6ebcc575",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-216",
@@ -4369,7 +4584,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "29b07c10bb2b6cd2454327ce2ca75423a38ea5d20e9ab1e4ea943cb3d006240d"
+      "sha256": "29b07c10bb2b6cd2454327ce2ca75423a38ea5d20e9ab1e4ea943cb3d006240d",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-217",
@@ -4392,7 +4608,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "0a3d59ddbe41f0662018f404b60b4f0a2bd1d6566777e9ce6b55027545269c56"
+      "sha256": "0a3d59ddbe41f0662018f404b60b4f0a2bd1d6566777e9ce6b55027545269c56",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-218",
@@ -4415,7 +4632,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "311bc72d413eeebfd6c789536a5c3a838a486866e58f58f6ba23f817a9bf9395"
+      "sha256": "311bc72d413eeebfd6c789536a5c3a838a486866e58f58f6ba23f817a9bf9395",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-219",
@@ -4438,7 +4656,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "cfbbcca811f4e45c5a60e4b403e0428e459c5f47e5214df30ec2b8464b7c44ef"
+      "sha256": "cfbbcca811f4e45c5a60e4b403e0428e459c5f47e5214df30ec2b8464b7c44ef",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-220",
@@ -4461,7 +4680,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "d88115a8d98ce619b231e96b0eee7df1693c9a84b318502cd7a10ae0d6ab9f03"
+      "sha256": "d88115a8d98ce619b231e96b0eee7df1693c9a84b318502cd7a10ae0d6ab9f03",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-221",
@@ -4484,7 +4704,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "e78668e7507140e85da28cfd3299ba476dbc2572d7e3c71a18e3d34700a0312e"
+      "sha256": "e78668e7507140e85da28cfd3299ba476dbc2572d7e3c71a18e3d34700a0312e",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-222",
@@ -4507,7 +4728,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "622956a7eda9a960d522d9e705684db440ee7075fe487d8d0ed6af56d423d31b"
+      "sha256": "622956a7eda9a960d522d9e705684db440ee7075fe487d8d0ed6af56d423d31b",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-223",
@@ -4530,7 +4752,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "3463afd04fdc89a4ead7f1d2168ce97686af36350e7bcc2b5e53658435bb7011"
+      "sha256": "3463afd04fdc89a4ead7f1d2168ce97686af36350e7bcc2b5e53658435bb7011",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-224",
@@ -4553,7 +4776,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "005ca10dc32b556097f5c1175dcda46f2364e40c4c49f54b30925939c2092924"
+      "sha256": "005ca10dc32b556097f5c1175dcda46f2364e40c4c49f54b30925939c2092924",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-225",
@@ -4576,7 +4800,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "45e96298a307a7c7ec4b9d467d0d85dfc91f32f0632a40090c39d255aac3fa13"
+      "sha256": "45e96298a307a7c7ec4b9d467d0d85dfc91f32f0632a40090c39d255aac3fa13",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-226",
@@ -4599,7 +4824,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "d1d85141a3ffe548e215aba5cb7a2ae9b15f3b77c57a284280e92a303e390551"
+      "sha256": "d1d85141a3ffe548e215aba5cb7a2ae9b15f3b77c57a284280e92a303e390551",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-227",
@@ -4622,7 +4848,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "ae07e6d54e212b9570fdd969943a7dda3b1e1a2da0dcb52fe81d600939fe9988"
+      "sha256": "ae07e6d54e212b9570fdd969943a7dda3b1e1a2da0dcb52fe81d600939fe9988",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-228",
@@ -4645,7 +4872,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "a04a9ad73cdbea4572805d32827428a68978b8df4bac8c7575d5f8073ebc5839"
+      "sha256": "a04a9ad73cdbea4572805d32827428a68978b8df4bac8c7575d5f8073ebc5839",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-229",
@@ -4668,7 +4896,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "c7576da3a241116099b04915c6177e10cf67277a2555e46f2276269cb876058d"
+      "sha256": "c7576da3a241116099b04915c6177e10cf67277a2555e46f2276269cb876058d",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-230",
@@ -4695,7 +4924,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "d593fdf5a933bafca259caf8b27cb08d4834f7b36d41c3cac32b69469e74f2dd"
+      "sha256": "d593fdf5a933bafca259caf8b27cb08d4834f7b36d41c3cac32b69469e74f2dd",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-231",
@@ -4718,7 +4948,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "050121c5718fe373f48a01c702648d5e9551884782ab809f37cc64163dbf32b4"
+      "sha256": "050121c5718fe373f48a01c702648d5e9551884782ab809f37cc64163dbf32b4",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-232",
@@ -4741,7 +4972,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "663d05fe77879e42600ff03cc8a47a8d3ec405d1a2f866857b1294e76c543894"
+      "sha256": "663d05fe77879e42600ff03cc8a47a8d3ec405d1a2f866857b1294e76c543894",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-233",
@@ -4794,7 +5026,8 @@
           "sha256": "0974454171dd6030dde19910664c0a48e961d53e7b27360e13cff85c9aac63ae",
           "duplicate_of": "labor-law/art-233"
         }
-      ]
+      ],
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-234",
@@ -4843,7 +5076,8 @@
           "sha256": "1a7d4746e5677ffc00e68c046c182a16a5aba3791dc48dac04d83fdac9d91285",
           "duplicate_of": "labor-law/art-234"
         }
-      ]
+      ],
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-235",
@@ -4892,7 +5126,8 @@
           "sha256": "acc66ded4b20e18e4a67e6d439107b728147891344ebe73d49beb33f959ed4a2",
           "duplicate_of": "labor-law/art-235"
         }
-      ]
+      ],
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-236",
@@ -4915,7 +5150,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "89c9e61882eca2137da278121585292a77a75a614a30b3dd694f5cf4d577a5b3"
+      "sha256": "89c9e61882eca2137da278121585292a77a75a614a30b3dd694f5cf4d577a5b3",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-237",
@@ -4938,7 +5174,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "450c88a3bb3b2406cef2a5e298a595bd30124588053b6118414fe3e6f3d86d86"
+      "sha256": "450c88a3bb3b2406cef2a5e298a595bd30124588053b6118414fe3e6f3d86d86",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-238",
@@ -4961,7 +5198,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "6b6f7529e47de013ddaccfd40fc56e4fb0b4e7a55f8b77104a80be83a22d1909"
+      "sha256": "6b6f7529e47de013ddaccfd40fc56e4fb0b4e7a55f8b77104a80be83a22d1909",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-239",
@@ -4984,7 +5222,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "236c9dfdcd8fa844ae6cdcf7e8c294ff7c8a352d4f8ad64b0d729dcb18e8f00d"
+      "sha256": "236c9dfdcd8fa844ae6cdcf7e8c294ff7c8a352d4f8ad64b0d729dcb18e8f00d",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-240",
@@ -5007,7 +5246,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "f6f808de878a080476072a6ef77b52bfcdb2215635f5828210a547a8a2d097f7"
+      "sha256": "f6f808de878a080476072a6ef77b52bfcdb2215635f5828210a547a8a2d097f7",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-241",
@@ -5030,7 +5270,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "80ef4f871ae61295371e59f7f059c4021c6d9d54e68b5e6bdb37ef65fe0c2ca8"
+      "sha256": "80ef4f871ae61295371e59f7f059c4021c6d9d54e68b5e6bdb37ef65fe0c2ca8",
+      "text_status": "base_not_operative"
     },
     {
       "id": "labor-law/art-242",
@@ -5053,7 +5294,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "d046135cbe3dd9718cd535e19ae351b3f15c1a484c6c52f3b001b80078e56a52"
+      "sha256": "d046135cbe3dd9718cd535e19ae351b3f15c1a484c6c52f3b001b80078e56a52",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-243",
@@ -5071,7 +5313,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "f84af1e23a11c90e6bec482c1b89eab8be543a078489976563d98a6168b90669"
+      "sha256": "f84af1e23a11c90e6bec482c1b89eab8be543a078489976563d98a6168b90669",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-244",
@@ -5089,7 +5332,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "7e60568c2b5a7d76d92798b868dd225eab4e1cfbe4c66c4d9ec25376a1896f86"
+      "sha256": "7e60568c2b5a7d76d92798b868dd225eab4e1cfbe4c66c4d9ec25376a1896f86",
+      "text_status": "operative"
     },
     {
       "id": "labor-law/art-245",
@@ -5107,7 +5351,8 @@
       "document_url": "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1",
       "fetched_at": "2026-11-23T19:11:42.844449+00:00",
       "fetched_by": "local",
-      "sha256": "b350f3afb43566ac74e2d9a32f42062e8bf6a5b11c1117ca8de440fa541a5cfe"
+      "sha256": "b350f3afb43566ac74e2d9a32f42062e8bf6a5b11c1117ca8de440fa541a5cfe",
+      "text_status": "operative"
     }
   ],
   "safety": {
