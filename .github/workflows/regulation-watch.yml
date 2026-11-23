@@ -128,7 +128,13 @@ jobs:
           git config user.name "regulation-watch[bot]"
           git config user.email "regulation-watch[bot]@users.noreply.github.com"
           rm evals/.regulation-watch-state.json
-          git checkout regulation-watch-state
+          # First run: branch doesn't exist yet — create it from main
+          git fetch origin regulation-watch-state 2>/dev/null || echo "No state branch yet."
+          if git cat-file -e origin/regulation-watch-state:evals/.regulation-watch-state.json 2>/dev/null; then
+            git checkout regulation-watch-state
+          else
+            git checkout -b regulation-watch-state origin/main
+          fi
           cp /tmp/new-state.json evals/.regulation-watch-state.json
           git add evals/.regulation-watch-state.json
           git commit -m "chore: refresh regulation-watch baseline [skip ci]" \
