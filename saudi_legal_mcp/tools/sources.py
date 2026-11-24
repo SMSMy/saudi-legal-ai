@@ -137,6 +137,7 @@ def read_source(
     if regulation not in VALID_REGULATIONS:
         return {
             "error": f"Unknown regulation '{regulation}'.",
+            "did_you_mean": suggest_regulation(regulation or ""),
             "valid_options": sorted(VALID_REGULATIONS),
             "disclaimer": DISCLAIMER,
         }
@@ -242,6 +243,29 @@ def read_source(
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
+def suggest_regulation(value: str, *, limit: int = 3) -> list[str]:
+    """Closest known source_ids for a typo, alias, or corpus-file stem.
+
+    Covers mapping gaps such as the ``pdpl-exec-regulations`` FILE stem,
+    which is not itself a registered source_id (retrieval merges that file
+    under ``pdpl``).  A caller that passes the stem gets ``['pdpl']``
+    instead of a dead-end error.  Pure stdlib difflib + prefix rule; no I/O.
+    """
+    import difflib
+
+    candidates = sorted(VALID_REGULATIONS)
+    suggestions = list(difflib.get_close_matches(value or "", candidates, n=limit, cutoff=0.6))
+    lowered = (value or "").strip().lower()
+    for candidate in candidates:
+        if candidate in suggestions:
+            continue
+        if lowered.startswith(candidate.lower() + "-") or lowered.startswith(candidate.lower() + "_"):
+            suggestions.append(candidate)
+        if len(suggestions) >= limit:
+            break
+    return suggestions[:limit]
+
 
 def _load_manifest(regulation: str) -> Optional[dict]:
     """Load the JSON manifest for a regulation if it exists."""

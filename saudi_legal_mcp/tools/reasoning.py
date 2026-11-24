@@ -52,7 +52,7 @@ from saudi_legal_mcp.tools.provenance import (
 )
 from saudi_legal_mcp.tools.schemas import LegalBriefResponse, MatchedSection, ProvisionResponse
 from saudi_legal_mcp.tools.skills import read_skill
-from saudi_legal_mcp.tools.sources import VALID_REGULATIONS, _extract_links
+from saudi_legal_mcp.tools.sources import VALID_REGULATIONS, _extract_links, suggest_regulation
 from saudi_legal_mcp.tools.search import MATCH_CONFIDENCE_THRESHOLD, find_risks
 
 # Backwards-compatible module-level aliases (tests and third-party callers
@@ -67,6 +67,11 @@ _strip_placeholders = strip_placeholders
 _MAX_CHARS_PER_SECTION = 1500
 _MAX_SECTIONS_RETURNED = 3
 _BRIEF_MAX_CHARS = 4000
+# Phase C anchor floor: the summary top-1 section arbitrates verbatim quotes
+# only when it matches a MAJORITY of query terms.  Calibrated: a dedicated
+# topical section scores 0.67+ (commercial limitation), a generic preamble
+# scores 0.45 (civil golden query) and must NOT arbitrate.
+_ANCHOR_MIN_CONFIDENCE = 0.5
 
 _ARABIC_NUMBER_HINT_RE = re.compile(r"المادة\s*(?:رقم\s*)?([0-9\u0660-\u0669]{1,3})")
 _ARABIC_WORD_HINT_RE = re.compile(r"المادة\s+([^\n|،.:]{2,40})")
@@ -277,6 +282,50 @@ def _extract_article_hints(query: str, source_id: str) -> list[str]:
     return hints[:3]
 
 
+def _summary_top_section(query: str, source_id: str) -> tuple[dict, float]:
+    """Top summary section + its confidence (0.0 when the summary cannot answer).
+
+    Phase C: the top-1 section is the topical authority used both to anchor
+    verbatim quotes (C1: summary-corroborated verbatim) and as a
+    decisive-summary supplement (C2a).  Section dicts are the same
+    MatchedSection payloads _summary_search returns, so they can be
+    appended verbatim with their honest hand_written_summary label.
+    """
+    try:
+        summary = _summary_search(query, source_id, max_sections=1)
+    except Exception:
+        return {}, 0.0
+    if summary.get("insufficient_evidence"):
+        return {}, 0.0
+    sections = summary.get("matched_sections", [])
+    if not sections:
+        return {}, 0.0
+    top = sections[0]
+    try:
+        confidence = float(top.get("match_confidence") or 0.0)
+    except (TypeError, ValueError):
+        confidence = 0.0
+    return top, confidence
+
+
+def _article_numbers_in_text(text: str) -> set[str]:
+    """Article numbers referenced in a piece of summary text (both hint styles).
+
+    Mirrors the extraction in _extract_article_hints, restricted here to one
+    section so a stray number in a lower-ranked section cannot anchor quotes.
+    """
+    found: set[str] = set()
+    for match in _ARABIC_NUMBER_HINT_RE.finditer(text or ""):
+        value = match.group(1).translate(str.maketrans("٠١٢٣٤٥٦٧٨٩", "0123456789"))
+        if value:
+            found.add(value)
+    for match in _ARABIC_WORD_HINT_RE.finditer(text or ""):
+        number = parse_arabic_article_number(match.group(1))
+        if number is not None:
+            found.add(str(number))
+    return found
+
+
 def search_legal_provision(
     query: str,
     source_id: str,
@@ -299,6 +348,7 @@ def search_legal_provision(
     if source_id not in VALID_REGULATIONS:
         return {
             "error": f"Unknown source_id '{source_id}'.",
+            "did_you_mean": suggest_regulation(source_id or ""),
             "valid_options": sorted(VALID_REGULATIONS),
             "disclaimer": DISCLAIMER,
         }
@@ -334,6 +384,8 @@ def search_legal_provision(
                 operative_articles.append(a)
             # Anything else (e.g. amended without a tag) fails closed.
         articles = operative_articles
+        dropped_unanchored: list[str] = []
+        summary_supplement = False
         # Phase A stale-wins gate (plan §1.4/§2.3): when the best stale row
         # outscores every quotable row, the corpus cannot answer — fall back
         # to the hand-written summary (the record) with an amendment notice
@@ -361,6 +413,35 @@ def search_legal_provision(
                 ]
                 summary_result["quotes"] = []
                 return _finish_summary_result(summary_result)
+        # Phase C relevance gate: summary-corroborated verbatim (plan §3).
+        # Runs AFTER the stale gate on purpose: the stale comparison above
+        # keeps Phase A semantics (raw max over the full quotable set), and
+        # this filter only ever narrows what is quoted.  The summary top-1
+        # section is human-written topical prose; an article number named
+        # there corroborates topicality that raw keyword overlap cannot prove
+        # (e.g. arts 85/11/13 outscoring the correct-but-terse art-24 on
+        # shared generic terms).  Quotes whose article is NOT named in that
+        # section are dropped — unless the summary itself has no topical
+        # authority (top-1 confidence < 0.5, i.e. no majority of query terms
+        # matched, e.g. a generic preamble), in which case keyword recall is
+        # preserved unchanged.  Nothing is ever invented: only retrieved
+        # operative quotes are filtered, and an emptied pool falls through
+        # to the plain summary path below (honest abstention or record).
+        top_section, top_confidence = _summary_top_section(query, source_id)
+        if top_section and top_confidence >= _ANCHOR_MIN_CONFIDENCE:
+            anchor_numbers = _article_numbers_in_text(
+                f"{top_section.get('heading', '')}\n{top_section.get('body', '')}"
+            )
+            if anchor_numbers:
+                kept = [
+                    a for a in articles
+                    if str(a.get("article", "")).strip() in anchor_numbers
+                ]
+                dropped_unanchored = [
+                    str(a.get("article", "")).strip() for a in articles
+                    if str(a.get("article", "")).strip() not in anchor_numbers
+                ]
+                articles = kept
         if articles:
             quotes = [article_record(article) for article in articles]
             matched_sections: list[dict] = []
@@ -386,6 +467,17 @@ def search_legal_provision(
                     article_id=quote.get("id"),
                 )))
 
+            # Phase C merge rule (plan §4): a decisive human-written summary
+            # rides along.  When the summary top-1 section is confident, it is
+            # appended AFTER the quotes (never instead of them): a direct
+            # prose answer plus partial quotes beats partial quotes alone
+            # (reported Q7 displacement, where art-156 alone never says
+            # "no minimum").  Both origins stay explicitly labeled.
+            if (top_confidence >= MATCH_CONFIDENCE_THRESHOLD and top_section
+                    and str(top_section.get("body", "")).strip()):
+                matched_sections.append(dict(top_section))
+                summary_supplement = True
+
             result = {
                 "source_id": source_id,
                 "query": query,
@@ -397,6 +489,8 @@ def search_legal_provision(
                 "citation_note": None,
                 "excluded_low_confidence_count": 0,
                 "retrieval_scope": "verbatim_corpus",
+                "dropped_unanchored_quotes": dropped_unanchored,
+                "summary_supplement": summary_supplement,
             }
             result.update(corpus_envelope(source_id, quotes))
             return result
