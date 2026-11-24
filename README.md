@@ -1,6 +1,6 @@
 # المنظومة القانونية السعودية للذكاء الاصطناعي 🇸🇦 — Saudi Legal AI MCP retrieval server
 
-[![Version](https://img.shields.io/badge/version-0.5.0-blue.svg)](https://github.com/SMSMy/saudi-legal-ai/releases)
+[![Version](https://img.shields.io/badge/version-0.5.1-blue.svg)](https://github.com/SMSMy/saudi-legal-ai/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-stdio-blue.svg)](https://modelcontextprotocol.io)
 
@@ -8,7 +8,7 @@
 > For preliminary research only — not legal advice. Must be reviewed by a licensed Saudi legal professional.
 
 > **ترقيم الإصدار / Versioning:** رقم semver في `pyproject.toml` هو المرجع الرسمي الوحيد
-> (حاليًا `0.5.0`؛ `0.4.0` كان الإصدار الرسمي الأول ودليل أدلته محفوظ في `releases/`).
+> (حاليًا `0.5.1`؛ `0.5.0` و`0.4.0` إصداران سابقان وأدلتهما محفوظة في `releases/`).
 > أرقام `v0.4.x` في رسائل الـcommits علامات تغيير داخلية، **ليست إصدارات**.
 
 ---
