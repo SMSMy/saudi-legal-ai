@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "saudi-legal-ai"
-version = "0.5.0"
+version = "0.5.1"
 # NOTE: v0.2/v0.3/v0.4 were internal development phase labels, not semver releases.
 # This is the first installable package release — semver starts at 0.4.0.
 # When publishing to PyPI or GitHub Releases, this version IS the official tag.
